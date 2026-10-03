@@ -47,7 +47,18 @@
 
 ## Kanban (board `nexia`)
 
-_Se completa abajo con los IDs reales._
+Creadas el 2026-10-03 (Codelius). Los hijos tienen como padre a la épica.
+
+| ID | Assignee | Entrega |
+|----|----------|---------|
+| `t_b0474a6f` | `nexia` | Épica `[Grok:Codelius] SnapFit` |
+| `t_78a921ff` | `entrenador` | Estrategia + niveles 1–3 + seguridad + ~40 cartas MVP con citas → `docs/training/`, `content/` |
+| `t_bf5e6169` | `disenador` | Spec UI pixel-art, flujos, 6 temas con paletas AA, visuales de insignias |
+| `t_22eec52e` | `storyteller` | Tono, microcopy ES, nombres de insignias, estilo del flavor text |
+| `t_7db959be` | `director-creativo` | Sprites por carta (tras la lista de entrenador), íconos PWA, insignias, con procedencia |
+| `t_b20e2d87` | `melody` | SFX `listo`, `otra-carta`, `logro`, `subir-nivel` + loop opcional, con procedencia |
+
+`runica` no tiene tarjetas el 2026-10-03.
 
 ## Contacto
 

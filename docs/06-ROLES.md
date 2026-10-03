@@ -42,9 +42,9 @@ Brooks (producto / decisión final)
 
 | Tarjeta | Assignee | ID |
 |---------|----------|----|
-| Épica `[Grok:Codelius] SnapFit` | `nexia` | _ver `07-HANDOFF.md`_ |
-| Estrategia de entrenamiento + cartas MVP | `entrenador` | _ídem_ |
-| UI pixel-art + temas | `disenador` | _ídem_ |
-| Tono + microcopy | `storyteller` | _ídem_ |
-| Sprites + íconos + insignias | `director-creativo` | _ídem_ |
-| SFX chiptune | `melody` | _ídem_ |
+| Épica `[Grok:Codelius] SnapFit` | `nexia` | `t_b0474a6f` |
+| Estrategia de entrenamiento + cartas MVP | `entrenador` | `t_78a921ff` |
+| UI pixel-art + temas | `disenador` | `t_bf5e6169` |
+| Tono + microcopy | `storyteller` | `t_22eec52e` |
+| Sprites + íconos + insignias | `director-creativo` | `t_7db959be` |
+| SFX chiptune | `melody` | `t_b20e2d87` |
