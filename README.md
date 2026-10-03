@@ -1,0 +1,50 @@
+# SnapFit 🕹️💪
+
+**Un mazo de cartas de ejercicio estilo videojuego retro.** Abres la app, aparece **una carta**, haces el movimiento y tocas **¡Listo!**. Con eso basta.
+
+PWA *mobile-first*, instalable en Android (Chrome), **funciona sin conexión** y está pensada para la conectividad irregular de La Unión, Guerrero. Ofrece microsesiones de calistenia y ejercicios con el propio peso para todo el cuerpo, **basadas en evidencia** (estudios revisados por pares o técnicas documentadas de dominio público) y sin equipo: en casa, la oficina, el parque o donde sea.
+
+> Antes se llamaba «Bocaditos» (idea de Entrenador / Body Lab, 2026-10-03).
+
+## Estado
+
+**Fase F0: documentación y repositorio.** Todavía no hay código de la app. Ver [`docs/05-ROADMAP.md`](docs/05-ROADMAP.md).
+
+- Repo: https://github.com/jjmbrooks/snapfit
+- Sitio (desde F1): https://jjmbrooks.github.io/snapfit/
+
+## Lo esencial
+
+| | |
+|---|---|
+| Experiencia | Una carta → hazla → **¡Listo!** (o **Otra carta**). Progreso y personalización siempre a un toque |
+| Juego | Pixel-art retro, animación por carta, racha diaria, insignias, logros, compartir logros |
+| Niveles | 10 niveles; la app calcula tu nivel con tu progreso (también por grupo muscular) |
+| Temas | 6 temas: Medianoche 8-bit, Mañana Pixel, Chicle Turbo, Selva Guerrera, Ola Pacífico, Volcán Power |
+| Datos | Local primero (IndexedDB). Sincronización opcional con Google Sign-In + Firestore (plan Spark gratuito) |
+| Stack | Vite + JS vanilla + tokens CSS + sprites Canvas/CSS + Service Worker + Firebase JS SDK modular |
+| Hosting | GitHub Pages (`/snapfit/`) con GitHub Actions |
+
+## Documentación (léela en orden)
+
+1. [`AGENTS.md`](AGENTS.md): instrucciones para bots
+2. [`docs/00-VISION.md`](docs/00-VISION.md)
+3. [`docs/01-PRODUCT.md`](docs/01-PRODUCT.md): UX, pantallas, mecánicas, insignias, temas
+4. [`docs/02-ARCHITECTURE.md`](docs/02-ARCHITECTURE.md): módulos, datos, Firestore, offline, notificaciones
+5. [`docs/03-CONTENT.md`](docs/03-CONTENT.md): schema de cartas y mazos
+6. [`docs/04-SCIENCE.md`](docs/04-SCIENCE.md) → [`docs/training/`](docs/training/)
+7. [`docs/05-ROADMAP.md`](docs/05-ROADMAP.md): fases, DoD y bitácora de consumo
+8. [`docs/06-ROLES.md`](docs/06-ROLES.md)
+9. [`docs/07-HANDOFF.md`](docs/07-HANDOFF.md)
+10. [`docs/ASSETS-PROVENANCE.md`](docs/ASSETS-PROVENANCE.md)
+
+## Aviso de salud
+
+SnapFit ofrece información general de actividad física. **No sustituye una valoración médica.** Si tienes una lesión, dolor, una enfermedad cardiovascular o un embarazo, consulta a un profesional antes de empezar. Detén el ejercicio si sientes dolor agudo, mareo o falta de aire anormal.
+
+## Licencias
+
+- Código: **MIT**. Ver [`LICENSE`](LICENSE).
+- Contenido y assets (cartas, textos de entrenamiento, sprites, sonidos): **CC BY 4.0**, con atribución obligatoria. Ver [`LICENSE-ASSETS.md`](LICENSE-ASSETS.md).
+
+© 2026 jjmbrooks (Jhonatan Jesús Martínez Brooks)
