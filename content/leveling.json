@@ -1,0 +1,10 @@
+{
+  "draft": true,
+  "draftNote": "Heurística inicial de Codelius; Entrenador debe validar umbrales (docs/02-ARCHITECTURE.md §5).",
+  "minCardsToLevelUp": 6,
+  "minDistinctDays": 3,
+  "minOkRatio": 0.7,
+  "noHardInLast": 3,
+  "consecutiveHardToDrop": 3,
+  "minDaysBetweenLevelUps": 7
+}

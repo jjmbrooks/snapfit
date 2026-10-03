@@ -1,0 +1,814 @@
+[
+  {
+    "id": "sentadilla-silla-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Sentadilla a la silla",
+    "shortName": "Sentadilla silla",
+    "muscleGroups": [
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "piernas",
+    "level": 1,
+    "dose": {
+      "type": "reps",
+      "reps": 10,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 30
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula"
+    ],
+    "equipment": [
+      "silla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Párate frente a una silla firme, pies al ancho de cadera.",
+      "Lleva la cadera hacia atrás hasta rozar el asiento.",
+      "Empuja el piso y vuelve arriba."
+    ],
+    "cues": [
+      "Rodillas en línea con la punta del pie",
+      "Espalda larga"
+    ],
+    "easier": null,
+    "harder": "zancada-atras-apoyo-l2",
+    "careZones": [
+      "rodilla"
+    ],
+    "contraindications": [
+      "Dolor de rodilla al bajar: reduce el rango. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "squat",
+      "prop": "chair"
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "flexion-pared-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Flexión en la pared",
+    "shortName": "Flexión pared",
+    "muscleGroups": [
+      "empuje",
+      "core"
+    ],
+    "primaryGroup": "empuje",
+    "level": 1,
+    "dose": {
+      "type": "reps",
+      "reps": 10,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 30
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula",
+      "parque"
+    ],
+    "equipment": [
+      "pared"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Apoya las manos en la pared a la altura del pecho.",
+      "Da un paso atrás con el cuerpo recto.",
+      "Acerca el pecho a la pared y empuja de regreso."
+    ],
+    "cues": [
+      "Cuerpo como tabla",
+      "Codos a 45°"
+    ],
+    "easier": null,
+    "harder": "flexion-mesa-l2",
+    "careZones": [
+      "hombro",
+      "muneca"
+    ],
+    "contraindications": [
+      "Molestia de hombro o muñeca: acércate más a la pared. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "pushup-wall",
+      "prop": "wall"
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "puente-gluteo-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Puente de glúteo",
+    "shortName": "Puente",
+    "muscleGroups": [
+      "gluteos",
+      "core"
+    ],
+    "primaryGroup": "gluteos",
+    "level": 1,
+    "dose": {
+      "type": "reps",
+      "reps": 12,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 36
+    },
+    "locations": [
+      "casa",
+      "parque"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Acuéstate boca arriba con rodillas dobladas y pies en el piso.",
+      "Aprieta glúteos y sube la cadera.",
+      "Baja despacio."
+    ],
+    "cues": [
+      "Empuja con los talones",
+      "Sin arquear la zona lumbar"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "lumbar"
+    ],
+    "contraindications": [
+      "Molestia lumbar: sube menos. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "bridge",
+      "prop": null
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "marcha-sitio-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Marcha en el sitio",
+    "shortName": "Marcha",
+    "muscleGroups": [
+      "cardio",
+      "piernas"
+    ],
+    "primaryGroup": "cardio",
+    "level": 1,
+    "dose": {
+      "type": "time",
+      "reps": null,
+      "durationSec": 40,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 40
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula",
+      "parque"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie, marcha en el lugar subiendo rodillas a una altura cómoda.",
+      "Balancea los brazos.",
+      "Respira de forma constante."
+    ],
+    "cues": [
+      "Postura alta",
+      "Ritmo cómodo"
+    ],
+    "easier": null,
+    "harder": "step-jacks-l1",
+    "careZones": [],
+    "contraindications": [
+      "Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "march",
+      "prop": null
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "talones-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Elevación de talones",
+    "shortName": "Talones",
+    "muscleGroups": [
+      "piernas"
+    ],
+    "primaryGroup": "piernas",
+    "level": 1,
+    "dose": {
+      "type": "reps",
+      "reps": 15,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 45
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula",
+      "parque"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie, puedes apoyarte en una pared o silla.",
+      "Sube sobre la punta de los pies.",
+      "Baja despacio."
+    ],
+    "cues": [
+      "Sube recto, sin ladear el tobillo"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "tobillo"
+    ],
+    "contraindications": [
+      "Molestia de tobillo: apóyate y reduce el rango. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "calf",
+      "prop": null
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "remo-toalla-iso-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Remo isométrico con toalla",
+    "shortName": "Remo toalla",
+    "muscleGroups": [
+      "traccion"
+    ],
+    "primaryGroup": "traccion",
+    "level": 1,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 20,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 20
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula"
+    ],
+    "equipment": [
+      "toalla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Sujeta una toalla con ambas manos frente al pecho.",
+      "Tira hacia afuera y hacia atrás llevando los codos atrás.",
+      "Mantén la tensión juntando escápulas."
+    ],
+    "cues": [
+      "Hombros lejos de las orejas"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "hombro"
+    ],
+    "contraindications": [
+      "Molestia de hombro: tira con menos fuerza. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "row",
+      "prop": "towel"
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "perro-pajaro-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Perro-pájaro",
+    "shortName": "Perro-pájaro",
+    "muscleGroups": [
+      "core",
+      "gluteos"
+    ],
+    "primaryGroup": "core",
+    "level": 1,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 24
+    },
+    "locations": [
+      "casa",
+      "parque"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "En cuatro puntos, manos bajo hombros y rodillas bajo cadera.",
+      "Estira un brazo y la pierna contraria.",
+      "Regresa y alterna."
+    ],
+    "cues": [
+      "Cadera quieta",
+      "Mirada al piso"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "muneca",
+      "rodilla"
+    ],
+    "contraindications": [
+      "Molestia de muñeca: apoya los puños. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "birddog",
+      "prop": null
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "plancha-rodillas-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Plancha con rodillas",
+    "shortName": "Plancha rodillas",
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryGroup": "core",
+    "level": 1,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 20,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 20
+    },
+    "locations": [
+      "casa",
+      "parque"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Apoya antebrazos y rodillas en el piso.",
+      "Alinea cabeza, espalda y cadera.",
+      "Mantén respirando."
+    ],
+    "cues": [
+      "Abdomen firme",
+      "No hundas la cadera"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "hombro",
+      "lumbar"
+    ],
+    "contraindications": [
+      "Molestia lumbar u hombro: reduce el tiempo. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "plank",
+      "prop": null
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "circulos-brazos-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Círculos de brazos",
+    "shortName": "Círculos brazos",
+    "muscleGroups": [
+      "movilidad"
+    ],
+    "primaryGroup": "movilidad",
+    "level": 1,
+    "dose": {
+      "type": "time",
+      "reps": null,
+      "durationSec": 30,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 30
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula",
+      "parque"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie, brazos extendidos a los lados.",
+      "Haz círculos pequeños que crecen poco a poco.",
+      "A mitad del tiempo cambia de sentido."
+    ],
+    "cues": [
+      "Movimiento suave, sin dolor"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "hombro"
+    ],
+    "contraindications": [
+      "Molestia de hombro: círculos más pequeños. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "arms",
+      "prop": null
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "step-jacks-l1",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Saltos de tijera sin salto",
+    "shortName": "Step jacks",
+    "muscleGroups": [
+      "cardio"
+    ],
+    "primaryGroup": "cardio",
+    "level": 1,
+    "dose": {
+      "type": "time",
+      "reps": null,
+      "durationSec": 30,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 30
+    },
+    "locations": [
+      "casa",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Da un paso al lado mientras subes los brazos.",
+      "Regresa al centro.",
+      "Alterna lados con ritmo cómodo."
+    ],
+    "cues": [
+      "Aterriza suave",
+      "Respira"
+    ],
+    "easier": "marcha-sitio-l1",
+    "harder": null,
+    "careZones": [
+      "hombro"
+    ],
+    "contraindications": [
+      "Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "jacks",
+      "prop": null
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "zancada-atras-apoyo-l2",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Zancada atrás con apoyo",
+    "shortName": "Zancada atrás",
+    "muscleGroups": [
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "piernas",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": true,
+      "estimatedSec": 18
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque"
+    ],
+    "equipment": [
+      "silla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Apóyate ligeramente en una silla o pared.",
+      "Da un paso atrás y baja la rodilla trasera con control.",
+      "Regresa y cambia de pierna (6 por lado)."
+    ],
+    "cues": [
+      "Rodilla delantera sobre el tobillo",
+      "Tronco alto"
+    ],
+    "easier": "sentadilla-silla-l1",
+    "harder": null,
+    "careZones": [
+      "rodilla",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Molestia de rodilla o inestabilidad: usa la sentadilla a la silla. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "lunge",
+      "prop": null
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  },
+  {
+    "id": "flexion-mesa-l2",
+    "version": 1,
+    "draft": true,
+    "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+    "name": "Flexión inclinada en mesa firme",
+    "shortName": "Flexión mesa",
+    "muscleGroups": [
+      "empuje",
+      "core"
+    ],
+    "primaryGroup": "empuje",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 24
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque"
+    ],
+    "equipment": [
+      "mesa-firme"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Apoya las manos en el borde de una mesa firme o banca.",
+      "Camina hacia atrás con el cuerpo recto.",
+      "Baja el pecho hacia el borde y empuja."
+    ],
+    "cues": [
+      "Cuerpo recto",
+      "Mesa que no se mueva"
+    ],
+    "easier": "flexion-pared-l1",
+    "harder": null,
+    "careZones": [
+      "hombro",
+      "muneca"
+    ],
+    "contraindications": [
+      "Molestia de hombro o muñeca: usa la flexión en la pared. Detente si sientes dolor agudo, mareo o falta de aire anormal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": {
+      "procedural": "pushup-incline",
+      "prop": "table"
+    },
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0"
+  }
+]

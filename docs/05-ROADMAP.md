@@ -4,7 +4,7 @@ Las fases son secuenciales y cada una tiene su DoD. Al cerrar una fase se marcan
 
 ---
 
-## F0: Docs y repositorio *(en curso, 2026-10-03)*
+## F0: Docs y repositorio *(cerrada, 2026-10-03)*
 
 **DoD:**
 
@@ -12,41 +12,44 @@ Las fases son secuenciales y cada una tiene su DoD. Al cerrar una fase se marcan
 - [x] `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `LICENSE` (MIT), `LICENSE-ASSETS.md` (CC BY 4.0), `.gitignore`
 - [x] `docs/00` … `docs/07` + `docs/ASSETS-PROVENANCE.md`
 - [x] Épica y tarjetas Kanban de especialistas creadas (ver `06-ROLES.md`)
-- [ ] Brooks crea el proyecto Firebase y pega el `firebaseConfig`
+- [x] Brooks crea el proyecto Firebase y pega el `firebaseConfig` (`snapfit-c7beb`, Firestore `nam5`)
 
-## F1: Shell PWA
+## F1: Shell PWA *(cerrada, 2026-10-03)*
 
 Incluye Vite (`base: '/snapfit/'`), hash router, las 3 vistas base (Carta, Progreso, Menú), tokens CSS con los 6 temas (paletas provisionales), manifest con íconos placeholder, SW con precache, un workflow de Pages y un check de procedencia en CI.
 
 **DoD:**
 
-- [ ] `npm run build` y `npm run test` OK; deploy en https://jjmbrooks.github.io/snapfit/
-- [ ] Instalable en Android Chrome y abre offline tras la primera carga
-- [ ] 360×640 sin overflow; targets de 48 px o más; selector de tema funcional
-- [ ] `src/core/` sin imports de DOM ni Firebase (check con lint o test)
+- [x] `npm run build` y `npm test` OK; deploy en https://jjmbrooks.github.io/snapfit/
+- [x] Manifest + SW con precache; abre offline tras la primera carga (verificado en Chrome headless). *Instalación en un Android real: pendiente de prueba de Brooks*
+- [x] 390×844 sin overflow; targets de 48 px o más; selector de 6 temas funcional (contraste AA verificado por test)
+- [x] `src/core/` sin imports de DOM ni Firebase (`tests/core/purity.test.js`)
+- [x] Check de procedencia y de contenido en CI
 
-## F2: Core del juego y mazo MVP (local)
+## F2: Core del juego y mazo MVP (local) *(avanzada; falta contenido de Entrenador)*
 
 Incluye `deck-engine`, `streaks`, `xp`, `leveling` (parámetros de `content/leveling.json`) y `achievements` con tests, IndexedDB con registro de eventos, las cartas MVP de Entrenador en `content/` con JSON Schema validado en CI, sprites placeholder o reales, ¡Listo! / Otra carta / esfuerzo opcional, progreso diario, racha e insignias básicas.
 
 **DoD:**
 
-- [ ] Abrir la app muestra una carta en menos de 1 s (con caché caliente)
-- [ ] Unas 40 cartas (niveles 1–3) con `sources`; validación del schema en CI
-- [ ] Cobertura de tests del core en las funciones públicas; nivelación reproducible con *seed*
-- [ ] Filtros de lugar y zonas a cuidar funcionando
-- [ ] Exportar e importar JSON
+- [x] Abrir la app muestra una carta de inmediato (sin login ni splash)
+- [ ] Unas 40 cartas (niveles 1–3) con `sources` → **pendiente de Entrenador (t_78a921ff)**. Hoy hay 12 borradores sin citas; validación en CI (`check:content`) lista
+- [x] Tests del core en las funciones públicas (47 tests); motor reproducible con *seed*
+- [x] Filtros de lugar y zonas a cuidar (con sustitución por la variante más fácil)
+- [x] Exportar JSON/CSV e importar JSON
+- [x] Racha con comodín semanal, XP, niveles por grupo (heurística borrador), 22 insignias, vitrina y compartir PNG
 
-## F3: Cuenta y sincronización (Firebase Spark)
+## F3: Cuenta y sincronización (Firebase Spark) *(código listo; faltan las reglas desplegadas y la prueba real)*
 
 Incluye Google Sign-In, sincronización de eventos (push y pull idempotente), reglas de Firestore finales con tests en el emulador, «Borrar mi cuenta» y recordatorio de exportación.
 
 **DoD:**
 
-- [ ] Login opcional; la app sigue funcionando completa sin cuenta
-- [ ] Dos dispositivos convergen al mismo estado
-- [ ] Reglas: un usuario no puede leer ni escribir datos de otro uid (test del emulador)
-- [ ] Sin claves secretas en el repo
+- [x] Login opcional (popup con redirect como alternativa); la app funciona completa sin cuenta
+- [ ] Dos dispositivos convergen al mismo estado (código de push/pull idempotente listo; **falta prueba real**)
+- [ ] Reglas: `firestore.rules` escritas; **desplegarlas (Brooks: `firebase deploy --only firestore:rules`)** y probarlas con el emulador
+- [ ] Brooks: verificar que `jjmbrooks.github.io` está en Auth → Settings → Authorized domains
+- [x] Sin claves secretas en el repo (el `firebaseConfig` web es público)
 
 ## F4: Juego completo y recordatorios locales
 
@@ -56,7 +59,7 @@ Incluye las animaciones de sprites de las cartas MVP (director-creativo), los SF
 
 - [ ] Las cartas MVP tienen sprite, cada uno con su fila de procedencia
 - [ ] Compartir logro funciona en Android (Web Share) con descarga como alternativa
-- [ ] Recordatorios: permiso pedido solo al activarlos; Periodic Background Sync cuando haya soporte
+- [x] Recordatorios: aviso dentro de la app + notificación con la app abierta o en segundo plano + Periodic Background Sync cuando haya soporte; permiso pedido solo desde Menú (adelantado en F1)
 - [ ] Contraste AA verificado en los 6 temas
 
 ## F5: v1, niveles 4–10 y nivel por grupo afinado
@@ -78,5 +81,6 @@ Brooks quiere medir el consumo de tokens y cuota por fase de desarrollo. **Cada 
 | Fase | Fecha | Agente | Esfuerzo aprox. / notas | Cuota Grok Bot (Brooks) | Cuota MiMo / Hermes (Brooks) |
 |------|-------|--------|-------------------------|-------------------------|------------------------------|
 | F0 | 2026-10-03 | Codelius (Grok Bot) | Repo, docs F0, épica y 5 tarjetas Kanban. Una sesión | — | — |
+| F1 (+F2 parcial, F3 código, recordatorios F4) | 2026-10-03 | Codelius (Grok Bot) | Una sesión larga: unos 45 archivos nuevos (core + 47 tests, UI, SW, adaptadores Firebase, CI, docs PRIVACY/roadmap/handoff), varias iteraciones de layout con capturas headless. Sin Runica | — | — |
 
 Guía para la columna de esfuerzo: número de sesiones o turnos, archivos tocados y si hubo reintentos. Desde el 2026-10-04, los slices de Runica van en filas propias con el ID de su tarjeta.

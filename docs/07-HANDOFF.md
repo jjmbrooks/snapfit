@@ -40,10 +40,32 @@
 - [ ] ¿Agrego una dependencia? → ADR en `02` §10
 - [ ] Al terminar: commits con prefijo de fase, fila en la bitácora de consumo y reporte
 
+## Estado al 2026-10-03 (fin de sesión de Codelius)
+
+- **En vivo:** https://jjmbrooks.github.io/snapfit/ (deploy con `.github/workflows/deploy.yml` en cada push a `main`).
+- **Hecho:** F1 completa; F2 menos el contenido real; código de F3 (Auth + sync); recordatorios locales (parte de F4). Ver los checkboxes en `05-ROADMAP.md`.
+- **Mapa del código:**
+  - `src/core/`: puro (deck-engine, leveling, streaks, xp, achievements, schedule, derive, export, events, time)
+  - `src/adapters/`: `storage-idb`, `clock`, `notify-local`, `firebase/{config,app,auth,sync,analytics}`
+  - `src/ui/`: `app.js` (controlador), `router.js`, `views/*`, `components/{sprite,sfx,share}`, `styles/{tokens,themes,base}.css`, `i18n/es.js`
+  - `src/sw/sw.js`: plantilla del SW; `vite.config.js` le inyecta el precache al compilar
+  - `content/`: cartas borrador, mazo y `leveling.json`
+- **Evidencia:** `docs/evidence/*.png` (390×844, generadas con `scripts/screens.mjs`).
+
 ## Pendientes de Brooks
 
-- Crear el proyecto Firebase (Spark), activar Google Sign-In, autorizar el dominio `jjmbrooks.github.io` y pegar el `firebaseConfig`.
+- **Desplegar las reglas de Firestore:** `npm i -g firebase-tools && firebase login && firebase deploy --only firestore:rules` (desde la raíz del repo; `.firebaserc` apunta a `snapfit-c7beb`). Mientras no se desplieguen, la sincronización puede fallar con `permission-denied` (o quedar abierta si la base se creó en modo de prueba). La app lo muestra como «Sin sincronizar» en Menú.
+- **Auth → Settings → Authorized domains:** confirmar que está `jjmbrooks.github.io`. Sin ese dominio, «Entrar con Google» falla con `auth/unauthorized-domain`.
+- Probar la instalación en Android Chrome real y un recordatorio.
 - (Opcional) Llenar las cifras de cuota en la bitácora de consumo.
+
+## Siguiente trabajo (Codelius / Runica desde el 2026-10-04)
+
+1. Integrar la entrega de Entrenador (t_78a921ff) → `content/cards/*.json` + `docs/training/` + `content/leveling.json`.
+2. Integrar las paletas de disenador (t_bf5e6169) en `themes.css` (el test de contraste debe seguir verde) y el microcopy de storyteller (t_22eec52e) en `i18n/es.js`.
+3. Sustituir `sprite.procedural` por los sprite sheets de director-creativo (t_7db959be) con su procedencia; los SFX de melody (t_b20e2d87) reemplazan a `sfx.js`.
+4. Test de reglas con el emulador de Firestore (`@firebase/rules-unit-testing`). Es buen candidato a slice para Runica.
+5. Pruebas de UI con Playwright (smoke de carta → ¡Listo! → progreso). Ya existe la base en `scripts/screens.mjs` y también es candidato para Runica.
 
 ## Kanban (board `nexia`)
 

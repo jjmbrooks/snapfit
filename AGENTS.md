@@ -29,7 +29,7 @@ El detalle está en `docs/06-ROLES.md`. Inge se encarga de la infraestructura y 
 - React, Vue, Svelte, Angular o game engines (Phaser, etc.)
 - Un backend propio en el MVP (más allá de Firebase Spark)
 - Push desde servidor antes de la fase correspondiente (VPS de Inge)
-- Analítica de terceros o rastreo
+- Analítica de terceros o rastreo **más allá** de lo aprobado en ADR-010 (Firebase Analytics mínimo, ver `docs/PRIVACY.md`)
 - Renombrar IDs de cartas, insignias o mazos sin migración
 - Código de la app durante F0
 
@@ -53,7 +53,9 @@ Consumo: (fila nueva en docs/05-ROADMAP.md §Bitácora)
 
 ```bash
 npm install
-npm run test   # core puro
+npm test                 # core puro + contraste de temas
+npm run check:content    # reglas de cartas
+npm run check:provenance # assets con procedencia
 npm run build
 ```
 
@@ -70,3 +72,4 @@ npm run build
 | ¿Quién hace qué? | `docs/06-ROLES.md` |
 | ¿Cómo retomar o paralelizar? | `docs/07-HANDOFF.md` |
 | ¿De dónde salió este asset? | `docs/ASSETS-PROVENANCE.md` |
+| ¿Qué datos se recogen? | `docs/PRIVACY.md` |

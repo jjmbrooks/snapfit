@@ -15,5 +15,5 @@ Indica si hiciste cambios. El autor y la herramienta de cada asset están en `do
 
 ## Excepciones
 
-- Las fuentes tipográficas o librerías de terceros conservan su propia licencia (ver `docs/ASSETS-PROVENANCE.md`).
+- Las fuentes tipográficas o librerías de terceros conservan su propia licencia (ver `docs/ASSETS-PROVENANCE.md`). En particular, **Press Start 2P** (`public/fonts/`) se distribuye bajo **SIL Open Font License 1.1** (`public/fonts/OFL-PressStart2P.txt`).
 - Las **citas bibliográficas** de `docs/training/` remiten a obras de sus autores; SnapFit solo licencia su propio resumen o redacción, no los artículos citados.

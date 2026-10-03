@@ -8,9 +8,9 @@
 | UI | **JS vanilla** (ES modules) + **tokens CSS** | Tailwind es opcional (igual que en astropark-physics); los tokens viven en `src/ui/styles/tokens.css` |
 | Animación | Sprite sheets PNG + **Canvas 2D** o CSS `steps()` | `image-rendering: pixelated` |
 | Router | Hash router propio | `#/`, `#/progreso`, `#/menu`, … |
-| PWA | `vite-plugin-pwa` (Workbox) **o** un SW escrito a mano | Se decide en F1 (ADR-004) |
-| Almacenamiento local | **IndexedDB** (envoltura mínima propia o `idb`) | Fuente de verdad local |
-| Nube (opcional) | **Firebase** plan Spark: Auth (Google) + Firestore | SDK modular con *tree-shaking* |
+| PWA | **SW escrito a mano** (`src/sw/sw.js`) + plugin de build propio en `vite.config.js` que inyecta la lista de precache | ADR-004 (decidido en F1) |
+| Almacenamiento local | **IndexedDB** (envoltura mínima propia, `src/adapters/storage-idb.js`) | Fuente de verdad local |
+| Nube (opcional) | **Firebase** plan Spark: Auth (Google) + Firestore + Analytics mínimo | SDK modular, carga diferida, chunks `firebase-*` fuera del precache |
 | Tests | **Vitest** para `src/core/` | El core se prueba sin DOM |
 | Deploy | GitHub Actions → Pages | Basado en `astropark-physics/docs/github-pages.workflow.yml` |
 
@@ -81,6 +81,8 @@ Las claves de `localStorage` (solo flags pequeñas) llevan el prefijo `snapfit.`
   "effort": "facil | bien | duro | null",
   "durationSec": 40,
   "reps": 12,
+  "place": "casa | oficina | parque | aula | null",
+  "refId": "(solo effort_rated) id del card_done calificado",
   "device": "pwa-android",
   "v": 1
 }
@@ -106,7 +108,9 @@ users/{uid}/exports/{yyyy-mm}            # (opcional, F3) snapshot mensual compr
 
 Presupuesto Spark (50 mil lecturas y 20 mil escrituras diarias): un usuario hace unos 10 eventos al día, muy por debajo del límite. Las escrituras se agrupan con `writeBatch` (hasta 500).
 
-### 4.2 Reglas de seguridad (borrador; se finalizan en F3 con el emulador)
+### 4.2 Reglas de seguridad
+
+La versión vigente es **`firestore.rules`** en la raíz del repo (con `firebase.json` y `.firebaserc` → `snapfit-c7beb`). Diferencias respecto al borrador de abajo: valida `serverAt == request.time`, el tamaño del doc, y permite un `update` que **solo** cambie `serverAt` (para que el push sea idempotente en reintentos). **Desplegar:** `firebase deploy --only firestore:rules` (requiere el login de Brooks; pendiente). Borrador original:
 
 ```
 rules_version = '2';
@@ -205,9 +209,10 @@ Heurística inicial, sujeta a validación de Entrenador:
 | 001 | Vite + JS vanilla, sin framework | Aceptada |
 | 002 | Core puro + puertos y adaptadores (lógica separada del diseño) | Aceptada |
 | 003 | Local primero con registro de eventos solo-anexar en IndexedDB | Aceptada |
-| 004 | PWA con vite-plugin-pwa o SW manual | Se decide en F1 |
-| 005 | Firebase Spark (Auth Google + Firestore), opcional y con carga perezosa | Aceptada (falta el config de Brooks) |
+| 004 | SW manual + plugin de build propio (precache del app shell; Firebase fuera del precache; periodicsync para recordatorios) | Aceptada (F1) |
+| 005 | Firebase Spark (Auth Google + Firestore), opcional y con carga perezosa | Aceptada; config en `src/adapters/firebase/config.js` |
 | 006 | Hash router, `base: '/snapfit/'`, GitHub Pages | Aceptada |
 | 007 | Temas con tokens CSS `[data-theme]`; Tailwind opcional | Aceptada |
 | 008 | Notificaciones locales en el MVP; push de servidor después (VPS de Inge) | Aceptada |
 | 009 | Código MIT, contenido y assets CC BY 4.0 con procedencia obligatoria | Aceptada |
+| 010 | Firebase Analytics mínimo: solo `card_done`, `card_skip`, `level_up`, `theme_change` con parámetros en lista blanca; sin uid ni texto libre; desactivable (ver `docs/PRIVACY.md`) | Aceptada (Brooks, 2026-10-03) |

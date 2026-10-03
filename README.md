@@ -8,10 +8,23 @@ PWA *mobile-first*, instalable en Android (Chrome), **funciona sin conexión** y
 
 ## Estado
 
-**Fase F0: documentación y repositorio.** Todavía no hay código de la app. Ver [`docs/05-ROADMAP.md`](docs/05-ROADMAP.md).
+**F1 cerrada, F2 avanzada (2026-10-03).** La PWA ya se puede jugar: carta → ¡Listo!, racha, niveles, insignias, temas, recordatorios locales y sincronización opcional. Usa **12 cartas borrador** hasta recibir el contenido validado de Entrenador. Ver [`docs/05-ROADMAP.md`](docs/05-ROADMAP.md).
 
+- **Jugar:** https://jjmbrooks.github.io/snapfit/ (en Android Chrome: menú → «Instalar app»)
 - Repo: https://github.com/jjmbrooks/snapfit
-- Sitio (desde F1): https://jjmbrooks.github.io/snapfit/
+- Privacidad: [`docs/PRIVACY.md`](docs/PRIVACY.md)
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev              # http://localhost:5173/snapfit/
+npm test                 # core puro (vitest) + contraste AA de temas
+npm run check:content    # valida cartas
+npm run check:provenance # assets con procedencia
+npm run build && npm run preview
+node scripts/screens.mjs http://localhost:4173/snapfit/ docs/evidence   # capturas 390×844
+```
 
 ## Lo esencial
 

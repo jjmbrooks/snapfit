@@ -1,0 +1,51 @@
+/* 6 temas (docs/01-PRODUCT.md §5). Paletas provisionales con contraste AA verificado en tests/ui/contrast.test.js.
+   disenador entregará las finales (Kanban t_bf5e6169). Formato: una regla por tema. */
+:root,
+[data-theme='medianoche'] {
+  --bg: #0f1020; --surface: #1b1d3a; --surface-2: #262a52; --border: #3a3f7a;
+  --text: #f1f1ff; --text-muted: #b4b6e0;
+  --primary: #ffd23f; --on-primary: #1b1300; --accent: #5ce1e6; --on-accent: #062a2c;
+  --success: #5ee67a; --warning: #ffb347; --danger: #ff7b7b; --focus: #5ce1e6;
+  --sprite-fg: #f1f1ff; --sprite-prop: #ffd23f; --sprite-ground: #3a3f7a;
+  color-scheme: dark;
+}
+[data-theme='manana'] {
+  --bg: #f4f1e8; --surface: #fffdf6; --surface-2: #e9e3d1; --border: #b9b08f;
+  --text: #22201a; --text-muted: #5a5546;
+  --primary: #2f5d50; --on-primary: #ffffff; --accent: #1f5fa8; --on-accent: #ffffff;
+  --success: #2f7d32; --warning: #8a5a00; --danger: #b3261e; --focus: #1f5fa8;
+  --sprite-fg: #22201a; --sprite-prop: #2f5d50; --sprite-ground: #b9b08f;
+  color-scheme: light;
+}
+[data-theme='chicle'] {
+  --bg: #ffe3f0; --surface: #fff5fa; --surface-2: #ffd0e5; --border: #e89bbf;
+  --text: #3b0a24; --text-muted: #7a2a52;
+  --primary: #c2185b; --on-primary: #ffffff; --accent: #6a1b9a; --on-accent: #ffffff;
+  --success: #1b6e2a; --warning: #8a4b00; --danger: #b00020; --focus: #6a1b9a;
+  --sprite-fg: #3b0a24; --sprite-prop: #c2185b; --sprite-ground: #e89bbf;
+  color-scheme: light;
+}
+[data-theme='selva'] {
+  --bg: #0d2016; --surface: #143323; --surface-2: #1d4631; --border: #2f6b4b;
+  --text: #eafff1; --text-muted: #a9d9b9;
+  --primary: #7ddc4f; --on-primary: #0b1f06; --accent: #ffd23f; --on-accent: #2a2000;
+  --success: #7ddc4f; --warning: #ffc04d; --danger: #ff8a7a; --focus: #ffd23f;
+  --sprite-fg: #eafff1; --sprite-prop: #7ddc4f; --sprite-ground: #2f6b4b;
+  color-scheme: dark;
+}
+[data-theme='pacifico'] {
+  --bg: #06213d; --surface: #0b2f55; --surface-2: #12406f; --border: #2a5f94;
+  --text: #eaf6ff; --text-muted: #a6cbec;
+  --primary: #4fc3f7; --on-primary: #04243a; --accent: #ffcf5c; --on-accent: #2a1d00;
+  --success: #6fe39a; --warning: #ffcf5c; --danger: #ff8f8f; --focus: #ffcf5c;
+  --sprite-fg: #eaf6ff; --sprite-prop: #4fc3f7; --sprite-ground: #2a5f94;
+  color-scheme: dark;
+}
+[data-theme='volcan'] {
+  --bg: #230b08; --surface: #3a120d; --surface-2: #521a13; --border: #7a2c20;
+  --text: #fff1e8; --text-muted: #f0b9a6;
+  --primary: #ff7a3d; --on-primary: #2a0b00; --accent: #ffd23f; --on-accent: #2a2000;
+  --success: #8be07a; --warning: #ffd23f; --danger: #ff9a8a; --focus: #ffd23f;
+  --sprite-fg: #fff1e8; --sprite-prop: #ff7a3d; --sprite-ground: #7a2c20;
+  color-scheme: dark;
+}

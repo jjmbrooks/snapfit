@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f1020" />
+    <meta name="description" content="SnapFit: un mazo de cartas de ejercicio estilo videojuego retro. Una carta, un movimiento, ¡Listo!" />
+    <title>SnapFit</title>
+    <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="%BASE_URL%icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="%BASE_URL%icons/icon-192.png" />
+    <link rel="preload" href="%BASE_URL%fonts/PressStart2P-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <h1 class="brand">SnapFit</h1>
+        <div id="hud" class="hud"></div>
+      </header>
+      <main id="view" tabindex="-1"><p class="muted">Barajando…</p></main>
+      <nav class="bottomnav" aria-label="Navegación principal">
+        <a href="#/" data-route="card"><span class="ico" aria-hidden="true">🃏</span>Carta</a>
+        <a href="#/progreso" data-route="progress"><span class="ico" aria-hidden="true">📈</span>Progreso</a>
+        <a href="#/menu" data-route="menu"><span class="ico" aria-hidden="true">⚙️</span>Menú</a>
+      </nav>
+    </div>
+    <noscript>SnapFit necesita JavaScript.</noscript>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

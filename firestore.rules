@@ -1,0 +1,44 @@
+rules_version = '2';
+// SnapFit — reglas por uid (docs/02-ARCHITECTURE.md §4.2).
+// PENDIENTE: desplegar con `firebase deploy --only firestore:rules` (requiere login de Brooks).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+    function validEvent(eventId) {
+      let d = request.resource.data;
+      return d.id == eventId
+        && d.id is string && d.id.size() == 26
+        && d.type in ['card_done', 'card_skipped', 'effort_rated', 'level_changed', 'badge_unlocked', 'settings_changed']
+        && d.v is int
+        && d.ts is string
+        && d.serverAt == request.time
+        && request.resource.size() < 4096;
+    }
+
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create, update: if isOwner(uid)
+        && request.resource.data.keys().hasOnly(['displayName', 'createdAt', 'schemaVersion', 'settings', 'derived']);
+      allow delete: if isOwner(uid);
+
+      match /events/{eventId} {
+        allow read: if isOwner(uid);
+        // Solo-anexar: el contenido del evento es inmutable. Un reintento (set del mismo id) solo puede
+        // cambiar serverAt, así el push es idempotente sin permitir editar el evento.
+        allow create: if isOwner(uid) && validEvent(eventId);
+        allow update: if isOwner(uid) && validEvent(eventId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['serverAt']);
+        allow delete: if isOwner(uid);
+      }
+
+      match /exports/{docId} {
+        allow read, write: if isOwner(uid);
+      }
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

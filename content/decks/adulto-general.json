@@ -1,0 +1,28 @@
+{
+  "id": "adulto-general",
+  "name": "Adulto general",
+  "draft": true,
+  "draftNote": "Borrador pendiente de Entrenador: dosis, nivel, contraindicaciones y fuentes por validar.",
+  "minAge": 13,
+  "requiresAdultAccount": false,
+  "levels": [
+    1,
+    2
+  ],
+  "cards": [
+    "sentadilla-silla-l1",
+    "flexion-pared-l1",
+    "puente-gluteo-l1",
+    "marcha-sitio-l1",
+    "talones-l1",
+    "remo-toalla-iso-l1",
+    "perro-pajaro-l1",
+    "plancha-rodillas-l1",
+    "circulos-brazos-l1",
+    "step-jacks-l1",
+    "zancada-atras-apoyo-l2",
+    "flexion-mesa-l2"
+  ],
+  "sources": [],
+  "license": "CC-BY-4.0"
+}

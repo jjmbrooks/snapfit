@@ -102,7 +102,13 @@ El contenido de entrenamiento lo **define Entrenador** (con apoyo de researcher)
 - `careZones` alimenta el filtro «zonas a cuidar»: una carta que lista una zona marcada por el usuario **se excluye** o se ofrece su variante `easier` si esta no lista esa zona.
 - `sprite.sheet` debe tener su fila en `docs/ASSETS-PROVENANCE.md`. Mientras no exista el sprite se usa `null` y la UI muestra un placeholder.
 - `flavorText` es opcional y su estilo lo define storyteller.
-- En F2 se generará un JSON Schema formal (`content/card.schema.json`) para validar en CI.
+- La validación en CI la hace `scripts/check-content.mjs` (`npm run check:content`). Más adelante se puede formalizar como JSON Schema.
+- **Borradores:** `"draft": true` + `"draftNote"` marcan cartas provisionales (sin `sources`, sin `reviewedBy`). La UI las muestra con la etiqueta «BORRADOR · pendiente de Entrenador». Una carta sin `draft` **debe** tener `sources`.
+- **Sprite provisional:** mientras no haya sprite sheet se permite `"sprite": { "procedural": "<anim>", "prop": "chair|wall|table|towel|null" }`, que se dibuja por código (`src/ui/components/sprite.js`). Animaciones disponibles: `squat`, `pushup-wall`, `pushup-incline`, `bridge`, `march`, `calf`, `row`, `birddog`, `plank`, `arms`, `jacks`, `lunge`.
+
+### Contenido actual (F1)
+
+`content/cards/adulto-general.draft.json` tiene **12 cartas borrador** (niveles 1–2) escritas por Codelius **sin citas**, con ejercicios simples y seguros con el propio peso, para probar el motor. Se reemplazan por la entrega de Entrenador (Kanban `t_78a921ff`). `content/leveling.json` contiene los umbrales provisionales.
 
 ## 5. Mazos (decks)
 
