@@ -39,6 +39,7 @@ async function loadAuth() {
   return authApi;
 }
 const authDeps = {
+  preloadAuth() { import('./adapters/firebase/auth.js').catch(() => {}); },
   async signIn() { const a = await loadAuth(); await a.signInWithGoogle(); },
   async signOut() { const a = await loadAuth(); await a.signOutUser(); },
   async deleteAccount() {

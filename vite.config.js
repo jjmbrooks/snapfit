@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, rmSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { createHash } from 'node:crypto';
 
@@ -24,7 +24,25 @@ function snapfitServiceWorker() {
         }
       };
       walk(dir);
-      const list = files.filter((f) => f !== 'sw.js' && !f.endsWith('.map') && !f.endsWith('.txt') && !/^assets\/firebase-/.test(f)).sort();
+      // Precache = archivos de public/ + index.html + grafo ESTÁTICO de la entrada.
+      // Los chunks dinámicos (Firebase, auth, sync) no se precachean: solo sirven con red
+      // y así la primera instalación pesa ~700 KB menos (conectividad irregular).
+      const manifest = JSON.parse(readFileSync(join(dir, '.vite/manifest.json'), 'utf8'));
+      const entryGraph = new Set();
+      const visit = (key) => {
+        const m = manifest[key];
+        if (!m || entryGraph.has(m.file)) return;
+        entryGraph.add(m.file);
+        (m.css || []).forEach((c) => entryGraph.add(c));
+        (m.assets || []).forEach((c) => entryGraph.add(c));
+        (m.imports || []).forEach(visit);
+      };
+      visit('index.html');
+      rmSync(join(dir, '.vite'), { recursive: true, force: true }); // no publicar el manifest de Vite
+      const list = files
+        .filter((f) => f !== 'sw.js' && !f.startsWith('.vite/') && !f.endsWith('.map') && !f.endsWith('.txt'))
+        .filter((f) => !f.startsWith('assets/') || entryGraph.has(f))
+        .sort();
       const hash = createHash('sha256');
       for (const f of list) hash.update(f).update(readFileSync(join(dir, f)));
       const version = `${pkg.version}-${hash.digest('hex').slice(0, 10)}`;
@@ -44,17 +62,7 @@ export default defineConfig({
   build: {
     target: 'es2020',
     chunkSizeWarningLimit: 800,
-    rollupOptions: {
-      output: {
-        // Firebase en chunks con nombre fijo: se cargan bajo demanda y NO se precachean
-        // (ahorra ~700 KB en la primera instalación con conectividad irregular).
-        manualChunks(id) {
-          const m = id.match(/node_modules\/@firebase\/(app|auth|firestore|analytics|installations)\//);
-          if (m) return `firebase-${m[1] === 'installations' ? 'analytics' : m[1]}`;
-          if (id.includes('node_modules/@firebase/') || id.includes('node_modules/firebase/')) return 'firebase-util';
-        },
-      },
-    },
+    manifest: true,
   },
   plugins: [snapfitServiceWorker()],
   test: { include: ['tests/**/*.test.js'], environment: 'node' },

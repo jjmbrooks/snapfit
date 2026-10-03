@@ -88,6 +88,8 @@ export function renderMenu(app) {
 
 export function bindMenu(root, app, deps) {
   const p = () => app.state.profile;
+  // Precarga el módulo de auth para que el popup conserve la activación del usuario.
+  if (!app.state.user && navigator.onLine) deps.preloadAuth?.();
   root.addEventListener('click', async (ev) => {
     const t = ev.target.closest('[data-theme-pick]');
     if (t) return app.updateProfile({ theme: t.dataset.themePick });
