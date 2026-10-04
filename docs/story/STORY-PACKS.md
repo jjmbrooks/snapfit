@@ -21,7 +21,7 @@
 
 ```
 content/stories/
-  index.json                  # { "default": "pixelandia" }  ← paquete por defecto (lo elige Brooks)
+  index.json                  # { "default": "vitalia" }  ← paquete por defecto (lo elige Brooks)
   story.schema.json           # JSON Schema de story.json
   manifest.schema.json        # JSON Schema de manifest.json
   <storyId>/
@@ -37,8 +37,9 @@ Paquetes instalados hoy:
 
 | id | Nombre | Estado | Tema por defecto | Assets |
 |----|--------|--------|------------------|--------|
-| `pixelandia` | El Reino de Pixelandia | draft (placeholder v0, **por defecto**) | medianoche | preview |
-| `valle-gremios` | El Valle de los Gremios | draft (de `docs/story/WORLD.md` v1) | selva | preview, arte de `sentadilla-silla-l1`, token `--story-accent` |
+| `vitalia` | Vitalia · La Orden del Aliento | **published, por defecto** (de `docs/story/WORLD.md` v2; elegido por Brooks el 2026-10-03) | medianoche | preview y arte de `sentadilla-silla-l1` **provisionales** (copiados de valle-gremios), token `--story-accent` |
+| `pixelandia` | El Reino de Pixelandia | draft (placeholder v0) | medianoche | preview |
+| `valle-gremios` | El Valle de los Gremios | draft (de WORLD.md v1, hoy `docs/proposals/story/codelius-valle-gremios-v1.md`) | selva | preview, arte de `sentadilla-silla-l1`, token `--story-accent` |
 
 ## 3. `manifest.json`
 

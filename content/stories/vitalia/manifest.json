@@ -1,0 +1,19 @@
+{
+  "id": "vitalia",
+  "name": "Vitalia · La Orden del Aliento",
+  "version": "1.0.0",
+  "author": "storyteller (NexIA), integrado por Codelius (Grok Bot). Nombre del reino: Brooks",
+  "license": "CC BY 4.0",
+  "status": "published",
+  "description": "Fantasía mágica: los ejercicios son hechizos de un solo gesto de la antigua Orden del Aliento. Lánzalos carta a carta para disipar la Quietud. Pip te guía.",
+  "preview": "preview.jpg",
+  "defaultTheme": "medianoche",
+  "assets": {
+    "cardArt": {
+      "sentadilla-silla-l1": "art/sentadilla-silla-l1.jpg"
+    },
+    "tokens": {
+      "--story-accent": "#f2c75c"
+    }
+  }
+}

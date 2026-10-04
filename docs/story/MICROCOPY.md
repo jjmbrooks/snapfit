@@ -171,106 +171,115 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `story.status.retired` | Retirada |
 | `progress.region` | Región actual: {name} |
 
-## 2. Narrativa — `content/stories/pixelandia/story.json` (paquete por defecto; los demás paquetes en `content/stories/`)
+## 2. Narrativa — `content/stories/vitalia/story.json` (paquete por defecto; los demás paquetes en `content/stories/`)
 
 | Clave | Texto |
 |-------|-------|
-| `title` | El Reino de Pixelandia |
-| `logline` | La Gran Quietud congeló Pixelandia; cada carta del Mazo del Movimiento que juegas devuelve la vida a un rincón del reino. |
-| `welcome.title` | El Reino de Pixelandia |
-| `welcome.lines.0` | La Gran Quietud congeló a Pixelandia: nadie se mueve, todo se apaga. |
-| `welcome.lines.1` | Tú tienes el último Mazo del Movimiento. Cada carta que juegas devuelve la vida a un rincón del reino. |
-| `welcome.lines.2` | Una carta. Un movimiento. ¡Listo! |
-| `welcome.cta` | Comenzar la aventura |
-| `welcome.note` | Historia provisional · el mundo final lo escribe storyteller. |
-| `signin.title` | Crea tu héroe |
-| `signin.body` | Entra con tu cuenta de Google para guardar tu mazo, tu nivel y tus logros, y recuperarlos en cualquier teléfono. |
-| `signin.offline` | Después del primer inicio de sesión, SnapFit funciona también <b>sin internet</b>. |
-| `deckReady.title` | Tu mazo está listo |
-| `guide.name` | Bit |
-| `guide.role` | Mapache mensajero y narrador |
-| `families.piernas.name` | Piernas |
-| `families.piernas.icon` | 🦵 |
-| `families.gluteos.name` | Glúteos |
-| `families.gluteos.icon` | 🍑 |
-| `families.empuje.name` | Empuje |
-| `families.empuje.icon` | ✋ |
-| `families.traccion.name` | Tracción |
-| `families.traccion.icon` | 🪢 |
-| `families.core.name` | Core |
+| `title` | El Reino de Vitalia |
+| `logline` | Los ejercicios son hechizos de un solo gesto: lánzalos carta a carta y la Quietud deja de apagar el reino. |
+| `welcome.title` | El Reino de Vitalia |
+| `welcome.lines.0` | La Quietud cubrió Vitalia de niebla: las forjas se apagaron y los pasos se detuvieron. |
+| `welcome.lines.1` | Los siete gremios guardaron los hechizos de la Orden del Aliento en un mazo… |
+| `welcome.lines.2` | Ese mazo te eligió a ti: cada carta que lanzas devuelve luz al reino. |
+| `welcome.lines.3` | Empiezas como aprendiz. Con cada nivel, un hechizo más grande. |
+| `welcome.lines.4` | Soy Pip. Te acompaño. ¿Lanzamos el primero? |
+| `welcome.cta` | Despertar el mazo |
+| `welcome.note` | Un aliento basta para empezar. |
+| `signin.title` | Únete a la Orden |
+| `signin.body` | Entra con tu cuenta de Google para guardar tu mazo, tus rangos y tus sellos, y recuperarlos en cualquier teléfono. |
+| `signin.offline` | Después del primer inicio de sesión, Vitalia te espera también <b>sin internet</b>. |
+| `deckReady.title` | El grimorio te reconoce |
+| `guide.name` | Pip |
+| `guide.role` | Zorro mensajero; el único que recuerda la Orden entera |
+| `families.piernas.name` | Escuela de la Raíz |
+| `families.piernas.icon` | 🌱 |
+| `families.piernas.master` | Maestro Bruno, el Caminante |
+| `families.gluteos.name` | Escuela del Arco |
+| `families.gluteos.icon` | 🌉 |
+| `families.gluteos.master` | Maestra Inés, la Constructora |
+| `families.empuje.name` | Escuela de la Palma |
+| `families.empuje.icon` | 🔥 |
+| `families.empuje.master` | Maestro Toro, el Herrero |
+| `families.traccion.name` | Escuela de la Cuerda |
+| `families.traccion.icon` | ⛵ |
+| `families.traccion.master` | Capitana Mar, la Marinera |
+| `families.core.name` | Escuela del Sello |
 | `families.core.icon` | 🛡️ |
-| `families.movilidad.name` | Movilidad |
-| `families.movilidad.icon` | 🌀 |
-| `families.cardio.name` | Cardio |
-| `families.cardio.icon` | ❤️ |
-| `tiers.1` | Bronce |
-| `tiers.2` | Plata |
-| `tiers.3` | Oro |
-| `tiers.4` | Leyenda |
-| `regions.1` | Aldea |
-| `regions.2` | Molinos |
-| `regions.3` | Bosque |
-| `regions.4` | Puerto |
-| `regions.5` | Montaña |
-| `regions.6` | Desierto |
-| `regions.7` | Lago |
-| `regions.8` | Volcán |
-| `regions.9` | Nubes |
-| `regions.10` | Castillo |
-| `rewards.0` | ¡Snap! |
-| `rewards.1` | ¡Combo! |
-| `rewards.2` | ¡Bien jugado! |
-| `rewards.3` | ¡Nivel en marcha! |
-| `rewards.4` | ¡Carta ganada! |
-| `rewards.5` | ¡Eso es! |
-| `rewards.6` | ¡Power up! |
-| `reminders.0` | Tu mazo te espera: una carta y listo. |
-| `reminders.1` | ¿Un Snap rápido? Menos de 2 minutos. |
-| `reminders.2` | Ronda bonus: una carta para moverte. |
-| `badges.first-card.name` | Primer Snap |
-| `badges.first-card.desc` | Completa tu primera carta |
-| `badges.daily-goal-1.name` | Mazo Completo |
+| `families.core.master` | Guardián Roble |
+| `families.movilidad.name` | Escuela del Nudo |
+| `families.movilidad.icon` | 🍃 |
+| `families.movilidad.master` | Maestra Brisa, la Danzante |
+| `families.cardio.name` | Escuela del Latido |
+| `families.cardio.icon` | 💜 |
+| `families.cardio.master` | Maestro Lumbre |
+| `tiers.1` | Aprendiz |
+| `tiers.2` | Adepto |
+| `tiers.3` | Magister |
+| `tiers.4` | Archimago |
+| `regions.1` | Aldea del Aprendiz |
+| `regions.2` | Molinos del Río |
+| `regions.3` | Bosque de los Robles |
+| `regions.4` | Puerto de las Velas |
+| `regions.5` | Paso de la Montaña |
+| `regions.6` | Dunas de Ámbar |
+| `regions.7` | Lago Espejo |
+| `regions.8` | Forja del Volcán |
+| `regions.9` | Picos de Nube |
+| `regions.10` | Ciudadela de los Gremios |
+| `rewards.0` | ¡Hechizo lanzado! |
+| `rewards.1` | ¡La niebla retrocede! |
+| `rewards.2` | El reino vuelve a brillar. |
+| `rewards.3` | El gremio celebra contigo. |
+| `rewards.4` | Tu aliento va creciendo. |
+| `rewards.5` | La corriente respondió. |
+| `rewards.6` | ¡Un farol encendido! |
+| `reminders.0` | La niebla se espesa. ¿Un hechizo de dos minutos? |
+| `reminders.1` | Tu farol pide su carta de hoy. |
+| `reminders.2` | El grimorio lleva días sin abrirse. ¿Lo abrimos? |
+| `badges.first-card.name` | Primer Hechizo |
+| `badges.first-card.desc` | Lanza tu primera carta |
+| `badges.daily-goal-1.name` | Farol Encendido |
 | `badges.daily-goal-1.desc` | Cumple tu meta diaria por primera vez |
-| `badges.streak-3.name` | Racha de Bronce |
+| `badges.streak-3.name` | Farol x3 |
 | `badges.streak-3.desc` | 3 días seguidos |
-| `badges.streak-7.name` | Racha de Plata |
+| `badges.streak-7.name` | Farol x7 |
 | `badges.streak-7.desc` | 7 días seguidos |
-| `badges.streak-30.name` | Racha de Oro |
+| `badges.streak-30.name` | Farol x30 |
 | `badges.streak-30.desc` | 30 días seguidos |
-| `badges.cards-50.name` | Coleccionista I |
+| `badges.cards-50.name` | Aprendiz Constante |
 | `badges.cards-50.desc` | 50 cartas completadas |
-| `badges.cards-250.name` | Coleccionista II |
+| `badges.cards-250.name` | Adepto del Mazo |
 | `badges.cards-250.desc` | 250 cartas completadas |
-| `badges.cards-1000.name` | Coleccionista III |
+| `badges.cards-1000.name` | Magister del Grimorio |
 | `badges.cards-1000.desc` | 1000 cartas completadas |
-| `badges.full-body-week.name` | Cuerpo Completo |
-| `badges.full-body-week.desc` | Todos los grupos en 7 días |
-| `badges.level-up-piernas.name` | Subida: Piernas |
-| `badges.level-up-piernas.desc` | Sube de nivel en Piernas |
-| `badges.level-up-gluteos.name` | Subida: Glúteos |
-| `badges.level-up-gluteos.desc` | Sube de nivel en Glúteos |
-| `badges.level-up-empuje.name` | Subida: Empuje |
-| `badges.level-up-empuje.desc` | Sube de nivel en Empuje |
-| `badges.level-up-traccion.name` | Subida: Tracción |
-| `badges.level-up-traccion.desc` | Sube de nivel en Tracción |
-| `badges.level-up-core.name` | Subida: Core |
-| `badges.level-up-core.desc` | Sube de nivel en Core |
-| `badges.level-up-movilidad.name` | Subida: Movilidad |
-| `badges.level-up-movilidad.desc` | Sube de nivel en Movilidad |
-| `badges.level-up-cardio.name` | Subida: Cardio |
-| `badges.level-up-cardio.desc` | Sube de nivel en Cardio |
-| `badges.level-5.name` | Jefe de Nivel |
+| `badges.full-body-week.name` | Las Siete Escuelas |
+| `badges.full-body-week.desc` | Todas las escuelas en 7 días |
+| `badges.level-5.name` | Guardián del Paso |
 | `badges.level-5.desc` | Nivel global 5 |
-| `badges.level-10.name` | Leyenda Pixel |
+| `badges.level-10.name` | Archimago |
 | `badges.level-10.desc` | Nivel global 10 |
-| `badges.early-bird.name` | Gallo Madrugador |
+| `badges.early-bird.name` | Gallo del Alba |
 | `badges.early-bird.desc` | Una carta antes de las 8:00 |
-| `badges.night-owl.name` | Búho Arcade |
+| `badges.night-owl.name` | Búho de la Quietud |
 | `badges.night-owl.desc` | Una carta después de las 21:00 |
-| `badges.park-explorer.name` | Explorador del Parque |
+| `badges.park-explorer.name` | Explorador del Bosque |
 | `badges.park-explorer.desc` | 10 cartas en el parque |
-| `badges.comeback.name` | El Regreso |
+| `badges.comeback.name` | La Niebla Retrocede |
 | `badges.comeback.desc` | Vuelve tras 7 días o más |
+| `badges.level-up-piernas.name` | Sello de la Raíz |
+| `badges.level-up-piernas.desc` | Sube de rango en la Escuela de la Raíz |
+| `badges.level-up-gluteos.name` | Sello del Arco |
+| `badges.level-up-gluteos.desc` | Sube de rango en la Escuela del Arco |
+| `badges.level-up-empuje.name` | Sello de la Palma |
+| `badges.level-up-empuje.desc` | Sube de rango en la Escuela de la Palma |
+| `badges.level-up-traccion.name` | Sello de la Cuerda |
+| `badges.level-up-traccion.desc` | Sube de rango en la Escuela de la Cuerda |
+| `badges.level-up-core.name` | Sello del Escudo |
+| `badges.level-up-core.desc` | Sube de rango en la Escuela del Sello |
+| `badges.level-up-movilidad.name` | Sello del Nudo |
+| `badges.level-up-movilidad.desc` | Sube de rango en la Escuela del Nudo |
+| `badges.level-up-cardio.name` | Sello del Latido |
+| `badges.level-up-cardio.desc` | Sube de rango en la Escuela del Latido |
 
 ## 3. Textos que siguen en código (pendientes de migrar)
 

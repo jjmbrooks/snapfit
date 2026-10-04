@@ -1,33 +1,37 @@
 # Copy de bienvenida y onboarding
 
-> **v0 · BORRADOR ABIERTO A PROPUESTAS.** Fuente en la app: el paquete de historia activo, `content/stories/<id>/story.json` (narrativa; ver `docs/story/STORY-PACKS.md`) y `content/copy/es.json → onboarding` (interfaz). Propuestas alternativas: `docs/proposals/story/<modelo>.md` o un paquete nuevo en `content/stories/<id>/` (se previsualiza con `?story=<id>`).
+> **v2 · Vitalia (elegida por Brooks, 2026-10-03).** Fuente en la app: el paquete de historia activo, `content/stories/<id>/story.json` (narrativa; ver `docs/story/STORY-PACKS.md`) y `content/copy/es.json → onboarding` (interfaz). Propuestas alternativas: `docs/proposals/story/<modelo>.md` o un paquete nuevo en `content/stories/<id>/` (se previsualiza con `?story=<id>`).
 
 ## Flujo (4 pasos, sin barra inferior)
 
 1. **Bienvenida** (historia) → 2. **Entrar con Google** → 3. **Perfil** (sobre ti, condición, prueba rápida, mazo listo) → 4. **Aviso de salud** → carta.
 
-## 1. Bienvenida — `welcome`
+## 1. Bienvenida — `welcome` (paquete por defecto: `vitalia`)
 
-- **Título:** El Reino de Pixelandia
-- **Líneas** (aparecen una tras otra):
-  1. La Gran Quietud congeló a Pixelandia: nadie se mueve, todo se apaga.
-  2. Tú tienes el último Mazo del Movimiento. Cada carta que juegas devuelve la vida a un rincón del reino.
-  3. Una carta. Un movimiento. ¡Listo!
-- **Botón:** Comenzar la aventura ▶
-- **Nota:** Historia provisional · el mundo final lo escribe storyteller.
+- **Título:** El Reino de Vitalia
+- **Líneas** (aparecen una tras otra; texto de storyteller, `docs/proposals/story/storyteller-magia.md` §4.1):
+  1. La Quietud cubrió Vitalia de niebla: las forjas se apagaron y los pasos se detuvieron.
+  2. Los siete gremios guardaron los hechizos de la Orden del Aliento en un mazo…
+  3. Ese mazo te eligió a ti: cada carta que lanzas devuelve luz al reino.
+  4. Empiezas como aprendiz. Con cada nivel, un hechizo más grande.
+  5. Soy Pip. Te acompaño. ¿Lanzamos el primero?
+- **Botón:** Despertar el mazo (17/28)
+- **Nota:** Un aliento basta para empezar.
+
+Otros paquetes instalados: `pixelandia` (botón «Comenzar la aventura ▶») y `valle-gremios` (botón «¡Abrir el mazo!»). Su texto está en `content/stories/<id>/story.json` y se previsualiza con `?story=<id>`.
 
 Arriba se ven tres mini cartas animadas (piernas, core, empuje) con la animación provisional.
 
 ## 2. Entrar con Google — `signin`
 
-- **Título:** Crea tu héroe
-- **Texto:** Entra con tu cuenta de Google para guardar tu mazo, tu nivel y tus logros, y recuperarlos en cualquier teléfono.
-- **Nota:** Después del primer inicio de sesión, SnapFit funciona también **sin internet**.
+- **Título (vitalia):** Únete a la Orden
+- **Texto:** Entra con tu cuenta de Google para guardar tu mazo, tus rangos y tus sellos, y recuperarlos en cualquier teléfono.
+- **Nota:** Después del primer inicio de sesión, Vitalia te espera también **sin internet**.
 - Botón y errores: `content/copy/es.json → onboarding.googleButton`, `needOnline`, `popupClosed`, `signinError`.
 
 ## 3. Perfil — `content/copy/es.json → onboarding.*`, `names.sexes`, `names.fitness`, `quickTest`
 
-- Sobre ti (edad, sexo) → Tu condición física → Prueba rápida (3 preguntas; **contenido de Entrenador**, no cambiar rangos sin su OK) → **«Tu mazo está listo»** (`deckReady.title`) con el nivel inicial por familia.
+- Sobre ti (edad, sexo) → Tu condición física → Prueba rápida (3 preguntas; **contenido de Entrenador**, no cambiar rangos sin su OK) → **«Tu mazo está listo»** (`deckReady.title`; en vitalia: «El grimorio te reconoce») con el nivel inicial por familia.
 
 ## 4. Aviso de salud — `onboarding.terms*`
 
