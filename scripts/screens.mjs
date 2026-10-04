@@ -93,7 +93,7 @@ if (await page.$('.seq-badges [data-next]')) {
   await shot('13-logros-nuevos', 900);
   await page.click('.seq-badges [data-next]');
 }
-await page.waitForSelector('[data-act=done]');
+await page.waitForSelector('[data-act=done]:not([disabled])', { timeout: 5000 }); // la siguiente carta debe quedar jugable
 await shot('14-carta-siguiente', 1000);
 await checkNav('carta-siguiente');
 for (const [hash, name] of [['#/progreso', '15-progreso-tab'], ['#/logros', '16-logros-tab'], ['#/menu', '17-menu']]) {

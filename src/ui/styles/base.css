@@ -167,7 +167,7 @@ main#view.view-play { overflow: hidden; }
 .onb-title { font-size: 16px; color: var(--primary); margin: 0; }
 .field { display: grid; gap: 6px; font-weight: 700; }
 .field input { min-height: 52px; font-size: 20px; padding: 0 14px; border-radius: 12px; border: 2px solid var(--border); background: var(--surface-2); color: var(--text); }
-fieldset.opts { border: 0; padding: 0; margin: var(--s3) 0 0; display: flex; flex-wrap: wrap; gap: var(--s2); }
+fieldset.opts { border: 0; padding: 0; background: none; border-radius: 0; margin: var(--s3) 0 0; display: flex; flex-wrap: wrap; gap: var(--s2); }
 fieldset.opts legend { font-weight: 700; margin-bottom: var(--s2); padding: 0; }
 fieldset.opts label { flex: 1 1 40%; }
 fieldset.opts.test label { flex: 1 1 28%; }

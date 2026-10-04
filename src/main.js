@@ -100,7 +100,7 @@ function render() {
 
 app.subscribe(() => {
   // No re-renderizar mientras hay una secuencia de recompensa abierta.
-  if (document.querySelector('.overlay')) { if (!app.step()) hudEl.innerHTML = hud(app.state); return; }
+  if (document.querySelector('.overlay:not(.leaving)')) { if (!app.step()) hudEl.innerHTML = hud(app.state); return; }
   render();
 });
 window.addEventListener('hashchange', render);
