@@ -1,8 +1,5 @@
 // Composición: core (puro) + adaptadores + UI.
-import './ui/styles/tokens.css';
-import './ui/styles/themes.css';
-import './ui/styles/base.css';
-import './ui/styles/cards.css';
+import './ui/styles/index.css';
 import cards from '../content/cards/adulto-general.draft.json';
 import deckAdulto from '../content/decks/adulto-general.json';
 import leveling from '../content/leveling.json';

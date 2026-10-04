@@ -1,6 +1,6 @@
 // Secuencia tras «¡Listo!»: felicitación → progreso (barras) → logros/subidas (si hay) → siguiente carta.
 import { esc } from '../dom.js';
-import { GROUP_NAMES, BADGES, EFFORT_NAMES, REWARDS, FAMILY_ICONS } from '../i18n/es.js';
+import { FAMILY_NAMES, BADGES, EFFORT_NAMES, REWARDS, FAMILY_ICONS, t } from '../i18n/es.js';
 import { drawBadge } from '../components/sprite.js';
 import { shareBadge } from '../components/share.js';
 
@@ -38,10 +38,10 @@ export async function runRewardSequence(app, r) {
     <div class="confetti" aria-hidden="true">${'<i></i>'.repeat(14)}</div>
     <p class="seq-kicker">${FAMILY_ICONS[card.primaryGroup] || ''} ${esc(card.name)}</p>
     <div class="reward-title" aria-live="assertive">${esc(title)}</div>
-    <div class="xp">+${xp} XP</div>
-    <p class="muted small">¿Cómo te sentiste? (opcional, ayuda a ajustar tu nivel)</p>
+    <div class="xp">${t('reward.xp', { n: xp })}</div>
+    <p class="muted small">${t('reward.effortAsk')}</p>
     <div class="effort">${Object.entries(EFFORT_NAMES).map(([k, v]) => `<button class="btn" data-effort="${k}">${v}</button>`).join('')}</div>
-    <button class="btn btn-primary" data-next>Continuar ▶</button>`, 'seq-congrats');
+    <button class="btn btn-primary" data-next>${t('reward.continue')}</button>`, 'seq-congrats');
   const effort = await waitNext(o1);
   if (effort) await app.rate(r.event.id, effort);
   const d = app.state.derived;
@@ -50,25 +50,25 @@ export async function runRewardSequence(app, r) {
   const groupBars = card.muscleGroups.map((g) => {
     const p = d.levels.progress[g];
     const lvl = d.levels.byGroup[g];
-    return bar(`${FAMILY_ICONS[g] || ''} ${esc(GROUP_NAMES[g])} · Nv ${lvl}`, p.ratio, lvl >= 10 ? 'MAX' : `→ Nv ${lvl + 1}`, `fam-${g}`);
+    return bar(esc(t('reward.groupBar', { icon: FAMILY_ICONS[g] || '', group: FAMILY_NAMES[g], n: lvl })), p.ratio, lvl >= 10 ? t('reward.max') : t('reward.nextLevel', { n: lvl + 1 }), `fam-${g}`);
   }).join('');
   const o2 = screen(`
-    <h2 class="seq-title">Tu progreso</h2>
-    ${bar('Mazo de hoy', d.todayCount / d.dailyGoal, `${d.todayCount}/${d.dailyGoal}`, 'day')}
-    ${bar(`🔥 Racha`, Math.min(1, d.streak.current / 7), `${d.streak.current} día${d.streak.current === 1 ? '' : 's'}`, 'streak')}
+    <h2 class="seq-title">${t('reward.progressTitle')}</h2>
+    ${bar(t('reward.today'), d.todayCount / d.dailyGoal, `${d.todayCount}/${d.dailyGoal}`, 'day')}
+    ${bar(t('reward.streak'), Math.min(1, d.streak.current / 7), t(d.streak.current === 1 ? 'reward.day' : 'reward.days', { n: d.streak.current }), 'streak')}
     ${groupBars}
-    <div class="seq-row"><span>Nivel global <b>${d.levels.global}</b></span><span>XP <b>${d.xp}</b></span><span>Cartas <b>${d.totalDone}</b></span></div>
-    <button class="btn btn-primary" data-next>${diff.newBadges.length || diff.levelChanges.length ? 'Ver logros ▶' : 'Siguiente carta ▶'}</button>`, 'seq-progress');
+    <div class="seq-row"><span>${t('reward.globalLevel')} <b>${d.levels.global}</b></span><span>${t('reward.xpLabel')} <b>${d.xp}</b></span><span>${t('reward.cards')} <b>${d.totalDone}</b></span></div>
+    <button class="btn btn-primary" data-next>${diff.newBadges.length || diff.levelChanges.length ? t('reward.seeBadges') : t('reward.nextCard')}</button>`, 'seq-progress');
   await waitNext(o2);
 
   // 3) Logros y subidas de nivel
   if (diff.newBadges.length || diff.levelChanges.length) {
-    const lv = diff.levelChanges.map((c) => `<p class="lvlup">${c.to > c.from ? '⬆' : '⬇'} ${FAMILY_ICONS[c.group] || ''} ${esc(GROUP_NAMES[c.group])}: nivel ${c.from} → <b>${c.to}</b></p>`).join('');
-    const bd = diff.newBadges.map((b) => `<div class="badge-new"><canvas data-badge="${esc(b)}"></canvas><b>${esc(BADGES[b]?.[0] || b)}</b><span class="small muted">${esc(BADGES[b]?.[1] || '')}</span><button class="btn btn-sm" data-share="${esc(b)}">Compartir</button></div>`).join('');
+    const lv = diff.levelChanges.map((c) => `<p class="lvlup">${t('reward.levelChange', { arrow: c.to > c.from ? '⬆' : '⬇', icon: FAMILY_ICONS[c.group] || '', group: esc(FAMILY_NAMES[c.group]), from: c.from, to: c.to })}</p>`).join('');
+    const bd = diff.newBadges.map((b) => `<div class="badge-new"><canvas data-badge="${esc(b)}"></canvas><b>${esc(BADGES[b]?.[0] || b)}</b><span class="small muted">${esc(BADGES[b]?.[1] || '')}</span><button class="btn btn-sm" data-share="${esc(b)}">${t('reward.share')}</button></div>`).join('');
     const o3 = screen(`
-      <h2 class="seq-title">¡Logro desbloqueado!</h2>
+      <h2 class="seq-title">${t('reward.badgeTitle')}</h2>
       ${lv}<div class="badge-row">${bd}</div>
-      <button class="btn btn-primary" data-next>Siguiente carta ▶</button>`, 'seq-badges');
+      <button class="btn btn-primary" data-next>${t('reward.nextCard')}</button>`, 'seq-badges');
     o3.querySelectorAll('canvas[data-badge]').forEach((c) => drawBadge(c, c.dataset.badge, true));
     o3.addEventListener('click', (ev) => {
       const b = ev.target.closest('[data-share]');

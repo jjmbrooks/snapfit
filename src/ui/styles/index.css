@@ -1,0 +1,14 @@
+/* Orden de la cascada. Cada archivo pertenece a un workstream (docs/PARALLEL-WORK.md).
+   Agrega archivos nuevos aquí; no metas estilos de pantalla en base.css. */
+@import './tokens.css';
+@import './base.css';
+@import '../card/frame.css';
+@import '../card/back.css';
+@import '../card/flip.css';
+@import '../card/deck.css';
+@import '../screens/onboarding.css';
+@import '../screens/play.css';
+@import '../screens/reward.css';
+@import '../screens/progress.css';
+@import '../screens/achievements.css';
+@import '../screens/menu.css';

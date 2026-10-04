@@ -1,0 +1,38 @@
+/* SECUENCIA DE RECOMPENSA: felicitación → progreso → logros. Vista: src/ui/views/reward.js
+   Workstream: screens (ver docs/PARALLEL-WORK.md). */
+.seq-panel {
+  position: relative; overflow: hidden;
+  width: 100%; max-width: 420px; max-height: 100%; overflow-y: auto;
+  background: var(--surface); border: 3px solid var(--primary); border-radius: 18px;
+  box-shadow: 0 8px 0 0 var(--border); padding: var(--s5) var(--s4); display: grid; gap: var(--s3); text-align: center;
+  animation: pop 360ms cubic-bezier(.2,1.4,.4,1) both;
+}
+.seq-kicker { margin: 0; font-weight: 700; color: var(--text-muted); }
+.seq-title { margin: 0; color: var(--primary); }
+.reward-title { font-family: var(--font-pixel); font-size: 24px; color: var(--primary); text-shadow: 3px 3px 0 var(--border); animation: pop 500ms steps(5) both; }
+.xp { font-family: var(--font-pixel); font-size: 16px; color: var(--success); animation: rise 900ms steps(6) both; }
+.effort { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s2); }
+.effort .btn { padding: 8px 4px; font-size: 14px; }
+.pbar { text-align: left; display: grid; gap: 4px; }
+.pbar-top { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; }
+.pbar.fam-piernas .bar i, .pbar.fam-gluteos .bar i, .pbar.fam-empuje .bar i, .pbar.fam-traccion .bar i,
+.pbar.fam-core .bar i, .pbar.fam-movilidad .bar i, .pbar.fam-cardio .bar i { background: var(--fam); }
+.pbar .bar i { animation: grow 900ms steps(10) both; transform-origin: left; }
+.seq-row { display: flex; justify-content: space-around; font-size: 13px; color: var(--text-muted); }
+.seq-row b { font-family: var(--font-pixel); color: var(--text); font-size: 12px; }
+.lvlup { margin: 0; font-weight: 700; font-size: 16px; }
+.badge-row { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s3); }
+.badge-new { display: grid; justify-items: center; gap: 4px; max-width: 160px; animation: pop 500ms steps(5) both; }
+.badge-new canvas { width: 80px; height: 80px; image-rendering: pixelated; }
+.confetti { position: absolute; inset: 0; pointer-events: none; }
+.confetti i { position: absolute; top: -10px; width: 8px; height: 8px; background: var(--accent); animation: fall 1400ms steps(14) both; }
+.confetti i:nth-child(3n) { background: var(--primary); }
+.confetti i:nth-child(3n+1) { background: var(--success); }
+.confetti i:nth-child(1) { left: 6%; animation-delay: 0s; } .confetti i:nth-child(2) { left: 14%; animation-delay: .1s; }
+.confetti i:nth-child(3) { left: 22%; animation-delay: .25s; } .confetti i:nth-child(4) { left: 30%; animation-delay: .05s; }
+.confetti i:nth-child(5) { left: 38%; animation-delay: .3s; } .confetti i:nth-child(6) { left: 46%; animation-delay: .15s; }
+.confetti i:nth-child(7) { left: 54%; animation-delay: .35s; } .confetti i:nth-child(8) { left: 62%; animation-delay: .2s; }
+.confetti i:nth-child(9) { left: 70%; animation-delay: .05s; } .confetti i:nth-child(10) { left: 78%; animation-delay: .28s; }
+.confetti i:nth-child(11) { left: 86%; animation-delay: .12s; } .confetti i:nth-child(12) { left: 94%; animation-delay: .4s; }
+.confetti i:nth-child(13) { left: 10%; animation-delay: .5s; } .confetti i:nth-child(14) { left: 66%; animation-delay: .55s; }
+@keyframes fall { from { transform: translateY(0) rotate(0); } to { transform: translateY(520px) rotate(360deg); opacity: 0; } }

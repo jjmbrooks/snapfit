@@ -1,0 +1,16 @@
+/* MAZO: cartas debajo y animaciones de reparto, ¡Listo! (jugada) y Otro (al fondo).
+   Workstream: screens (ver docs/PARALLEL-WORK.md). */
+.deck-under { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.deck-under i { position: absolute; width: min(96cqw, 96cqh * 5 / 7); aspect-ratio: 5 / 7; border-radius: 16px; background: repeating-linear-gradient(45deg, var(--surface-2) 0 6px, var(--surface) 6px 12px); border: 3px solid var(--border); }
+.deck-under i:nth-child(1) { transform: translate(6px, 8px) rotate(2deg); }
+.deck-under i:nth-child(2) { transform: translate(-5px, 5px) rotate(-2deg); }
+
+/* Animaciones del mazo */
+.tcard.deal-in { animation: deal-in 420ms cubic-bezier(.2,1.2,.4,1) both; }
+.tcard.deal-under { animation: deal-under 380ms ease-out both; }
+.tcard.played { animation: played 380ms ease-in both; }
+.tcard.to-bottom { animation: to-bottom 320ms ease-in both; }
+@keyframes deal-in { from { transform: translate(60%, -20%) rotate(18deg) scale(.8); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes deal-under { from { transform: translateY(6%) scale(.94); filter: brightness(.7); } to { transform: none; filter: none; } }
+@keyframes played { to { transform: translateY(-40%) rotate(-8deg) scale(1.05); opacity: 0; } }
+@keyframes to-bottom { to { transform: translateY(18%) scale(.9) rotate(4deg); opacity: 0; filter: brightness(.5); } }

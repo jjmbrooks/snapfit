@@ -1,18 +1,20 @@
-# Test + build + deploy de Vite dist/ a GitHub Pages (sitio de proyecto /snapfit/).
-name: Deploy GitHub Pages
+# CI de SnapFit.
+# - pull_request a main: tests + validaciones + build + capturas 390×844 (artefacto). NO despliega.
+# - push a main (solo Codelius integra): lo mismo + deploy de dist/ a GitHub Pages (/snapfit/).
+name: CI y deploy
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'pages' }}
   cancel-in-progress: true
 
 jobs:
@@ -25,20 +27,59 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - name: Tests (core puro + contraste)
+      - name: Tests (core puro, contraste, contrato de copy/historia)
         run: npm test
       - name: Validar contenido
         run: npm run check:content
       - name: Validar procedencia de assets
         run: npm run check:provenance
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      - name: Guardar dist para capturas
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 3
+      - name: Artefacto de Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
-  deploy:
+  screens:
+    # Evidencia visual: recorre el flujo completo y falla si algo se rompe o la barra inferior tapa botones.
     needs: build
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Capturas 390×844
+        run: |
+          npx vite preview --port 4173 --strictPort &
+          for i in $(seq 1 30); do curl -sf http://localhost:4173/snapfit/ >/dev/null && break; sleep 1; done
+          npm run screens -- http://localhost:4173/snapfit/ screens-out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: capturas-390x844
+          path: screens-out
+          retention-days: 14
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

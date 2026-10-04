@@ -2,9 +2,10 @@
 
 1. Lee `AGENTS.md` y `docs/00` … `docs/07`.
 2. Un solo owner de código: **Codelius**. Los slices mecánicos van por Kanban a **`runica`** (desde el 2026-10-04, con DoD claro). Los especialistas entregan artefactos y no abren forks del producto.
-3. Prohibido hacer force-push a `main`. No subas secretos.
-4. Desde F1: `npm run test` y `npm run build` deben pasar antes de pedir review.
-5. Handoffs de Grok a NexIA: título `[Grok:Codelius] …`, assignee `nexia`.
+3. Trabajo en paralelo: ramas `<workstream>/<modelo>-<tema>` y PR contra `main` con la plantilla; **solo Codelius integra**. Detalle en `docs/PARALLEL-WORK.md`.
+4. Prohibido hacer force-push a `main`. No subas secretos.
+5. `npm run verify` debe pasar y, si cambias UI o textos, adjunta capturas de `npm run screens`.
+6. Handoffs de Grok a NexIA: título `[Grok:Codelius] …`, assignee `nexia`.
 
 ## Regla de procedencia de assets (obligatoria)
 

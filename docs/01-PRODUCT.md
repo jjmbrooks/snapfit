@@ -73,7 +73,7 @@ Los IDs son contratos estables. Los visuales son de disenador y director-creativ
 
 ## 5. Temas (6, elegibles en Menú)
 
-Se implementan solo con tokens CSS (`[data-theme="…"]`). Las paletas definitivas con contraste **WCAG AA** las define disenador; los hex de abajo son referencias iniciales.
+Se implementan solo con tokens CSS (`[data-theme="…"]` en `src/ui/styles/tokens.css`). Las paletas definitivas con contraste **WCAG AA** las define disenador; los hex de abajo son referencias iniciales.
 
 | ID token | Base | Nombre creativo propuesto | Idea |
 |----------|------|---------------------------|------|

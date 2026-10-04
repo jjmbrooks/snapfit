@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { THEMES } from '../../src/core/index.js';
 
-const css = readFileSync(new URL('../../src/ui/styles/themes.css', import.meta.url), 'utf8');
+const css = readFileSync(new URL('../../src/ui/styles/tokens.css', import.meta.url), 'utf8');
 function themeVars(t) {
   const re = new RegExp(`\\[data-theme='${t}'\\][^{]*\\{([^}]*)\\}`);
   const body = css.match(re)[1];
@@ -29,7 +29,7 @@ describe('contraste AA de temas', () => {
   }
 });
 
-const cards = readFileSync(new URL('../../src/ui/styles/cards.css', import.meta.url), 'utf8');
+const cards = readFileSync(new URL('../../src/ui/styles/tokens.css', import.meta.url), 'utf8');
 describe('contraste de familias de cartas', () => {
   for (const m of cards.matchAll(/\.fam-([a-z]+)\s*\{\s*--fam:\s*(#[0-9a-f]{6});\s*--fam-dark:\s*(#[0-9a-f]{6});\s*--fam-ink:\s*(#[0-9a-f]{6})/g)) {
     it(m[1], () => {

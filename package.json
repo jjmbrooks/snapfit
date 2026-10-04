@@ -12,7 +12,10 @@
     "test": "vitest run",
     "icons": "node scripts/gen-icons.mjs",
     "check:provenance": "node scripts/check-provenance.mjs",
-    "check:content": "node scripts/check-content.mjs"
+    "check:content": "node scripts/check-content.mjs",
+    "screens": "node scripts/screens.mjs",
+    "verify": "npm test && npm run check:content && npm run check:provenance && npm run build",
+    "docs:microcopy": "node scripts/gen-microcopy.mjs"
   },
   "dependencies": {
     "firebase": "^11.0.0"

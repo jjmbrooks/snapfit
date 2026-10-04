@@ -7,11 +7,12 @@ export const FITNESS = ['sedentario', 'ligero', 'activo', 'muy-activo'];
 export const MIN_AGE = 13;
 export const MAX_AGE = 100;
 
-/** Prueba rápida autorreportada: cada respuesta es un índice 0–2. */
+/** Prueba rápida autorreportada: cada respuesta es un índice 0–2.
+ *  Los textos (pregunta y 3 opciones) están en content/copy/es.json → quickTest.<id>. */
 export const QUICK_TEST = [
-  { id: 'sentadillas', groups: ['piernas', 'gluteos'], question: '¿Cuántas sentadillas a una silla haces seguidas, cómodo y sin dolor?', options: ['0–5', '6–15', '16 o más'] },
-  { id: 'flexiones', groups: ['empuje', 'traccion'], question: '¿Cuántas flexiones apoyando las manos en la pared haces seguidas?', options: ['0–5', '6–15', '16 o más'] },
-  { id: 'plancha', groups: ['core'], question: '¿Cuánto aguantas una plancha con rodillas apoyadas?', options: ['Menos de 15 s', '15–45 s', 'Más de 45 s'] },
+  { id: 'sentadillas', groups: ['piernas', 'gluteos'] },
+  { id: 'flexiones', groups: ['empuje', 'traccion'] },
+  { id: 'plancha', groups: ['core'] },
 ];
 
 const FITNESS_BASE = { sedentario: 1, ligero: 1, activo: 2, 'muy-activo': 3 };

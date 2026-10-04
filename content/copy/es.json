@@ -1,0 +1,204 @@
+{
+  "_doc": "Textos de interfaz en español neutro (no narrativos). La narrativa vive en content/story/<id>.json. Variables con {nombre}. Ver docs/story/MICROCOPY.md.",
+  "names": {
+    "groups": {
+      "piernas": "Piernas",
+      "gluteos": "Glúteos",
+      "empuje": "Empuje",
+      "traccion": "Tracción",
+      "core": "Core",
+      "movilidad": "Movilidad",
+      "cardio": "Cardio"
+    },
+    "places": {
+      "casa": "Casa",
+      "oficina": "Oficina",
+      "parque": "Parque",
+      "aula": "Aula",
+      "cualquiera": "Donde sea"
+    },
+    "zones": {
+      "rodilla": "Rodilla",
+      "hombro": "Hombro",
+      "muneca": "Muñeca",
+      "lumbar": "Zona lumbar",
+      "cuello": "Cuello",
+      "tobillo": "Tobillo",
+      "cadera": "Cadera",
+      "embarazo": "Embarazo",
+      "hipertension": "Hipertensión",
+      "equilibrio": "Equilibrio"
+    },
+    "effort": {
+      "facil": "😌 Fácil",
+      "bien": "🙂 Bien",
+      "duro": "😤 Duro"
+    },
+    "reminders": {
+      "off": "Apagados",
+      "manana": "Mañana (9:00)",
+      "tarde": "Tarde (16:00)",
+      "noche": "Noche (20:00)",
+      "manana-tarde-noche": "Mañana, tarde y noche",
+      "custom": "Personalizado"
+    },
+    "themes": {
+      "medianoche": "Medianoche 8-bit",
+      "manana": "Mañana Pixel",
+      "chicle": "Chicle Turbo",
+      "selva": "Selva Guerrera",
+      "pacifico": "Ola Pacífico",
+      "volcan": "Volcán Power"
+    },
+    "sexes": {
+      "mujer": "Mujer",
+      "hombre": "Hombre",
+      "otro": "Otro",
+      "prefiero-no-decir": "Prefiero no decir"
+    },
+    "fitness": {
+      "sedentario": {
+        "name": "Sedentario",
+        "desc": "Casi no hago ejercicio"
+      },
+      "ligero": {
+        "name": "Ligero",
+        "desc": "Camino o me muevo algo, 1–2 días por semana"
+      },
+      "activo": {
+        "name": "Activo",
+        "desc": "Ejercicio 3–4 días por semana"
+      },
+      "muy-activo": {
+        "name": "Muy activo",
+        "desc": "Entreno 5 o más días por semana"
+      }
+    }
+  },
+  "onboarding": {
+    "googleButton": "Entrar con Google",
+    "googleBusy": "Conectando…",
+    "needOnline": "Necesitas conexión para el primer inicio de sesión.",
+    "back": "◀ Volver",
+    "prev": "◀ Atrás",
+    "next": "Siguiente ▶",
+    "confirm": "Confirmar ▶",
+    "privacyLink": "Aviso de privacidad",
+    "popupClosed": "Cerraste la ventana de Google. Inténtalo de nuevo.",
+    "signinError": "No se pudo iniciar sesión ({code}).",
+    "aboutTitle": "Sobre ti",
+    "ageLabel": "Edad",
+    "agePlaceholder": "Ej. 30",
+    "ageHint": "Debes tener 13 años o más.",
+    "sexLegend": "Sexo",
+    "sexHint": "Lo usamos para elegir tu mazo cuando haya ajustes basados en evidencia.",
+    "fitnessTitle": "Tu condición física",
+    "testTitle": "Prueba rápida",
+    "testHint": "Responde con honestidad: no hace falta hacerlo ahora. Sirve para elegir tu nivel inicial.",
+    "deckLabel": "Mazo:",
+    "levelChip": "Nv {n}",
+    "levelsHint": "El nivel se ajusta solo con tu progreso. Reglas provisionales hasta la validación de Entrenador.",
+    "errAge": "Escribe tu edad (13 a 100 años).",
+    "errSex": "Elige una opción de sexo.",
+    "errFitness": "Elige tu condición física.",
+    "errTest": "Responde las tres preguntas.",
+    "termsTitle": "Antes de jugar",
+    "termsNotice": "⚠ SnapFit da información general de actividad física y <b>no sustituye una valoración médica</b>. Si tienes una lesión, dolor, una enfermedad cardiovascular o un embarazo, consulta a un profesional. Detente si sientes dolor agudo, mareo o falta de aire anormal.",
+    "termsDraft": "Las cartas actuales son <b>borradores</b> pendientes de validación por nuestro entrenador.",
+    "termsCheck": "Leí el aviso de salud y el <a href=\"#/privacidad\">aviso de privacidad</a>.",
+    "analyticsCheck": "Enviar estadísticas anónimas de uso (sin datos personales).",
+    "termsRequired": "Marca la casilla para continuar.",
+    "play": "¡A jugar! ▶",
+    "profileUpdated": "Perfil actualizado",
+    "profileUpdatedBody": "Tu mazo y niveles iniciales se recalcularon.",
+    "deckNames": {
+      "adulto-general": "Adulto general"
+    }
+  },
+  "quickTest": {
+    "_doc": "Preguntas de la prueba rápida (ids y grupos en src/core/profile.js). Contenido de Entrenador (t_78a921ff): no cambiar rangos sin su OK.",
+    "sentadillas": {
+      "question": "¿Cuántas sentadillas a una silla haces seguidas, cómodo y sin dolor?",
+      "options": [
+        "0–5",
+        "6–15",
+        "16 o más"
+      ]
+    },
+    "flexiones": {
+      "question": "¿Cuántas flexiones apoyando las manos en la pared haces seguidas?",
+      "options": [
+        "0–5",
+        "6–15",
+        "16 o más"
+      ]
+    },
+    "plancha": {
+      "question": "¿Cuánto aguantas una plancha con rodillas apoyadas?",
+      "options": [
+        "Menos de 15 s",
+        "15–45 s",
+        "Más de 45 s"
+      ]
+    }
+  },
+  "play": {
+    "done": "¡Listo!",
+    "skip": "Otro ⤵",
+    "skipAria": "Otro: manda esta carta al fondo del mazo",
+    "deckCount": "{n} cartas en tu mazo · toca la carta para ver cómo se hace",
+    "reminder": "⏰ ¡Hora de una carta!",
+    "closeAria": "Cerrar aviso",
+    "emptyTitle": "Sin cartas",
+    "emptyBody": "Ninguna carta cumple tus filtros (lugar y zonas a cuidar). Ajusta el <a href=\"#/menu\">menú</a>.",
+    "hudToday": "Hoy",
+    "hudTodayAria": "Hoy {done} de {goal} cartas",
+    "hudStreakAria": "Racha de {n} días"
+  },
+  "card": {
+    "aria": "Carta {name}. Toca para ver cómo se hace.",
+    "levelTitle": "Nivel de la carta",
+    "levelShort": "NV",
+    "tierTitle": "Rango {tier}",
+    "artAria": "Ilustración provisional: {name}",
+    "draft": "BORRADOR",
+    "draftTitle": "Contenido pendiente de validación por Entrenador",
+    "dose": "Reto",
+    "time": "Tiempo",
+    "timeValue": "~{s} s",
+    "levelAria": "Nivel {n} de 10",
+    "flipHint": "toca ↻",
+    "videoAria": "Video: {name}",
+    "videoPlaceholderAria": "Animación provisional: {name}",
+    "videoPending": "🎬 Video del movimiento: pendiente (director-creativo)",
+    "cues": "Clave:",
+    "careZones": "⚠ Cuida:",
+    "playerLevel": "tu nivel en {group}: {n}",
+    "fullSheet": "Ficha completa y fuentes",
+    "repsUnit": "{n} reps",
+    "perSide": " / lado",
+    "holdUnit": "{n} s sostén",
+    "secUnit": "{n} s"
+  },
+  "reward": {
+    "xp": "+{n} XP",
+    "effortAsk": "¿Cómo te sentiste? (opcional, ayuda a ajustar tu nivel)",
+    "continue": "Continuar ▶",
+    "progressTitle": "Tu progreso",
+    "today": "Mazo de hoy",
+    "streak": "🔥 Racha",
+    "day": "{n} día",
+    "days": "{n} días",
+    "max": "MAX",
+    "nextLevel": "→ Nv {n}",
+    "groupBar": "{icon} {group} · Nv {n}",
+    "globalLevel": "Nivel global",
+    "xpLabel": "XP",
+    "cards": "Cartas",
+    "seeBadges": "Ver logros ▶",
+    "nextCard": "Siguiente carta ▶",
+    "badgeTitle": "¡Logro desbloqueado!",
+    "levelChange": "{arrow} {icon} {group}: nivel {from} → <b>{to}</b>",
+    "share": "Compartir"
+  }
+}

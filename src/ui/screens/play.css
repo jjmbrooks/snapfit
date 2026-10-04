@@ -1,0 +1,10 @@
+/* PANTALLA CARTA (#/): escenario, botones ¡Listo!/Otro, contador del mazo. Vista: src/ui/views/card.js
+   Workstream: screens (ver docs/PARALLEL-WORK.md). */
+.play { height: 100%; width: 100%; min-width: 0; display: flex; flex-direction: column; gap: var(--s3); padding: var(--s3) var(--s4) var(--s3); max-width: var(--maxw); margin: 0 auto; }
+.stage { flex: 1; min-height: 0; min-width: 0; position: relative; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; perspective: 1400px; container-type: size; }
+.play-actions { display: grid; grid-template-columns: 2fr 1fr; gap: var(--s3); }
+.btn-listo { min-height: 60px; font-family: var(--font-pixel); font-size: 16px; }
+.btn-otro { min-height: 60px; font-size: 16px; }
+.deck-count { margin: 0; text-align: center; font-size: 12px; color: var(--text-muted); }
+.banner { border: 2px solid var(--warning); border-radius: 12px; background: var(--surface); padding: 6px 6px 6px 12px; display: flex; gap: var(--s3); align-items: center; justify-content: space-between; font-size: 14px; }
+.empty { padding: var(--s5); text-align: center; }

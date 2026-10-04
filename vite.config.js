@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { readFileSync, writeFileSync, readdirSync, statSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, rmSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { createHash } from 'node:crypto';
 
@@ -13,7 +13,8 @@ function snapfitServiceWorker() {
     name: 'snapfit-sw',
     apply: 'build',
     configResolved(c) { outDir = c.build.outDir; root = c.root; },
-    closeBundle() {
+    closeBundle(error) {
+      if (error || !existsSync(join(root, outDir, '.vite/manifest.json'))) return; // deja ver el error real del build
       const dir = join(root, outDir);
       const files = [];
       const walk = (d) => {

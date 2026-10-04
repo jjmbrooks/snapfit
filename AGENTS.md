@@ -8,6 +8,14 @@ Implementas código en el repo **snapfit**.
 
 El detalle está en `docs/06-ROLES.md`. Inge se encarga de la infraestructura y los secretos. No se hacen forks paralelos del producto.
 
+## Trabajo en paralelo (desde 2026-10-03)
+
+Varios modelos trabajan a la vez en historia y UI. **Lee `docs/PARALLEL-WORK.md` antes de tocar nada**: workstreams, archivos de cada uno, ramas `<workstream>/<modelo>-<tema>`, PR obligatorio revisado por Codelius (nadie más hace push a `main`), `npm run verify`, `npm run screens` y evidencia visual.
+
+- Textos visibles: `content/copy/es.json` (interfaz) y `content/story/<id>.json` (narrativa), usados con `t()`. No escribas textos en el código.
+- Estilos: tokens en `src/ui/styles/tokens.css`; marco de carta en `src/ui/card/`; una pantalla = un CSS en `src/ui/screens/`.
+- Historia y mundo: `docs/story/` (v0, abierta a propuestas en `docs/proposals/`).
+
 ## Antes de codear
 
 1. Lee en orden: `docs/00-VISION.md` → `01` → `02` → `03` → `04` → `05` → `06` → `07`.
@@ -35,7 +43,7 @@ El detalle está en `docs/06-ROLES.md`. Inge se encarga de la infraestructura y 
 
 ## Commits
 
-- Commits atómicos en `main` o PRs cortos. Prefijos: `F0:`, `F1:`, `docs:`, `content:`, `assets:`.
+- Codelius integra en `main`; los demás modelos abren PRs cortos desde su rama (ver `docs/PARALLEL-WORK.md`). Prefijos: `F0:`, `F1:`, `docs:`, `content:`, `assets:`.
 - Prohibido hacer force-push a `main`. No subas secretos. El `firebaseConfig` web es público por diseño; las reglas de Firestore son la protección real.
 - Sin identidad git en la caja: usa `GIT_AUTHOR_NAME=jjmbrooks GIT_AUTHOR_EMAIL=jjmbrooks@users.noreply.github.com` (y las mismas variables `COMMITTER`).
 
@@ -57,6 +65,9 @@ npm test                 # core puro + contraste de temas
 npm run check:content    # reglas de cartas
 npm run check:provenance # assets con procedencia
 npm run build
+npm run verify           # todo lo anterior en un comando
+npm run preview -- --port 4173 &
+npm run screens -- http://localhost:4173/snapfit/ /tmp/capturas   # 18 capturas 390×844
 ```
 
 ## Fuente de verdad
@@ -70,6 +81,8 @@ npm run build
 | ¿Evidencia y dosis? | `docs/04-SCIENCE.md` → `docs/training/` |
 | ¿Qué fase sigue? | `docs/05-ROADMAP.md` |
 | ¿Quién hace qué? | `docs/06-ROLES.md` |
-| ¿Cómo retomar o paralelizar? | `docs/07-HANDOFF.md` |
+| ¿Cómo retomar? | `docs/07-HANDOFF.md` |
+| ¿Cómo trabajar en paralelo (ramas, PR, archivos por workstream)? | `docs/PARALLEL-WORK.md` |
+| ¿Mundo, historia, bienvenida, textos? | `docs/story/` → `content/story/*.json`, `content/copy/es.json` |
 | ¿De dónde salió este asset? | `docs/ASSETS-PROVENANCE.md` |
 | ¿Qué datos se recogen? | `docs/PRIVACY.md` |

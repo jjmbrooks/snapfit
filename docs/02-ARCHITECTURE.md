@@ -14,7 +14,7 @@
 | Tests | **Vitest** para `src/core/` | El core se prueba sin DOM |
 | Deploy | GitHub Actions → Pages | Basado en `astropark-physics/docs/github-pages.workflow.yml` |
 
-## 2. Carpetas (objetivo de F1)
+## 2. Carpetas (actualizado 2026-10-03; reparto por workstream en `docs/PARALLEL-WORK.md`)
 
 ```
 snapfit/
@@ -24,6 +24,8 @@ snapfit/
 │  ├─ manifest.webmanifest   # (o lo genera vite-plugin-pwa)
 │  └─ assets/{sprites,icons,badges,sfx}/   # todo registrado en docs/ASSETS-PROVENANCE.md
 ├─ content/
+│  ├─ copy/es.json           # textos de interfaz (ver docs/story/MICROCOPY.md)
+│  ├─ story/<id>.json        # narrativa; active.json elige la activa; ?story=<id> previsualiza
 │  ├─ cards/*.json           # una carta por archivo o un JSON por mazo (ver 03)
 │  └─ decks/*.json           # adulto-general, ninos, mayores…
 ├─ src/
@@ -44,10 +46,13 @@ snapfit/
 │  │  ├─ notify-local.js     # NotifyPort → Notification API / SW
 │  │  └─ clock.js            # ClockPort (inyectable en tests)
 │  ├─ ui/
-│  │  ├─ router.js
-│  │  ├─ views/{card,progress,achievements,menu,onboarding}.js
-│  │  ├─ components/         # sprite-player, pixel-button, progress-dots…
-│  │  └─ styles/{tokens.css,themes.css,base.css}
+│  │  ├─ app.js, router.js
+│  │  ├─ i18n/es.js          # cargador de textos: t('clave'); NO contiene textos
+│  │  ├─ views/<pantalla>.js # una pantalla por archivo: onboarding, card, reward, progress, achievements, menu, privacy
+│  │  ├─ components/         # tcard (carta), sprite, sfx, share
+│  │  ├─ styles/             # index.css (orden de cascada), tokens.css (fuente única de tokens y paletas), base.css
+│  │  ├─ card/               # frame.css, back.css, flip.css, deck.css (marco de carta aislado)
+│  │  └─ screens/            # <pantalla>.css, uno por pantalla
 │  ├─ sw.js                  # si el SW se escribe a mano
 │  └─ main.js                # composición: core + adapters + ui
 └─ tests/core/*.test.js

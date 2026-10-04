@@ -23,14 +23,17 @@ npm test                 # core puro (vitest) + contraste AA de temas
 npm run check:content    # valida cartas
 npm run check:provenance # assets con procedencia
 npm run build && npm run preview
-node scripts/screens.mjs http://localhost:4173/snapfit/ docs/evidence   # capturas 390×844
+npm run verify           # tests + contenido + procedencia + build
+npm run screens -- http://localhost:4173/snapfit/ /tmp/capturas   # 18 capturas 390×844 (con preview corriendo)
 ```
+
+**¿Vas a mejorar la historia o la UI?** Lee [`docs/PARALLEL-WORK.md`](docs/PARALLEL-WORK.md): cada workstream tiene sus archivos, se trabaja en ramas `<workstream>/<modelo>-<tema>` y se entra a `main` por PR revisado por Codelius. Historia: [`docs/story/`](docs/story/). Textos: `content/copy/es.json` y `content/story/*.json`.
 
 ## Lo esencial
 
 | | |
 |---|---|
-| Experiencia | Una carta → hazla → **¡Listo!** (o **Otra carta**). Progreso y personalización siempre a un toque |
+| Experiencia | Una carta → hazla → **¡Listo!** (felicitación y progreso) o **Otro** (la carta va al fondo del mazo). Toca la carta para voltearla y ver cómo se hace |
 | Juego | Pixel-art retro, animación por carta, racha diaria, insignias, logros, compartir logros |
 | Niveles | 10 niveles; la app calcula tu nivel con tu progreso (también por grupo muscular) |
 | Temas | 6 temas: Medianoche 8-bit, Mañana Pixel, Chicle Turbo, Selva Guerrera, Ola Pacífico, Volcán Power |
@@ -49,7 +52,9 @@ node scripts/screens.mjs http://localhost:4173/snapfit/ docs/evidence   # captur
 7. [`docs/05-ROADMAP.md`](docs/05-ROADMAP.md): fases, DoD y bitácora de consumo
 8. [`docs/06-ROLES.md`](docs/06-ROLES.md)
 9. [`docs/07-HANDOFF.md`](docs/07-HANDOFF.md)
-10. [`docs/ASSETS-PROVENANCE.md`](docs/ASSETS-PROVENANCE.md)
+10. [`docs/PARALLEL-WORK.md`](docs/PARALLEL-WORK.md): trabajo en paralelo (ramas, PR, workstreams)
+11. [`docs/story/`](docs/story/): mundo, bienvenida y microcopy (v0)
+12. [`docs/ASSETS-PROVENANCE.md`](docs/ASSETS-PROVENANCE.md)
 
 ## Aviso de salud
 

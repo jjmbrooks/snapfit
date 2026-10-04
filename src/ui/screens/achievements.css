@@ -1,0 +1,9 @@
+/* LOGROS (#/logros). Vista: src/ui/views/achievements.js
+   Workstream: screens (ver docs/PARALLEL-WORK.md). */
+.badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--s3); }
+.badge { background: var(--surface); border: 2px solid var(--border); border-radius: 14px; padding: var(--s3); text-align: center; display: grid; gap: 6px; justify-items: center; }
+.badge canvas { width: 64px; height: 64px; image-rendering: pixelated; }
+.badge.locked canvas { filter: grayscale(1) brightness(0.4); }
+.badge.locked .bname { color: var(--text-muted); }
+.bname { font-family: var(--font-pixel); font-size: 9px; line-height: 1.6; }
+.bdesc { font-size: 12px; color: var(--text-muted); }

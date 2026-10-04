@@ -1,5 +1,5 @@
 import { esc } from '../dom.js';
-import { ZONE_NAMES } from '../i18n/es.js';
+import { t, ZONE_NAMES } from '../i18n/es.js';
 import { cardHTML, bindCard as bindTCard, doseLabel } from '../components/tcard.js';
 import { runRewardSequence } from './reward.js';
 
@@ -10,22 +10,22 @@ export function hud(s) {
   const d = s.derived;
   const pct = Math.min(100, Math.round((d.todayCount / d.dailyGoal) * 100));
   return `
-    <div class="hud-day" aria-label="Hoy ${d.todayCount} de ${d.dailyGoal} cartas">
-      <span class="hud-k">Hoy</span>
+    <div class="hud-day" aria-label="${t('play.hudTodayAria', { done: d.todayCount, goal: d.dailyGoal })}">
+      <span class="hud-k">${t('play.hudToday')}</span>
       <span class="bar"><i style="width:${pct}%"></i></span>
       <span class="hud-n">${d.todayCount}/${d.dailyGoal}</span>
     </div>
-    <div class="hud-streak" aria-label="Racha de ${d.streak.current} días">🔥<b>${d.streak.current}</b></div>`;
+    <div class="hud-streak" aria-label="${t('play.hudStreakAria', { n: d.streak.current })}">🔥<b>${d.streak.current}</b></div>`;
 }
 
 export function renderCard(app) {
   const s = app.state;
   const c = s.card;
   const rem = s.reminderDue
-    ? `<div class="banner" role="status"><span>⏰ ¡Hora de una carta!</span><button class="btn btn-ghost btn-sm" data-act="dismiss-rem" aria-label="Cerrar aviso">✕</button></div>`
+    ? `<div class="banner" role="status"><span>${t('play.reminder')}</span><button class="btn btn-ghost btn-sm" data-act="dismiss-rem" aria-label="${t('play.closeAria')}">✕</button></div>`
     : '';
   if (!c) {
-    return `${rem}<div class="empty"><p class="pixel">Sin cartas</p><p>Ninguna carta cumple tus filtros (lugar y zonas a cuidar). Ajusta el <a href="#/menu">menú</a>.</p></div>`;
+    return `${rem}<div class="empty"><p class="pixel">${t('play.emptyTitle')}</p><p>${t('play.emptyBody')}</p></div>`;
   }
   return `
   <div class="play">
@@ -35,10 +35,10 @@ export function renderCard(app) {
       ${cardHTML(c, { playerLevel: s.derived.levels.byGroup[c.primaryGroup] })}
     </div>
     <div class="play-actions">
-      <button class="btn btn-primary btn-listo" data-act="done">¡Listo!</button>
-      <button class="btn btn-otro" data-act="skip" aria-label="Otro: manda esta carta al fondo del mazo">Otro ⤵</button>
+      <button class="btn btn-primary btn-listo" data-act="done">${t('play.done')}</button>
+      <button class="btn btn-otro" data-act="skip" aria-label="${t('play.skipAria')}">${t('play.skip')}</button>
     </div>
-    <p class="deck-count">${app.deckSize()} cartas en tu mazo · toca la carta para ver cómo se hace</p>
+    <p class="deck-count">${t('play.deckCount', { n: app.deckSize() })}</p>
   </div>`;
 }
 

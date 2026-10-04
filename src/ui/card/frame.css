@@ -1,26 +1,10 @@
-/* Cartas estilo «carta de personaje». Colores FIJOS por familia (las cartas son objetos físicos,
-   no cambian con el tema). Contraste tinta/fondo verificado en tests/ui/contrast.test.js. */
-.fam-piernas   { --fam: #ff7a45; --fam-dark: #a63a12; --fam-ink: #1d0a02; }
-.fam-gluteos   { --fam: #ff5fa2; --fam-dark: #a3195a; --fam-ink: #22030f; }
-.fam-empuje    { --fam: #ffc83d; --fam-dark: #a86f00; --fam-ink: #241700; }
-.fam-traccion  { --fam: #4aa8ff; --fam-dark: #1458a8; --fam-ink: #03172b; }
-.fam-core      { --fam: #58d26b; --fam-dark: #1f7a30; --fam-ink: #04200a; }
-.fam-movilidad { --fam: #2fd4c9; --fam-dark: #0f7d76; --fam-ink: #01211f; }
-.fam-cardio    { --fam: #c77dff; --fam-dark: #6c2bb0; --fam-ink: #1c0630; }
-.tier-1 { --tier: #e09455; } .tier-2 { --tier: #d7dde8; } .tier-3 { --tier: #ffd23f; } .tier-4 { --tier: #ff9df5; }
-
-.deck-under { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
-.deck-under i { position: absolute; width: min(96cqw, 96cqh * 5 / 7); aspect-ratio: 5 / 7; border-radius: 16px; background: repeating-linear-gradient(45deg, var(--surface-2) 0 6px, var(--surface) 6px 12px); border: 3px solid var(--border); }
-.deck-under i:nth-child(1) { transform: translate(6px, 8px) rotate(2deg); }
-.deck-under i:nth-child(2) { transform: translate(-5px, 5px) rotate(-2deg); }
-
+/* MARCO DE CARTA (frente): carta de personaje con color por familia (--fam*) y tier por nivel (--tier). Componente: src/ui/components/tcard.js
+   Workstream: card-frame (ver docs/PARALLEL-WORK.md). */
 .tcard {
   position: relative; width: min(100cqw, 100cqh * 5 / 7); aspect-ratio: 5 / 7;
   cursor: pointer; outline: none; z-index: 1;
 }
 .tcard:focus-visible .tc-face { outline: 3px solid var(--focus); outline-offset: 3px; }
-.tc-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 560ms cubic-bezier(.3,1.3,.5,1); }
-.tcard.flipped .tc-inner { transform: rotateY(180deg); }
 .tc-face {
   position: absolute; inset: 0; border-radius: 16px; padding: 8px;
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
@@ -32,7 +16,6 @@
   display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto auto; gap: 6px;
   color: var(--fam-ink);
 }
-.tc-back { transform: rotateY(180deg); grid-template-rows: auto auto minmax(0, 1fr); background: linear-gradient(var(--fam-dark), #15122a); color: #f4f2ff; }
 .tc-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
 .tc-lvl {
   width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; line-height: 1;
@@ -70,23 +53,3 @@
 .tc-pips i { height: 7px; background: rgba(0,0,0,.25); border-radius: 1px; }
 .tc-pips i.on { background: #0d0b18; }
 .tc-hint { opacity: .85; text-align: right; }
-.tc-video { width: 100%; aspect-ratio: 16 / 10; border-radius: 10px; border: 3px solid #0d0b18; background: #12102a; object-fit: cover; }
-.tc-video.placeholder { display: grid; place-items: center; position: relative; --sprite-fg: #ffffff; --sprite-prop: var(--fam); --sprite-ground: #4b4680; }
-.tc-video.placeholder canvas { height: 80%; aspect-ratio: 1; image-rendering: pixelated; }
-.tc-video.placeholder span { position: absolute; bottom: 4px; left: 6px; right: 6px; font-size: 10px; color: #c9c5ee; text-align: center; }
-.tc-info { overflow-y: auto; font-size: 13px; line-height: 1.4; padding-right: 2px; }
-.tc-info ol { margin: 0 0 6px; padding-left: 18px; }
-.tc-info p { margin: 0 0 6px; }
-.tc-warn { color: #ffd08a; }
-.tc-meta { color: #c9c5ee; }
-.tc-meta a { color: #8fe9ff; }
-
-/* Animaciones del mazo */
-.tcard.deal-in { animation: deal-in 420ms cubic-bezier(.2,1.2,.4,1) both; }
-.tcard.deal-under { animation: deal-under 380ms ease-out both; }
-.tcard.played { animation: played 380ms ease-in both; }
-.tcard.to-bottom { animation: to-bottom 320ms ease-in both; }
-@keyframes deal-in { from { transform: translate(60%, -20%) rotate(18deg) scale(.8); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes deal-under { from { transform: translateY(6%) scale(.94); filter: brightness(.7); } to { transform: none; filter: none; } }
-@keyframes played { to { transform: translateY(-40%) rotate(-8deg) scale(1.05); opacity: 0; } }
-@keyframes to-bottom { to { transform: translateY(18%) scale(.9) rotate(4deg); opacity: 0; filter: brightness(.5); } }

@@ -1,4 +1,8 @@
-/* Tokens no cromáticos (espaciado, tipografía, radios). Los colores viven en themes.css. */
+/* TOKENS DE DISEÑO — fuente única: tipografía, espaciado, radios, paletas de los 6 temas y colores de familia de carta.
+   Contraste AA verificado en tests/ui/contrast.test.js (temas y familias).
+   Workstream: ui-tokens (ver docs/PARALLEL-WORK.md). */
+
+/* ---- 1. Tokens no cromáticos ---- */
 @font-face {
   font-family: 'Press Start 2P';
   src: url('/fonts/PressStart2P-Regular.ttf') format('truetype');
@@ -16,3 +20,64 @@
   --shadow-px: 4px 4px 0 0 var(--border);
   --maxw: 520px;
 }
+
+/* ---- 2. Paletas de tema (una regla por tema; docs/01-PRODUCT.md §5) ---- */
+:root,
+[data-theme='medianoche'] {
+  --bg: #0f1020; --surface: #1b1d3a; --surface-2: #262a52; --border: #3a3f7a;
+  --text: #f1f1ff; --text-muted: #b4b6e0;
+  --primary: #ffd23f; --on-primary: #1b1300; --accent: #5ce1e6; --on-accent: #062a2c;
+  --success: #5ee67a; --warning: #ffb347; --danger: #ff7b7b; --focus: #5ce1e6;
+  --sprite-fg: #f1f1ff; --sprite-prop: #ffd23f; --sprite-ground: #3a3f7a;
+  color-scheme: dark;
+}
+[data-theme='manana'] {
+  --bg: #f4f1e8; --surface: #fffdf6; --surface-2: #e9e3d1; --border: #b9b08f;
+  --text: #22201a; --text-muted: #5a5546;
+  --primary: #2f5d50; --on-primary: #ffffff; --accent: #1f5fa8; --on-accent: #ffffff;
+  --success: #2f7d32; --warning: #8a5a00; --danger: #b3261e; --focus: #1f5fa8;
+  --sprite-fg: #22201a; --sprite-prop: #2f5d50; --sprite-ground: #b9b08f;
+  color-scheme: light;
+}
+[data-theme='chicle'] {
+  --bg: #ffe3f0; --surface: #fff5fa; --surface-2: #ffd0e5; --border: #e89bbf;
+  --text: #3b0a24; --text-muted: #7a2a52;
+  --primary: #c2185b; --on-primary: #ffffff; --accent: #6a1b9a; --on-accent: #ffffff;
+  --success: #1b6e2a; --warning: #8a4b00; --danger: #b00020; --focus: #6a1b9a;
+  --sprite-fg: #3b0a24; --sprite-prop: #c2185b; --sprite-ground: #e89bbf;
+  color-scheme: light;
+}
+[data-theme='selva'] {
+  --bg: #0d2016; --surface: #143323; --surface-2: #1d4631; --border: #2f6b4b;
+  --text: #eafff1; --text-muted: #a9d9b9;
+  --primary: #7ddc4f; --on-primary: #0b1f06; --accent: #ffd23f; --on-accent: #2a2000;
+  --success: #7ddc4f; --warning: #ffc04d; --danger: #ff8a7a; --focus: #ffd23f;
+  --sprite-fg: #eafff1; --sprite-prop: #7ddc4f; --sprite-ground: #2f6b4b;
+  color-scheme: dark;
+}
+[data-theme='pacifico'] {
+  --bg: #06213d; --surface: #0b2f55; --surface-2: #12406f; --border: #2a5f94;
+  --text: #eaf6ff; --text-muted: #a6cbec;
+  --primary: #4fc3f7; --on-primary: #04243a; --accent: #ffcf5c; --on-accent: #2a1d00;
+  --success: #6fe39a; --warning: #ffcf5c; --danger: #ff8f8f; --focus: #ffcf5c;
+  --sprite-fg: #eaf6ff; --sprite-prop: #4fc3f7; --sprite-ground: #2a5f94;
+  color-scheme: dark;
+}
+[data-theme='volcan'] {
+  --bg: #230b08; --surface: #3a120d; --surface-2: #521a13; --border: #7a2c20;
+  --text: #fff1e8; --text-muted: #f0b9a6;
+  --primary: #ff7a3d; --on-primary: #2a0b00; --accent: #ffd23f; --on-accent: #2a2000;
+  --success: #8be07a; --warning: #ffd23f; --danger: #ff9a8a; --focus: #ffd23f;
+  --sprite-fg: #fff1e8; --sprite-prop: #ff7a3d; --sprite-ground: #7a2c20;
+  color-scheme: dark;
+}
+
+/* ---- 3. Familias de carta por grupo muscular y tiers por nivel (fijos: no cambian con el tema) ---- */
+.fam-piernas   { --fam: #ff7a45; --fam-dark: #a63a12; --fam-ink: #1d0a02; }
+.fam-gluteos   { --fam: #ff5fa2; --fam-dark: #a3195a; --fam-ink: #22030f; }
+.fam-empuje    { --fam: #ffc83d; --fam-dark: #a86f00; --fam-ink: #241700; }
+.fam-traccion  { --fam: #4aa8ff; --fam-dark: #1458a8; --fam-ink: #03172b; }
+.fam-core      { --fam: #58d26b; --fam-dark: #1f7a30; --fam-ink: #04200a; }
+.fam-movilidad { --fam: #2fd4c9; --fam-dark: #0f7d76; --fam-ink: #01211f; }
+.fam-cardio    { --fam: #c77dff; --fam-dark: #6c2bb0; --fam-ink: #1c0630; }
+.tier-1 { --tier: #e09455; } .tier-2 { --tier: #d7dde8; } .tier-3 { --tier: #ffd23f; } .tier-4 { --tier: #ff9df5; }

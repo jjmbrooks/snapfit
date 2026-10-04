@@ -1,0 +1,36 @@
+/* ONBOARDING: bienvenida/historia, login, perfil, prueba, aviso. Vista: src/ui/views/onboarding.js
+   Workstream: screens (ver docs/PARALLEL-WORK.md). */
+.onb-screen { max-width: 460px; margin: 0 auto; min-height: 100%; padding: calc(var(--s5) + env(safe-area-inset-top)) var(--s4) calc(var(--s5) + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: var(--s4); justify-content: center; }
+.onb-dots { display: flex; gap: 6px; justify-content: center; }
+.onb-dots i { width: 22px; height: 6px; border-radius: 3px; background: var(--surface-2); }
+.onb-dots i.on { background: var(--primary); }
+.onb-hero { text-align: center; }
+.logo { font-size: 30px; margin: var(--s3) 0 0; color: var(--primary); text-shadow: 4px 4px 0 var(--border); }
+.onb-sub { margin: 4px 0 0; font-family: var(--font-pixel); font-size: 10px; color: var(--accent); }
+.hero-cards { display: flex; justify-content: center; gap: 10px; height: 132px; align-items: flex-end; }
+.mini-card { width: 82px; height: 114px; border-radius: 10px; padding: 6px; background: linear-gradient(var(--fam), var(--fam-dark)); box-shadow: 0 5px 0 rgba(0,0,0,.35); display: grid; place-items: center; animation: float 3s ease-in-out infinite; }
+.mini-card:nth-child(1) { transform: rotate(-8deg); animation-delay: -.5s; }
+.mini-card:nth-child(2) { height: 128px; width: 92px; animation-delay: -1s; }
+.mini-card:nth-child(3) { transform: rotate(8deg); animation-delay: -1.5s; }
+.mini-card canvas { width: 100%; aspect-ratio: 1; border-radius: 6px; background: #12142a; image-rendering: pixelated; --sprite-fg: #fff; --sprite-prop: #ffd23f; --sprite-ground: #3a3f7a; }
+@keyframes float { 50% { translate: 0 -6px; } }
+.story p { margin: 0 0 var(--s3); font-size: 17px; animation: rise 600ms ease-out both; }
+.onb-title { font-size: 16px; color: var(--primary); margin: 0; }
+fieldset.opts { border: 0; padding: 0; background: none; border-radius: 0; margin: var(--s3) 0 0; display: flex; flex-wrap: wrap; gap: var(--s2); }
+fieldset.opts legend { font-weight: 700; margin-bottom: var(--s2); padding: 0; }
+fieldset.opts label { flex: 1 1 40%; }
+fieldset.opts.test label { flex: 1 1 28%; }
+fieldset.opts input, .choice input { position: absolute; opacity: 0; pointer-events: none; }
+fieldset.opts span, .choice > span {
+  display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 8px; text-align: center;
+  border: 2px solid var(--border); border-radius: 12px; background: var(--surface-2); cursor: pointer; font-weight: 600; font-size: 14px;
+}
+fieldset.opts input:checked + span, .choice input:checked + span { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 22%, var(--surface-2)); box-shadow: 0 0 0 2px var(--primary) inset; }
+fieldset.opts input:focus-visible + span, .choice input:focus-visible + span { outline: 3px solid var(--focus); }
+.choice-list { display: grid; gap: var(--s2); }
+.choice > span { flex-direction: column; align-items: flex-start; text-align: left; }
+.choice small { color: var(--text-muted); font-weight: 400; }
+.onb-nav { display: flex; justify-content: space-between; margin-top: var(--s4); }
+.lvl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
+.lvl-chip { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-radius: 10px; background: var(--fam); color: var(--fam-ink); font-weight: 700; font-size: 14px; }
+.lvl-chip b { font-family: var(--font-pixel); font-size: 10px; }
