@@ -50,11 +50,12 @@
   - `src/ui/`: `app.js` (controlador), `router.js`, `views/*`, `components/{sprite,sfx,share}`, `styles/{tokens,themes,base}.css`, `i18n/es.js`
   - `src/sw/sw.js`: plantilla del SW; `vite.config.js` le inyecta el precache al compilar
   - `content/`: cartas borrador, mazo y `leveling.json`
+- **Nuevo (F2b, feedback de Brooks):** `src/core/profile.js` (perfil → mazo y niveles base), `src/core/deck-queue.js` (Otro = al fondo), `src/ui/components/tcard.js` (carta estilo personaje con volteo y ranura de video), `src/ui/views/reward.js` (felicitación → progreso → logros), `src/ui/views/onboarding.js` (bienvenida → Google → perfil → aviso), `src/ui/styles/cards.css` (colores por familia y tiers por nivel). El look sigue siendo **interino** hasta el spec de disenador y los assets de director-creativo.
 - **Evidencia:** `docs/evidence/*.png` (390×844, generadas con `scripts/screens.mjs`).
 
 ## Pendientes de Brooks
 
-- **Desplegar las reglas de Firestore:** `npm i -g firebase-tools && firebase login && firebase deploy --only firestore:rules` (desde la raíz del repo; `.firebaserc` apunta a `snapfit-c7beb`). Mientras no se desplieguen, la sincronización puede fallar con `permission-denied` (o quedar abierta si la base se creó en modo de prueba). La app lo muestra como «Sin sincronizar» en Menú.
+- **Desplegar las reglas de Firestore (ahora incluyen `profile`):** `npm i -g firebase-tools && firebase login && firebase deploy --only firestore:rules` (desde la raíz del repo; `.firebaserc` apunta a `snapfit-c7beb`). Mientras no se desplieguen, la sincronización puede fallar con `permission-denied` (o quedar abierta si la base se creó en modo de prueba). La app lo muestra como «Sin sincronizar» en Menú.
 - **Auth → Settings → Authorized domains:** confirmar que está `jjmbrooks.github.io`. Sin ese dominio, «Entrar con Google» falla con `auth/unauthorized-domain`.
 - Probar la instalación en Android Chrome real y un recordatorio.
 - (Opcional) Llenar las cifras de cuota en la bitácora de consumo.

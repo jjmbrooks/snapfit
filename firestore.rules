@@ -16,10 +16,18 @@ service cloud.firestore {
         && request.resource.data.keys().size() <= 20;
     }
 
+    function validProfile(p) {
+      return p.keys().hasOnly(['age', 'sex', 'fitness', 'test', 'deckId', 'baseLevels', 'termsAt', 'updatedAt'])
+        && (!('age' in p) || (p.age is int && p.age >= 13 && p.age <= 100))
+        && (!('sex' in p) || p.sex in ['mujer', 'hombre', 'otro', 'prefiero-no-decir'])
+        && (!('fitness' in p) || p.fitness in ['sedentario', 'ligero', 'activo', 'muy-activo']);
+    }
+
     match /users/{uid} {
       allow read: if isOwner(uid);
       allow create, update: if isOwner(uid)
-        && request.resource.data.keys().hasOnly(['displayName', 'createdAt', 'schemaVersion', 'settings', 'derived']);
+        && request.resource.data.keys().hasOnly(['displayName', 'createdAt', 'schemaVersion', 'settings', 'derived', 'profile'])
+        && (!('profile' in request.resource.data) || validProfile(request.resource.data.profile));
       allow delete: if isOwner(uid);
 
       match /events/{eventId} {

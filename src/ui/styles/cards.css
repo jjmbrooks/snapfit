@@ -1,0 +1,92 @@
+/* Cartas estilo «carta de personaje». Colores FIJOS por familia (las cartas son objetos físicos,
+   no cambian con el tema). Contraste tinta/fondo verificado en tests/ui/contrast.test.js. */
+.fam-piernas   { --fam: #ff7a45; --fam-dark: #a63a12; --fam-ink: #1d0a02; }
+.fam-gluteos   { --fam: #ff5fa2; --fam-dark: #a3195a; --fam-ink: #22030f; }
+.fam-empuje    { --fam: #ffc83d; --fam-dark: #a86f00; --fam-ink: #241700; }
+.fam-traccion  { --fam: #4aa8ff; --fam-dark: #1458a8; --fam-ink: #03172b; }
+.fam-core      { --fam: #58d26b; --fam-dark: #1f7a30; --fam-ink: #04200a; }
+.fam-movilidad { --fam: #2fd4c9; --fam-dark: #0f7d76; --fam-ink: #01211f; }
+.fam-cardio    { --fam: #c77dff; --fam-dark: #6c2bb0; --fam-ink: #1c0630; }
+.tier-1 { --tier: #e09455; } .tier-2 { --tier: #d7dde8; } .tier-3 { --tier: #ffd23f; } .tier-4 { --tier: #ff9df5; }
+
+.deck-under { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.deck-under i { position: absolute; width: min(96cqw, 96cqh * 5 / 7); aspect-ratio: 5 / 7; border-radius: 16px; background: repeating-linear-gradient(45deg, var(--surface-2) 0 6px, var(--surface) 6px 12px); border: 3px solid var(--border); }
+.deck-under i:nth-child(1) { transform: translate(6px, 8px) rotate(2deg); }
+.deck-under i:nth-child(2) { transform: translate(-5px, 5px) rotate(-2deg); }
+
+.tcard {
+  position: relative; width: min(100cqw, 100cqh * 5 / 7); aspect-ratio: 5 / 7;
+  cursor: pointer; outline: none; z-index: 1;
+}
+.tcard:focus-visible .tc-face { outline: 3px solid var(--focus); outline-offset: 3px; }
+.tc-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 560ms cubic-bezier(.3,1.3,.5,1); }
+.tcard.flipped .tc-inner { transform: rotateY(180deg); }
+.tc-face {
+  position: absolute; inset: 0; border-radius: 16px; padding: 8px;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.28) 0 12%, transparent 12% 88%, rgba(0,0,0,.18) 88%),
+    linear-gradient(var(--fam), var(--fam-dark));
+  border: 3px solid var(--tier);
+  box-shadow: 0 0 0 3px #0d0b18, 0 10px 0 0 rgba(0,0,0,.35), 0 18px 28px rgba(0,0,0,.35);
+  display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto auto; gap: 6px;
+  color: var(--fam-ink);
+}
+.tc-back { transform: rotateY(180deg); grid-template-rows: auto auto minmax(0, 1fr); background: linear-gradient(var(--fam-dark), #15122a); color: #f4f2ff; }
+.tc-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.tc-lvl {
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; line-height: 1;
+  background: #15122a; color: var(--tier); border: 3px solid var(--tier);
+  font-family: var(--font-pixel); font-size: 14px;
+}
+.tc-lvl small { font-size: 6px; display: block; margin-bottom: -10px; }
+.tc-fam { flex: 1; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; }
+.tc-back .tc-fam { text-transform: none; font-family: var(--font-pixel); font-size: 11px; color: #fff; }
+.tc-tier { color: var(--tier); font-size: 16px; text-shadow: 1px 1px 0 #0d0b18; letter-spacing: -1px; }
+.tc-art {
+  position: relative; min-height: 0; border-radius: 10px; overflow: hidden;
+  border: 3px solid #0d0b18;
+  background:
+    radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--fam) 45%, transparent) 0, transparent 60%),
+    linear-gradient(#1a1838 0 72%, #2a2650 72%);
+  display: grid; place-items: center;
+  --sprite-fg: #ffffff; --sprite-prop: var(--fam); --sprite-ground: #4b4680;
+}
+.tc-art::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(#ffffff22 1px, transparent 1px); background-size: 12px 12px; }
+.tc-art canvas { position: relative; height: 92%; max-width: 92%; aspect-ratio: 1; image-rendering: pixelated; image-rendering: crisp-edges; }
+.tc-draft { position: absolute; top: 6px; right: 6px; font-family: var(--font-pixel); font-size: 7px; padding: 3px 5px; background: #0d0b18; color: #ffb347; border-radius: 4px; }
+.tc-draft.static { position: static; display: inline-block; justify-self: start; }
+.tc-name {
+  margin: 0; text-align: center; font-size: clamp(11px, 3.6vw, 15px); line-height: 1.35;
+  background: #fff8e8; color: #1b1300; padding: 7px 8px; border-radius: 6px;
+  border: 3px solid #0d0b18; box-shadow: 0 3px 0 rgba(0,0,0,.3);
+}
+.tc-stats { display: grid; grid-template-columns: 1.4fr 1fr; gap: 6px; }
+.tc-stats > div { background: rgba(255,255,255,.55); border-radius: 6px; padding: 4px 8px; border: 2px solid rgba(0,0,0,.25); }
+.tc-k { display: block; font-size: 10px; font-weight: 800; text-transform: uppercase; opacity: .8; }
+.tc-stats b { font-family: var(--font-pixel); font-size: clamp(10px, 3.4vw, 14px); }
+.tc-foot { display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 11px; font-weight: 700; }
+.tc-pips { display: inline-grid; grid-template-columns: repeat(10, 7px); gap: 2px; }
+.tc-pips i { height: 7px; background: rgba(0,0,0,.25); border-radius: 1px; }
+.tc-pips i.on { background: #0d0b18; }
+.tc-hint { opacity: .85; text-align: right; }
+.tc-video { width: 100%; aspect-ratio: 16 / 10; border-radius: 10px; border: 3px solid #0d0b18; background: #12102a; object-fit: cover; }
+.tc-video.placeholder { display: grid; place-items: center; position: relative; --sprite-fg: #ffffff; --sprite-prop: var(--fam); --sprite-ground: #4b4680; }
+.tc-video.placeholder canvas { height: 80%; aspect-ratio: 1; image-rendering: pixelated; }
+.tc-video.placeholder span { position: absolute; bottom: 4px; left: 6px; right: 6px; font-size: 10px; color: #c9c5ee; text-align: center; }
+.tc-info { overflow-y: auto; font-size: 13px; line-height: 1.4; padding-right: 2px; }
+.tc-info ol { margin: 0 0 6px; padding-left: 18px; }
+.tc-info p { margin: 0 0 6px; }
+.tc-warn { color: #ffd08a; }
+.tc-meta { color: #c9c5ee; }
+.tc-meta a { color: #8fe9ff; }
+
+/* Animaciones del mazo */
+.tcard.deal-in { animation: deal-in 420ms cubic-bezier(.2,1.2,.4,1) both; }
+.tcard.deal-under { animation: deal-under 380ms ease-out both; }
+.tcard.played { animation: played 380ms ease-in both; }
+.tcard.to-bottom { animation: to-bottom 320ms ease-in both; }
+@keyframes deal-in { from { transform: translate(60%, -20%) rotate(18deg) scale(.8); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes deal-under { from { transform: translateY(6%) scale(.94); filter: brightness(.7); } to { transform: none; filter: none; } }
+@keyframes played { to { transform: translateY(-40%) rotate(-8deg) scale(1.05); opacity: 0; } }
+@keyframes to-bottom { to { transform: translateY(18%) scale(.9) rotate(4deg); opacity: 0; filter: brightness(.5); } }

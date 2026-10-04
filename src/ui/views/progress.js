@@ -1,5 +1,5 @@
 import { esc } from '../dom.js';
-import { GROUP_NAMES, BADGES } from '../i18n/es.js';
+import { GROUP_NAMES, BADGES, FAMILY_ICONS } from '../i18n/es.js';
 import { MUSCLE_GROUPS } from '../../core/index.js';
 import { hud } from './card.js';
 
@@ -10,13 +10,14 @@ export function renderProgress(app) {
   const lv = MUSCLE_GROUPS.map((g) => {
     const n = d.levels.byGroup[g];
     const segs = Array.from({ length: 10 }, (_, i) => `<span class="seg ${i < n ? 'on' : ''}"></span>`).join('');
-    return `<div class="lvl-row"><span>${esc(GROUP_NAMES[g])}</span><span class="segs" aria-label="Nivel ${n} de 10">${segs}</span><span class="lvl-n">${n}</span></div>`;
+    return `<div class="lvl-row fam-${g}"><span>${FAMILY_ICONS[g]} ${esc(GROUP_NAMES[g])}</span><span class="segs" aria-label="Nivel ${n} de 10">${segs}</span><span class="lvl-n">${n}</span></div>`;
   }).join('');
   const recentBadges = d.badges.slice(-3).map((b) => `<span class="chip">🏅 ${esc(BADGES[b]?.[0] || b)}</span>`).join('');
-  return `
+  return `<div class="page">
     <h2>Progreso</h2>
     <div class="card" style="gap:var(--s2)">
       <div class="row" style="justify-content:space-between">${hud(app.state)}</div>
+      <div class="bar big"><i style="width:${Math.min(100, Math.round((d.todayCount / d.dailyGoal) * 100))}%"></i></div>
       <p class="small muted" style="margin:0">Hoy: ${d.todayCount} de ${d.dailyGoal} cartas · Racha: ${d.streak.current} días (mejor: ${d.maxStreak})${d.streak.wildcardUsedThisWeek ? ' · comodín usado esta semana' : ''}</p>
     </div>
     <div class="stats" style="margin-top:var(--s4)">
@@ -30,5 +31,5 @@ export function renderProgress(app) {
     <div class="histo" aria-label="Cartas por día, últimos 30 días">${bars}</div>
     <h3>Insignias (${d.badges.length})</h3>
     <div class="chips">${recentBadges || '<span class="muted small">Completa tu primera carta para ganar la primera.</span>'}</div>
-    <p style="margin-top:var(--s4)"><a class="btn" href="#/logros">🏆 Ver vitrina de logros</a></p>`;
+    <p style="margin-top:var(--s4)"><a class="btn" href="#/logros">🏆 Ver vitrina de logros</a></p></div>`;
 }

@@ -11,3 +11,5 @@ export * from './deck-engine.js';
 export * from './schedule.js';
 export * from './derive.js';
 export * from './export.js';
+export * from './profile.js';
+export * from './deck-queue.js';

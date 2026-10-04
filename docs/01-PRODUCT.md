@@ -1,13 +1,31 @@
 # 01: Producto (UX, pantallas, mecánicas, insignias, temas)
 
-## 1. Flujo núcleo
+## 1. Flujo núcleo (revisado el 2026-10-03 tras la prueba de Brooks en Android)
+
+**Primera vez** (onboarding, 4 pasos, sin barra inferior):
 
 ```
-Abrir app ──► CARTA (inmediata, sin login, sin splash > 1 s)
-               ├─ [¡Listo!]     → animación de recompensa (+XP, círculo del día) → siguiente carta opcional
-               ├─ [Otra carta]  → baraja otra (sin penalización; cuenta "saltos" para el motor)
-               └─ (opcional) ¿Cómo estuvo?  😌 fácil · 🙂 bien · 😤 duro   (1 toque, se puede omitir)
-Barra inferior siempre visible: [Carta] [Progreso] [Menú]
+1. Bienvenida: historia y tema (mundo provisional «El Reino de Pixelandia»; el final lo escribe storyteller)
+2. Entrar con Google (OBLIGATORIO la primera vez; necesita red)
+3. Perfil: edad (13+), sexo, condición física + prueba rápida de 3 preguntas
+   → resumen «Tu mazo está listo» (mazo elegido y nivel inicial por grupo, calculados en src/core/profile.js)
+4. Aviso de salud y privacidad (corto) + opt-in de estadísticas → a jugar
+```
+
+Después del primer login, la app **abre directo en la carta aunque no haya red** (continuidad offline): el `accountUid` queda guardado en el dispositivo.
+
+**Mecánica de mazo** (pantalla Carta):
+
+```
+Abrir app ──► UNA carta (estilo carta de personaje: marco, ilustración, nivel, color por grupo muscular)
+               ├─ toca la carta      → volteo 3D: reverso con video del movimiento (placeholder hasta los assets),
+               │                       pasos, claves y precauciones
+               ├─ [¡Listo!]          → pantalla de felicitación (+XP, esfuerzo opcional fácil/bien/duro)
+               │                       → pantalla de progreso (mazo del día, racha, barra por grupo, nivel global)
+               │                       → pantalla de logros / subidas de nivel (solo si hay)
+               │                       → siguiente carta
+               └─ [Otro]             → la carta se va al FONDO del mazo y aparece la siguiente
+Barra inferior: [Carta] [Progreso] [Menú]. Nunca tapa el contenido (layout en grid, no fija).
 ```
 
 - La carta aparece en **menos de 1 s** desde el caché (Service Worker + IndexedDB).
@@ -23,7 +41,8 @@ Barra inferior siempre visible: [Carta] [Progreso] [Menú]
 | `#/progreso` | **Progreso** | Mazo del día (círculos), racha, nivel global y nivel por grupo (barras pixel), historial de 7 y 30 días, insignias |
 | `#/logros` | Logros | Vitrina de insignias (bloqueadas en silueta), botón **Compartir** |
 | `#/menu` | **Menú / Personalización** | Tema, lugar (casa/oficina/parque/aula), zonas a cuidar, mazo activo, recordatorios, sonido on/off, movimiento reducido, cuenta (Google), exportar/importar datos, créditos y licencias |
-| `#/onboarding` | Primera vez (≤ 3 pantallas) | Edad 13+ (confirmación), aviso de salud, lugar y zonas a cuidar. Se puede saltar y ofrece la carta de inmediato |
+| (onboarding) | Primera vez | Bienvenida con historia → Entrar con Google → perfil (edad, sexo, condición, prueba rápida) → aviso de salud. Se muestra mientras falte algún paso |
+| `#/perfil` | Editar perfil | Repite el perfil y la prueba; recalcula el mazo y los niveles base |
 
 ## 3. Mecánicas de juego
 

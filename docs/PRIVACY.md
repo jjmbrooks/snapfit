@@ -5,21 +5,24 @@
 
 SnapFit es una aplicación web progresiva (PWA) gratuita y de código abierto para hacer microsesiones de ejercicio. Este aviso explica qué datos se tratan, para qué y cómo puedes controlarlos.
 
-## 1. Sin cuenta (modo predeterminado)
+## 1. Datos en tu dispositivo
 
-- Tu progreso (cartas hechas, saltadas, esfuerzo opcional, preferencias) se guarda **solo en tu dispositivo** (IndexedDB del navegador).
+- Tu progreso (cartas hechas, saltadas, esfuerzo opcional, preferencias) y tu perfil de juego se guardan en tu dispositivo (IndexedDB del navegador), y la app funciona sin internet después del primer inicio de sesión.
 - No se usan GPS, cámara, micrófono, contactos ni fotos.
-- No se pide nombre, correo ni fecha de nacimiento. Solo confirmas que tienes **13 años o más**.
+- No se pide fecha de nacimiento.
 
-## 2. Con cuenta de Google (opcional)
+## 2. Cuenta de Google (obligatoria la primera vez)
 
-Si eliges «Entrar con Google»:
+Para empezar a jugar entras con Google una vez. Después, SnapFit funciona aunque no tengas conexión.
 
 | Dato | Servicio | Finalidad |
 |------|----------|-----------|
 | Identificador de cuenta (uid), nombre y correo de Google | Firebase Authentication (Google) | Identificarte y mostrar con qué cuenta entraste. SnapFit **no copia** tu nombre ni correo a su base de datos |
+| Perfil de juego: edad en años, sexo, condición física, respuestas de la prueba rápida, mazo asignado, niveles iniciales y fecha de aceptación del aviso | Tu dispositivo y Cloud Firestore `users/{uid}.profile` | Elegir tu mazo y tu nivel inicial, y recuperarlos en otro teléfono. Puedes cambiarlo en Menú → Mi perfil |
 | Eventos de ejercicio: id, tipo (`card_done`, `card_skipped`, `effort_rated`), fecha y hora, desfase horario, id de carta, nivel, grupos musculares, esfuerzo opcional, lugar elegido | Cloud Firestore (región `nam5`, EE. UU.) en `users/{uid}/events` | Respaldar tu progreso y sincronizarlo entre tus dispositivos |
 | Resumen derivado (XP, niveles, racha, insignias) | Cloud Firestore `users/{uid}` | Caché del progreso |
+
+El perfil **no se envía a Analytics** (las estadísticas anónimas solo usan una lista cerrada de eventos sin datos personales).
 
 Las reglas de seguridad de Firestore (`firestore.rules`) permiten que **solo tu cuenta** lea y escriba tus datos.
 

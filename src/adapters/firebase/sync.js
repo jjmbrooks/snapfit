@@ -85,3 +85,16 @@ export async function deleteCloudData(uid) {
   await batch.commit();
   await fs.deleteDoc(fs.doc(d, 'users', uid));
 }
+
+/** Guarda el perfil del jugador en users/{uid}.profile (merge). */
+export async function saveCloudProfile(uid, profile) {
+  const d = await load();
+  await fs.setDoc(fs.doc(d, 'users', uid), { schemaVersion: 1, profile: clean({ ...profile, updatedAt: Date.now() }) }, { merge: true });
+}
+
+/** Lee users/{uid}.profile (o null). */
+export async function fetchCloudProfile(uid) {
+  const d = await load();
+  const snap = await fs.getDoc(fs.doc(d, 'users', uid));
+  return snap.exists() ? snap.data().profile || null : null;
+}

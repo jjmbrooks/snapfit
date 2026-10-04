@@ -1,152 +1,94 @@
 import { esc } from '../dom.js';
-import { GROUP_NAMES, PLACE_NAMES, ZONE_NAMES, EFFORT_NAMES, REWARDS } from '../i18n/es.js';
-import { mountSprite } from '../components/sprite.js';
+import { ZONE_NAMES } from '../i18n/es.js';
+import { cardHTML, bindCard as bindTCard, doseLabel } from '../components/tcard.js';
+import { runRewardSequence } from './reward.js';
 
-export function doseLabel(c) {
-  const d = c.dose || {};
-  if (d.type === 'reps') return `${d.reps} reps${d.perSide ? ' / lado' : ''}`;
-  if (d.type === 'hold') return `${d.durationSec} s sostén`;
-  return `${d.durationSec} s`;
-}
+export { doseLabel };
 
-export function hud(s, compact = false) {
+/** Mini HUD de la barra superior: progreso del día + racha. */
+export function hud(s) {
   const d = s.derived;
-  const goal = d.dailyGoal;
-  const dots = Array.from({ length: Math.max(goal, d.todayCount) }, (_, i) => `<span class="dot ${i < d.todayCount ? 'on' : ''}"></span>`).join('');
-  const week = d.streak.last7.map((x) => `<span class="dot ${x.active ? 'on' : x.wildcard ? 'wild' : ''}" title="${x.day}"></span>`).join('');
+  const pct = Math.min(100, Math.round((d.todayCount / d.dailyGoal) * 100));
   return `
-    <div class="hud" aria-label="Mazo del día: ${d.todayCount} de ${goal}">
-      <div class="dots" title="Mazo del día">${dots}</div>
+    <div class="hud-day" aria-label="Hoy ${d.todayCount} de ${d.dailyGoal} cartas">
+      <span class="hud-k">Hoy</span>
+      <span class="bar"><i style="width:${pct}%"></i></span>
+      <span class="hud-n">${d.todayCount}/${d.dailyGoal}</span>
     </div>
-    <div class="streak" aria-label="Racha: ${d.streak.current} días">🔥${d.streak.current}${compact ? '' : `<span class="dots" style="margin-left:6px">${week}</span>`}</div>`;
+    <div class="hud-streak" aria-label="Racha de ${d.streak.current} días">🔥<b>${d.streak.current}</b></div>`;
 }
 
 export function renderCard(app) {
   const s = app.state;
   const c = s.card;
-  const banners = [];
-  if (s.reminderDue) banners.push(`<div class="banner" role="status"><span>⏰ ¡Hora de una carta! Tu mazo te espera.</span><button class="btn btn-ghost" data-act="dismiss-rem" aria-label="Cerrar aviso">✕</button></div>`);
+  const rem = s.reminderDue
+    ? `<div class="banner" role="status"><span>⏰ ¡Hora de una carta!</span><button class="btn btn-ghost btn-sm" data-act="dismiss-rem" aria-label="Cerrar aviso">✕</button></div>`
+    : '';
   if (!c) {
-    return `${banners.join('')}<div class="card"><p class="card-name">Sin cartas</p><p>No hay cartas que cumplan tus filtros (lugar y zonas a cuidar). Ajusta tu <a href="#/menu">menú</a>.</p></div>`;
+    return `${rem}<div class="empty"><p class="pixel">Sin cartas</p><p>Ninguna carta cumple tus filtros (lugar y zonas a cuidar). Ajusta el <a href="#/menu">menú</a>.</p></div>`;
   }
-  const d = s.derived;
-  const lvl = d.levels.byGroup[c.primaryGroup];
-  const zones = (c.careZones || []).map((z) => `<span class="chip warn">⚠ ${esc(ZONE_NAMES[z] || z)}</span>`).join('');
   return `
-  ${banners.join('')}
-  <article class="card" aria-labelledby="card-name">
-    ${c.draft ? `<div class="draft-badge" title="${esc(c.draftNote || '')}">BORRADOR · pendiente de Entrenador</div>` : ''}
-    <div class="card-sprite"><canvas id="sprite" role="img" aria-label="Animación: ${esc(c.name)}"></canvas></div>
-    <h2 class="card-name" id="card-name">${esc(c.name)}</h2>
-    <div class="row" style="justify-content:space-between">
-      <span class="dose">${esc(doseLabel(c))}</span>
-      <span class="chip">Nv ${c.level} · tu nivel ${lvl}</span>
+  <div class="play">
+    ${rem}
+    <div class="stage" id="stage">
+      <div class="deck-under" aria-hidden="true"><i></i><i></i></div>
+      ${cardHTML(c, { playerLevel: s.derived.levels.byGroup[c.primaryGroup] })}
     </div>
-    <div class="actions">
-      <button class="btn btn-primary btn-big" data-act="done">¡Listo!</button>
-      <button class="btn btn-big" data-act="skip" style="font-size:10px;padding:8px">Otra<br>carta</button>
+    <div class="play-actions">
+      <button class="btn btn-primary btn-listo" data-act="done">¡Listo!</button>
+      <button class="btn btn-otro" data-act="skip" aria-label="Otro: manda esta carta al fondo del mazo">Otro ⤵</button>
     </div>
-    <div class="chips">
-      ${c.muscleGroups.map((g) => `<span class="chip">${esc(GROUP_NAMES[g] || g)}</span>`).join('')}
-      ${c.locations.map((l) => `<span class="chip">📍${esc(PLACE_NAMES[l] || l)}</span>`).join('')}
-    </div>
-    ${zones ? `<div class="chips" aria-label="Zonas a cuidar">${zones}</div>` : ''}
-    ${c.dose?.type !== 'reps' ? `<div class="row" style="justify-content:space-between"><button class="btn" data-act="timer">▶ Temporizador</button><span class="timer" id="timer" aria-live="polite">${c.dose.durationSec}s</span></div>` : ''}
-    <details class="steps">
-      <summary>Cómo se hace</summary>
-      <ol>${c.steps.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
-      ${c.cues?.length ? `<p class="small muted">Clave: ${c.cues.map(esc).join(' · ')}</p>` : ''}
-      ${c.contraindications?.length ? `<p class="small">⚠ ${c.contraindications.map(esc).join(' ')}</p>` : ''}
-      <p class="small"><a href="#/carta/${esc(c.id)}">Ver ficha completa</a></p>
-    </details>
-  </article>`;
+    <p class="deck-count">${app.deckSize()} cartas en tu mazo · toca la carta para ver cómo se hace</p>
+  </div>`;
 }
 
-export function bindCard(root, app) {
+export function bindCard(root, app, { dealt } = {}) {
   const s = app.state;
+  const el = root.querySelector('.tcard');
+  const reduced = s.profile.reducedMotion || matchMedia('(prefers-reduced-motion: reduce)').matches;
   let stop = () => {};
-  let timerId = null;
-  const canvas = root.querySelector('#sprite');
-  if (canvas && s.card) stop = mountSprite(canvas, s.card.sprite, { reducedMotion: s.profile.reducedMotion || matchMedia('(prefers-reduced-motion: reduce)').matches });
-
+  if (el && s.card) {
+    stop = bindTCard(el, s.card, { reducedMotion: reduced });
+    if (dealt && !reduced) el.classList.add(dealt === 'skip' ? 'deal-under' : 'deal-in');
+  }
   root.addEventListener('click', async (ev) => {
     const btn = ev.target.closest('[data-act]');
     if (!btn) return;
     const act = btn.dataset.act;
     if (act === 'done') {
-      btn.disabled = true;
+      root.querySelectorAll('[data-act]').forEach((b) => (b.disabled = true));
+      if (el && !reduced) { el.classList.add('played'); await wait(380); }
       const r = await app.done();
-      if (r) showReward(app, r);
+      if (r) await runRewardSequence(app, r);
+      app.lastDeal = 'done';
+      app.emit();
     } else if (act === 'skip') {
+      root.querySelectorAll('[data-act]').forEach((b) => (b.disabled = true));
+      if (el && !reduced) { el.classList.add('to-bottom'); await wait(320); }
+      app.lastDeal = 'skip';
       app.skip();
     } else if (act === 'dismiss-rem') {
       app.dismissReminder();
-    } else if (act === 'timer') {
-      const el = root.querySelector('#timer');
-      let left = s.card.dose.durationSec;
-      clearInterval(timerId);
-      btn.textContent = '⏸ En marcha…';
-      btn.disabled = true;
-      timerId = setInterval(() => {
-        left -= 1;
-        el.textContent = `${left}s`;
-        if (left <= 0) {
-          clearInterval(timerId);
-          el.textContent = '¡Tiempo!';
-          btn.disabled = false;
-          btn.textContent = '↻ Otra vez';
-          if (navigator.vibrate) navigator.vibrate([80, 60, 80]);
-        }
-      }, 1000);
     }
   });
-  return () => { stop(); clearInterval(timerId); };
+  return stop;
 }
 
-function showReward(app, r) {
-  const o = document.createElement('div');
-  o.className = 'overlay';
-  o.setAttribute('role', 'dialog');
-  o.setAttribute('aria-modal', 'true');
-  o.setAttribute('aria-label', 'Recompensa');
-  const title = REWARDS[Math.floor(Math.random() * REWARDS.length)];
-  o.innerHTML = `
-    <div class="panel">
-      <div class="reward-title" aria-live="assertive">${esc(title)}</div>
-      <div class="xp">+${r.xp} XP</div>
-      <div class="hud" style="justify-content:center">${hud(app.state).split('<div class="streak"')[0]}</div>
-      <p class="muted small" style="margin:0">¿Cómo estuvo? (opcional)</p>
-      <div class="effort">
-        ${Object.entries(EFFORT_NAMES).map(([k, v]) => `<button class="btn" data-effort="${k}">${v}</button>`).join('')}
-      </div>
-      <button class="btn btn-primary" data-next>Siguiente carta ▶</button>
-    </div>`;
-  document.body.appendChild(o);
-  o.querySelector('[data-next]').focus();
-  const close = async (effort) => {
-    o.remove();
-    if (effort) await app.rate(r.event.id, effort);
-    app.next();
-  };
-  o.addEventListener('click', (ev) => {
-    const b = ev.target.closest('button');
-    if (!b) return;
-    close(b.dataset.effort || null);
-  });
-}
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export function renderCardDetail(app, id) {
   const c = app.byId.get(id);
   if (!c) return `<p>Carta no encontrada. <a href="#/">Volver</a></p>`;
   const src = c.sources?.length
     ? `<ul>${c.sources.map((x) => `<li>${esc(x.citation)} ${x.doi ? `doi:${esc(x.doi)}` : ''} ${x.url ? `<a href="${esc(x.url)}" rel="noopener" target="_blank">enlace</a>` : ''}</li>`).join('')}</ul>`
-    : `<p class="muted">Fuentes pendientes: esta carta es un <b>borrador</b> y no tiene citas todavía. Entrenador entregará la versión validada con referencias.</p>`;
+    : `<p class="muted">Fuentes pendientes: esta carta es un <b>borrador</b> sin citas todavía. Entrenador entregará la versión validada con referencias.</p>`;
   return `
+    <div class="page">
     <p><a href="#/">← Volver a la carta</a></p>
-    <article class="card">
-      ${c.draft ? `<div class="draft-badge">BORRADOR · pendiente de Entrenador</div>` : ''}
-      <h2 class="card-name">${esc(c.name)}</h2>
-      <p class="dose">${esc(doseLabel(c))}</p>
+    <article class="panel-card">
+      ${c.draft ? `<span class="tc-draft static">BORRADOR · pendiente de Entrenador</span>` : ''}
+      <h2>${esc(c.name)}</h2>
+      <p class="big-num">${esc(doseLabel(c))}</p>
       <h3>Pasos</h3><ol>${c.steps.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
       <h3>Claves</h3><p>${(c.cues || []).map(esc).join(' · ') || '—'}</p>
       <h3>Variantes</h3>
@@ -157,5 +99,5 @@ export function renderCardDetail(app, id) {
       <p class="small">${(c.contraindications || []).map(esc).join(' ')}</p>
       <h3>Fuentes</h3>${src}
       <p class="small muted">Licencia del contenido: CC BY 4.0 · SnapFit</p>
-    </article>`;
+    </article></div>`;
 }

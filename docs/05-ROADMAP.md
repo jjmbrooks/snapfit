@@ -82,5 +82,6 @@ Brooks quiere medir el consumo de tokens y cuota por fase de desarrollo. **Cada 
 |------|-------|--------|-------------------------|-------------------------|------------------------------|
 | F0 | 2026-10-03 | Codelius (Grok Bot) | Repo, docs F0, épica y 5 tarjetas Kanban. Una sesión | — | — |
 | F1 (+F2 parcial, F3 código, recordatorios F4) | 2026-10-03 | Codelius (Grok Bot) | Una sesión larga: unos 45 archivos nuevos (core + 47 tests, UI, SW, adaptadores Firebase, CI, docs PRIVACY/roadmap/handoff), varias iteraciones de layout con capturas headless. Sin Runica | — | — |
+| F2b (feedback Android de Brooks) | 2026-10-03 | Codelius (Grok Bot) | Una sesión: fix de barra inferior, onboarding con Google + perfil→mazo/nivel (core + tests), mecánica de mazo Listo/Otro, carta con volteo 3D, secuencia felicitación→progreso→logros, nuevo `scripts/screens.mjs`. Comentarios Kanban a 5 tarjetas. Sin generación de imagen/video (no hay herramienta disponible) | — | — |
 
 Guía para la columna de esfuerzo: número de sesiones o turnos, archivos tocados y si hubo reintentos. Desde el 2026-10-04, los slices de Runica van en filas propias con el ID de su tarjeta.

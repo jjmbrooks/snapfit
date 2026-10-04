@@ -1,10 +1,12 @@
 // Controlador de la UI: compone core + adaptadores. La lógica de dominio vive en src/core.
 import {
-  deriveState, diffState, nextCard, makeEvent, buildExport, eventsToCsv, importExport,
+  deriveState, diffState, makeEvent, buildExport, eventsToCsv, importExport,
   slotsFor, dueReminder, THEMES, MUSCLE_GROUPS,
+  syncDeck, topCard, sendToBottom, discardTop,
+  validateProfile, recommendDeck, initialLevels,
 } from '../core/index.js';
-import { GROUP_NAMES, BADGES, REMINDER_COPY } from './i18n/es.js';
-import { toast, download } from './dom.js';
+import { REMINDER_COPY } from './i18n/es.js';
+import { download } from './dom.js';
 import { playSfx } from './components/sfx.js';
 import { track, initAnalytics, setAnalyticsEnabled } from '../adapters/firebase/analytics.js';
 import { showReminder, registerPeriodicReminder } from '../adapters/notify-local.js';
@@ -12,9 +14,10 @@ import { showReminder, registerPeriodicReminder } from '../adapters/notify-local
 export function defaultProfile() {
   const dark = typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme: dark)').matches;
   return {
-    schemaVersion: 1,
-    onboarded: false,
-    age13: false,
+    schemaVersion: 2,
+    accountUid: null, // se fija tras el primer login con Google; luego la app abre aunque no haya red
+    player: null, // { age, sex, fitness, test, deckId, baseLevels }
+    termsAt: null,
     theme: dark ? 'medianoche' : 'manana',
     places: [],
     careZones: [],
@@ -24,21 +27,29 @@ export function defaultProfile() {
     analytics: true,
     reminders: { pattern: 'off', customTimes: ['12:00'] },
     levelOverrides: {},
-    currentCardId: null,
   };
 }
 
-export function createApp({ storage, clock, cards, deckId, leveling, appVersion }) {
+/** Paso pendiente del onboarding o null si ya puede jugar. */
+export function onboardingStep(p) {
+  if (!p.accountUid) return 'welcome';
+  if (!p.player || validateProfile(p.player)) return 'profile';
+  if (!p.termsAt) return 'terms';
+  return null;
+}
+
+export function createApp({ storage, clock, cards, decks, leveling, appVersion }) {
   const listeners = new Set();
   const byId = new Map(cards.map((c) => [c.id, c]));
+  const deckIds = decks.map((d) => d.id);
   const s = {
     profile: defaultProfile(),
     events: [],
     derived: null,
+    deck: null,
     card: null,
     user: null,
     sync: { status: 'idle', lastAt: null, error: null },
-    updateReady: null,
     reminderDue: null,
     online: typeof navigator !== 'undefined' ? navigator.onLine : true,
     notified: [],
@@ -47,6 +58,12 @@ export function createApp({ storage, clock, cards, deckId, leveling, appVersion 
 
   const emit = () => listeners.forEach((fn) => fn(s));
   const ctx = () => ({ now: clock.now(), tzOffsetMin: clock.tzOffsetMin(), device: 'pwa' });
+  const deckId = () => s.profile.player?.deckId || 'adulto-general';
+  const deckCards = () => {
+    const id = deckId();
+    const list = cards.filter((c) => (c.decks || []).includes(id));
+    return list.length ? list : cards;
+  };
 
   function recompute() {
     s.derived = deriveState(s.events, {
@@ -55,24 +72,22 @@ export function createApp({ storage, clock, cards, deckId, leveling, appVersion 
       dailyGoal: s.profile.dailyGoal,
       leveling,
       levelOverrides: s.profile.levelOverrides,
+      baseLevels: s.profile.player?.baseLevels,
     });
   }
 
-  function pickCard(excludeId) {
+  function engineCtx() {
     const d = s.derived;
-    const c = nextCard(cards, {
-      levels: d.levels.byGroup,
-      places: s.profile.places,
-      careZones: s.profile.careZones,
-      recent: d.recent,
-      todayGroups: d.todayGroups,
-      weekGroups: d.weekGroups,
-      excludeId,
-      now: clock.now(),
-    });
-    s.card = c;
-    s.profile.currentCardId = c?.id ?? null;
-    storage.saveProfile(s.profile);
+    return {
+      levels: d.levels.byGroup, places: s.profile.places, careZones: s.profile.careZones,
+      recent: d.recent, todayGroups: d.todayGroups, weekGroups: d.weekGroups, now: clock.now(),
+    };
+  }
+
+  function refreshDeck() {
+    s.deck = syncDeck(deckCards(), engineCtx(), s.deck, Math.random);
+    s.card = byId.get(topCard(s.deck)) || null;
+    storage.setMeta('deck', s.deck);
   }
 
   function applyTheme() {
@@ -90,16 +105,29 @@ export function createApp({ storage, clock, cards, deckId, leveling, appVersion 
     return e;
   }
 
-  function cardIsAllowed(c) {
-    return c && !(c.careZones || []).some((z) => s.profile.careZones.includes(z));
+  async function saveProfile() {
+    await storage.saveProfile(s.profile);
+  }
+
+  async function pushCloudProfile() {
+    if (!s.user || !s.profile.player || !navigator.onLine) return;
+    try {
+      const { saveCloudProfile } = await import('../adapters/firebase/sync.js');
+      const { age, sex, fitness, test, deckId: dk, baseLevels } = s.profile.player;
+      await saveCloudProfile(s.user.uid, { age, sex, fitness, test, deckId: dk, baseLevels, termsAt: s.profile.termsAt });
+    } catch (e) {
+      console.warn('[perfil nube]', e?.code || e);
+    }
   }
 
   const app = {
     state: s,
     cards,
     byId,
+    decks,
     subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); },
     emit,
+    step: () => onboardingStep(s.profile),
 
     async init() {
       const saved = await storage.getProfile();
@@ -107,39 +135,86 @@ export function createApp({ storage, clock, cards, deckId, leveling, appVersion 
       s.profile.reminders = { ...defaultProfile().reminders, ...(s.profile.reminders || {}) };
       s.events = await storage.allEvents();
       s.notified = (await storage.getMeta('notified')) || [];
+      s.deck = (await storage.getMeta('deck')) || null;
       applyTheme();
       recompute();
-      const keep = byId.get(s.profile.currentCardId);
-      if (cardIsAllowed(keep)) s.card = keep; else pickCard();
-      if (s.profile.onboarded) initAnalytics(s.profile.analytics);
+      refreshDeck();
+      if (!app.step()) initAnalytics(s.profile.analytics);
       app.writeReminderState();
       emit();
     },
 
-    /** ¡Listo! → evento + recompensa. Devuelve info para la animación. */
+    // ---------- onboarding ----------
+    /** Tras el login con Google: vincula la cuenta y recupera el perfil de la nube si existe. */
+    async linkAccount(user) {
+      const changed = s.profile.accountUid !== user.uid;
+      s.profile.accountUid = user.uid;
+      if (changed || !s.profile.player) {
+        try {
+          const { fetchCloudProfile } = await import('../adapters/firebase/sync.js');
+          const remote = await fetchCloudProfile(user.uid);
+          if (remote && !validateProfile(remote)) {
+            const { termsAt, updatedAt, ...player } = remote;
+            s.profile.player = { ...player, ...derivePlayer(player) };
+            s.profile.termsAt = termsAt || s.profile.termsAt;
+          }
+        } catch (e) {
+          console.warn('[perfil nube] no disponible', e?.code || e);
+        }
+      }
+      await saveProfile();
+      recompute();
+      refreshDeck();
+      emit();
+    },
+
+    previewPlayer(player) {
+      return derivePlayer(player);
+    },
+
+    async setPlayer(player) {
+      const err = validateProfile(player);
+      if (err) throw new Error(err);
+      s.profile.player = { ...player, ...derivePlayer(player) };
+      await saveProfile();
+      recompute();
+      s.deck = null; // nuevo mazo para el nuevo perfil
+      refreshDeck();
+      pushCloudProfile();
+      emit();
+    },
+
+    async acceptTerms({ analytics }) {
+      s.profile.termsAt = new Date(clock.now()).toISOString();
+      s.profile.analytics = !!analytics;
+      await saveProfile();
+      pushCloudProfile();
+      initAnalytics(s.profile.analytics);
+      emit();
+    },
+
+    // ---------- mecánica de mazo ----------
+    /** «Listo»: registra, descarta la carta y devuelve datos para la secuencia de felicitación. */
     async done() {
       const c = s.card;
       if (!c) return null;
       const before = s.derived;
       const e = await addEvent('card_done', {
-        cardId: c.id, deckId, level: c.level, groups: c.muscleGroups,
+        cardId: c.id, deckId: deckId(), level: c.level, groups: c.muscleGroups,
         place: s.profile.places.length === 1 ? s.profile.places[0] : null,
         reps: c.dose?.reps ?? null, durationSec: c.dose?.durationSec ?? null,
       });
       recompute();
       const diff = diffState(before, s.derived);
+      s.deck = discardTop(deckCards(), engineCtx(), s.deck, Math.random);
+      refreshDeck();
       track('card_done', { card_level: c.level, muscle_group: c.primaryGroup });
       for (const lc of diff.levelChanges) if (lc.to > lc.from) track('level_up', { muscle_group: lc.group, level: lc.to });
       if (s.profile.sound) playSfx(diff.levelChanges.length ? 'nivel' : diff.newBadges.length ? 'logro' : 'listo');
-      for (const b of diff.newBadges) toast('¡Insignia desbloqueada!', BADGES[b]?.[0] ?? b, 4500);
-      for (const lc of diff.levelChanges) {
-        toast(lc.to > lc.from ? '¡Subiste de nivel!' : 'Ajuste de nivel', `${GROUP_NAMES[lc.group]}: nivel ${lc.to}`, 4500);
-      }
       s.reminderDue = null;
       app.writeReminderState();
       app.autoSync();
-      emit();
-      return { event: e, card: c, xp: s.derived.xp - before.xp, diff };
+      return { event: e, card: c, xp: s.derived.xp - before.xp, diff, before, after: s.derived };
     },
 
     async rate(refId, effort) {
@@ -148,39 +223,35 @@ export function createApp({ storage, clock, cards, deckId, leveling, appVersion 
       app.autoSync();
     },
 
-    next() { pickCard(s.card?.id); emit(); },
-
+    /** «Otro»: la carta va al fondo del mazo y se muestra la siguiente. */
     async skip() {
       const c = s.card;
       if (c) {
-        await addEvent('card_skipped', { cardId: c.id, deckId, level: c.level, groups: c.muscleGroups });
+        await addEvent('card_skipped', { cardId: c.id, deckId: deckId(), level: c.level, groups: c.muscleGroups });
         track('card_skip', { card_level: c.level, muscle_group: c.primaryGroup });
         if (s.profile.sound) playSfx('otra');
       }
       recompute();
-      pickCard(c?.id);
+      s.deck = sendToBottom(s.deck);
+      refreshDeck();
       emit();
     },
+
+    deckSize: () => (s.deck ? s.deck.draw.length + s.deck.discard.length : 0),
 
     async updateProfile(patch) {
       const prevTheme = s.profile.theme;
       s.profile = { ...s.profile, ...patch };
-      await storage.saveProfile(s.profile);
+      await saveProfile();
       applyTheme();
       if (patch.theme && patch.theme !== prevTheme) track('theme_change', { theme: patch.theme });
       if ('analytics' in patch) { setAnalyticsEnabled(patch.analytics); if (patch.analytics) initAnalytics(true); }
-      if ('careZones' in patch || 'places' in patch) { recompute(); if (!cardIsAllowed(s.card) || 'places' in patch) pickCard(); }
-      if ('dailyGoal' in patch || 'levelOverrides' in patch) recompute();
+      if ('careZones' in patch || 'places' in patch || 'dailyGoal' in patch || 'levelOverrides' in patch) { recompute(); refreshDeck(); }
       if ('reminders' in patch) {
         app.writeReminderState();
         registerPeriodicReminder(patch.reminders.pattern !== 'off');
       }
       emit();
-    },
-
-    async finishOnboarding(patch) {
-      await app.updateProfile({ ...patch, onboarded: true, age13: true });
-      initAnalytics(s.profile.analytics);
     },
 
     exportJson() {
@@ -200,7 +271,18 @@ export function createApp({ storage, clock, cards, deckId, leveling, appVersion 
     },
 
     // ---------- cuenta y sincronización ----------
-    setUser(u) { s.user = u; emit(); if (u) app.syncNow(); },
+    async setUser(u) {
+      s.user = u;
+      if (u) await app.linkAccount(u);
+      emit();
+      if (u) { app.syncNow(); pushCloudProfile(); }
+    },
+    async signedOut() {
+      s.user = null;
+      s.profile.accountUid = null;
+      await saveProfile();
+      emit();
+    },
     async syncNow() {
       if (!s.user || !navigator.onLine) return;
       s.sync = { ...s.sync, status: 'syncing', error: null };
@@ -235,13 +317,13 @@ export function createApp({ storage, clock, cards, deckId, leveling, appVersion 
       });
     },
     async checkReminder() {
+      if (app.step()) return;
       const key = dueReminder({
         now: clock.now(), tzOffsetMin: clock.tzOffsetMin(), slots: app.reminderSlots(),
         lastDoneTs: s.derived?.lastDoneTs, notified: s.notified,
       });
       if (!key) return;
       s.reminderDue = key;
-      // Las notificaciones del SW (periodic sync) se registran en meta 'notified' compartida.
       const swNotified = (await storage.getMeta('notified')) || [];
       if (!swNotified.includes(key)) {
         const body = REMINDER_COPY[Math.floor(Math.random() * REMINDER_COPY.length)];
@@ -258,6 +340,12 @@ export function createApp({ storage, clock, cards, deckId, leveling, appVersion 
       location.reload();
     },
   };
+
+  function derivePlayer(player) {
+    const rec = recommendDeck(player, deckIds);
+    return { deckId: rec.deckId, deckReason: rec.reason, adjustments: rec.adjustments, baseLevels: initialLevels(player) };
+  }
+
   return app;
 }
 

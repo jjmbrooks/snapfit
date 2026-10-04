@@ -16,9 +16,9 @@ export function renderAchievements(app) {
       ${on ? `<button class="btn" data-share="${esc(id)}" style="font-size:9px;min-height:40px">Compartir</button>` : ''}
     </div>`;
   }).join('');
-  return `<h2>Logros · ${got.size}/${BADGE_IDS.length}</h2>
+  return `<div class="page"><h2>Logros · ${got.size}/${BADGE_IDS.length}</h2>
     <p class="small muted">Insignias provisionales generadas por código; el arte final llegará de director-creativo.</p>
-    <div class="badges">${items}</div>`;
+    <div class="badges">${items}</div></div>`;
 }
 
 export function bindAchievements(root) {

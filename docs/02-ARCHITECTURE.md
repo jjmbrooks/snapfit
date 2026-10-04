@@ -97,6 +97,7 @@ El estado derivado (`state`) **siempre** se puede reconstruir aplicando los even
 ```
 users/{uid}                              # documento de perfil
   displayName, createdAt, schemaVersion,
+  profile:  { age, sex, fitness, test{sentadillas,flexiones,plancha}, deckId, baseLevels, termsAt, updatedAt }
   settings: { …mismo shape que profile local, sin datos sensibles… }
   derived:  { xp, levelGlobal, levelByGroup, streak, badges[] , updatedAt }   # caché, no fuente de verdad
 
@@ -199,7 +200,11 @@ Heurística inicial, sujeta a validación de Entrenador:
 
 ## 9. Edad y perfiles
 
-- Solo cuentas de **13 años o más**, con confirmación en el onboarding. No se guarda la fecha de nacimiento, solo `birthYearConfirmed13`.
+- Solo cuentas de **13 años o más**. El perfil guarda la **edad en años** (no la fecha de nacimiento), el sexo, la condición física y las respuestas de la prueba rápida.
+- **Perfil → mazo y nivel** (`src/core/profile.js`, puro y con tests): `recommendDeck(perfil, mazosDisponibles)` elige el mazo por banda de edad (cae a `adulto-general` mientras no existan los demás) y `initialLevels(perfil)` calcula el nivel base por grupo: condición física fija el tope de arranque y la prueba rápida (sentadillas → piernas/glúteos, flexiones → empuje/tracción, plancha → core) lo ajusta. Movilidad y cardio arrancan en 1. El **sexo no cambia niveles todavía**: queda pendiente de evidencia de Entrenador (t_78a921ff).
+- `computeLevels(..., baseLevels)` arranca cada grupo en su nivel base y la nivelación por progreso sube desde ahí.
+- **Cola del mazo** (`src/core/deck-queue.js`): el mazo es `{draw, discard}`. «Otro» = `sendToBottom` (la carta va al fondo de `draw`); «¡Listo!» = `discardTop`; cuando `draw` se vacía se rebaraja `discard` con pesos del motor. `syncDeck` reconcilia la cola cuando cambian filtros o niveles.
+- **Login:** Google es obligatorio la primera vez (`accountUid` en el perfil local). Si luego no hay red o la sesión de Firebase no responde, la app sigue funcionando con los datos locales; un `onAuthStateChanged(null)` **no** cierra la sesión local (solo «Cerrar sesión» en Menú lo hace).
 - Los mazos infantiles (fase posterior) se activan bajo una cuenta adulta, en modo «sesión con niñas y niños», sin perfiles de menores.
 
 ## 10. Decisiones (ADR resumidos)

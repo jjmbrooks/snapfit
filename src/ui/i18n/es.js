@@ -51,3 +51,20 @@ export const REMINDER_COPY = [
   '¿Un Snap rápido? Menos de 2 minutos.',
   'Ronda bonus: una carta para moverte.',
 ];
+
+// Familias de cartas por grupo muscular (color en styles/cards.css). Íconos provisionales.
+export const FAMILY_ICONS = {
+  piernas: '🦵', gluteos: '🍑', empuje: '✋', traccion: '🪢', core: '🛡️', movilidad: '🌀', cardio: '❤️',
+};
+export const TIER_NAMES = { 1: 'Bronce', 2: 'Plata', 3: 'Oro', 4: 'Leyenda' };
+
+// Historia PROVISIONAL (storyteller entregará mundo y tono finales, Kanban t_22eec52e).
+export const STORY = {
+  title: 'El Reino de Pixelandia',
+  lines: [
+    'La Gran Quietud congeló a Pixelandia: nadie se mueve, todo se apaga.',
+    'Tú tienes el último Mazo del Movimiento. Cada carta que juegas devuelve la vida a un rincón del reino.',
+    'Una carta. Un movimiento. ¡Listo!',
+  ],
+  cta: 'Comenzar la aventura',
+};

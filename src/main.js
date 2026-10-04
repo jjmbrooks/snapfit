@@ -2,7 +2,9 @@
 import './ui/styles/tokens.css';
 import './ui/styles/themes.css';
 import './ui/styles/base.css';
+import './ui/styles/cards.css';
 import cards from '../content/cards/adulto-general.draft.json';
+import deckAdulto from '../content/decks/adulto-general.json';
 import leveling from '../content/leveling.json';
 import { storage } from './adapters/storage-idb.js';
 import { clock } from './adapters/clock.js';
@@ -13,35 +15,31 @@ import { renderProgress } from './ui/views/progress.js';
 import { renderAchievements, bindAchievements } from './ui/views/achievements.js';
 import { renderMenu, bindMenu } from './ui/views/menu.js';
 import { renderPrivacy } from './ui/views/privacy.js';
-import { showOnboarding } from './ui/views/onboarding.js';
+import { renderOnboarding, bindOnboarding, startProfileEdit } from './ui/views/onboarding.js';
 import { toast } from './ui/dom.js';
 
 const APP_VERSION = __APP_VERSION__;
-const AUTH_FLAG = 'snapfit.auth';
-
-const app = createApp({ storage, clock, cards, deckId: 'adulto-general', leveling, appVersion: APP_VERSION });
+const app = createApp({ storage, clock, cards, decks: [deckAdulto], leveling, appVersion: APP_VERSION });
 
 let viewRef = document.getElementById('view');
 const hudEl = document.getElementById('hud');
+const shell = document.getElementById('app');
 let cleanup = () => {};
 let lastRoute = null;
 
-// ---------- Auth (perezoso: solo si el usuario la usa) ----------
+// ---------- Auth (Google obligatorio en el primer uso; luego funciona offline) ----------
 let authApi = null;
 async function loadAuth() {
   if (!authApi) {
     authApi = await import('./adapters/firebase/auth.js');
-    await authApi.watchAuth((u) => {
-      if (u) localStorage.setItem(AUTH_FLAG, '1'); else localStorage.removeItem(AUTH_FLAG);
-      app.setUser(u);
-    });
+    await authApi.watchAuth((u) => { if (u) app.setUser(u); });
   }
   return authApi;
 }
 const authDeps = {
-  preloadAuth() { import('./adapters/firebase/auth.js').catch(() => {}); },
+  preloadAuth() { loadAuth().catch(() => {}); },
   async signIn() { const a = await loadAuth(); await a.signInWithGoogle(); },
-  async signOut() { const a = await loadAuth(); await a.signOutUser(); },
+  async signOut() { const a = await loadAuth(); await a.signOutUser(); await app.signedOut(); location.hash = '#/'; },
   async deleteAccount() {
     const uid = app.state.user?.uid;
     if (!uid) return;
@@ -49,43 +47,60 @@ const authDeps = {
     await deleteCloudData(uid);
     const a = await loadAuth();
     try { await a.deleteCurrentUser(); } catch (e) {
-      if (e?.code === 'auth/requires-recent-login') { toast('Vuelve a entrar', 'Por seguridad, inicia sesión otra vez y repite el borrado.'); await a.signOutUser(); return; }
+      if (e?.code === 'auth/requires-recent-login') { toast('Vuelve a entrar', 'Por seguridad, inicia sesión otra vez y repite el borrado.'); await a.signOutUser(); await app.signedOut(); return; }
       throw e;
     }
+    await app.signedOut();
     toast('Cuenta borrada', 'Tus datos en la nube se eliminaron. Los de este dispositivo siguen aquí.');
   },
 };
 
 // ---------- Render ----------
-function render() {
-  const s = app.state;
-  if (!s.derived) return;
-  const route = parseRoute();
-  hudEl.innerHTML = hud(s, true);
-  document.querySelectorAll('.bottomnav a').forEach((a) => {
-    const r = a.dataset.route;
-    const on = r === route.name || (r === 'card' && route.name === 'detail') || (r === 'progress' && route.name === 'achievements') || (r === 'menu' && route.name === 'privacy');
-    if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
-  });
+function swapView() {
   cleanup();
   cleanup = () => {};
   const old = viewRef;
   const fresh = old.cloneNode(false); // quita listeners anteriores
   old.replaceWith(fresh);
   viewRef = fresh;
-  if (route.name === 'card') { fresh.innerHTML = renderCard(app); cleanup = bindCard(fresh, app); }
-  else if (route.name === 'detail') fresh.innerHTML = renderCardDetail(app, route.id);
-  else if (route.name === 'progress') fresh.innerHTML = renderProgress(app);
-  else if (route.name === 'achievements') { fresh.innerHTML = renderAchievements(app); bindAchievements(fresh); }
-  else if (route.name === 'menu') { fresh.innerHTML = renderMenu(app); bindMenu(fresh, app, authDeps); }
-  else if (route.name === 'privacy') fresh.innerHTML = renderPrivacy();
-  if (lastRoute !== location.hash) { window.scrollTo(0, 0); lastRoute = location.hash; }
-  if (!s.profile.onboarded && route.name !== 'privacy' && !document.querySelector('.onb')) showOnboarding(app);
+  return fresh;
+}
+
+function render() {
+  const s = app.state;
+  if (!s.derived) return;
+  const route = parseRoute();
+  const step = app.step();
+  const onb = step && route.name !== 'privacy';
+  shell.classList.toggle('onboarding', !!onb || route.name === 'profile');
+  if (onb || route.name === 'profile') {
+    const v = swapView();
+    const st = onb ? step : 'profile';
+    v.innerHTML = renderOnboarding(app, st);
+    cleanup = bindOnboarding(v, app, st, authDeps, render);
+    if (st === 'welcome') authDeps.preloadAuth();
+    return;
+  }
+  hudEl.innerHTML = hud(s);
+  document.querySelectorAll('.bottomnav a').forEach((a) => {
+    const r = a.dataset.route;
+    const on = r === route.name || (r === 'card' && route.name === 'detail') || (r === 'progress' && route.name === 'achievements') || (r === 'menu' && route.name === 'privacy');
+    if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+  const v = swapView();
+  v.classList.toggle('view-play', route.name === 'card');
+  if (route.name === 'card') { v.innerHTML = renderCard(app); cleanup = bindCard(v, app, { dealt: app.lastDeal }); app.lastDeal = null; }
+  else if (route.name === 'detail') v.innerHTML = renderCardDetail(app, route.id);
+  else if (route.name === 'progress') v.innerHTML = renderProgress(app);
+  else if (route.name === 'achievements') { v.innerHTML = renderAchievements(app); bindAchievements(v); }
+  else if (route.name === 'menu') { v.innerHTML = renderMenu(app); bindMenu(v, app, { ...authDeps, editProfile() { startProfileEdit(); location.hash = '#/perfil'; } }); }
+  else if (route.name === 'privacy') v.innerHTML = `<div class="page">${renderPrivacy()}<p><a class="btn" href="#/">◀ Volver</a></p></div>`;
+  if (lastRoute !== location.hash) { v.scrollTop = 0; lastRoute = location.hash; }
 }
 
 app.subscribe(() => {
-  // No re-renderizar la vista de carta mientras hay un modal de recompensa abierto.
-  if (document.querySelector('.overlay:not(.onb)')) { hudEl.innerHTML = hud(app.state, true); return; }
+  // No re-renderizar mientras hay una secuencia de recompensa abierta.
+  if (document.querySelector('.overlay')) { if (!app.step()) hudEl.innerHTML = hud(app.state); return; }
   render();
 });
 window.addEventListener('hashchange', render);
@@ -94,7 +109,7 @@ window.addEventListener('offline', () => { app.state.online = false; app.emit();
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') app.checkReminder(); });
 
 app.init().then(() => {
-  if (localStorage.getItem(AUTH_FLAG) === '1' && navigator.onLine) loadAuth().catch((e) => console.warn('[auth]', e));
+  if (navigator.onLine) loadAuth().catch((e) => console.warn('[auth]', e));
   app.checkReminder();
   setInterval(() => app.checkReminder(), 60000);
 });

@@ -93,6 +93,14 @@ El contenido de entrenamiento lo **define Entrenador** (con apoyo de researcher)
 }
 ```
 
+### Campo opcional `video` (reverso de la carta)
+
+```json
+"video": { "src": "assets/video/<card-id>.mp4", "poster": "assets/video/<card-id>.webp" }
+```
+
+Lo llena director-creativo (t_7db959be) con la animación del movimiento generada por un modelo de video, con su fila en `docs/ASSETS-PROVENANCE.md`. Mientras no exista, el reverso muestra el sprite procedural como placeholder.
+
 ### Reglas del schema
 
 - `id` sigue el formato kebab-case `<movimiento>-l<nivel>`. Es **estable**: no se renombra sin migración.

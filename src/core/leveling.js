@@ -15,12 +15,14 @@ export const DEFAULT_LEVELING = {
  * @param {Array<{groups:string[], level:number, effort:string|null, day:string, dayIdx:number, ts:number}>} dones cronológico
  * @param {object} params
  * @param {Record<string,number>} overrides nivel fijado a mano por grupo
+ * @param {Record<string,number>} baseLevels nivel inicial por grupo (perfil + prueba rápida)
  */
-export function computeLevels(dones, params = DEFAULT_LEVELING, overrides = {}) {
+export function computeLevels(dones, params = DEFAULT_LEVELING, overrides = {}, baseLevels = {}) {
   const p = { ...DEFAULT_LEVELING, ...params };
   const st = {};
   for (const g of MUSCLE_GROUPS) {
-    st[g] = { level: MIN_LEVEL, bucket: [], recent: [], hardStreak: 0, lastUpDay: -Infinity };
+    const b = Number.isInteger(baseLevels?.[g]) ? clamp(baseLevels[g]) : MIN_LEVEL;
+    st[g] = { level: b, bucket: [], recent: [], hardStreak: 0, lastUpDay: -Infinity, lastDayIdx: null };
   }
   const history = [];
 
@@ -39,6 +41,7 @@ export function computeLevels(dones, params = DEFAULT_LEVELING, overrides = {}) 
         history.push({ group: g, level: s.level, dir: 'down', ts: d.ts });
         continue;
       }
+      s.lastDayIdx = d.dayIdx;
       if ((d.level ?? 1) < s.level) continue; // cartas por debajo del nivel no cuentan para subir
       s.bucket.push(d);
       if (canLevelUp(s, d.dayIdx, p)) {
@@ -51,12 +54,19 @@ export function computeLevels(dones, params = DEFAULT_LEVELING, overrides = {}) 
   }
 
   const byGroup = {};
+  const progress = {};
   for (const g of MUSCLE_GROUPS) {
-    const o = overrides[g];
+    const o = overrides?.[g];
     byGroup[g] = Number.isInteger(o) ? clamp(o) : st[g].level;
+    const b = st[g].bucket;
+    const cards = Math.min(b.length, p.minCardsToLevelUp);
+    const days = Math.min(new Set(b.map((x) => x.day)).size, p.minDistinctDays);
+    // fracción 0–1 hacia el siguiente nivel (cartas y días pesan igual)
+    const ratio = byGroup[g] >= MAX_LEVEL ? 1 : (cards / p.minCardsToLevelUp + days / p.minDistinctDays) / 2;
+    progress[g] = { cards, cardsNeeded: p.minCardsToLevelUp, days, daysNeeded: p.minDistinctDays, ratio };
   }
   const avg = MUSCLE_GROUPS.reduce((a, g) => a + byGroup[g], 0) / MUSCLE_GROUPS.length;
-  return { byGroup, global: clamp(Math.floor(avg)), history };
+  return { byGroup, global: clamp(Math.floor(avg)), history, progress };
 }
 
 function canLevelUp(s, todayIdx, p) {

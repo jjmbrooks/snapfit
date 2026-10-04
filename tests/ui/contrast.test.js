@@ -28,3 +28,14 @@ describe('contraste AA de temas', () => {
     });
   }
 });
+
+const cards = readFileSync(new URL('../../src/ui/styles/cards.css', import.meta.url), 'utf8');
+describe('contraste de familias de cartas', () => {
+  for (const m of cards.matchAll(/\.fam-([a-z]+)\s*\{\s*--fam:\s*(#[0-9a-f]{6});\s*--fam-dark:\s*(#[0-9a-f]{6});\s*--fam-ink:\s*(#[0-9a-f]{6})/g)) {
+    it(m[1], () => {
+      expect(ratio(m[4], m[2]), `${m[1]}: tinta sobre color`).toBeGreaterThanOrEqual(4.5);
+      expect(ratio('#ffffff', m[3]), `${m[1]}: blanco sobre oscuro`).toBeGreaterThanOrEqual(3);
+    });
+  }
+  it('existen las 7 familias', () => expect([...cards.matchAll(/\.fam-[a-z]+\s*\{\s*--fam:/g)].length).toBe(7));
+});

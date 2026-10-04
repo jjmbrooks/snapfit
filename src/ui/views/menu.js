@@ -15,7 +15,7 @@ export function renderMenu(app) {
   const chips = (name, list, names, selected) => list.map((v) => `<label><input type="checkbox" name="${name}" value="${v}" ${selected.includes(v) ? 'checked' : ''}> ${esc(names[v])}</label>`).join('');
   const sync = s.sync;
   const syncTxt = !s.user ? '' : sync.status === 'syncing' ? 'Sincronizando…' : sync.status === 'error' ? `⚠ Sin sincronizar (${esc(sync.error)})` : sync.lastAt ? `✓ Sincronizado ${new Date(sync.lastAt).toLocaleTimeString()}` : '';
-  return `
+  return `<div class="page">
   <h2>Menú</h2>
   <fieldset><legend>Tema</legend>
     <div class="swatches">
@@ -58,13 +58,18 @@ export function renderMenu(app) {
     <p class="small muted" style="margin:0">Solo eventos como «carta hecha» o «cambio de tema», sin datos personales. <a href="#/privacidad">Aviso de privacidad</a></p>
   </fieldset>
 
+  <fieldset><legend>Mi perfil</legend>
+    ${p.player ? `<p style="margin-top:0">${p.player.age} años · ${esc({ mujer: 'Mujer', hombre: 'Hombre', otro: 'Otro', 'prefiero-no-decir': 'Prefiero no decir' }[p.player.sex])} · condición ${esc(p.player.fitness)}</p>
+      <p class="small muted">Mazo: ${esc(p.player.deckId)} — ${esc(p.player.deckReason || '')}</p>` : ''}
+    <button class="btn" data-act="edit-profile">✎ Editar perfil y repetir prueba</button>
+  </fieldset>
+
   <fieldset><legend>Cuenta y respaldo</legend>
     ${s.user
       ? `<p style="margin-top:0">Conectado como <b>${esc(s.user.displayName || 'usuario de Google')}</b></p>
          <p class="small muted">${syncTxt}</p>
          <div class="btn-row"><button class="btn" data-act="sync">↻ Sincronizar</button><button class="btn btn-ghost" data-act="signout">Cerrar sesión</button></div>`
-      : `<p class="small muted" style="margin-top:0">Opcional. SnapFit funciona sin cuenta y sin internet. Con Google respaldas tu progreso y lo usas en varios dispositivos.</p>
-         <button class="btn btn-accent" data-act="signin" ${s.online ? '' : 'disabled'}>Entrar con Google</button>`}
+      : `<p class="small muted" style="margin-top:0">Cuenta de Google vinculada. ${s.online ? 'Conectando…' : 'Sin conexión: tu progreso se guarda aquí y se sincroniza al volver.'}</p>`}
     <h3>Exportar / importar</h3>
     <div class="btn-row">
       <button class="btn" data-act="export-json">⬇ JSON</button>
@@ -83,7 +88,7 @@ export function renderMenu(app) {
     <p class="small">Las cartas actuales son <b>borradores</b> pendientes de validación por Entrenador. SnapFit no sustituye una valoración médica.</p>
     <p class="small">Fuente de títulos: Press Start 2P (SIL OFL 1.1). Animaciones, insignias y sonidos provisionales generados por código.</p>
     <p class="small"><a href="#/privacidad">Aviso de privacidad</a> · <a href="https://github.com/jjmbrooks/snapfit" target="_blank" rel="noopener">Código en GitHub</a></p>
-  </fieldset>`;
+  </fieldset></div>`;
 }
 
 export function bindMenu(root, app, deps) {
@@ -101,11 +106,10 @@ export function bindMenu(root, app, deps) {
         const r = await requestPermission();
         if (r === 'granted') await registerPeriodicReminder(p().reminders.pattern !== 'off');
         app.emit();
-      } else if (act === 'signin') {
-        b.disabled = true;
-        await deps.signIn();
       } else if (act === 'signout') {
-        await deps.signOut();
+        if (confirm('¿Cerrar sesión? Tu progreso queda en este teléfono y en la nube.')) await deps.signOut();
+      } else if (act === 'edit-profile') {
+        deps.editProfile();
       } else if (act === 'sync') {
         await app.syncNow();
       } else if (act === 'export-json') app.exportJson();
