@@ -459,6 +459,36 @@
           }
         }
       }
+    },
+    "cardBack": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Textos del reverso de la carta (opcional).",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 28
+        },
+        "breath": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "description": "Indicación de respiración por defecto si la carta no trae `breath`."
+        }
+      }
+    },
+    "cardFlavor": {
+      "type": "object",
+      "description": "Ambientación por id de carta (una línea, ≤ 60). Tiene prioridad sobre flavor de la carta.",
+      "propertyNames": {
+        "pattern": "^[a-z0-9-]+-l([1-9]|10)$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 60
+      }
     }
   }
 }

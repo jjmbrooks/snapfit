@@ -157,28 +157,29 @@
   },
   "card": {
     "aria": "Carta {name}. Toca para ver cómo se hace.",
-    "levelTitle": "Nivel de la carta",
-    "levelShort": "NV",
+    "levelTitle": "Nivel de la carta: {n}",
     "tierTitle": "Rango {tier}",
     "artAria": "Ilustración provisional: {name}",
     "draft": "BORRADOR",
     "draftTitle": "Contenido pendiente de validación por Entrenador",
-    "dose": "Reto",
-    "time": "Tiempo",
-    "timeValue": "~{s} s",
-    "levelAria": "Nivel {n} de 10",
-    "flipHint": "toca ↻",
-    "videoAria": "Video: {name}",
-    "videoPlaceholderAria": "Animación provisional: {name}",
-    "videoPending": "🎬 Video del movimiento: pendiente (director-creativo)",
-    "cues": "Clave:",
+    "flipHint": "toca para voltear ↻",
     "careZones": "⚠ Cuida:",
     "playerLevel": "tu nivel en {group}: {n}",
     "fullSheet": "Ficha completa y fuentes",
     "repsUnit": "{n} reps",
     "perSide": " / lado",
     "holdUnit": "{n} s sostén",
-    "secUnit": "{n} s"
+    "secUnit": "{n} s",
+    "emblemTitle": "{school}",
+    "rankSchool": "{rank} · {school}",
+    "xpTitle": "Experiencia al completarla: {n} XP",
+    "xpUnit": "XP",
+    "backTitle": "Cómo se hace",
+    "breathDefault": "Respira sin aguantar el aire",
+    "stepAria": "Paso {n}",
+    "poseAria": "Pose del paso {n}",
+    "posePending": "pose pendiente",
+    "flipBack": "↻ volver"
   },
   "reward": {
     "xp": "+{n} XP",
@@ -216,5 +217,11 @@
   },
   "progress": {
     "region": "Región actual: {name}"
+  },
+  "sample": {
+    "label": "Muestra · nivel {level} (no cuenta como progreso)",
+    "navAria": "Ver la carta en otros rangos",
+    "back": "Volver",
+    "notFound": "Carta no encontrada."
   }
 }

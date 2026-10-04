@@ -1,60 +1,110 @@
-/* MARCO DE CARTA (frente): carta de personaje con color por familia (--fam*) y tier por nivel (--tier). Componente: src/ui/components/tcard.js
-   Workstream: card-frame (ver docs/PARALLEL-WORK.md). */
+/* CARTA VERTICAL — estilo C «grimorio arcade» (Brooks, 2026-10-03). Proporción 5:7, mobile-first.
+   Marco ornamentado en CSS: cuerpo con el color de la escuela (--fam), ribete con el metal del rango (--tier*).
+   Todas las medidas en cqi (ancho de la carta) para que escale igual en cualquier pantalla.
+   Componente: src/ui/components/tcard.js · Tokens: src/ui/styles/tokens.css §3–4 · Workstream: card-frame. */
 .tcard {
   position: relative; width: min(100cqw, 100cqh * 5 / 7); aspect-ratio: 5 / 7;
-  cursor: pointer; outline: none; z-index: 1;
+  cursor: pointer; outline: none; z-index: 1; container-type: inline-size;
+  --font-title: 'Georgia', 'Palatino Linotype', 'Book Antiqua', 'Times New Roman', serif;
 }
 .tcard:focus-visible .tc-face { outline: 3px solid var(--focus); outline-offset: 3px; }
 .tc-face {
-  position: absolute; inset: 0; border-radius: 16px; padding: 8px;
+  position: absolute; inset: 0; border-radius: 4.5cqi; padding: 4.2cqi 4.2cqi 4.6cqi;
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border: 1.6cqi solid var(--tier);
   background:
-    linear-gradient(135deg, rgba(255,255,255,.28) 0 12%, transparent 12% 88%, rgba(0,0,0,.18) 88%),
-    linear-gradient(var(--fam), var(--fam-dark));
-  border: 3px solid var(--tier);
-  box-shadow: 0 0 0 3px #0d0b18, 0 10px 0 0 rgba(0,0,0,.35), 0 18px 28px rgba(0,0,0,.35);
-  display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto auto; gap: 6px;
-  color: var(--fam-ink);
+    radial-gradient(circle at 0 0, var(--tier-light) 0 2.2cqi, transparent 2.4cqi),
+    radial-gradient(circle at 100% 0, var(--tier-light) 0 2.2cqi, transparent 2.4cqi),
+    radial-gradient(circle at 0 100%, var(--tier-light) 0 2.2cqi, transparent 2.4cqi),
+    radial-gradient(circle at 100% 100%, var(--tier-light) 0 2.2cqi, transparent 2.4cqi),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 1cqi, transparent 1cqi 4cqi),
+    radial-gradient(120% 80% at 50% 35%, var(--fam) 0, var(--fam-dark) 100%);
+  box-shadow:
+    inset 0 0 0 .5cqi var(--tier-dark), inset 0 0 0 1cqi color-mix(in srgb, var(--tier-light) 70%, transparent),
+    0 0 0 .7cqi #120a04, 0 2.4cqi 0 0 rgba(0,0,0,.35), 0 4cqi 6cqi rgba(0,0,0,.4);
+  display: grid; gap: 2.4cqi; color: var(--fam-ink);
 }
-.tc-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
-.tc-lvl {
-  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; line-height: 1;
-  background: #15122a; color: var(--tier); border: 3px solid var(--tier);
-  font-family: var(--font-pixel); font-size: 14px;
+/* Línea interior de enredadera (ornamento) */
+.tc-face::before {
+  content: ''; position: absolute; inset: 1.8cqi; border-radius: 3cqi; pointer-events: none;
+  border: .45cqi dashed color-mix(in srgb, var(--tier-light) 55%, transparent);
 }
-.tc-lvl small { font-size: 6px; display: block; margin-bottom: -10px; }
-.tc-fam { flex: 1; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; }
-.tc-back .tc-fam { text-transform: none; font-family: var(--font-pixel); font-size: 11px; color: #fff; }
-.tc-tier { color: var(--tier); font-size: 16px; text-shadow: 1px 1px 0 #0d0b18; letter-spacing: -1px; }
-.tc-art {
-  position: relative; min-height: 0; border-radius: 10px; overflow: hidden;
-  border: 3px solid #0d0b18;
+.tc-front { grid-template-rows: auto minmax(0, 1fr) auto; }
+
+/* --- Fila superior: gema · estandarte · emblema --- */
+.ac-top { position: relative; display: grid; grid-template-columns: 15cqi minmax(0, 1fr) 13.5cqi; align-items: center; gap: 1.6cqi; }
+.ac-gem, .ac-xp, .ac-num { position: relative; display: grid; place-items: center; isolation: isolate; }
+.ac-gem { width: 15cqi; aspect-ratio: 1; margin: -1.5cqi 0 0 -1.5cqi; background: #120a04; clip-path: polygon(50% 0, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%); }
+.ac-gem::before { content: ''; position: absolute; inset: 1.1cqi; z-index: -1; clip-path: inherit;
+  background: linear-gradient(160deg, var(--tier-light) 0 35%, var(--tier) 36% 64%, var(--tier-dark) 65%); }
+.ac-gem b { font-family: var(--font-title); font-weight: 900; font-size: 7.4cqi; line-height: 1; color: var(--rank-ink); text-shadow: 0 .3cqi 0 rgba(255,255,255,.55); }
+.ac-banner {
+  margin: 0; min-width: 0; padding: 1.4cqi 2.6cqi; border-radius: 1.6cqi; text-align: center;
+  background: linear-gradient(var(--parch), var(--parch-2)); color: var(--parch-ink);
+  border: .6cqi solid var(--trim-dark); box-shadow: inset 0 0 0 .4cqi var(--trim-light), 0 .8cqi 0 rgba(0,0,0,.3);
+  font-family: var(--font-title); font-weight: 800; font-variant: small-caps; letter-spacing: .02em;
+  font-size: 5.1cqi; line-height: 1.1;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.ac-emblem {
+  width: 13.5cqi; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; overflow: hidden; margin-top: -1.2cqi;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--fam) 70%, #fff) 0, var(--fam) 45%, var(--fam-dark) 100%);
+  border: .8cqi solid var(--tier); box-shadow: 0 0 0 .5cqi #120a04, inset 0 0 0 .4cqi var(--tier-dark);
+}
+.ac-emblem img { width: 100%; height: 100%; object-fit: cover; }
+.em-svg { width: 72%; height: 72%; fill: #fff6df; stroke: #fff6df; stroke-width: 0; stroke-linecap: round; stroke-linejoin: round;
+  filter: drop-shadow(0 .35cqi 0 var(--fam-dark)) drop-shadow(0 0 .3cqi var(--fam-dark)); }
+.em-svg .em-cut { fill: var(--fam-dark); }
+.em-svg .em-cut-stroke { stroke: var(--fam-dark); }
+
+/* --- Ventana de ilustración --- */
+.ac-window {
+  position: relative; min-height: 0; border-radius: 3.2cqi; overflow: hidden; display: grid; place-items: center;
+  border: .9cqi solid var(--tier);
+  box-shadow: 0 0 0 .6cqi var(--tier-dark), 0 0 3cqi color-mix(in srgb, var(--glow) 35%, transparent);
   background:
-    radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--fam) 45%, transparent) 0, transparent 60%),
-    linear-gradient(#1a1838 0 72%, #2a2650 72%);
-  display: grid; place-items: center;
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--fam) 55%, transparent) 0, transparent 62%),
+    linear-gradient(#141a2e 0 70%, #232a44 70%);
   --sprite-fg: #ffffff; --sprite-prop: var(--fam); --sprite-ground: #4b4680;
 }
-.tc-art::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(#ffffff22 1px, transparent 1px); background-size: 12px 12px; }
-.tc-art canvas { position: relative; height: 92%; max-width: 92%; aspect-ratio: 1; image-rendering: pixelated; image-rendering: crisp-edges; }
-.tc-draft { position: absolute; top: 6px; right: 6px; font-family: var(--font-pixel); font-size: 7px; padding: 3px 5px; background: #0d0b18; color: #ffb347; border-radius: 4px; }
-.tc-draft.static { position: static; display: inline-block; justify-self: start; }
-.tc-name {
-  margin: 0; text-align: center; font-size: clamp(11px, 3.6vw, 15px); line-height: 1.35;
-  background: #fff8e8; color: #1b1300; padding: 7px 8px; border-radius: 6px;
-  border: 3px solid #0d0b18; box-shadow: 0 3px 0 rgba(0,0,0,.3);
+.ac-window::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 3.5cqi rgba(0,0,0,.55); border-radius: inherit; }
+.ac-window canvas { position: relative; height: 88%; max-width: 88%; aspect-ratio: 1; image-rendering: pixelated; image-rendering: crisp-edges; }
+.ac-window.has-art { background: #0d0b18; }
+.tc-art-img { width: 100%; height: 100%; object-fit: cover; }
+.tc-draft { position: absolute; z-index: 1; top: 2cqi; right: 2cqi; font-family: var(--font-pixel); font-size: 2.1cqi; padding: .9cqi 1.4cqi; background: #0d0b18; color: #ffb347; border-radius: 1cqi; }
+.tc-draft.static { position: static; display: inline-block; justify-self: start; font-size: 8px; padding: 3px 5px; }
+
+/* --- Pergamino --- */
+.ac-parch {
+  position: relative; margin: 0 1cqi; padding: 2.4cqi 3cqi 2.2cqi 15cqi; border-radius: 1.4cqi; text-align: center;
+  background:
+    linear-gradient(90deg, rgba(120,80,30,.25), transparent 6%, transparent 94%, rgba(120,80,30,.25)),
+    linear-gradient(var(--parch), var(--parch-2));
+  color: var(--parch-ink); border: .5cqi solid var(--trim-dark); box-shadow: inset 0 0 0 .4cqi var(--trim-light), 0 .8cqi 0 rgba(0,0,0,.3);
+  display: grid; gap: .6cqi; min-height: 24cqi; align-content: center;
 }
-.tc-stats { display: grid; grid-template-columns: 1.4fr 1fr; gap: 6px; }
-.tc-stats > div { background: rgba(255,255,255,.55); border-radius: 6px; padding: 4px 8px; border: 2px solid rgba(0,0,0,.25); }
-.tc-k { display: block; font-size: 10px; font-weight: 800; text-transform: uppercase; opacity: .8; }
-.tc-stats b { font-family: var(--font-pixel); font-size: clamp(10px, 3.4vw, 14px); }
-.tc-foot { display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 11px; font-weight: 700; }
-.tc-pips { display: inline-grid; grid-template-columns: repeat(10, 7px); gap: 2px; }
-.tc-pips i { height: 7px; background: rgba(0,0,0,.25); border-radius: 1px; }
-.tc-pips i.on { background: #0d0b18; }
-.tc-hint { opacity: .85; text-align: right; }
-/* Assets del paquete de historia (opcionales; si faltan se ve el marco y la animación genéricos). */
-.tc-art.has-art { background: #0d0b18; }
-.tc-art.has-art::before { display: none; }
-.tc-art-img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+.ac-parch::before, .ac-parch::after { /* extremos enrollados del pergamino */
+  content: ''; position: absolute; top: -1.6cqi; bottom: -1.6cqi; width: 2.6cqi; border-radius: 1.4cqi;
+  background: linear-gradient(90deg, var(--parch-line), var(--parch), var(--parch-line)); border: .4cqi solid var(--trim-dark);
+}
+.ac-parch::before { left: -1.6cqi; } .ac-parch::after { right: -1.6cqi; }
+.ac-parch p { margin: 0; }
+.ac-rank { font-family: var(--font-title); font-weight: 800; font-variant: small-caps; font-size: 4.5cqi; line-height: 1.15; }
+.ac-dose { font-family: var(--font-title); font-size: 5cqi; font-weight: 700; }
+.ac-flavor { font-family: var(--font-title); font-style: italic; font-size: 3.5cqi; opacity: .85; }
+.ac-groups { font-size: 2.9cqi; font-weight: 700; opacity: .8; }
+
+/* --- Escudo de XP --- */
+.ac-xp { position: absolute; z-index: 2; left: 1.4cqi; bottom: 1.6cqi; width: 15.5cqi; height: 18.5cqi; background: #120a04;
+  clip-path: polygon(0 0, 100% 0, 100% 62%, 50% 100%, 0 62%); grid-template-rows: auto auto; align-content: start; padding-top: 2.6cqi; gap: 0; }
+.ac-xp::before { content: ''; position: absolute; inset: 1cqi; z-index: -1; clip-path: inherit;
+  background: linear-gradient(170deg, var(--tier-light) 0 40%, var(--tier) 41% 70%, var(--tier-dark) 71%); }
+.ac-xp b { font-family: var(--font-title); font-weight: 900; font-size: 5.6cqi; line-height: 1; color: var(--rank-ink); }
+.ac-xp small { font-family: var(--font-title); font-weight: 900; font-size: 3.6cqi; line-height: 1; color: var(--rank-ink); }
+
+/* Gema (rango 4): brillo extra */
+.rank-gema .tc-face { box-shadow: inset 0 0 0 .5cqi var(--tier-dark), inset 0 0 0 1cqi color-mix(in srgb, var(--tier-light) 70%, transparent),
+  0 0 0 .7cqi #120a04, 0 0 5cqi color-mix(in srgb, var(--tier) 60%, transparent), 0 2.4cqi 0 0 rgba(0,0,0,.35); }
+
+/* Piel de marco del paquete de historia (opcional): reemplaza el fondo dibujado en CSS. */
 .tcard.has-skin .tc-front { background: var(--frame-skin) center / 100% 100% no-repeat, linear-gradient(var(--fam), var(--fam-dark)); }

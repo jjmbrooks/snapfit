@@ -52,8 +52,8 @@
     },
     "preview": {
       "type": "string",
-      "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-      "description": "Ruta relativa a public/stories/<id>/"
+      "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+      "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
     },
     "defaultTheme": {
       "type": "string",
@@ -77,8 +77,8 @@
           "properties": {
             "default": {
               "type": "string",
-              "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-              "description": "Ruta relativa a public/stories/<id>/"
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
             },
             "piernas": {
               "type": "object",
@@ -86,28 +86,28 @@
               "properties": {
                 "1": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "2": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "3": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "4": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "all": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 }
               }
             },
@@ -117,28 +117,28 @@
               "properties": {
                 "1": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "2": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "3": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "4": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "all": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 }
               }
             },
@@ -148,28 +148,28 @@
               "properties": {
                 "1": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "2": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "3": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "4": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "all": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 }
               }
             },
@@ -179,28 +179,28 @@
               "properties": {
                 "1": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "2": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "3": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "4": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "all": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 }
               }
             },
@@ -210,28 +210,28 @@
               "properties": {
                 "1": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "2": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "3": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "4": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "all": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 }
               }
             },
@@ -241,28 +241,28 @@
               "properties": {
                 "1": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "2": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "3": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "4": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "all": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 }
               }
             },
@@ -272,28 +272,28 @@
               "properties": {
                 "1": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "2": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "3": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "4": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "all": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 }
               }
             }
@@ -304,8 +304,8 @@
           "description": "Ilustración por id de carta; si falta, se usa la animación genérica.",
           "additionalProperties": {
             "type": "string",
-            "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-            "description": "Ruta relativa a public/stories/<id>/"
+            "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+            "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
           }
         },
         "backgrounds": {
@@ -314,13 +314,13 @@
           "properties": {
             "welcome": {
               "type": "string",
-              "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-              "description": "Ruta relativa a public/stories/<id>/"
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
             },
             "play": {
               "type": "string",
-              "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-              "description": "Ruta relativa a public/stories/<id>/"
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
             }
           }
         },
@@ -330,8 +330,8 @@
           "properties": {
             "sprite": {
               "type": "string",
-              "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-              "description": "Ruta relativa a public/stories/<id>/"
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
             }
           }
         },
@@ -341,8 +341,8 @@
           "properties": {
             "music": {
               "type": "string",
-              "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-              "description": "Ruta relativa a public/stories/<id>/"
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
             },
             "sfx": {
               "type": "object",
@@ -350,28 +350,28 @@
               "properties": {
                 "listo": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "otro": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "flip": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "logro": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 },
                 "nivel": {
                   "type": "string",
-                  "pattern": "^(?!/)(?!.*\\.\\.)(?!https?:)[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
                 }
               }
             }
@@ -386,6 +386,61 @@
           "additionalProperties": {
             "type": "string",
             "pattern": "^#[0-9a-fA-F]{6}$"
+          }
+        },
+        "emblems": {
+          "type": "object",
+          "description": "Emblema de escuela por id de grupo (imagen). Si falta, se usa el emblema SVG del código (src/ui/card/emblems.js).",
+          "additionalProperties": false,
+          "properties": {
+            "piernas": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+            },
+            "gluteos": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+            },
+            "empuje": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+            },
+            "traccion": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+            },
+            "core": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+            },
+            "movilidad": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+            },
+            "cardio": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+            }
+          }
+        },
+        "poses": {
+          "type": "object",
+          "description": "Imágenes de pose por id de carta (hasta 3, una por paso del reverso). Tienen prioridad sobre steps[].pose de la carta.",
+          "additionalProperties": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
+              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+            }
           }
         }
       }

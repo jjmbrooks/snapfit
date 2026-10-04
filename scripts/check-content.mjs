@@ -1,6 +1,7 @@
 // Valida las cartas contra las reglas de docs/03-CONTENT.md.
 import { readFileSync, readdirSync } from 'node:fs';
 import { MUSCLE_GROUPS, PLACES, CARE_ZONES } from '../src/core/constants.js';
+import { cardExtrasErrors } from '../src/ui/card/card-data.js';
 
 const EQUIP = ['ninguno', 'silla', 'pared', 'toalla', 'mesa-firme', 'banca-parque', 'escalon'];
 const errs = [];
@@ -22,7 +23,7 @@ for (const [f, c] of all) {
   if (c.locations.some((l) => l !== 'cualquiera' && !PLACES.includes(l))) e('locations inválidas');
   if (c.equipment.some((x) => !EQUIP.includes(x))) e('equipment inválido');
   if (c.careZones.some((z) => !CARE_ZONES.includes(z))) e('careZones inválidas');
-  if (!c.steps?.length) e('steps vacío');
+  for (const m of cardExtrasErrors(c)) e(m);
   if (!c.draft && !c.sources?.length) e('carta publicada sin sources');
   if (c.draft && c.sources?.length === 0 && c.reviewedBy) e('borrador marcado como revisado');
   if (c.license !== 'CC-BY-4.0') e('license debe ser CC-BY-4.0');

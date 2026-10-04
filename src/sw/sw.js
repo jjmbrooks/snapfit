@@ -54,7 +54,7 @@ self.addEventListener('fetch', (event) => {
         fetch(req).then((res) => {
           const scopePath = new URL(self.registration.scope).pathname;
           // Los assets de historia solo se cachean vía CACHE_STORY (paquete activo), no al vuelo.
-          if (res.ok && url.pathname.startsWith(scopePath) && !url.pathname.startsWith(scopePath + 'stories/')) {
+          if (res.ok && url.pathname.startsWith(scopePath) && !url.pathname.startsWith(scopePath + 'stories/') && !url.pathname.startsWith(scopePath + 'art/')) {
             const copy = res.clone();
             caches.open(CACHE).then((c) => c.put(req, copy));
           }

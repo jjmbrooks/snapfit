@@ -39,3 +39,19 @@ describe('contraste de familias de cartas', () => {
   }
   it('existen las 7 familias', () => expect([...cards.matchAll(/\.fam-[a-z]+\s*\{\s*--fam:/g)].length).toBe(7));
 });
+
+describe('contraste de rangos (gema, escudo de XP y números)', () => {
+  const v = Object.fromEntries([...cards.matchAll(/--(rank-[a-z-]+):\s*(#[0-9a-f]{6})/g)].map((m) => [m[1], m[2]]));
+  for (const r of ['bronce', 'plata', 'oro', 'gema']) {
+    it(r, () => {
+      expect(ratio(v['rank-ink'], v[`rank-${r}-light`]), `${r}: tinta sobre claro`).toBeGreaterThanOrEqual(4.5);
+      expect(ratio(v['rank-ink'], v[`rank-${r}`]), `${r}: tinta sobre metal`).toBeGreaterThanOrEqual(4.5);
+      expect(ratio('#ffffff', v[`rank-${r}-dark`]), `${r}: blanco sobre oscuro`).toBeGreaterThanOrEqual(4.5);
+    });
+  }
+  it('pergamino legible', () => {
+    const p = Object.fromEntries([...cards.matchAll(/--(parch(?:-2|-ink)?):\s*(#[0-9a-f]{6})/g)].map((m) => [m[1], m[2]]));
+    expect(ratio(p['parch-ink'], p.parch)).toBeGreaterThanOrEqual(7);
+    expect(ratio(p['parch-ink'], p['parch-2'])).toBeGreaterThanOrEqual(7);
+  });
+});

@@ -97,6 +97,12 @@ function cacheActivePack(r) {
 /** Arte de carta del paquete (o null → animación genérica). */
 export const cardArtUrl = (cardId) => (current.assets.cardArt?.[cardId] ? assetUrl(current.assets.cardArt[cardId]) : null);
 export const frameUrl = (family, tier) => { const f = frameFor(current.assets, family, tier); return f ? assetUrl(f) : null; };
+/** Emblema de escuela (imagen del paquete) o null → emblema SVG del código. */
+export const emblemUrl = (family) => (current.assets.emblems?.[family] ? assetUrl(current.assets.emblems[family]) : null);
+/** Poses del paquete para una carta (array de URLs, puede estar vacío). */
+export const packPoseUrls = (cardId) => (current.assets.poses?.[cardId] || []).map(assetUrl);
+/** URL pública de una ruta de contenido (p. ej. steps[].pose de una carta: «/art/…» o «art/…», relativa a public/). */
+export const publicUrl = (p) => (p ? assetUrl(p.replace(/^\//, '')) : null);
 export const sfxUrl = (name) => (current.assets.audio?.sfx?.[name] ? assetUrl(current.assets.audio.sfx[name]) : null);
 
 /** El selector «Historia» del menú está oculto tras una bandera hasta que Brooks elija.

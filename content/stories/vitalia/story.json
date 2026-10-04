@@ -26,14 +26,53 @@
     "name": "Pip",
     "role": "Zorro mensajero; el único que recuerda la Orden entera"
   },
+  "cardBack": {
+    "title": "Cómo lanzar el hechizo",
+    "breath": "Respira con el gesto"
+  },
+  "cardFlavor": {
+    "sentadilla-silla-l1": "La raíz empuja: vuelves a subir",
+    "flexion-pared-l1": "Tu palma enciende la pared",
+    "marcha-sitio-l1": "Un paso, un latido, un farol",
+    "remo-toalla-iso-l1": "Tira: la vela busca el viento",
+    "perro-pajaro-l1": "El sello no se cae"
+  },
   "families": {
-    "piernas": { "name": "Escuela de la Raíz", "icon": "🌱", "master": "Maestro Bruno, el Caminante" },
-    "gluteos": { "name": "Escuela del Arco", "icon": "🌉", "master": "Maestra Inés, la Constructora" },
-    "empuje": { "name": "Escuela de la Palma", "icon": "🔥", "master": "Maestro Toro, el Herrero" },
-    "traccion": { "name": "Escuela de la Cuerda", "icon": "⛵", "master": "Capitana Mar, la Marinera" },
-    "core": { "name": "Escuela del Sello", "icon": "🛡️", "master": "Guardián Roble" },
-    "movilidad": { "name": "Escuela del Nudo", "icon": "🍃", "master": "Maestra Brisa, la Danzante" },
-    "cardio": { "name": "Escuela del Latido", "icon": "💜", "master": "Maestro Lumbre" }
+    "piernas": {
+      "name": "Escuela de la Raíz",
+      "icon": "🌱",
+      "master": "Maestro Bruno, el Caminante"
+    },
+    "gluteos": {
+      "name": "Escuela del Arco",
+      "icon": "🌉",
+      "master": "Maestra Inés, la Constructora"
+    },
+    "empuje": {
+      "name": "Escuela de la Palma",
+      "icon": "🔥",
+      "master": "Maestro Toro, el Herrero"
+    },
+    "traccion": {
+      "name": "Escuela de la Cuerda",
+      "icon": "⛵",
+      "master": "Capitana Mar, la Marinera"
+    },
+    "core": {
+      "name": "Escuela del Sello",
+      "icon": "🛡️",
+      "master": "Guardián Roble"
+    },
+    "movilidad": {
+      "name": "Escuela del Nudo",
+      "icon": "🍃",
+      "master": "Maestra Brisa, la Danzante"
+    },
+    "cardio": {
+      "name": "Escuela del Latido",
+      "icon": "💜",
+      "master": "Maestro Lumbre"
+    }
   },
   "tiers": {
     "1": "Aprendiz",
@@ -68,27 +107,93 @@
     "El grimorio lleva días sin abrirse. ¿Lo abrimos?"
   ],
   "badges": {
-    "first-card": { "name": "Primer Hechizo", "desc": "Lanza tu primera carta" },
-    "daily-goal-1": { "name": "Farol Encendido", "desc": "Cumple tu meta diaria por primera vez" },
-    "streak-3": { "name": "Farol x3", "desc": "3 días seguidos" },
-    "streak-7": { "name": "Farol x7", "desc": "7 días seguidos" },
-    "streak-30": { "name": "Farol x30", "desc": "30 días seguidos" },
-    "cards-50": { "name": "Aprendiz Constante", "desc": "50 cartas completadas" },
-    "cards-250": { "name": "Adepto del Mazo", "desc": "250 cartas completadas" },
-    "cards-1000": { "name": "Magister del Grimorio", "desc": "1000 cartas completadas" },
-    "full-body-week": { "name": "Las Siete Escuelas", "desc": "Todas las escuelas en 7 días" },
-    "level-5": { "name": "Guardián del Paso", "desc": "Nivel global 5" },
-    "level-10": { "name": "Archimago", "desc": "Nivel global 10" },
-    "early-bird": { "name": "Gallo del Alba", "desc": "Una carta antes de las 8:00" },
-    "night-owl": { "name": "Búho de la Quietud", "desc": "Una carta después de las 21:00" },
-    "park-explorer": { "name": "Explorador del Bosque", "desc": "10 cartas en el parque" },
-    "comeback": { "name": "La Niebla Retrocede", "desc": "Vuelve tras 7 días o más" },
-    "level-up-piernas": { "name": "Sello de la Raíz", "desc": "Sube de rango en la Escuela de la Raíz" },
-    "level-up-gluteos": { "name": "Sello del Arco", "desc": "Sube de rango en la Escuela del Arco" },
-    "level-up-empuje": { "name": "Sello de la Palma", "desc": "Sube de rango en la Escuela de la Palma" },
-    "level-up-traccion": { "name": "Sello de la Cuerda", "desc": "Sube de rango en la Escuela de la Cuerda" },
-    "level-up-core": { "name": "Sello del Escudo", "desc": "Sube de rango en la Escuela del Sello" },
-    "level-up-movilidad": { "name": "Sello del Nudo", "desc": "Sube de rango en la Escuela del Nudo" },
-    "level-up-cardio": { "name": "Sello del Latido", "desc": "Sube de rango en la Escuela del Latido" }
+    "first-card": {
+      "name": "Primer Hechizo",
+      "desc": "Lanza tu primera carta"
+    },
+    "daily-goal-1": {
+      "name": "Farol Encendido",
+      "desc": "Cumple tu meta diaria por primera vez"
+    },
+    "streak-3": {
+      "name": "Farol x3",
+      "desc": "3 días seguidos"
+    },
+    "streak-7": {
+      "name": "Farol x7",
+      "desc": "7 días seguidos"
+    },
+    "streak-30": {
+      "name": "Farol x30",
+      "desc": "30 días seguidos"
+    },
+    "cards-50": {
+      "name": "Aprendiz Constante",
+      "desc": "50 cartas completadas"
+    },
+    "cards-250": {
+      "name": "Adepto del Mazo",
+      "desc": "250 cartas completadas"
+    },
+    "cards-1000": {
+      "name": "Magister del Grimorio",
+      "desc": "1000 cartas completadas"
+    },
+    "full-body-week": {
+      "name": "Las Siete Escuelas",
+      "desc": "Todas las escuelas en 7 días"
+    },
+    "level-5": {
+      "name": "Guardián del Paso",
+      "desc": "Nivel global 5"
+    },
+    "level-10": {
+      "name": "Archimago",
+      "desc": "Nivel global 10"
+    },
+    "early-bird": {
+      "name": "Gallo del Alba",
+      "desc": "Una carta antes de las 8:00"
+    },
+    "night-owl": {
+      "name": "Búho de la Quietud",
+      "desc": "Una carta después de las 21:00"
+    },
+    "park-explorer": {
+      "name": "Explorador del Bosque",
+      "desc": "10 cartas en el parque"
+    },
+    "comeback": {
+      "name": "La Niebla Retrocede",
+      "desc": "Vuelve tras 7 días o más"
+    },
+    "level-up-piernas": {
+      "name": "Sello de la Raíz",
+      "desc": "Sube de rango en la Escuela de la Raíz"
+    },
+    "level-up-gluteos": {
+      "name": "Sello del Arco",
+      "desc": "Sube de rango en la Escuela del Arco"
+    },
+    "level-up-empuje": {
+      "name": "Sello de la Palma",
+      "desc": "Sube de rango en la Escuela de la Palma"
+    },
+    "level-up-traccion": {
+      "name": "Sello de la Cuerda",
+      "desc": "Sube de rango en la Escuela de la Cuerda"
+    },
+    "level-up-core": {
+      "name": "Sello del Escudo",
+      "desc": "Sube de rango en la Escuela del Sello"
+    },
+    "level-up-movilidad": {
+      "name": "Sello del Nudo",
+      "desc": "Sube de rango en la Escuela del Nudo"
+    },
+    "level-up-cardio": {
+      "name": "Sello del Latido",
+      "desc": "Sube de rango en la Escuela del Latido"
+    }
   }
 }

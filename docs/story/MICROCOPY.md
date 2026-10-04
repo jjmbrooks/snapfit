@@ -119,21 +119,12 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `play.hudTodayAria` | Hoy {done} de {goal} cartas |
 | `play.hudStreakAria` | Racha de {n} días |
 | `card.aria` | Carta {name}. Toca para ver cómo se hace. |
-| `card.levelTitle` | Nivel de la carta |
-| `card.levelShort` | NV |
+| `card.levelTitle` | Nivel de la carta: {n} |
 | `card.tierTitle` | Rango {tier} |
 | `card.artAria` | Ilustración provisional: {name} |
 | `card.draft` | BORRADOR |
 | `card.draftTitle` | Contenido pendiente de validación por Entrenador |
-| `card.dose` | Reto |
-| `card.time` | Tiempo |
-| `card.timeValue` | ~{s} s |
-| `card.levelAria` | Nivel {n} de 10 |
-| `card.flipHint` | toca ↻ |
-| `card.videoAria` | Video: {name} |
-| `card.videoPlaceholderAria` | Animación provisional: {name} |
-| `card.videoPending` | 🎬 Video del movimiento: pendiente (director-creativo) |
-| `card.cues` | Clave: |
+| `card.flipHint` | toca para voltear ↻ |
 | `card.careZones` | ⚠ Cuida: |
 | `card.playerLevel` | tu nivel en {group}: {n} |
 | `card.fullSheet` | Ficha completa y fuentes |
@@ -141,6 +132,16 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `card.perSide` |  / lado |
 | `card.holdUnit` | {n} s sostén |
 | `card.secUnit` | {n} s |
+| `card.emblemTitle` | {school} |
+| `card.rankSchool` | {rank} · {school} |
+| `card.xpTitle` | Experiencia al completarla: {n} XP |
+| `card.xpUnit` | XP |
+| `card.backTitle` | Cómo se hace |
+| `card.breathDefault` | Respira sin aguantar el aire |
+| `card.stepAria` | Paso {n} |
+| `card.poseAria` | Pose del paso {n} |
+| `card.posePending` | pose pendiente |
+| `card.flipBack` | ↻ volver |
 | `reward.xp` | +{n} XP |
 | `reward.effortAsk` | ¿Cómo te sentiste? (opcional, ayuda a ajustar tu nivel) |
 | `reward.continue` | Continuar ▶ |
@@ -170,6 +171,10 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `story.status.published` | Publicada |
 | `story.status.retired` | Retirada |
 | `progress.region` | Región actual: {name} |
+| `sample.label` | Muestra · nivel {level} (no cuenta como progreso) |
+| `sample.navAria` | Ver la carta en otros rangos |
+| `sample.back` | Volver |
+| `sample.notFound` | Carta no encontrada. |
 
 ## 2. Narrativa — `content/stories/vitalia/story.json` (paquete por defecto; los demás paquetes en `content/stories/`)
 
@@ -191,6 +196,13 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `deckReady.title` | El grimorio te reconoce |
 | `guide.name` | Pip |
 | `guide.role` | Zorro mensajero; el único que recuerda la Orden entera |
+| `cardBack.title` | Cómo lanzar el hechizo |
+| `cardBack.breath` | Respira con el gesto |
+| `cardFlavor.sentadilla-silla-l1` | La raíz empuja: vuelves a subir |
+| `cardFlavor.flexion-pared-l1` | Tu palma enciende la pared |
+| `cardFlavor.marcha-sitio-l1` | Un paso, un latido, un farol |
+| `cardFlavor.remo-toalla-iso-l1` | Tira: la vela busca el viento |
+| `cardFlavor.perro-pajaro-l1` | El sello no se cae |
 | `families.piernas.name` | Escuela de la Raíz |
 | `families.piernas.icon` | 🌱 |
 | `families.piernas.master` | Maestro Bruno, el Caminante |
@@ -295,24 +307,24 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `src/main.js:48` | Por seguridad, inicia sesión otra vez y repite el borrado. |
 | `src/main.js:52` | Cuenta borrada |
 | `src/main.js:52` | Tus datos en la nube se eliminaron. Los de este dispositivo siguen aquí. |
-| `src/main.js:124` | Sin conexión |
-| `src/main.js:124` | Todo sigue funcionando; sincronizamos al volver. |
-| `src/main.js:140` | Nueva versión  Toca para actualizar |
+| `src/main.js:125` | Sin conexión |
+| `src/main.js:125` | Todo sigue funcionando; sincronizamos al volver. |
+| `src/main.js:141` | Nueva versión  Toca para actualizar |
 | `src/ui/views/achievements.js:16` | Compartir |
 | `src/ui/views/achievements.js:19` | Logros ·  / |
 | `src/ui/views/achievements.js:20` | Insignias provisionales generadas por código; el arte final llegará de director-creativo. |
 | `src/ui/views/achievements.js:32` | Imagen lista |
 | `src/ui/views/achievements.js:32` | Se descargó la imagen del logro para compartir. |
-| `src/ui/views/card.js:81` | Carta no encontrada.  Volver |
-| `src/ui/views/card.js:84` | Fuentes pendientes: esta carta es un  borrador  sin citas todavía. Entrenador entregará la versión validada con referencias. |
-| `src/ui/views/card.js:92` | Pasos |
-| `src/ui/views/card.js:93` | Claves |
-| `src/ui/views/card.js:94` | Variantes |
-| `src/ui/views/card.js:95` | Más fácil: |
-| `src/ui/views/card.js:96` | Más difícil: |
-| `src/ui/views/card.js:97` | Precauciones |
-| `src/ui/views/card.js:100` | Fuentes |
-| `src/ui/views/card.js:101` | Licencia del contenido: CC BY 4.0 · SnapFit |
+| `src/ui/views/card.js:82` | Carta no encontrada.  Volver |
+| `src/ui/views/card.js:85` | Fuentes pendientes: esta carta es un  borrador  sin citas todavía. Entrenador entregará la versión validada con referencias. |
+| `src/ui/views/card.js:93` | Pasos |
+| `src/ui/views/card.js:94` | Claves |
+| `src/ui/views/card.js:95` | Variantes |
+| `src/ui/views/card.js:96` | Más fácil: |
+| `src/ui/views/card.js:97` | Más difícil: |
+| `src/ui/views/card.js:98` | Precauciones |
+| `src/ui/views/card.js:101` | Fuentes |
+| `src/ui/views/card.js:102` | Licencia del contenido: CC BY 4.0 · SnapFit |
 | `src/ui/views/menu.js:18` | Sincronizando… |
 | `src/ui/views/menu.js:20` | Menú |
 | `src/ui/views/menu.js:22` | Tema |
@@ -379,5 +391,5 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `src/ui/components/sprite.js:67` | ANIMS.lunge[1].kR = [11, 28]; |
 | `src/ui/components/sprite.js:68` | ANIMS.lunge[1].fR = [7, 30]; |
 | `src/ui/components/sprite.js:93` | A)) o[k] = lerp(A[k], B[k], e); |
-| `src/ui/components/tcard.js:26` | GROUP_NAMES[g]).join( |
-| `src/ui/components/tcard.js:91` | Enter |
+| `src/ui/components/tcard.js:31` | GROUP_NAMES[g]).join( |
+| `src/ui/components/tcard.js:97` | Enter |
