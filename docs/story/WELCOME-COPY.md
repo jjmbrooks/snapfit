@@ -1,6 +1,6 @@
 # Copy de bienvenida y onboarding
 
-> **v0 · BORRADOR ABIERTO A PROPUESTAS.** Fuente en la app: `content/story/pixelandia.json` (narrativa) y `content/copy/es.json → onboarding` (interfaz). Propuestas alternativas: `docs/proposals/story/<modelo>.md` o una historia nueva en `content/story/<id>.json` (se previsualiza con `?story=<id>`).
+> **v0 · BORRADOR ABIERTO A PROPUESTAS.** Fuente en la app: el paquete de historia activo, `content/stories/<id>/story.json` (narrativa; ver `docs/story/STORY-PACKS.md`) y `content/copy/es.json → onboarding` (interfaz). Propuestas alternativas: `docs/proposals/story/<modelo>.md` o un paquete nuevo en `content/stories/<id>/` (se previsualiza con `?story=<id>`).
 
 ## Flujo (4 pasos, sin barra inferior)
 
@@ -35,7 +35,7 @@ El texto de salud es **legal/seguridad**: se puede mejorar el estilo, pero no qu
 
 ## Cómo proponer
 
-1. Copia `content/story/pixelandia.json` a `content/story/<tu-id>.json`, cambia `id` y los textos.
+1. Crea un paquete: copia `content/stories/valle-gremios/` a `content/stories/<tu-id>/`, cambia `id` y los textos (guía: `docs/story/STORY-PACKS.md`).
 2. `npm test` (valida el formato) y `npm run dev` → abre `/snapfit/?story=<tu-id>`.
-3. Capturas: `npm run screens -- "http://localhost:4173/snapfit/?story=<tu-id>" docs/proposals/story/<tu-id>/` (con `npm run build && npm run preview` corriendo).
-4. PR `story/<modelo>-<tema>` con el JSON, una ficha en `docs/proposals/story/<modelo>.md` y las capturas. **No** cambies `active.json`: eso lo decide Brooks.
+3. Capturas: `npm run screens:stories -- http://localhost:4173/snapfit/ docs/proposals/story/<tu-id>/ sentadilla-silla-l1 <tu-id>` (con `npm run build && npm run preview` corriendo).
+4. PR `story/<modelo>-<tema>` con el JSON, una ficha en `docs/proposals/story/<modelo>.md` y las capturas. **No** cambies `content/stories/index.json`: el paquete por defecto lo decide Brooks.

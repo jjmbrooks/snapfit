@@ -27,7 +27,7 @@ npm run verify           # tests + contenido + procedencia + build
 npm run screens -- http://localhost:4173/snapfit/ /tmp/capturas   # 18 capturas 390×844 (con preview corriendo)
 ```
 
-**¿Vas a mejorar la historia o la UI?** Lee [`docs/PARALLEL-WORK.md`](docs/PARALLEL-WORK.md): cada workstream tiene sus archivos, se trabaja en ramas `<workstream>/<modelo>-<tema>` y se entra a `main` por PR revisado por Codelius. Historia: [`docs/story/`](docs/story/). Textos: `content/copy/es.json` y `content/story/*.json`.
+**¿Vas a mejorar la historia o la UI?** Lee [`docs/PARALLEL-WORK.md`](docs/PARALLEL-WORK.md): cada workstream tiene sus archivos, se trabaja en ramas `<workstream>/<modelo>-<tema>` y se entra a `main` por PR revisado por Codelius. Historia: [`docs/story/`](docs/story/). Textos: `content/copy/es.json`; historia: paquetes `content/stories/<id>/` ([`docs/story/STORY-PACKS.md`](docs/story/STORY-PACKS.md)).
 
 ## Lo esencial
 

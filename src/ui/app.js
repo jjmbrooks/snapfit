@@ -27,6 +27,7 @@ export function defaultProfile() {
     analytics: true,
     reminders: { pattern: 'off', customTimes: ['12:00'] },
     levelOverrides: {},
+    storyId: null, // id del paquete de historia elegido (null = el por defecto). Solo el id, nunca textos.
   };
 }
 
@@ -158,6 +159,10 @@ export function createApp({ storage, clock, cards, decks, leveling, appVersion }
             s.profile.player = { ...player, ...derivePlayer(player) };
             s.profile.termsAt = termsAt || s.profile.termsAt;
           }
+          const { fetchCloudSettings } = await import('../adapters/firebase/sync.js');
+          const st = await fetchCloudSettings(user.uid);
+          if (st && 'storyId' in st && st.storyId !== s.profile.storyId) { s.profile.storyId = st.storyId; s.storyChanged = true; }
+          if (st?.theme && THEMES.includes(st.theme)) s.profile.theme = st.theme;
         } catch (e) {
           console.warn('[perfil nube] no disponible', e?.code || e);
         }
@@ -241,6 +246,11 @@ export function createApp({ storage, clock, cards, decks, leveling, appVersion }
 
     async updateProfile(patch) {
       const prevTheme = s.profile.theme;
+      if (('storyId' in patch || 'theme' in patch) && s.user && navigator.onLine) {
+        import('../adapters/firebase/sync.js')
+          .then(({ saveCloudSettings }) => saveCloudSettings(s.user.uid, { storyId: 'storyId' in patch ? patch.storyId : s.profile.storyId, theme: patch.theme ?? s.profile.theme }))
+          .catch((e) => console.warn('[ajustes nube]', e?.code || e));
+      }
       s.profile = { ...s.profile, ...patch };
       await saveProfile();
       applyTheme();

@@ -53,3 +53,8 @@
 .tc-pips i { height: 7px; background: rgba(0,0,0,.25); border-radius: 1px; }
 .tc-pips i.on { background: #0d0b18; }
 .tc-hint { opacity: .85; text-align: right; }
+/* Assets del paquete de historia (opcionales; si faltan se ve el marco y la animación genéricos). */
+.tc-art.has-art { background: #0d0b18; }
+.tc-art.has-art::before { display: none; }
+.tc-art-img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+.tcard.has-skin .tc-front { background: var(--frame-skin) center / 100% 100% no-repeat, linear-gradient(var(--fam), var(--fam-dark)); }

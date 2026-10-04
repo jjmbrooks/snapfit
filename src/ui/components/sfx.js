@@ -1,5 +1,7 @@
 // SFX chiptune PLACEHOLDER sintetizados en el momento con WebAudio (onda cuadrada). Sin archivos.
 // Se reemplazan por los de melody (Kanban t_b20e2d87).
+import { sfxUrl } from '../story/index.js';
+
 let ctx = null;
 const SEQ = {
   listo: [[660, 0.07], [880, 0.07], [1320, 0.12]],
@@ -7,7 +9,11 @@ const SEQ = {
   logro: [[523, 0.08], [659, 0.08], [784, 0.08], [1047, 0.2]],
   nivel: [[392, 0.08], [523, 0.08], [659, 0.08], [784, 0.08], [1047, 0.08], [1319, 0.25]],
 };
+const PACK_NAME = { listo: 'listo', otra: 'otro', logro: 'logro', nivel: 'nivel', flip: 'flip' };
 export function playSfx(name) {
+  // Si el paquete de historia trae su propio SFX, se usa ese (se carga solo al sonar).
+  const url = sfxUrl(PACK_NAME[name] || name);
+  if (url) { try { new Audio(url).play().catch(() => {}); return; } catch { /* sigue con el sintetizado */ } }
   try {
     ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
     let t = ctx.currentTime;

@@ -1,6 +1,6 @@
 // Secuencia tras «¡Listo!»: felicitación → progreso (barras) → logros/subidas (si hay) → siguiente carta.
 import { esc } from '../dom.js';
-import { FAMILY_NAMES, BADGES, EFFORT_NAMES, REWARDS, FAMILY_ICONS, t } from '../i18n/es.js';
+import { FAMILY_NAMES, BADGES, EFFORT_NAMES, REWARDS, FAMILY_ICONS, REGION_NAMES, t } from '../i18n/es.js';
 import { drawBadge } from '../components/sprite.js';
 import { shareBadge } from '../components/share.js';
 
@@ -58,6 +58,7 @@ export async function runRewardSequence(app, r) {
     ${bar(t('reward.streak'), Math.min(1, d.streak.current / 7), t(d.streak.current === 1 ? 'reward.day' : 'reward.days', { n: d.streak.current }), 'streak')}
     ${groupBars}
     <div class="seq-row"><span>${t('reward.globalLevel')} <b>${d.levels.global}</b></span><span>${t('reward.xpLabel')} <b>${d.xp}</b></span><span>${t('reward.cards')} <b>${d.totalDone}</b></span></div>
+    <p class="seq-region">${esc(t('reward.region', { name: REGION_NAMES[d.levels.global] || '' }))}</p>
     <button class="btn btn-primary" data-next>${diff.newBadges.length || diff.levelChanges.length ? t('reward.seeBadges') : t('reward.nextCard')}</button>`, 'seq-progress');
   await waitNext(o2);
 

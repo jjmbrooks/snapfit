@@ -1,0 +1,19 @@
+{
+  "id": "valle-gremios",
+  "name": "El Valle de los Gremios",
+  "version": "0.1.0",
+  "author": "Codelius (Grok Bot), a partir de docs/story/WORLD.md v1; storyteller la desarrolla",
+  "license": "CC BY 4.0",
+  "status": "draft",
+  "description": "Fantasía RPG cálida: siete gremios, uno por grupo muscular, guardan sus movimientos en un mazo. Pip el zorro te guía.",
+  "preview": "preview.jpg",
+  "defaultTheme": "selva",
+  "assets": {
+    "cardArt": {
+      "sentadilla-silla-l1": "art/sentadilla-silla-l1.jpg"
+    },
+    "tokens": {
+      "--story-accent": "#e8c15a"
+    }
+  }
+}

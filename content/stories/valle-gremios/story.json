@@ -1,0 +1,186 @@
+{
+  "id": "valle-gremios",
+  "title": "El Valle de los Gremios",
+  "logline": "Una carta, un movimiento, y un rincón del valle que vuelve a la vida.",
+  "welcome": {
+    "title": "El Valle de los Gremios",
+    "lines": [
+      "El valle se quedó quieto. Una niebla gris apagó las forjas y detuvo los molinos.",
+      "Los siete gremios guardaron sus movimientos en un mazo… y ese mazo te encontró a ti.",
+      "Cada carta que hagas devuelve un poco de vida al valle.",
+      "Soy Pip. Te acompaño. ¿Empezamos?"
+    ],
+    "cta": "¡Abrir el mazo!",
+    "note": "Historia v1 en borrador · nombre del reino por decidir."
+  },
+  "signin": {
+    "title": "Únete como aprendiz",
+    "body": "Entra con tu cuenta de Google para guardar tu mazo, tus rangos y tus sellos, y recuperarlos en cualquier teléfono.",
+    "offline": "Después del primer inicio de sesión, el valle te espera también <b>sin internet</b>."
+  },
+  "deckReady": {
+    "title": "Los gremios te reciben"
+  },
+  "guide": {
+    "name": "Pip",
+    "role": "Zorro mensajero de los gremios"
+  },
+  "families": {
+    "piernas": {
+      "name": "Gremio de Tierra",
+      "icon": "🌱",
+      "master": "Maestro Bruno, el Caminante"
+    },
+    "gluteos": {
+      "name": "Gremio del Puente",
+      "icon": "🌉",
+      "master": "Maestra Inés, la Constructora"
+    },
+    "empuje": {
+      "name": "Gremio de la Forja",
+      "icon": "🔥",
+      "master": "Maestro Toro, el Herrero"
+    },
+    "traccion": {
+      "name": "Gremio de las Velas",
+      "icon": "⛵",
+      "master": "Capitana Mar, la Marinera"
+    },
+    "core": {
+      "name": "Gremio del Escudo",
+      "icon": "🛡️",
+      "master": "Guardián Roble"
+    },
+    "movilidad": {
+      "name": "Gremio del Viento",
+      "icon": "🍃",
+      "master": "Maestra Brisa, la Danzante"
+    },
+    "cardio": {
+      "name": "Gremio del Corazón",
+      "icon": "💜",
+      "master": "Maestro Lumbre"
+    }
+  },
+  "tiers": {
+    "1": "Aprendiz",
+    "2": "Oficial",
+    "3": "Maestro",
+    "4": "Leyenda"
+  },
+  "regions": {
+    "1": "Aldea del Aprendiz",
+    "2": "Molinos del Río",
+    "3": "Bosque de los Robles",
+    "4": "Puerto de las Velas",
+    "5": "Paso de la Montaña",
+    "6": "Dunas de Ámbar",
+    "7": "Lago Espejo",
+    "8": "Forja del Volcán",
+    "9": "Picos de Nube",
+    "10": "Ciudadela de los Gremios"
+  },
+  "rewards": [
+    "¡La niebla retrocede!",
+    "¡Bien hecho, aprendiz!",
+    "¡Se encendió una forja!",
+    "¡Un molino vuelve a girar!",
+    "¡Pip está orgulloso!",
+    "¡Sello ganado!"
+  ],
+  "reminders": [
+    "La forja se enfría, ¿un movimiento?",
+    "Pip te busca: una carta y listo.",
+    "El valle necesita un poco de luz. ¿Una carta?"
+  ],
+  "badges": {
+    "first-card": {
+      "name": "Primer Sello",
+      "desc": "Completa tu primera carta"
+    },
+    "daily-goal-1": {
+      "name": "Farol Encendido",
+      "desc": "Cumple tu meta diaria por primera vez"
+    },
+    "streak-3": {
+      "name": "Brasa de Bronce",
+      "desc": "3 días seguidos"
+    },
+    "streak-7": {
+      "name": "Llama de Plata",
+      "desc": "7 días seguidos"
+    },
+    "streak-30": {
+      "name": "Hoguera de Oro",
+      "desc": "30 días seguidos"
+    },
+    "cards-50": {
+      "name": "Aprendiz Constante",
+      "desc": "50 cartas completadas"
+    },
+    "cards-250": {
+      "name": "Oficial del Mazo",
+      "desc": "250 cartas completadas"
+    },
+    "cards-1000": {
+      "name": "Maestro del Mazo",
+      "desc": "1000 cartas completadas"
+    },
+    "full-body-week": {
+      "name": "Amigo de los Siete Gremios",
+      "desc": "Todos los gremios en 7 días"
+    },
+    "level-5": {
+      "name": "Guardián del Paso",
+      "desc": "Nivel global 5"
+    },
+    "level-10": {
+      "name": "Leyenda de la Ciudadela",
+      "desc": "Nivel global 10"
+    },
+    "early-bird": {
+      "name": "Gallo del Valle",
+      "desc": "Una carta antes de las 8:00"
+    },
+    "night-owl": {
+      "name": "Búho de la Torre",
+      "desc": "Una carta después de las 21:00"
+    },
+    "park-explorer": {
+      "name": "Explorador del Bosque",
+      "desc": "10 cartas en el parque"
+    },
+    "comeback": {
+      "name": "La Niebla Retrocede",
+      "desc": "Vuelve tras 7 días o más"
+    },
+    "level-up-piernas": {
+      "name": "Sello de Tierra",
+      "desc": "Sube de rango en el Gremio de Tierra"
+    },
+    "level-up-gluteos": {
+      "name": "Sello de Puente",
+      "desc": "Sube de rango en el Gremio del Puente"
+    },
+    "level-up-empuje": {
+      "name": "Sello de Forja",
+      "desc": "Sube de rango en el Gremio de la Forja"
+    },
+    "level-up-traccion": {
+      "name": "Sello de Velas",
+      "desc": "Sube de rango en el Gremio de las Velas"
+    },
+    "level-up-core": {
+      "name": "Sello de Escudo",
+      "desc": "Sube de rango en el Gremio del Escudo"
+    },
+    "level-up-movilidad": {
+      "name": "Sello de Viento",
+      "desc": "Sube de rango en el Gremio del Viento"
+    },
+    "level-up-cardio": {
+      "name": "Sello de Corazón",
+      "desc": "Sube de rango en el Gremio del Corazón"
+    }
+  }
+}

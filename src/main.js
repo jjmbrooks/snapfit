@@ -14,6 +14,7 @@ import { renderMenu, bindMenu } from './ui/views/menu.js';
 import { renderPrivacy } from './ui/views/privacy.js';
 import { renderOnboarding, bindOnboarding, startProfileEdit } from './ui/views/onboarding.js';
 import { toast } from './ui/dom.js';
+import { initStory, listPacks } from './ui/story/index.js';
 
 const APP_VERSION = __APP_VERSION__;
 const app = createApp({ storage, clock, cards, decks: [deckAdulto], leveling, appVersion: APP_VERSION });
@@ -63,9 +64,27 @@ function swapView() {
   return fresh;
 }
 
+// ---------- Historia (paquete independiente de la mecánica) ----------
+let storyReady = false;
+async function loadStory() {
+  await initStory(app.state.profile.storyId);
+  storyReady = true;
+}
+const storyDeps = {
+  listPacks,
+  /** Cambia de historia: guarda solo el id (y el tema por defecto del paquete) y vuelve a resolver. */
+  async switchStory(id) {
+    const m = listPacks().find((p) => p.id === id);
+    await app.updateProfile({ storyId: id, ...(m?.defaultTheme ? { theme: m.defaultTheme } : {}) });
+    await loadStory();
+    render();
+  },
+};
+
 function render() {
   const s = app.state;
-  if (!s.derived) return;
+  if (!s.derived || !storyReady) return;
+  if (s.storyChanged) { s.storyChanged = false; loadStory().then(render); return; }
   const route = parseRoute();
   const step = app.step();
   const onb = step && route.name !== 'privacy';
@@ -90,7 +109,7 @@ function render() {
   else if (route.name === 'detail') v.innerHTML = renderCardDetail(app, route.id);
   else if (route.name === 'progress') v.innerHTML = renderProgress(app);
   else if (route.name === 'achievements') { v.innerHTML = renderAchievements(app); bindAchievements(v); }
-  else if (route.name === 'menu') { v.innerHTML = renderMenu(app); bindMenu(v, app, { ...authDeps, editProfile() { startProfileEdit(); location.hash = '#/perfil'; } }); }
+  else if (route.name === 'menu') { v.innerHTML = renderMenu(app); bindMenu(v, app, { ...authDeps, ...storyDeps, editProfile() { startProfileEdit(); location.hash = '#/perfil'; } }); }
   else if (route.name === 'privacy') v.innerHTML = `<div class="page">${renderPrivacy()}<p><a class="btn" href="#/">◀ Volver</a></p></div>`;
   if (lastRoute !== location.hash) { v.scrollTop = 0; lastRoute = location.hash; }
 }
@@ -105,7 +124,8 @@ window.addEventListener('online', () => { app.state.online = true; app.syncNow()
 window.addEventListener('offline', () => { app.state.online = false; app.emit(); toast('Sin conexión', 'Todo sigue funcionando; sincronizamos al volver.'); });
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') app.checkReminder(); });
 
-app.init().then(() => {
+app.init().then(loadStory).then(() => {
+  render();
   if (navigator.onLine) loadAuth().catch((e) => console.warn('[auth]', e));
   app.checkReminder();
   setInterval(() => app.checkReminder(), 60000);

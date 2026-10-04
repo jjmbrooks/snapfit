@@ -13,3 +13,4 @@
 .histo i { display: block; background: var(--primary); min-height: 2px; border-radius: 2px 2px 0 0; }
 .histo i.zero { background: var(--surface-2); }
 .big-num { font-family: var(--font-pixel); font-size: 20px; color: var(--primary); margin: 0; }
+.region-line { margin: var(--s3) 0 0; font-weight: 700; color: var(--story-accent, var(--accent)); }

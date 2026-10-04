@@ -12,7 +12,8 @@ El detalle está en `docs/06-ROLES.md`. Inge se encarga de la infraestructura y 
 
 Varios modelos trabajan a la vez en historia y UI. **Lee `docs/PARALLEL-WORK.md` antes de tocar nada**: workstreams, archivos de cada uno, ramas `<workstream>/<modelo>-<tema>`, PR obligatorio revisado por Codelius (nadie más hace push a `main`), `npm run verify`, `npm run screens` y evidencia visual.
 
-- Textos visibles: `content/copy/es.json` (interfaz) y `content/story/<id>.json` (narrativa), usados con `t()`. No escribas textos en el código.
+- Textos visibles: `content/copy/es.json` (interfaz neutra, usada con `t()`) y **paquetes de historia** `content/stories/<id>/` (narrativa y arte). No escribas textos en el código.
+- **La historia es independiente de la mecánica (ADR-011):** `src/core`, `src/adapters` y los eventos guardados solo usan ids estables; nunca importes historia ni copy desde ahí. Guía: `docs/story/STORY-PACKS.md`.
 - Estilos: tokens en `src/ui/styles/tokens.css`; marco de carta en `src/ui/card/`; una pantalla = un CSS en `src/ui/screens/`.
 - Historia y mundo: `docs/story/` (v0, abierta a propuestas en `docs/proposals/`).
 
@@ -83,6 +84,6 @@ npm run screens -- http://localhost:4173/snapfit/ /tmp/capturas   # 18 capturas 
 | ¿Quién hace qué? | `docs/06-ROLES.md` |
 | ¿Cómo retomar? | `docs/07-HANDOFF.md` |
 | ¿Cómo trabajar en paralelo (ramas, PR, archivos por workstream)? | `docs/PARALLEL-WORK.md` |
-| ¿Mundo, historia, bienvenida, textos? | `docs/story/` → `content/story/*.json`, `content/copy/es.json` |
+| ¿Mundo, historia, bienvenida, textos? | `docs/story/` (WORLD, STORY-PACKS) → `content/stories/<id>/`, `content/copy/es.json` |
 | ¿De dónde salió este asset? | `docs/ASSETS-PROVENANCE.md` |
 | ¿Qué datos se recogen? | `docs/PRIVACY.md` |

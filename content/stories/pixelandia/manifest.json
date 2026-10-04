@@ -1,0 +1,12 @@
+{
+  "id": "pixelandia",
+  "name": "El Reino de Pixelandia",
+  "version": "0.1.0",
+  "author": "Codelius (Grok Bot) — placeholder técnico",
+  "license": "CC BY 4.0",
+  "status": "draft",
+  "description": "Placeholder v0: la Gran Quietud congeló Pixelandia; cada carta devuelve la vida a un rincón del reino.",
+  "preview": "preview.jpg",
+  "defaultTheme": "medianoche",
+  "assets": {}
+}

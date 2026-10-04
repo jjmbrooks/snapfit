@@ -1,9 +1,5 @@
 {
-  "_doc": "Formato en docs/story/WORLD.md §8. Editar aquí no toca código.",
   "id": "pixelandia",
-  "version": "v0",
-  "status": "borrador — abierto a propuestas (docs/proposals/story/)",
-  "author": "Codelius (placeholder técnico); storyteller entrega la versión final (Kanban t_22eec52e)",
   "title": "El Reino de Pixelandia",
   "logline": "La Gran Quietud congeló Pixelandia; cada carta del Mazo del Movimiento que juegas devuelve la vida a un rincón del reino.",
   "welcome": {
@@ -23,6 +19,10 @@
   },
   "deckReady": {
     "title": "Tu mazo está listo"
+  },
+  "guide": {
+    "name": "Bit",
+    "role": "Mapache mensajero y narrador"
   },
   "families": {
     "piernas": {
@@ -59,6 +59,18 @@
     "2": "Plata",
     "3": "Oro",
     "4": "Leyenda"
+  },
+  "regions": {
+    "1": "Aldea",
+    "2": "Molinos",
+    "3": "Bosque",
+    "4": "Puerto",
+    "5": "Montaña",
+    "6": "Desierto",
+    "7": "Lago",
+    "8": "Volcán",
+    "9": "Nubes",
+    "10": "Castillo"
   },
   "rewards": [
     "¡Snap!",

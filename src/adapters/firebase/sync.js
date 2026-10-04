@@ -98,3 +98,14 @@ export async function fetchCloudProfile(uid) {
   const snap = await fs.getDoc(fs.doc(d, 'users', uid));
   return snap.exists() ? snap.data().profile || null : null;
 }
+
+/** Ajustes que viajan entre dispositivos: users/{uid}.settings = { storyId, theme } (solo ids). */
+export async function saveCloudSettings(uid, settings) {
+  const d = await load();
+  await fs.setDoc(fs.doc(d, 'users', uid), { schemaVersion: 1, settings: clean({ ...settings, updatedAt: Date.now() }) }, { merge: true });
+}
+export async function fetchCloudSettings(uid) {
+  const d = await load();
+  const snap = await fs.getDoc(fs.doc(d, 'users', uid));
+  return snap.exists() ? snap.data().settings || null : null;
+}

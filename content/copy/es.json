@@ -199,6 +199,22 @@
     "nextCard": "Siguiente carta ▶",
     "badgeTitle": "¡Logro desbloqueado!",
     "levelChange": "{arrow} {icon} {group}: nivel {from} → <b>{to}</b>",
-    "share": "Compartir"
+    "share": "Compartir",
+    "region": "📍 {name}"
+  },
+  "story": {
+    "legend": "Historia",
+    "hint": "Elige el mundo que acompaña a tus cartas. Tu progreso, niveles e insignias no cambian.",
+    "previewing": "Vista previa activa (?story={id}): quítala de la dirección para ver tu elección.",
+    "switched": "Historia cambiada",
+    "status": {
+      "draft": "Borrador",
+      "review": "En revisión",
+      "published": "Publicada",
+      "retired": "Retirada"
+    }
+  },
+  "progress": {
+    "region": "Región actual: {name}"
   }
 }

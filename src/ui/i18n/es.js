@@ -1,25 +1,11 @@
 // Cargador de textos. NO escribas textos aquí: viven en archivos de contenido para que historia y copy
 // se editen sin tocar código (docs/PARALLEL-WORK.md, workstream «story-copy»).
-//   content/copy/es.json      → textos de interfaz (botones, errores, etiquetas)
-//   content/story/<id>.json   → narrativa: bienvenida, familias, tiers, recompensas, insignias, recordatorios
-//   content/story/active.json → historia activa. Para previsualizar otra sin cambiarla: ?story=<id>
+//   content/copy/es.json                 → textos de interfaz (botones, errores, etiquetas), iguales en toda historia
+//   content/stories/<id>/story.json      → narrativa del paquete activo (docs/story/STORY-PACKS.md)
+// Los objetos narrativos de abajo se rellenan con el paquete que resuelve src/ui/story/ y se actualizan
+// en el mismo objeto al cambiar de historia (las vistas los leen en cada render).
 import COPY from '../../../content/copy/es.json';
-import ACTIVE from '../../../content/story/active.json';
-
-const stories = import.meta.glob('../../../content/story/*.json', { eager: true, import: 'default' });
-export const STORIES = Object.fromEntries(
-  Object.entries(stories).map(([p, v]) => [p.split('/').pop().replace('.json', ''), v]).filter(([id]) => id !== 'active'),
-);
-
-function pickStory() {
-  let id = ACTIVE.active;
-  try {
-    const q = new URLSearchParams(globalThis.location?.search || '').get('story');
-    if (q && STORIES[q]) id = q;
-  } catch { /* sin location (tests) */ }
-  return STORIES[id] || STORIES[ACTIVE.active];
-}
-export const STORY_DATA = pickStory();
+import { currentStory, onStoryChange } from '../story/index.js';
 
 /** Busca una clave con puntos en el copy e interpola {variables}. Devuelve la clave si falta (visible en QA). */
 export function t(key, vars = {}) {
@@ -41,11 +27,28 @@ export const SEX_NAMES = N.sexes;
 export const FITNESS_NAMES = N.fitness;
 export const QUICK_TEST_COPY = COPY.quickTest;
 
-const S = STORY_DATA;
-export const STORY = { title: S.title, lines: S.welcome.lines, cta: S.welcome.cta, note: S.welcome.note, ...S };
-export const FAMILY_NAMES = Object.fromEntries(Object.entries(S.families).map(([g, f]) => [g, f.name]));
-export const FAMILY_ICONS = Object.fromEntries(Object.entries(S.families).map(([g, f]) => [g, f.icon]));
-export const TIER_NAMES = S.tiers;
-export const REWARDS = S.rewards;
-export const REMINDER_COPY = S.reminders;
-export const BADGES = Object.fromEntries(Object.entries(S.badges).map(([k, b]) => [k, [b.name, b.desc]]));
+export const STORY = {};
+export const FAMILY_NAMES = {};
+export const FAMILY_ICONS = {};
+export const TIER_NAMES = {};
+export const REGION_NAMES = {};
+export const GUIDE = {};
+export const REWARDS = [];
+export const REMINDER_COPY = [];
+export const BADGES = {};
+
+const fill = (o, v) => { for (const k of Object.keys(o)) delete o[k]; Object.assign(o, v); };
+const fillArr = (a, v) => { a.length = 0; a.push(...v); };
+function applyStory({ story: S }) {
+  fill(STORY, { ...S, lines: S.welcome.lines, cta: S.welcome.cta, note: S.welcome.note });
+  fill(FAMILY_NAMES, Object.fromEntries(Object.entries(S.families).map(([g, f]) => [g, f.name])));
+  fill(FAMILY_ICONS, Object.fromEntries(Object.entries(S.families).map(([g, f]) => [g, f.icon])));
+  fill(TIER_NAMES, S.tiers);
+  fill(REGION_NAMES, S.regions);
+  fill(GUIDE, S.guide);
+  fillArr(REWARDS, S.rewards);
+  fillArr(REMINDER_COPY, S.reminders);
+  fill(BADGES, Object.fromEntries(Object.entries(S.badges).map(([k, b]) => [k, [b.name, b.desc]])));
+}
+applyStory(currentStory());
+onStoryChange(applyStory);

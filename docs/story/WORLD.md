@@ -105,23 +105,7 @@ Botón: **¡Abrir el mazo!**
 - Dar nombres temáticos a las insignias.
 - Escribir el texto de ambientación de cada carta (una línea).
 - Crear mazos especiales para niños y adultos mayores con su propio arte.
-- Actualizar `content/story/<id>.json` para que la app use esta historia.
-## 10. Formato de `content/story/<id>.json` (la app aún usa `pixelandia.json` hasta migrar)
+- Afinar el paquete `content/stories/valle-gremios/` (ya existe en borrador; ver `docs/story/STORY-PACKS.md`).
+## 10. En la app
 
-Una historia = un archivo. La activa se elige en `content/story/active.json`. Para **previsualizar** otra sin cambiar la activa: `https://…/snapfit/?story=<id>` (o en local `http://localhost:5173/snapfit/?story=<id>`).
-
-| Clave | Tipo | Reglas (las valida `tests/content/copy-story.test.js`) |
-|-------|------|----------------------------------------------------------|
-| `id` | string | igual al nombre del archivo |
-| `version`, `status`, `author` | string | metadatos |
-| `title`, `logline` | string | — |
-| `welcome.lines` | string[] | 1–5 líneas |
-| `welcome.cta` | string | ≤ 28 caracteres (cabe en el botón) |
-| `welcome.title`, `welcome.note` | string | — |
-| `signin.title`, `signin.body`, `signin.offline` | string | `offline` admite `<b>` |
-| `deckReady.title` | string | — |
-| `families.<grupo>.name`, `.icon` | string | los 7 grupos |
-| `tiers.1..4` | string | — |
-| `rewards` | string[] | títulos aleatorios de felicitación |
-| `reminders` | string[] | textos de recordatorio |
-| `badges.<id>.name`, `.desc` | string | todas las insignias de `src/core/achievements.js → BADGE_IDS` |
+Esta historia ya existe como **paquete** `content/stories/valle-gremios/` (estado `draft`). Se previsualiza con `?story=valle-gremios`. El formato, la validación y cómo crear otras historias (por ejemplo, la variante mágica de la orden de magos) están en **`docs/story/STORY-PACKS.md`**. El paquete por defecto sigue siendo `pixelandia` hasta que Brooks elija.

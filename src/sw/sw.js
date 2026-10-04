@@ -21,7 +21,20 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('message', (event) => {
   if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+  // Paquete de historia activo: cachea sus assets y borra los de paquetes anteriores.
+  if (event.data?.type === 'CACHE_STORY') event.waitUntil(cacheStory(event.data.id, event.data.urls || []));
 });
+
+const STORY_PREFIX = 'snapstory-'; // no empieza con 'snapfit-': sobrevive a las actualizaciones del SW
+async function cacheStory(id, urls) {
+  const name = STORY_PREFIX + id;
+  for (const k of await caches.keys()) if (k.startsWith(STORY_PREFIX) && k !== name) await caches.delete(k);
+  const c = await caches.open(name);
+  for (const u of urls) {
+    const abs = scopeUrl(u);
+    if (!(await c.match(abs))) await c.add(abs).catch(() => {}); // best effort, sin red no pasa nada
+  }
+}
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
@@ -39,7 +52,9 @@ self.addEventListener('fetch', (event) => {
       (hit) =>
         hit ||
         fetch(req).then((res) => {
-          if (res.ok && url.pathname.startsWith(new URL(self.registration.scope).pathname)) {
+          const scopePath = new URL(self.registration.scope).pathname;
+          // Los assets de historia solo se cachean vía CACHE_STORY (paquete activo), no al vuelo.
+          if (res.ok && url.pathname.startsWith(scopePath) && !url.pathname.startsWith(scopePath + 'stories/')) {
             const copy = res.clone();
             caches.open(CACHE).then((c) => c.put(req, copy));
           }

@@ -25,7 +25,8 @@ snapfit/
 │  └─ assets/{sprites,icons,badges,sfx}/   # todo registrado en docs/ASSETS-PROVENANCE.md
 ├─ content/
 │  ├─ copy/es.json           # textos de interfaz (ver docs/story/MICROCOPY.md)
-│  ├─ story/<id>.json        # narrativa; active.json elige la activa; ?story=<id> previsualiza
+│  ├─ stories/               # paquetes de historia (ADR-011): index.json (por defecto), *.schema.json,
+│  │  └─ <id>/{manifest,story}.json   # assets en public/stories/<id>/; ?story=<id> previsualiza
 │  ├─ cards/*.json           # una carta por archivo o un JSON por mazo (ver 03)
 │  └─ decks/*.json           # adulto-general, ninos, mayores…
 ├─ src/
@@ -47,7 +48,8 @@ snapfit/
 │  │  └─ clock.js            # ClockPort (inyectable en tests)
 │  ├─ ui/
 │  │  ├─ app.js, router.js
-│  │  ├─ i18n/es.js          # cargador de textos: t('clave'); NO contiene textos
+│  │  ├─ i18n/es.js          # cargador de textos: t('clave') + objetos narrativos del paquete activo
+│  │  ├─ story/              # resolver de paquetes: index (carga/aplica), resolve (puro), schema, generic
 │  │  ├─ views/<pantalla>.js # una pantalla por archivo: onboarding, card, reward, progress, achievements, menu, privacy
 │  │  ├─ components/         # tcard (carta), sprite, sfx, share
 │  │  ├─ styles/             # index.css (orden de cascada), tokens.css (fuente única de tokens y paletas), base.css
@@ -102,6 +104,7 @@ El estado derivado (`state`) **siempre** se puede reconstruir aplicando los even
 ```
 users/{uid}                              # documento de perfil
   displayName, createdAt, schemaVersion,
+  settings: { storyId, theme, updatedAt }  # solo ids (ADR-011)
   profile:  { age, sex, fitness, test{sentadillas,flexiones,plancha}, deckId, baseLevels, termsAt, updatedAt }
   settings: { …mismo shape que profile local, sin datos sensibles… }
   derived:  { xp, levelGlobal, levelByGroup, streak, badges[] , updatedAt }   # caché, no fuente de verdad
@@ -226,3 +229,4 @@ Heurística inicial, sujeta a validación de Entrenador:
 | 008 | Notificaciones locales en el MVP; push de servidor después (VPS de Inge) | Aceptada |
 | 009 | Código MIT, contenido y assets CC BY 4.0 con procedencia obligatoria | Aceptada |
 | 010 | Firebase Analytics mínimo: solo `card_done`, `card_skip`, `level_up`, `theme_change` con parámetros en lista blanca; sin uid ni texto libre; desactivable (ver `docs/PRIVACY.md`) | Aceptada (Brooks, 2026-10-03) |
+| 011 | **Historia como paquete independiente.** La narrativa y su arte viven en paquetes `content/stories/<id>/` (manifest + story + assets en `public/stories/<id>/`), resueltos en la capa UI (`src/ui/story/`) con validación por JSON Schema y fallback paquete → por defecto → genérica. `src/core`, adaptadores, eventos y progreso solo guardan ids estables (cartas, grupos, niveles, insignias, XP, racha); el usuario guarda solo `storyId`. Cambiar de historia no altera el progreso (test). Guía: `docs/story/STORY-PACKS.md` | Aceptada (Brooks, 2026-10-03) |

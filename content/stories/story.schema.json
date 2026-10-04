@@ -1,0 +1,464 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "snapfit/story.schema.json",
+  "title": "SnapFit · story.json (textos narrativos de un paquete de historia)",
+  "description": "Solo texto. Las claves son ids estables del core (grupos, insignias, niveles); los valores son lo que se muestra. Validado por src/ui/story/schema.js y tests/content/story-packs.test.js.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "welcome",
+    "signin",
+    "deckReady",
+    "guide",
+    "families",
+    "tiers",
+    "regions",
+    "rewards",
+    "reminders",
+    "badges"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,39}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "logline": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "welcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "lines",
+        "cta"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 140
+          }
+        },
+        "cta": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 28
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 90
+        }
+      }
+    },
+    "signin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "body",
+        "offline"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "offline": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 140
+        }
+      }
+    },
+    "deckReady": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        }
+      }
+    },
+    "guide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 24
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        }
+      }
+    },
+    "families": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "piernas",
+        "gluteos",
+        "empuje",
+        "traccion",
+        "core",
+        "movilidad",
+        "cardio"
+      ],
+      "properties": {
+        "piernas": {
+          "type": "object",
+          "required": [
+            "name",
+            "icon"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            },
+            "icon": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8
+            },
+            "master": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            }
+          }
+        },
+        "gluteos": {
+          "type": "object",
+          "required": [
+            "name",
+            "icon"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            },
+            "icon": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8
+            },
+            "master": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            }
+          }
+        },
+        "empuje": {
+          "type": "object",
+          "required": [
+            "name",
+            "icon"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            },
+            "icon": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8
+            },
+            "master": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            }
+          }
+        },
+        "traccion": {
+          "type": "object",
+          "required": [
+            "name",
+            "icon"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            },
+            "icon": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8
+            },
+            "master": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            }
+          }
+        },
+        "core": {
+          "type": "object",
+          "required": [
+            "name",
+            "icon"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            },
+            "icon": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8
+            },
+            "master": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            }
+          }
+        },
+        "movilidad": {
+          "type": "object",
+          "required": [
+            "name",
+            "icon"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            },
+            "icon": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8
+            },
+            "master": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            }
+          }
+        },
+        "cardio": {
+          "type": "object",
+          "required": [
+            "name",
+            "icon"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 28
+            },
+            "icon": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8
+            },
+            "master": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            }
+          }
+        }
+      }
+    },
+    "tiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "properties": {
+        "1": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16
+        },
+        "2": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16
+        },
+        "3": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16
+        },
+        "4": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16
+        }
+      }
+    },
+    "regions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "properties": {
+        "1": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "2": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "3": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "4": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "5": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "6": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "7": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "8": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "9": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "10": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        }
+      }
+    },
+    "rewards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 28
+      }
+    },
+    "reminders": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 90
+      }
+    },
+    "badges": {
+      "type": "object",
+      "description": "Una entrada por cada id de src/core/achievements.js → BADGE_IDS (lo exige el test).",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "desc"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32
+          },
+          "desc": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        }
+      }
+    }
+  }
+}

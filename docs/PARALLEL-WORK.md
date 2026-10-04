@@ -6,7 +6,7 @@ Objetivo: que varios modelos (Grok Bot, MiMo, agentes de Hermes, Runica…) mejo
 
 | Workstream | Kanban | Archivos que puede cambiar | No toca |
 |------------|--------|----------------------------|---------|
-| **story-copy** (historia, mundo, textos) | storyteller `t_22eec52e` | `content/story/*.json` (nuevas historias: `content/story/<id>.json`), `content/copy/es.json`, `docs/story/*.md`, `docs/proposals/story/**`, `docs/proposals/copy/**` | `content/story/active.json` (lo cambia Codelius cuando Brooks elige), código JS/CSS |
+| **story-copy** (historia, mundo, textos) | storyteller `t_22eec52e` | paquetes `content/stories/<id>/` + sus assets en `public/stories/<id>/` (guía: `docs/story/STORY-PACKS.md`), `content/copy/es.json`, `docs/story/*.md`, `docs/proposals/story/**`, `docs/proposals/copy/**` | `content/stories/index.json` (paquete por defecto: lo cambia Codelius cuando Brooks elige), los schemas, código JS/CSS |
 | **ui-tokens** (temas, paleta, tipografía, base) | disenador `t_bf5e6169` | `src/ui/styles/tokens.css`, `src/ui/styles/base.css`, `docs/proposals/ui/**` | colores de familia sin pasar el test de contraste |
 | **card-frame** (marco de carta, reverso, volteo) | disenador `t_bf5e6169` | `src/ui/card/frame.css`, `src/ui/card/back.css`, `src/ui/card/flip.css`; el markup en `src/ui/components/tcard.js` solo de acuerdo con Codelius | lógica de `bindCard` |
 | **screens** (pantallas y animaciones) | disenador `t_bf5e6169` + Codelius | `src/ui/screens/<pantalla>.css`, `src/ui/card/deck.css`; `src/ui/views/<pantalla>.js` (una pantalla por archivo: `onboarding`, `card`, `reward`, `progress`, `achievements`, `menu`, `privacy`) | `src/core/**`, adaptadores |
@@ -16,9 +16,10 @@ Objetivo: que varios modelos (Grok Bot, MiMo, agentes de Hermes, Runica…) mejo
 
 Reglas de convivencia:
 
-- **Textos fuera del código.** Todo texto visible nuevo va a `content/copy/es.json` (interfaz) o a `content/story/<id>.json` (narrativa) y se usa con `t('clave')` (`src/ui/i18n/es.js`). El test `tests/content/copy-story.test.js` falla si una clave usada no existe o si una historia está incompleta.
+- **Textos fuera del código.** Todo texto visible nuevo va a `content/copy/es.json` (interfaz) o al paquete de historia `content/stories/<id>/story.json` (narrativa) y se usa con `t('clave')` (`src/ui/i18n/es.js`). El test `tests/content/copy-story.test.js` falla si una clave usada no existe o si una historia está incompleta.
 - **Estilos aislados.** Una pantalla = un CSS en `src/ui/screens/`. El marco de carta vive solo en `src/ui/card/`. Los valores (colores, espacios, radios, tipografía) vienen de `tokens.css`; no metas colores sueltos en una pantalla salvo los propios de la carta.
 - **Orden de la cascada:** `src/ui/styles/index.css`. Si creas un CSS nuevo, agrégalo ahí.
+- **Historia ≠ mecánica (ADR-011):** una historia nueva o distinta es un **paquete** aparte; nunca se edita la mecánica para encajar una historia. Varias historias pueden desarrollarse en paralelo (una rama y un paquete por modelo) y convivir instaladas; Brooks elige la de por defecto y luego cada persona podrá elegir la suya.
 - **IDs estables:** grupos musculares, insignias, cartas y mazos no se renombran (ver `docs/07-HANDOFF.md` §Contratos).
 - Si necesitas tocar archivos de otro workstream, dilo en el PR y en la tarjeta Kanban; Codelius coordina.
 
@@ -42,7 +43,7 @@ Una rama = un tema. Ramas cortas (idealmente < 1 día). Haz `git pull --rebase o
 6. **Codelius revisa e integra.** Nadie más hace push directo a `main` ni merge. Prohibido force-push.
 7. Al integrarse, el push a `main` despliega a GitHub Pages.
 
-**Propuestas que compiten** (dos modelos con dos ideas de historia o de UI): cada una en su rama y su archivo (`content/story/<id>.json`, `docs/proposals/<tema>/<modelo>.md`). Se integran **todas** como opciones (sin activarlas); Brooks elige y Codelius cambia la activa.
+**Propuestas que compiten** (dos modelos con dos ideas de historia o de UI): cada una en su rama y su archivo (un paquete `content/stories/<id>/`, `docs/proposals/<tema>/<modelo>.md`). Se integran **todas** como opciones (sin activarlas); Brooks elige y Codelius cambia la activa.
 
 ## 4. Correr, probar y capturar
 
@@ -53,6 +54,7 @@ npm run verify                   # tests + check:content + check:provenance + bu
 npm run preview -- --port 4173 & # sirve dist/
 npm run screens -- http://localhost:4173/snapfit/ docs/proposals/<tema>/<modelo>/   # 18 capturas 390×844
 npm run docs:microcopy           # regenera docs/story/MICROCOPY.md si cambiaste textos
+npm run screens:stories -- http://localhost:4173/snapfit/ <outDir> sentadilla-silla-l1 [ids…]   # misma carta en cada paquete
 ```
 
 `npm run screens` recorre bienvenida → login (simulado: el popup de Google no se automatiza) → perfil → prueba → aviso → carta → volteo → Otro → ¡Listo! → felicitación → progreso → logros → siguiente carta → pestañas, y **falla** si hay errores de JS, overflow horizontal o si la barra inferior tapa botones.

@@ -1,5 +1,6 @@
 import { esc, toast } from '../dom.js';
-import { THEME_NAMES, PLACE_NAMES, ZONE_NAMES, REMINDER_NAMES } from '../i18n/es.js';
+import { THEME_NAMES, PLACE_NAMES, ZONE_NAMES, REMINDER_NAMES, t } from '../i18n/es.js';
+import { listPacks, currentStory, storyPickerEnabled, previewStoryId } from '../story/index.js';
 import { THEMES, PLACES, CARE_ZONES, REMINDER_PATTERNS, isHHMM } from '../../core/index.js';
 import { notificationSupport, requestPermission, registerPeriodicReminder } from '../../adapters/notify-local.js';
 
@@ -17,6 +18,7 @@ export function renderMenu(app) {
   const syncTxt = !s.user ? '' : sync.status === 'syncing' ? 'Sincronizando…' : sync.status === 'error' ? `⚠ Sin sincronizar (${esc(sync.error)})` : sync.lastAt ? `✓ Sincronizado ${new Date(sync.lastAt).toLocaleTimeString()}` : '';
   return `<div class="page">
   <h2>Menú</h2>
+  ${storyPickerEnabled() ? storySection() : ''}
   <fieldset><legend>Tema</legend>
     <div class="swatches">
       ${THEMES.map((t) => `<button class="swatch" data-theme-pick="${t}" aria-pressed="${p.theme === t}" style="background:${SWATCH[t][0]};color:${SWATCH[t][1]}"><span class="sw" style="background:${SWATCH[t][1]}"></span>${esc(THEME_NAMES[t])}</button>`).join('')}
@@ -91,13 +93,31 @@ export function renderMenu(app) {
   </fieldset></div>`;
 }
 
+function storySection() {
+  const active = currentStory().id;
+  const preview = previewStoryId();
+  return `<fieldset class="story-pick"><legend>${t('story.legend')}</legend>
+    <p class="small muted" style="margin-top:0">${t('story.hint')}</p>
+    ${preview ? `<p class="small notice">${t('story.previewing', { id: esc(preview) })}</p>` : ''}
+    <div class="story-list">${listPacks().map((m) => `
+      <button class="story-opt" data-story-pick="${esc(m.id)}" aria-pressed="${m.id === active}">
+        ${m.previewUrl ? `<img src="${esc(m.previewUrl)}" alt="" loading="lazy" width="96" height="54">` : '<span class="story-noimg" aria-hidden="true">📖</span>'}
+        <span class="story-txt"><b>${esc(m.name)}</b><small>${esc(m.description || '')}</small>
+          <small class="muted">${t('story.status.' + m.status)} · v${esc(m.version)}</small></span>
+      </button>`).join('')}
+    </div>
+  </fieldset>`;
+}
+
 export function bindMenu(root, app, deps) {
   const p = () => app.state.profile;
   // Precarga el módulo de auth para que el popup conserve la activación del usuario.
   if (!app.state.user && navigator.onLine) deps.preloadAuth?.();
   root.addEventListener('click', async (ev) => {
-    const t = ev.target.closest('[data-theme-pick]');
-    if (t) return app.updateProfile({ theme: t.dataset.themePick });
+    const th = ev.target.closest('[data-theme-pick]');
+    if (th) return app.updateProfile({ theme: th.dataset.themePick });
+    const sp = ev.target.closest('[data-story-pick]');
+    if (sp) { await deps.switchStory(sp.dataset.storyPick); toast(t('story.switched'), currentStory().manifest.name); return; }
     const b = ev.target.closest('[data-act]');
     if (!b) return;
     const act = b.dataset.act;

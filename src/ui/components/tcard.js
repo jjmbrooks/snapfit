@@ -3,6 +3,7 @@
 import { esc } from '../dom.js';
 import { GROUP_NAMES, FAMILY_NAMES, PLACE_NAMES, ZONE_NAMES, FAMILY_ICONS, TIER_NAMES, t } from '../i18n/es.js';
 import { mountSprite } from './sprite.js';
+import { cardArtUrl, frameUrl } from '../story/index.js';
 
 export function doseLabel(c) {
   const d = c.dose || {};
@@ -21,12 +22,15 @@ function pips(level) {
 export function cardHTML(c, { playerLevel } = {}) {
   const fam = c.primaryGroup;
   const tier = tierOf(c.level);
-  const secondary = c.muscleGroups.filter((g) => g !== fam).map((g) => GROUP_NAMES[g]).join(' · ');
+  // Grupo muscular siempre visible (claro sin conocer la historia) + nombre temático de la familia.
+  const groups = [fam, ...c.muscleGroups.filter((g) => g !== fam)].map((g) => GROUP_NAMES[g]).join(' · ');
+  const art = cardArtUrl(c.id); // arte del paquete de historia o null → animación genérica
+  const skin = frameUrl(fam, tier);
   const video = c.video?.src
     ? `<video class="tc-video" src="${esc(c.video.src)}" ${c.video.poster ? `poster="${esc(c.video.poster)}"` : ''} muted loop playsinline preload="none" aria-label="${esc(t('card.videoAria', { name: c.name }))}"></video>`
     : `<div class="tc-video placeholder"><canvas data-sprite="back" role="img" aria-label="${esc(t('card.videoPlaceholderAria', { name: c.name }))}"></canvas><span>${t('card.videoPending')}</span></div>`;
   return `
-  <div class="tcard fam-${fam} tier-${tier}" data-card="${esc(c.id)}" role="button" tabindex="0" aria-pressed="false" aria-label="${esc(t('card.aria', { name: c.name }))}">
+  <div class="tcard fam-${fam} tier-${tier}${skin ? ' has-skin' : ''}"${skin ? ` style="--frame-skin:url('${esc(skin)}')"` : ''} data-card="${esc(c.id)}" role="button" tabindex="0" aria-pressed="false" aria-label="${esc(t('card.aria', { name: c.name }))}">
     <div class="tc-inner">
       <section class="tc-face tc-front">
         <header class="tc-head">
@@ -34,7 +38,9 @@ export function cardHTML(c, { playerLevel } = {}) {
           <span class="tc-fam">${FAMILY_ICONS[fam] || ''} ${esc(FAMILY_NAMES[fam] || fam)}</span>
           <span class="tc-tier" title="${esc(t('card.tierTitle', { tier: TIER_NAMES[tier] }))}">${'★'.repeat(tier)}</span>
         </header>
-        <div class="tc-art"><canvas data-sprite="front" role="img" aria-label="${esc(t('card.artAria', { name: c.name }))}"></canvas>
+        <div class="tc-art${art ? ' has-art' : ''}">${art
+          ? `<img class="tc-art-img" src="${esc(art)}" alt="${esc(t('card.artAria', { name: c.name }))}" loading="lazy" decoding="async">`
+          : `<canvas data-sprite="front" role="img" aria-label="${esc(t('card.artAria', { name: c.name }))}"></canvas>`}
           ${c.draft ? `<span class="tc-draft" title="${t('card.draftTitle')}">${t('card.draft')}</span>` : ''}
         </div>
         <h2 class="tc-name">${esc(c.name)}</h2>
@@ -44,7 +50,7 @@ export function cardHTML(c, { playerLevel } = {}) {
         </div>
         <footer class="tc-foot">
           <span class="tc-pips" aria-label="${t('card.levelAria', { n: c.level })}">${pips(c.level)}</span>
-          <span class="tc-hint">${secondary ? esc(secondary) + ' · ' : ''}${t('card.flipHint')}</span>
+          <span class="tc-hint">${esc(groups)} · ${t('card.flipHint')}</span>
         </footer>
       </section>
       <section class="tc-face tc-back" aria-hidden="true">

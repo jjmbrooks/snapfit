@@ -1,10 +1,10 @@
 // Genera docs/story/MICROCOPY.md: inventario de TODOS los textos visibles en español.
-// Uso: npm run docs:microcopy  (córrelo cuando cambies content/copy/es.json, content/story/*.json o textos en código).
+// Uso: npm run docs:microcopy  (córrelo cuando cambies content/copy/es.json, content/stories/*/story.json o textos en código).
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 
 const copy = JSON.parse(readFileSync('content/copy/es.json', 'utf8'));
-const active = JSON.parse(readFileSync('content/story/active.json', 'utf8')).active;
-const story = JSON.parse(readFileSync(`content/story/${active}.json`, 'utf8'));
+const active = JSON.parse(readFileSync('content/stories/index.json', 'utf8')).default;
+const story = JSON.parse(readFileSync(`content/stories/${active}/story.json`, 'utf8'));
 const cell = (v) => String(v).replace(/\|/g, '\\|').replace(/\n/g, ' ');
 
 function flat(o, prefix = '', out = []) {
@@ -47,7 +47,7 @@ Uso en código: \`t('clave', { variable })\`. Las \`{variables}\` deben conserva
 |-------|-------|
 ${flat(copy).map(([k, v]) => `| \`${k}\` | ${cell(v)} |`).join('\n')}
 
-## 2. Narrativa — \`content/story/${active}.json\` (historia activa)
+## 2. Narrativa — \`content/stories/${active}/story.json\` (paquete por defecto; los demás paquetes en \`content/stories/\`)
 
 | Clave | Texto |
 |-------|-------|

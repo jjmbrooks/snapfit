@@ -23,11 +23,19 @@ service cloud.firestore {
         && (!('fitness' in p) || p.fitness in ['sedentario', 'ligero', 'activo', 'muy-activo']);
     }
 
+    // Ajustes sincronizados: solo ids (la historia es un paquete; aquí nunca hay textos).
+    function validSettings(s) {
+      return s.keys().hasOnly(['storyId', 'theme', 'updatedAt'])
+        && (!('storyId' in s) || s.storyId == null || (s.storyId is string && s.storyId.matches('^[a-z0-9][a-z0-9-]{1,39}$')))
+        && (!('theme' in s) || s.theme in ['medianoche', 'manana', 'chicle', 'selva', 'pacifico', 'volcan']);
+    }
+
     match /users/{uid} {
       allow read: if isOwner(uid);
       allow create, update: if isOwner(uid)
         && request.resource.data.keys().hasOnly(['displayName', 'createdAt', 'schemaVersion', 'settings', 'derived', 'profile'])
-        && (!('profile' in request.resource.data) || validProfile(request.resource.data.profile));
+        && (!('profile' in request.resource.data) || validProfile(request.resource.data.profile))
+        && (!('settings' in request.resource.data) || validSettings(request.resource.data.settings));
       allow delete: if isOwner(uid);
 
       match /events/{eventId} {

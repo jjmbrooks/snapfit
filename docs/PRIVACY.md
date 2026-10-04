@@ -21,6 +21,7 @@ Para empezar a jugar entras con Google una vez. Después, SnapFit funciona aunqu
 | Perfil de juego: edad en años, sexo, condición física, respuestas de la prueba rápida, mazo asignado, niveles iniciales y fecha de aceptación del aviso | Tu dispositivo y Cloud Firestore `users/{uid}.profile` | Elegir tu mazo y tu nivel inicial, y recuperarlos en otro teléfono. Puedes cambiarlo en Menú → Mi perfil |
 | Eventos de ejercicio: id, tipo (`card_done`, `card_skipped`, `effort_rated`), fecha y hora, desfase horario, id de carta, nivel, grupos musculares, esfuerzo opcional, lugar elegido | Cloud Firestore (región `nam5`, EE. UU.) en `users/{uid}/events` | Respaldar tu progreso y sincronizarlo entre tus dispositivos |
 | Resumen derivado (XP, niveles, racha, insignias) | Cloud Firestore `users/{uid}` | Caché del progreso |
+| Ajustes: historia elegida (id) y tema | Tu dispositivo y Cloud Firestore `users/{uid}.settings` | Mantener tu historia y tu tema en todos tus teléfonos |
 
 El perfil **no se envía a Analytics** (las estadísticas anónimas solo usan una lista cerrada de eventos sin datos personales).
 

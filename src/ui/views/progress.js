@@ -1,5 +1,5 @@
 import { esc } from '../dom.js';
-import { GROUP_NAMES, BADGES, FAMILY_ICONS } from '../i18n/es.js';
+import { GROUP_NAMES, BADGES, FAMILY_ICONS, FAMILY_NAMES, REGION_NAMES, t } from '../i18n/es.js';
 import { MUSCLE_GROUPS } from '../../core/index.js';
 import { hud } from './card.js';
 
@@ -10,7 +10,7 @@ export function renderProgress(app) {
   const lv = MUSCLE_GROUPS.map((g) => {
     const n = d.levels.byGroup[g];
     const segs = Array.from({ length: 10 }, (_, i) => `<span class="seg ${i < n ? 'on' : ''}"></span>`).join('');
-    return `<div class="lvl-row fam-${g}"><span>${FAMILY_ICONS[g]} ${esc(GROUP_NAMES[g])}</span><span class="segs" aria-label="Nivel ${n} de 10">${segs}</span><span class="lvl-n">${n}</span></div>`;
+    return `<div class="lvl-row fam-${g}"><span title="${esc(FAMILY_NAMES[g])}">${FAMILY_ICONS[g]} ${esc(GROUP_NAMES[g])}</span><span class="segs" aria-label="Nivel ${n} de 10">${segs}</span><span class="lvl-n">${n}</span></div>`;
   }).join('');
   const recentBadges = d.badges.slice(-3).map((b) => `<span class="chip">🏅 ${esc(BADGES[b]?.[0] || b)}</span>`).join('');
   return `<div class="page">
@@ -25,6 +25,7 @@ export function renderProgress(app) {
       <div class="stat"><span class="n">${d.xp}</span><span class="l">XP</span></div>
       <div class="stat"><span class="n">${d.totalDone}</span><span class="l">Cartas</span></div>
     </div>
+    <p class="region-line">${esc(t('progress.region', { name: REGION_NAMES[d.levels.global] || '' }))}</p>
     <h3>Nivel por grupo</h3>
     <div class="card">${lv}<p class="small muted" style="margin:0">Cuerpo completo esta semana: ${d.weekCoverage.length}/7 grupos. El nivel sube con constancia y esfuerzo cómodo (heurística en borrador).</p></div>
     <h3>Historial (30 días)</h3>

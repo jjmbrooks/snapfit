@@ -160,8 +160,18 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `reward.badgeTitle` | ¡Logro desbloqueado! |
 | `reward.levelChange` | {arrow} {icon} {group}: nivel {from} → <b>{to}</b> |
 | `reward.share` | Compartir |
+| `reward.region` | 📍 {name} |
+| `story.legend` | Historia |
+| `story.hint` | Elige el mundo que acompaña a tus cartas. Tu progreso, niveles e insignias no cambian. |
+| `story.previewing` | Vista previa activa (?story={id}): quítala de la dirección para ver tu elección. |
+| `story.switched` | Historia cambiada |
+| `story.status.draft` | Borrador |
+| `story.status.review` | En revisión |
+| `story.status.published` | Publicada |
+| `story.status.retired` | Retirada |
+| `progress.region` | Región actual: {name} |
 
-## 2. Narrativa — `content/story/pixelandia.json` (historia activa)
+## 2. Narrativa — `content/stories/pixelandia/story.json` (paquete por defecto; los demás paquetes en `content/stories/`)
 
 | Clave | Texto |
 |-------|-------|
@@ -177,6 +187,8 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `signin.body` | Entra con tu cuenta de Google para guardar tu mazo, tu nivel y tus logros, y recuperarlos en cualquier teléfono. |
 | `signin.offline` | Después del primer inicio de sesión, SnapFit funciona también <b>sin internet</b>. |
 | `deckReady.title` | Tu mazo está listo |
+| `guide.name` | Bit |
+| `guide.role` | Mapache mensajero y narrador |
 | `families.piernas.name` | Piernas |
 | `families.piernas.icon` | 🦵 |
 | `families.gluteos.name` | Glúteos |
@@ -195,6 +207,16 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `tiers.2` | Plata |
 | `tiers.3` | Oro |
 | `tiers.4` | Leyenda |
+| `regions.1` | Aldea |
+| `regions.2` | Molinos |
+| `regions.3` | Bosque |
+| `regions.4` | Puerto |
+| `regions.5` | Montaña |
+| `regions.6` | Desierto |
+| `regions.7` | Lago |
+| `regions.8` | Volcán |
+| `regions.9` | Nubes |
+| `regions.10` | Castillo |
 | `rewards.0` | ¡Snap! |
 | `rewards.1` | ¡Combo! |
 | `rewards.2` | ¡Bien jugado! |
@@ -260,13 +282,13 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `index.html:17` | SnapFit |
 | `index.html:20` | Barajando… |
 | `index.html:27` | SnapFit necesita JavaScript. |
-| `src/main.js:47` | Vuelve a entrar |
-| `src/main.js:47` | Por seguridad, inicia sesión otra vez y repite el borrado. |
-| `src/main.js:51` | Cuenta borrada |
-| `src/main.js:51` | Tus datos en la nube se eliminaron. Los de este dispositivo siguen aquí. |
-| `src/main.js:105` | Sin conexión |
-| `src/main.js:105` | Todo sigue funcionando; sincronizamos al volver. |
-| `src/main.js:120` | Nueva versión  Toca para actualizar |
+| `src/main.js:48` | Vuelve a entrar |
+| `src/main.js:48` | Por seguridad, inicia sesión otra vez y repite el borrado. |
+| `src/main.js:52` | Cuenta borrada |
+| `src/main.js:52` | Tus datos en la nube se eliminaron. Los de este dispositivo siguen aquí. |
+| `src/main.js:124` | Sin conexión |
+| `src/main.js:124` | Todo sigue funcionando; sincronizamos al volver. |
+| `src/main.js:140` | Nueva versión  Toca para actualizar |
 | `src/ui/views/achievements.js:16` | Compartir |
 | `src/ui/views/achievements.js:19` | Logros ·  / |
 | `src/ui/views/achievements.js:20` | Insignias provisionales generadas por código; el arte final llegará de director-creativo. |
@@ -282,44 +304,44 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `src/ui/views/card.js:97` | Precauciones |
 | `src/ui/views/card.js:100` | Fuentes |
 | `src/ui/views/card.js:101` | Licencia del contenido: CC BY 4.0 · SnapFit |
-| `src/ui/views/menu.js:17` | Sincronizando… |
-| `src/ui/views/menu.js:19` | Menú |
-| `src/ui/views/menu.js:20` | Tema |
-| `src/ui/views/menu.js:26` | ¿Dónde estás? |
-| `src/ui/views/menu.js:27` | Sin selección = cartas para cualquier lugar. |
-| `src/ui/views/menu.js:31` | Zonas a cuidar |
-| `src/ui/views/menu.js:32` | Las cartas que cargan estas zonas no aparecerán (o verás su variante más fácil). |
-| `src/ui/views/menu.js:36` | Meta diaria |
-| `src/ui/views/menu.js:37` | Cartas por día |
-| `src/ui/views/menu.js:41` | Recordatorios |
-| `src/ui/views/menu.js:42` | Patrón |
-| `src/ui/views/menu.js:45` | Hora |
-| `src/ui/views/menu.js:47` | Recordatorios locales: aviso dentro de la app y notificación con la app abierta. |
-| `src/ui/views/menu.js:49` | Notificaciones:   [ns.permission]) |
-| `src/ui/views/menu.js:54` | Preferencias |
-| `src/ui/views/menu.js:55` | Sonido chiptune |
-| `src/ui/views/menu.js:56` | Reducir animaciones |
-| `src/ui/views/menu.js:57` | Estadísticas anónimas de uso |
-| `src/ui/views/menu.js:58` | Solo eventos como «carta hecha» o «cambio de tema», sin datos personales.  Aviso de privacidad |
-| `src/ui/views/menu.js:61` | Mi perfil |
-| `src/ui/views/menu.js:63` | Mazo:   — |
-| `src/ui/views/menu.js:67` | Cuenta y respaldo |
-| `src/ui/views/menu.js:69` | Conectado como |
-| `src/ui/views/menu.js:72` | Cuenta de Google vinculada. |
-| `src/ui/views/menu.js:73` | Exportar / importar |
-| `src/ui/views/menu.js:79` | Zona de peligro |
-| `src/ui/views/menu.js:81` | Borrar datos de este dispositivo |
-| `src/ui/views/menu.js:86` | Acerca de |
-| `src/ui/views/menu.js:87` | SnapFit v  · Código MIT · Contenido y assets CC BY 4.0 · © 2026 jjmbrooks. |
-| `src/ui/views/menu.js:88` | Las cartas actuales son  borradores  pendientes de validación por Entrenador. SnapFit no sustituye una valoración médica. |
-| `src/ui/views/menu.js:89` | Fuente de títulos: Press Start 2P (SIL OFL 1.1). Animaciones, insignias y sonidos provisionales generados por código. |
-| `src/ui/views/menu.js:90` | Aviso de privacidad  ·  Código en GitHub |
-| `src/ui/views/menu.js:110` | ¿Cerrar sesión? Tu progreso queda en este teléfono y en la nube. |
-| `src/ui/views/menu.js:118` | ¿Borrar TODO tu progreso de este dispositivo? (Exporta antes si quieres conservarlo) |
-| `src/ui/views/menu.js:120` | ¿Borrar tu cuenta y todos tus datos en la nube? Esto no se puede deshacer. |
-| `src/ui/views/menu.js:123` | Inicio de sesión cancelado. |
-| `src/ui/views/menu.js:146` | Importado |
-| `src/ui/views/menu.js:147` | No se pudo importar |
+| `src/ui/views/menu.js:18` | Sincronizando… |
+| `src/ui/views/menu.js:20` | Menú |
+| `src/ui/views/menu.js:22` | Tema |
+| `src/ui/views/menu.js:28` | ¿Dónde estás? |
+| `src/ui/views/menu.js:29` | Sin selección = cartas para cualquier lugar. |
+| `src/ui/views/menu.js:33` | Zonas a cuidar |
+| `src/ui/views/menu.js:34` | Las cartas que cargan estas zonas no aparecerán (o verás su variante más fácil). |
+| `src/ui/views/menu.js:38` | Meta diaria |
+| `src/ui/views/menu.js:39` | Cartas por día |
+| `src/ui/views/menu.js:43` | Recordatorios |
+| `src/ui/views/menu.js:44` | Patrón |
+| `src/ui/views/menu.js:47` | Hora |
+| `src/ui/views/menu.js:49` | Recordatorios locales: aviso dentro de la app y notificación con la app abierta. |
+| `src/ui/views/menu.js:51` | Notificaciones:   [ns.permission]) |
+| `src/ui/views/menu.js:56` | Preferencias |
+| `src/ui/views/menu.js:57` | Sonido chiptune |
+| `src/ui/views/menu.js:58` | Reducir animaciones |
+| `src/ui/views/menu.js:59` | Estadísticas anónimas de uso |
+| `src/ui/views/menu.js:60` | Solo eventos como «carta hecha» o «cambio de tema», sin datos personales.  Aviso de privacidad |
+| `src/ui/views/menu.js:63` | Mi perfil |
+| `src/ui/views/menu.js:65` | Mazo:   — |
+| `src/ui/views/menu.js:69` | Cuenta y respaldo |
+| `src/ui/views/menu.js:71` | Conectado como |
+| `src/ui/views/menu.js:74` | Cuenta de Google vinculada. |
+| `src/ui/views/menu.js:75` | Exportar / importar |
+| `src/ui/views/menu.js:81` | Zona de peligro |
+| `src/ui/views/menu.js:83` | Borrar datos de este dispositivo |
+| `src/ui/views/menu.js:88` | Acerca de |
+| `src/ui/views/menu.js:89` | SnapFit v  · Código MIT · Contenido y assets CC BY 4.0 · © 2026 jjmbrooks. |
+| `src/ui/views/menu.js:90` | Las cartas actuales son  borradores  pendientes de validación por Entrenador. SnapFit no sustituye una valoración médica. |
+| `src/ui/views/menu.js:91` | Fuente de títulos: Press Start 2P (SIL OFL 1.1). Animaciones, insignias y sonidos provisionales generados por código. |
+| `src/ui/views/menu.js:92` | Aviso de privacidad  ·  Código en GitHub |
+| `src/ui/views/menu.js:130` | ¿Cerrar sesión? Tu progreso queda en este teléfono y en la nube. |
+| `src/ui/views/menu.js:138` | ¿Borrar TODO tu progreso de este dispositivo? (Exporta antes si quieres conservarlo) |
+| `src/ui/views/menu.js:140` | ¿Borrar tu cuenta y todos tus datos en la nube? Esto no se puede deshacer. |
+| `src/ui/views/menu.js:143` | Inicio de sesión cancelado. |
+| `src/ui/views/menu.js:166` | Importado |
+| `src/ui/views/menu.js:167` | No se pudo importar |
 | `src/ui/views/onboarding.js:134` | QUICK_TEST.some((q) = |
 | `src/ui/views/privacy.js:3` | Aviso de privacidad |
 | `src/ui/views/privacy.js:5` | Resumen.  SnapFit funciona sin cuenta: tu progreso se guarda en este dispositivo (IndexedDB). No usamos GPS, cámara ni micrófono. |
@@ -334,10 +356,11 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `src/ui/views/progress.js:21` | Hoy:   de   cartas · Racha:   días (mejor:  ) |
 | `src/ui/views/progress.js:24` | Nivel global |
 | `src/ui/views/progress.js:26` | Cartas |
-| `src/ui/views/progress.js:28` | Nivel por grupo |
-| `src/ui/views/progress.js:29` | Cuerpo completo esta semana:  /7 grupos. El nivel sube con constancia y esfuerzo cómodo (heurística en borrador). |
-| `src/ui/views/progress.js:30` | Historial (30 días) |
-| `src/ui/views/progress.js:32` | Insignias ( ) |
+| `src/ui/views/progress.js:29` | Nivel por grupo |
+| `src/ui/views/progress.js:30` | Cuerpo completo esta semana:  /7 grupos. El nivel sube con constancia y esfuerzo cómodo (heurística en borrador). |
+| `src/ui/views/progress.js:31` | Historial (30 días) |
+| `src/ui/views/progress.js:33` | Insignias ( ) |
+| `src/ui/components/sfx.js:15` | PACK_NAME[name] \|\| name); |
 | `src/ui/components/share.js:19` | Press Start 2P |
 | `src/ui/components/share.js:21` | Press Start 2P |
 | `src/ui/components/share.js:25` | Press Start 2P |
@@ -347,5 +370,5 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `src/ui/components/sprite.js:67` | ANIMS.lunge[1].kR = [11, 28]; |
 | `src/ui/components/sprite.js:68` | ANIMS.lunge[1].fR = [7, 30]; |
 | `src/ui/components/sprite.js:93` | A)) o[k] = lerp(A[k], B[k], e); |
-| `src/ui/components/tcard.js:24` | GROUP_NAMES[g]).join( |
-| `src/ui/components/tcard.js:85` | Enter |
+| `src/ui/components/tcard.js:26` | GROUP_NAMES[g]).join( |
+| `src/ui/components/tcard.js:91` | Enter |

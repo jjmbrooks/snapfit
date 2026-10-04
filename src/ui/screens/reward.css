@@ -36,3 +36,4 @@
 .confetti i:nth-child(11) { left: 86%; animation-delay: .12s; } .confetti i:nth-child(12) { left: 94%; animation-delay: .4s; }
 .confetti i:nth-child(13) { left: 10%; animation-delay: .5s; } .confetti i:nth-child(14) { left: 66%; animation-delay: .55s; }
 @keyframes fall { from { transform: translateY(0) rotate(0); } to { transform: translateY(520px) rotate(360deg); opacity: 0; } }
+.seq-region { margin: 0; font-size: 13px; font-weight: 700; color: var(--story-accent, var(--accent)); }
