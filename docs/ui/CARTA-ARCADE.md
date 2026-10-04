@@ -63,7 +63,7 @@ El arte de un estilo o personaje va en **`public/art/<carpeta>/`** (Vitalia: `pu
 ```json
 "assets": {
   "cardArt": { "sentadilla-silla-l1": "/art/vitalia/cards/sentadilla-silla-l1.jpg" },
-  "poses":   { "sentadilla-silla-l1": ["/art/vitalia/poses/sentadilla-silla-l1-1.jpg", "…-2.jpg", "…-3.jpg"] },
+  "poses":   { "sentadilla-silla-l1": ["/art/vitalia/poses/sentadilla-silla-l1-1.webp", "…-2.webp", "…-3.webp"] },
   "emblems": { "piernas": "/art/vitalia/icons/raiz.png" }
 }
 ```
@@ -72,6 +72,6 @@ Estructura sugerida: `public/art/vitalia/{cards,poses,icons,character}/`. Para c
 
 ## Pendiente
 
-- El arte final de la ilustración y de las poses (el actual son recortes de las referencias generadas). Las poses del reverso de referencia no coinciden exactamente con el texto de los pasos.
+- Las poses de `sentadilla-silla-l1` ya son **finales** (WebP en `public/art/vitalia/poses/`). Faltan la ilustración final y las poses del resto de cartas.
 - El título de la carta usa `name` («Sentadilla a la silla»). Un nombre temático por historia («Sentadilla de la Raíz») requeriría un campo nuevo en el paquete (`cardTitles`), que todavía no existe.
 - La piel «grimorio» de botones, barras y barra inferior se aplica con cualquier tema. Si se quiere solo con Vitalia, se puede limitar a `[data-story='vitalia']`.

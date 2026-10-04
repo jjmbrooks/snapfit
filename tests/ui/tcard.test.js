@@ -31,7 +31,7 @@ describe('carta arcade', () => {
     const h = cardHTML(squat);
     expect(h).toContain('Cómo lanzar el hechizo');
     expect((h.match(/class="ac-step"/g) || []).length).toBe(3);
-    expect(h).toContain('/art/vitalia/poses/sentadilla-silla-l1-2.jpg');
+    expect(h).toContain('/art/vitalia/poses/sentadilla-silla-l1-2.webp');
     expect(h).toContain('Exhala al subir');
     expect(h).toContain('ac-care');
     expect(h).not.toContain('<video');
