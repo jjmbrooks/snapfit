@@ -72,12 +72,33 @@
   color-scheme: dark;
 }
 
-/* ---- 3. Familias de carta por grupo muscular y tiers por nivel (fijos: no cambian con el tema) ---- */
-.fam-piernas   { --fam: #ff7a45; --fam-dark: #a63a12; --fam-ink: #1d0a02; }
-.fam-gluteos   { --fam: #ff5fa2; --fam-dark: #a3195a; --fam-ink: #22030f; }
-.fam-empuje    { --fam: #ffc83d; --fam-dark: #a86f00; --fam-ink: #241700; }
-.fam-traccion  { --fam: #4aa8ff; --fam-dark: #1458a8; --fam-ink: #03172b; }
-.fam-core      { --fam: #58d26b; --fam-dark: #1f7a30; --fam-ink: #04200a; }
-.fam-movilidad { --fam: #2fd4c9; --fam-dark: #0f7d76; --fam-ink: #01211f; }
-.fam-cardio    { --fam: #c77dff; --fam-dark: #6c2bb0; --fam-ink: #1c0630; }
-.tier-1 { --tier: #e09455; } .tier-2 { --tier: #d7dde8; } .tier-3 { --tier: #ffd23f; } .tier-4 { --tier: #ff9df5; }
+/* ---- 3. Escuelas (familias de carta por grupo muscular) — fijas: no cambian con el tema ----
+   Estilo C «grimorio arcade» (kit de interfaz Vitalia). Documentado en docs/04-UX.md §Carta arcade.
+   --fam: cuerpo del marco · --fam-dark: sombras/fondo del reverso (texto blanco ≥ 3:1) · --fam-ink: texto sobre --fam (≥ 4.5:1) */
+.fam-piernas   { --fam: #4cae4f; --fam-dark: #1e5e24; --fam-ink: #04200a; } /* Raíz · verde */
+.fam-gluteos   { --fam: #f0883a; --fam-dark: #8f4210; --fam-ink: #2a1200; } /* Arco · naranja */
+.fam-empuje    { --fam: #e5524b; --fam-dark: #8c1f1a; --fam-ink: #2a0503; } /* Palma · rojo */
+.fam-traccion  { --fam: #4a90e2; --fam-dark: #1a4f92; --fam-ink: #021529; } /* Cuerda · azul */
+.fam-core      { --fam: #9d6fe3; --fam-dark: #4f2c92; --fam-ink: #160530; } /* Sello · morado */
+.fam-movilidad { --fam: #22b3a6; --fam-dark: #0e6a62; --fam-ink: #01201d; } /* Nudo · turquesa */
+.fam-cardio    { --fam: #ec5f9e; --fam-dark: #8f1f57; --fam-ink: #2a0315; } /* Latido · rosa */
+
+/* ---- 4. Rangos (comparten el marco; cambian el metal del ribete, la gema y el escudo de XP) ----
+   1 bronce = Aprendiz (niveles 1–3) · 2 plata = Adepto (4–6) · 3 oro = Magister (7–9) · 4 gema = Archimago (10).
+   Los nombres visibles vienen del paquete de historia (tiers.1..4). --tier se mantiene por compatibilidad. */
+:root {
+  --rank-bronce: #c8803e; --rank-bronce-light: #e0a061; --rank-bronce-dark: #6b3a14;
+  --rank-plata:  #b8c1ce; --rank-plata-light:  #dfe5ee; --rank-plata-dark:  #5d6878;
+  --rank-oro:    #e8b931; --rank-oro-light:    #f5cd4c; --rank-oro-dark:    #8a6205;
+  --rank-gema:   #b25cf0; --rank-gema-light:   #c98bf5; --rank-gema-dark:   #5a1f8f;
+  --rank-ink: #1b1000;
+  /* Grimorio: pergamino, madera y brillo (kit Vitalia) */
+  --parch: #f3e2bf; --parch-2: #e6cf9f; --parch-ink: #3b2410; --parch-line: #a9824c;
+  --wood: #2a1a10; --wood-2: #3d2716; --trim: #c8803e; --trim-light: #f0c27a; --trim-dark: #5a3412;
+  --glow: #7dff6a; --glow-deep: #2f9e2a; --glow-ink: #062b04;
+  --font-title: 'Georgia', 'Palatino Linotype', 'Book Antiqua', 'Times New Roman', serif;
+}
+.tier-1 { --tier: var(--rank-bronce); --tier-light: var(--rank-bronce-light); --tier-dark: var(--rank-bronce-dark); }
+.tier-2 { --tier: var(--rank-plata);  --tier-light: var(--rank-plata-light);  --tier-dark: var(--rank-plata-dark); }
+.tier-3 { --tier: var(--rank-oro);    --tier-light: var(--rank-oro-light);    --tier-dark: var(--rank-oro-dark); }
+.tier-4 { --tier: var(--rank-gema);   --tier-light: var(--rank-gema-light);   --tier-dark: var(--rank-gema-dark); }

@@ -10,10 +10,17 @@
   "defaultTheme": "medianoche",
   "assets": {
     "cardArt": {
-      "sentadilla-silla-l1": "art/sentadilla-silla-l1.jpg"
+      "sentadilla-silla-l1": "/art/vitalia/cards/sentadilla-silla-l1.jpg"
     },
     "tokens": {
       "--story-accent": "#f2c75c"
+    },
+    "poses": {
+      "sentadilla-silla-l1": [
+        "/art/vitalia/poses/sentadilla-silla-l1-1.webp",
+        "/art/vitalia/poses/sentadilla-silla-l1-2.webp",
+        "/art/vitalia/poses/sentadilla-silla-l1-3.webp"
+      ]
     }
   }
 }

@@ -40,14 +40,14 @@ function snapfitServiceWorker() {
       };
       visit('index.html');
       // Textos de TODOS los paquetes de historia (chunks pequeños): se precachean para poder cambiar
-      // de historia sin red. Sus assets (public/stories/**) NO: se cargan perezosamente y el SW
+      // de historia sin red. Sus assets (public/stories/** y public/art/**) NO: se cargan perezosamente y el SW
       // cachea solo los del paquete activo (mensaje CACHE_STORY).
       for (const key of Object.keys(manifest)) if (key.startsWith('content/stories/')) visit(key);
       rmSync(join(dir, '.vite'), { recursive: true, force: true }); // no publicar el manifest de Vite
       const list = files
         .filter((f) => f !== 'sw.js' && !f.startsWith('.vite/') && !f.endsWith('.map') && !f.endsWith('.txt'))
         .filter((f) => !f.startsWith('assets/') || entryGraph.has(f))
-        .filter((f) => !f.startsWith('stories/'))
+        .filter((f) => !f.startsWith('stories/') && !f.startsWith('art/'))
         .sort();
       const hash = createHash('sha256');
       for (const f of list) hash.update(f).update(readFileSync(join(dir, f)));

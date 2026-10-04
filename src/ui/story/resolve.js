@@ -31,6 +31,10 @@ export function deepMerge(...layers) {
  * @param {{ packs: Record<string,{manifest,story}>, activeId?: string, defaultId: string, generic: object, badgeIds?: string[] }} p
  * @returns {{ id, manifest, story, assets, base, errors: Record<string,string[]> }}
  */
+/** Claves que no se heredan del paquete por defecto (ver resolveStory). */
+export const PACK_ONLY_STORY = ['cardFlavor', 'cardBack'];
+export const PACK_ONLY_ASSETS = ['cardArt', 'poses', 'emblems', 'frames'];
+
 export function resolveStory({ packs, activeId, defaultId, generic, badgeIds = [] }) {
   const errors = {};
   const ok = (id) => {
@@ -43,19 +47,26 @@ export function resolveStory({ packs, activeId, defaultId, generic, badgeIds = [
   const def = ok(defaultId);
   const act = activeId && activeId !== defaultId ? ok(activeId) : def;
   const chosen = act || def;
-  const story = deepMerge(generic, def?.story, act?.story);
+  // Campos de IDENTIDAD de una historia (arte y ambientación por carta, título del reverso): solo del paquete
+  // activo → genérico. No se heredan del paquete por defecto para que, p. ej., Pixelandia no muestre el arte de Vitalia.
+  const strip = (o, keys) => { if (!o) return o; const c = { ...o }; keys.forEach((k) => delete c[k]); return c; };
+  const story = deepMerge(generic, act && act !== def ? strip(def?.story, PACK_ONLY_STORY) : def?.story, act?.story);
   const id = chosen?.manifest.id || 'generic';
-  // Assets: los del paquete activo; los que falten se toman del paquete por defecto. Rutas → public/stories/<id>/
+  // Assets: los del paquete activo; los que falten se toman del paquete por defecto. Rutas → public/stories/<id>/ o /art/<carpeta>/
   const withBase = (p) => (p ? prefixAssets(p.manifest.assets || {}, `stories/${p.manifest.id}/`) : {});
-  const assets = deepMerge(withBase(def), act && act !== def ? withBase(act) : {});
+  const assets = act && act !== def ? deepMerge(strip(withBase(def), PACK_ONLY_ASSETS), withBase(act)) : withBase(def);
   return { id, manifest: chosen?.manifest || { id: 'generic', name: 'SnapFit', defaultTheme: 'medianoche' }, story, assets, errors };
 }
+
+/** «art/x.jpg» → «stories/<id>/art/x.jpg»; «/art/vitalia/x.jpg» → «art/vitalia/x.jpg» (carpeta compartida en public/). */
+export const assetPath = (v, base) => (v.startsWith('/') ? v.slice(1) : base + v);
 
 function prefixAssets(a, base) {
   const out = {};
   for (const [k, v] of Object.entries(a)) {
     if (k === 'tokens') out[k] = { ...v };
-    else if (typeof v === 'string') out[k] = base + v;
+    else if (typeof v === 'string') out[k] = assetPath(v, base);
+    else if (Array.isArray(v)) out[k] = v.map((x) => assetPath(x, base));
     else if (isObj(v)) out[k] = prefixAssets(v, base);
   }
   return out;

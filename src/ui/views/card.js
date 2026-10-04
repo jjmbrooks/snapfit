@@ -2,6 +2,7 @@ import { esc } from '../dom.js';
 import { t, ZONE_NAMES } from '../i18n/es.js';
 import { cardHTML, bindCard as bindTCard, doseLabel } from '../components/tcard.js';
 import { runRewardSequence } from './reward.js';
+import { normalizeSteps } from '../card/card-data.js';
 
 export { doseLabel };
 
@@ -89,7 +90,7 @@ export function renderCardDetail(app, id) {
       ${c.draft ? `<span class="tc-draft static">BORRADOR · pendiente de Entrenador</span>` : ''}
       <h2>${esc(c.name)}</h2>
       <p class="big-num">${esc(doseLabel(c))}</p>
-      <h3>Pasos</h3><ol>${c.steps.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
+      <h3>Pasos</h3><ol>${normalizeSteps(c).map((x) => `<li>${esc(x.text)}</li>`).join('')}</ol>
       <h3>Claves</h3><p>${(c.cues || []).map(esc).join(' · ') || '—'}</p>
       <h3>Variantes</h3>
       <p>Más fácil: ${c.easier ? `<a href="#/carta/${esc(c.easier)}">${esc(app.byId.get(c.easier)?.name || c.easier)}</a>` : '—'}<br>
@@ -100,4 +101,25 @@ export function renderCardDetail(app, id) {
       <h3>Fuentes</h3>${src}
       <p class="small muted">Licencia del contenido: CC BY 4.0 · SnapFit</p>
     </article></div>`;
+}
+
+/** Muestra de una carta a otro nivel (#/muestra/:id/:nivel): galería de los 4 rangos para QA y capturas.
+ *  Solo lectura: no hay ¡Listo!/Otro y no se registra ningún evento. */
+export function renderSample(app, { id, level }) {
+  const c = app.byId.get(id);
+  if (!c) return `<p class="page">${t('sample.notFound')} <a href="#/">${t('sample.back')}</a></p>`;
+  const links = [1, 4, 7, 10].map((n) => `<a class="btn btn-sm${n === level ? ' on' : ''}" href="#/muestra/${esc(id)}/${n}" ${n === level ? 'aria-current="page"' : ''}>${n}</a>`).join('');
+  return `
+  <div class="play sample">
+    <p class="sample-k">${t('sample.label', { level })}</p>
+    <div class="stage" id="stage">${cardHTML(c, { level })}</div>
+    <nav class="sample-nav" aria-label="${t('sample.navAria')}">${links}<a class="btn btn-sm btn-ghost" href="#/">${t('sample.back')}</a></nav>
+  </div>`;
+}
+export function bindSample(root, app) {
+  const el = root.querySelector('.tcard');
+  const id = el?.dataset.card;
+  if (!el || !app.byId.get(id)) return () => {};
+  const reduced = app.state.profile.reducedMotion || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return bindTCard(el, app.byId.get(id), { reducedMotion: reduced });
 }

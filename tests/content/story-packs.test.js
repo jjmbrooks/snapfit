@@ -50,19 +50,21 @@ describe('paquetes de historia instalados', () => {
       it('regiones para los niveles 1–10', () => {
         for (let n = 1; n <= 10; n++) expect(story.regions[n], `regions.${n}`).toBeTruthy();
       });
-      it('cada asset existe en public/stories/<id>/ y tiene fila de procedencia', () => {
+      it('cada asset existe (public/stories/<id>/ o public/art/…) y tiene fila de procedencia', () => {
         const files = [];
         const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (k === 'tokens' ? null : typeof v === 'string' ? files.push(v) : walk(v)));
         walk(manifest.assets);
         if (manifest.preview) files.push(manifest.preview);
         for (const f of files) {
-          const p = `public/stories/${id}/${f}`;
+          const p = f.startsWith('/') ? `public${f}` : `public/stories/${id}/${f}`;
           expect(existsSync(new URL(p, root)), p).toBe(true);
           expect(provenance.includes(p), `procedencia de ${p}`).toBe(true);
         }
       });
       it('el arte de carta apunta a ids de carta existentes', () => {
         for (const cid of Object.keys(manifest.assets?.cardArt || {})) expect(cardIds.has(cid), cid).toBe(true);
+        for (const cid of Object.keys(manifest.assets?.poses || {})) expect(cardIds.has(cid), `poses.${cid}`).toBe(true);
+        for (const cid of Object.keys(story.cardFlavor || {})) expect(cardIds.has(cid), `cardFlavor.${cid}`).toBe(true);
       });
       it('si sobreescribe colores del tema, mantiene contraste AA sobre su tema por defecto', () => {
         const tok = manifest.assets?.tokens || {};
@@ -105,6 +107,16 @@ describe('resolver: cadena de fallback paquete → por defecto → genérica', (
   it('assets con ruta pública y fallback al paquete por defecto', () => {
     const r = resolveStory({ packs, activeId: 'valle-gremios', defaultId: DEFAULT, generic: GENERIC, badgeIds: BADGE_IDS });
     for (const v of Object.values(r.assets.cardArt || {})) expect(v.startsWith('stories/valle-gremios/')).toBe(true);
+  });
+  it('arte, poses y ambientación por carta NO se heredan del paquete por defecto', () => {
+    const r = resolveStory({ packs, activeId: 'pixelandia', defaultId: 'vitalia', generic: GENERIC, badgeIds: BADGE_IDS });
+    expect(r.assets.cardArt || {}).toEqual({});
+    expect(r.assets.poses || {}).toEqual({});
+    expect(r.story.cardFlavor).toBeUndefined();
+    expect(r.story.cardBack).toBeUndefined();
+    const v = resolveStory({ packs, activeId: 'vitalia', defaultId: 'vitalia', generic: GENERIC, badgeIds: BADGE_IDS });
+    expect(v.assets.cardArt['sentadilla-silla-l1']).toBe('art/vitalia/cards/sentadilla-silla-l1.jpg');
+    expect(v.assets.poses['sentadilla-silla-l1']).toHaveLength(3);
   });
 });
 

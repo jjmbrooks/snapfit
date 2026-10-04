@@ -93,13 +93,24 @@ El contenido de entrenamiento lo **define Entrenador** (con apoyo de researcher)
 }
 ```
 
-### Campo opcional `video` (reverso de la carta)
+### Campos del reverso estilo C «grimorio arcade» (opcionales, 2026-10-03)
 
 ```json
-"video": { "src": "assets/video/<card-id>.mp4", "poster": "assets/video/<card-id>.webp" }
+"steps": [
+  { "text": "Párate frente a una silla firme, pies al ancho de cadera.", "pose": "/art/poses/sentadilla-silla-l1-1.png" },
+  "Lleva la cadera atrás hasta rozar el asiento.",
+  { "text": "Empuja el piso y vuelve arriba." }
+],
+"flavor": "Línea de ambientación neutra (≤ 60)",
+"breath": "Exhala al subir"
 ```
 
-Lo llena director-creativo (t_7db959be) con la animación del movimiento generada por un modelo de video, con su fila en `docs/ASSETS-PROVENANCE.md`. Mientras no exista, el reverso muestra el sprite procedural como placeholder.
+- `steps`: **1 a 3** pasos (el reverso muestra 3 filas). Cada paso es **texto** (formato original, sigue siendo válido) **u objeto** `{ text, pose? }`. `text` ≤ 90 caracteres. `pose` es una imagen relativa a `public/` (`/art/…` o `art/…`; sin `..` ni URLs externas) con su fila en `docs/ASSETS-PROVENANCE.md`.
+- **Las poses de un estilo o personaje concreto (p. ej. el aprendiz de Vitalia) NO van en la carta**, van en el paquete de historia (`manifest.assets.poses`, ver `docs/story/STORY-PACKS.md`), que tiene prioridad. En la carta solo van poses **neutras**, válidas para cualquier historia (ADR-011).
+- `flavor` (≤ 60): ambientación **neutra**. Se sigue aceptando el campo antiguo `flavorText`. La ambientación propia de una historia va en `story.json → cardFlavor` del paquete, que tiene prioridad.
+- `breath` (≤ 32): indicación de respiración para la tira inferior del reverso. Es contenido de **Entrenador**. Si falta, se usa la del paquete (`cardBack.breath`) o la de la interfaz («Respira sin aguantar el aire»).
+- Validación: `src/ui/card/card-data.js → cardExtrasErrors` (la usan `npm run check:content` y `tests/ui/card-data.test.js`).
+- **`video` queda en desuso:** Brooks descartó la idea de animación/video en el reverso (2026-10-03). El campo se ignora.
 
 ### Reglas del schema
 
@@ -109,7 +120,7 @@ Lo llena director-creativo (t_7db959be) con la animación del movimiento generad
 - `sources` lleva **al menos una** fuente. Sin fuentes la carta no se publica.
 - `careZones` alimenta el filtro «zonas a cuidar»: una carta que lista una zona marcada por el usuario **se excluye** o se ofrece su variante `easier` si esta no lista esa zona.
 - `sprite.sheet` debe tener su fila en `docs/ASSETS-PROVENANCE.md`. Mientras no exista el sprite se usa `null` y la UI muestra un placeholder.
-- `flavorText` es opcional y su estilo lo define storyteller.
+- `flavorText` es opcional (formato antiguo de `flavor`, ver arriba).
 - La validación en CI la hace `scripts/check-content.mjs` (`npm run check:content`). Más adelante se puede formalizar como JSON Schema.
 - **Borradores:** `"draft": true` + `"draftNote"` marcan cartas provisionales (sin `sources`, sin `reviewedBy`). La UI las muestra con la etiqueta «BORRADOR · pendiente de Entrenador». Una carta sin `draft` **debe** tener `sources`.
 - **Sprite provisional:** mientras no haya sprite sheet se permite `"sprite": { "procedural": "<anim>", "prop": "chair|wall|table|towel|null" }`, que se dibuja por código (`src/ui/components/sprite.js`). Animaciones disponibles: `squat`, `pushup-wall`, `pushup-incline`, `bridge`, `march`, `calf`, `row`, `birddog`, `plank`, `arms`, `jacks`, `lunge`.

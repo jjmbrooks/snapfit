@@ -8,3 +8,7 @@
 .deck-count { margin: 0; text-align: center; font-size: 12px; color: var(--text-muted); }
 .banner { border: 2px solid var(--warning); border-radius: 12px; background: var(--surface); padding: 6px 6px 6px 12px; display: flex; gap: var(--s3); align-items: center; justify-content: space-between; font-size: 14px; }
 .empty { padding: var(--s5); text-align: center; }
+/* Muestra de rangos (#/muestra/:id/:nivel) */
+.sample-k { margin: 0; text-align: center; font-size: 12px; color: var(--text-muted); }
+.sample-nav { display: flex; justify-content: center; gap: var(--s2); }
+.sample-nav .on { outline: 2px solid var(--primary); }

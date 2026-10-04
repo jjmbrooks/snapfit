@@ -110,3 +110,12 @@ La carta siempre muestra también el **grupo muscular** (texto neutro), para que
 - Nada en `src/core`, `src/adapters` ni en los eventos guardados referencia textos de historia (test).
 - No se renombran ids de grupo, carta o insignia para «encajar» una historia; se cambia el **nombre visible** en el paquete.
 - El aviso de salud y los textos de seguridad son de `content/copy/es.json`, no del paquete.
+
+## Carta arcade: campos de paquete (2026-10-03)
+
+- `story.json → cardBack { title ≤ 28, breath ≤ 32 }`: título del reverso y respiración por defecto.
+- `story.json → cardFlavor { <cardId>: texto ≤ 60 }`: ambientación por carta. Tiene prioridad sobre `flavor` de la carta.
+- `manifest.assets.poses { <cardId>: [≤ 3 imágenes] }` y `manifest.assets.emblems { <grupo>: imagen }`.
+- **Rutas:** relativas a `public/stories/<id>/` o absolutas `/art/<carpeta>/…` (relativas a `public/`). Las absolutas sirven para arte compartido que se deja en `public/art/` (p. ej. `public/art/vitalia/`).
+- **Campos de identidad que NO se heredan del paquete por defecto:** `cardFlavor`, `cardBack`, `cardArt`, `poses`, `emblems` y `frames`. El paquete activo los define o se usa el respaldo genérico. Así un paquete nunca muestra el arte de otro.
+- Diseño completo de la carta: `docs/ui/CARTA-ARCADE.md`.

@@ -1,14 +1,31 @@
-/* REVERSO DE CARTA: video del movimiento (o placeholder), pasos, claves, precauciones.
-   Workstream: card-frame (ver docs/PARALLEL-WORK.md). */
-.tc-back { transform: rotateY(180deg); grid-template-rows: auto auto minmax(0, 1fr); background: linear-gradient(var(--fam-dark), #15122a); color: #f4f2ff; }
-.tc-video { width: 100%; aspect-ratio: 16 / 10; border-radius: 10px; border: 3px solid #0d0b18; background: #12102a; object-fit: cover; }
-.tc-video.placeholder { display: grid; place-items: center; position: relative; --sprite-fg: #ffffff; --sprite-prop: var(--fam); --sprite-ground: #4b4680; }
-.tc-video.placeholder canvas { height: 80%; aspect-ratio: 1; image-rendering: pixelated; }
-.tc-video.placeholder span { position: absolute; bottom: 4px; left: 6px; right: 6px; font-size: 10px; color: #c9c5ee; text-align: center; }
-.tc-info { overflow-y: auto; font-size: 13px; line-height: 1.4; padding-right: 2px; }
-.tc-info ol { margin: 0 0 6px; padding-left: 18px; }
-.tc-info p { margin: 0 0 6px; }
-.tc-warn { color: #ffd08a; }
-.tc-meta { color: #c9c5ee; }
-.tc-meta a { color: #8fe9ff; }
-
+/* REVERSO DE CARTA — «cómo se hace»: 3 pasos con ranura de pose, tira con dosis + respiración, cuidados.
+   Vertical (la referencia vitalia-C-reverso.jpg es horizontal). Workstream: card-frame. */
+.tc-back { transform: rotateY(180deg); grid-template-rows: auto minmax(0, 1fr) auto auto auto; gap: 2cqi; color: #fff6df; }
+.ac-banner-back { font-size: 5.6cqi; padding: 1.8cqi 3cqi; margin: 0 2cqi; }
+.ac-steps { list-style: none; margin: 0; padding: 0; min-height: 0; display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 1.8cqi; }
+.ac-step {
+  min-height: 0; display: grid; grid-template-columns: 11cqi 24cqi minmax(0, 1fr); align-items: center; gap: 2cqi;
+  padding: 1.2cqi 2.4cqi 1.2cqi 1.4cqi; border-radius: 2cqi;
+  background: linear-gradient(var(--parch), var(--parch-2)); color: var(--parch-ink);
+  border: .5cqi solid var(--trim-dark); box-shadow: inset 0 0 0 .4cqi var(--trim-light), 0 .6cqi 0 rgba(0,0,0,.3);
+}
+.ac-num { width: 11cqi; height: 12.5cqi; background: #120a04; clip-path: polygon(0 0, 100% 0, 100% 66%, 50% 100%, 0 66%); padding-bottom: 2cqi; }
+.ac-num::before { content: ''; position: absolute; inset: .8cqi; z-index: -1; clip-path: inherit; background: linear-gradient(var(--fam), var(--fam-dark)); box-shadow: inset 0 0 0 1cqi var(--tier); }
+.ac-num { font-family: var(--font-title); font-weight: 900; font-size: 6.2cqi; color: #fff6df; text-shadow: 0 .4cqi 0 #120a04; }
+.ac-pose { height: 100%; min-height: 0; display: grid; place-items: center; overflow: hidden; border-radius: 1.4cqi; }
+.ac-pose img { max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.ac-pose.empty { border: .4cqi dashed var(--parch-line); grid-template-rows: minmax(0, 1fr) auto; padding: 1cqi; }
+.ac-pose-ph { height: 100%; min-height: 0; fill: none; stroke: var(--parch-line); stroke-width: 2.2; stroke-linecap: round; }
+.ac-pose-ph circle { fill: var(--parch-line); stroke: none; }
+.ac-pose small { font-size: 2.4cqi; color: #6b4a22; }
+.ac-step-text { font-family: var(--font-title); font-weight: 700; font-size: 3.9cqi; line-height: 1.2;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.ac-strip {
+  margin: 0 1cqi; padding: 1.8cqi 3cqi; text-align: center; border-radius: 1.6cqi;
+  background: linear-gradient(var(--parch), var(--parch-2)); color: var(--parch-ink);
+  border: .5cqi solid var(--trim-dark); box-shadow: inset 0 0 0 .4cqi var(--trim-light);
+  font-family: var(--font-title); font-weight: 700; font-size: 4.3cqi;
+}
+.ac-care { margin: 0 1cqi; font-size: 3cqi; line-height: 1.3; color: #ffe2a8; }
+.ac-care a, .ac-meta a { color: #bfefff; }
+.ac-meta { margin: 0 1cqi; font-size: 2.8cqi; color: #e6def8; opacity: .9; }

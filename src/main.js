@@ -7,7 +7,7 @@ import { storage } from './adapters/storage-idb.js';
 import { clock } from './adapters/clock.js';
 import { createApp } from './ui/app.js';
 import { parseRoute } from './ui/router.js';
-import { renderCard, bindCard, renderCardDetail, hud } from './ui/views/card.js';
+import { renderCard, bindCard, renderCardDetail, renderSample, bindSample, hud } from './ui/views/card.js';
 import { renderProgress } from './ui/views/progress.js';
 import { renderAchievements, bindAchievements } from './ui/views/achievements.js';
 import { renderMenu, bindMenu } from './ui/views/menu.js';
@@ -87,7 +87,7 @@ function render() {
   if (s.storyChanged) { s.storyChanged = false; loadStory().then(render); return; }
   const route = parseRoute();
   const step = app.step();
-  const onb = step && route.name !== 'privacy';
+  const onb = step && route.name !== 'privacy' && route.name !== 'sample';
   shell.classList.toggle('onboarding', !!onb || route.name === 'profile');
   if (onb || route.name === 'profile') {
     const v = swapView();
@@ -104,8 +104,9 @@ function render() {
     if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
   });
   const v = swapView();
-  v.classList.toggle('view-play', route.name === 'card');
+  v.classList.toggle('view-play', route.name === 'card' || route.name === 'sample');
   if (route.name === 'card') { v.innerHTML = renderCard(app); cleanup = bindCard(v, app, { dealt: app.lastDeal }); app.lastDeal = null; }
+  else if (route.name === 'sample') { v.innerHTML = renderSample(app, route); cleanup = bindSample(v, app, route); }
   else if (route.name === 'detail') v.innerHTML = renderCardDetail(app, route.id);
   else if (route.name === 'progress') v.innerHTML = renderProgress(app);
   else if (route.name === 'achievements') { v.innerHTML = renderAchievements(app); bindAchievements(v); }
