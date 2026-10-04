@@ -20,3 +20,7 @@
 ### Ejemplo de fila
 
 | `public/assets/sprites/sentadilla-silla-l1.png` | sprite 8×32 px | director-creativo | Grok Bot (imagen) + limpieza en LibreSprite | «pixel art 32x32, personaje… sentadilla a silla, 8 frames» (prompt completo en el adjunto Kanban t_xxx) | 2026-10-05 | CC BY 4.0 | Tarjeta Kanban t_xxx |
+
+| `docs/proposals/ui/cartas-modelo/A-arcade-dojo.jpg` | Propuesta de carta (mundo A) | Codelius | Grok Bot GenerateImage (modelo de generación de imágenes) | 2026-10-03 | CC BY 4.0 | Solo propuesta, no se usa en la app |
+| `docs/proposals/ui/cartas-modelo/B-pixelandia.jpg` | Propuesta de carta (mundo B, el elegido) | Codelius | Grok Bot GenerateImage | 2026-10-03 | CC BY 4.0 | Referencia de estilo para disenador y director-creativo |
+| `docs/proposals/ui/cartas-modelo/C-orbita.jpg` | Propuesta de carta (mundo C) | Codelius | Grok Bot GenerateImage | 2026-10-03 | CC BY 4.0 | Solo propuesta |

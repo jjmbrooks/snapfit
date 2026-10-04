@@ -1,83 +1,112 @@
-# Mundo de SnapFit — «El Reino de Pixelandia»
+# Mundo de SnapFit: «El Valle de los Gremios» (nombre provisional)
 
-> **v0 · BORRADOR ABIERTO A PROPUESTAS.** Es un placeholder técnico de Codelius (2026-10-03) para que la app tuviera tema e historia mientras **storyteller** (Kanban `t_22eec52e`) y **disenador** (`t_bf5e6169`) entregan la versión final. Cualquier modelo puede proponer un mundo distinto en `docs/proposals/story/<modelo>.md` (ver `docs/PARALLEL-WORK.md`). Brooks elige.
->
-> **Fuente de verdad de los textos en la app:** `content/story/pixelandia.json`. Este documento explica el mundo; el JSON es lo que se muestra. Si cambias uno, actualiza el otro.
+> **v1, borrador abierto a propuestas.** Escrito por Codelius el 2026-10-03 a partir de la elección de Brooks: estilo B, fantasía RPG con gremios por grupo muscular. El nombre del reino todavía está por decidir; las alternativas son Ferrania, Tierras de Vigor y Ciudadela del Movimiento. Para proponer cambios, crea `docs/proposals/story/<modelo>.md` siguiendo `docs/PARALLEL-WORK.md`. Brooks decide.
 
 ## 1. Premisa
 
-La **Gran Quietud** cayó sobre Pixelandia: un reino de 8 bits donde todo funcionaba con movimiento. Los molinos se detuvieron, los colores se apagaron y la gente se quedó quieta frente a sus pantallas.
+El Valle de los Gremios fue durante siglos un reino que se mantenía vivo con movimiento: los molinos giraban, las forjas ardían y los barcos zarpaban porque su gente se movía todos los días. Siete gremios guardaban ese saber, cada uno dedicado a una parte del cuerpo.
 
-Tú encontraste el **último Mazo del Movimiento**. Cada carta guarda un movimiento antiguo. Cuando lo haces y dices **¡Listo!**, una chispa de energía vuelve al reino: se enciende un farol, gira un molino, regresa un color.
+Un día llegó **la Quietud**, una niebla gris que invita a sentarse "solo un rato más". Los aldeanos dejaron de moverse, los gremios se fueron vaciando y el valle empezó a perder su color.
 
-**Logline:** *Una carta. Un movimiento. Un rincón del reino que vuelve a la vida.*
+Tú eres un **aprendiz** que encontró el **Mazo de los Gremios**, un mazo de cartas donde cada gremio dejó sus movimientos. Cada vez que haces una carta y tocas **¡Listo!**, la niebla retrocede un poco: vuelve a encenderse una forja, gira un molino o regresa un color.
 
-## 2. Tono
+**Logline:** *Una carta, un movimiento, y un rincón del valle que vuelve a la vida.*
 
-- Arcade amable, optimista, con humor ligero. Celebra lo pequeño («¡Snap!», «¡Combo!»).
-- **Nunca** culpa, castiga ni habla del peso o la forma del cuerpo. Saltar una carta («Otro») es parte del juego, no un fracaso.
-- Español neutro, frases cortas, segunda persona (tú).
-- Referencias retro (8 y 16 bits, cartas coleccionables), pero **pulido**, no «MS-DOS».
+## 2. Entorno
 
-## 3. Personajes y guías (propuesta, aún no aparecen en la app)
+- Es un valle de fantasía cálido y luminoso, al estilo de Sea of Stars u Octopath Traveler: pixel art de 16 bits, pulido y con buena iluminación, nada que recuerde a MS-DOS.
+- Las regiones se van despejando a medida que subes de nivel global:
 
-| Personaje | Rol | Uso posible en la app |
-|-----------|-----|-----------------------|
-| **El Jugador** (tú) | Portador del Mazo del Movimiento | Avatar en Progreso; «Crea tu héroe» en el login |
-| **Bit**, el mapache mensajero | Guía y narrador; aparece en la bienvenida y en las felicitaciones | Burbuja de diálogo en onboarding, congrats y logros |
-| **La Quietud** | Antagonista abstracta (niebla gris que congela) | Fondo apagado que se colorea con tu progreso |
-| **Los Guardianes de familia** | Un guardián por grupo muscular, ilustrado en el marco de cada familia | Arte de familia en las cartas (director-creativo) |
+| Nivel | Región |
+|-------|--------|
+| 1 | Aldea del Aprendiz |
+| 2 | Molinos del Río |
+| 3 | Bosque de los Robles |
+| 4 | Puerto de las Velas |
+| 5 | Paso de la Montaña |
+| 6 | Dunas de Ámbar |
+| 7 | Lago Espejo |
+| 8 | Forja del Volcán |
+| 9 | Picos de Nube |
+| 10 | Ciudadela de los Gremios |
 
-## 4. Familias de cartas (una por grupo muscular)
+- Cada región que queda libre de la niebla se ilumina en el mapa de Progreso.
 
-El color de cada familia es **fijo** (las cartas son objetos físicos) y vive en `src/ui/styles/tokens.css` (`.fam-<grupo>`). Nombre e ícono en `content/story/pixelandia.json → families`.
+## 3. Los siete gremios (uno por grupo muscular)
 
-| Grupo (id estable) | Nombre en la app (v0) | Ícono | Color | Idea de guardián / lore (propuesta) |
-|--------------------|-----------------------|-------|-------|-------------------------------------|
-| `piernas` | Piernas | 🦵 | Naranja | El Gigante de los Caminos: mueve la tierra con cada paso |
-| `gluteos` | Glúteos | 🍑 | Rosa | La Reina del Puente: sostiene los puentes del reino |
-| `empuje` | Empuje | ✋ | Amarillo | El Herrero del Sol: empuja las puertas del amanecer |
-| `traccion` | Tracción | 🪢 | Azul | La Marinera de las Cuerdas: jala las velas del puerto |
-| `core` | Core | 🛡️ | Verde | El Escudo del Bosque: el centro firme que protege |
-| `movilidad` | Movilidad | 🌀 | Turquesa | La Bailarina del Viento: abre los caminos cerrados |
-| `cardio` | Cardio | ❤️ | Morado | El Corazón del Volcán: da ritmo a todo el reino |
+Los **ids** de grupo no cambian nunca, porque los usa el core. En la app se muestra el nombre del gremio junto al grupo muscular para que se entienda sin conocer la historia, por ejemplo «Gremio de Tierra · Piernas».
 
-Los **ids** de grupo no cambian nunca (los usa el core). Los **nombres visibles** sí pueden cambiar (por ejemplo, «Clan del Gigante» en lugar de «Piernas»), pero deben seguir siendo claros para alguien que no conoce el lore. Recomendación: mostrar ambos («Gigante · Piernas») si el nombre temático no es obvio.
+| id | Gremio | Maestro/a | Elemento y colores | Lore |
+|----|--------|-----------|--------------------|------|
+| `piernas` | Gremio de Tierra | Maestro Bruno, el Caminante | Tierra · verde y bronce | Abre caminos y sostiene el valle con cada paso |
+| `gluteos` | Gremio del Puente | Maestra Inés, la Constructora | Piedra · rosa y cobre | Mantiene firmes los puentes y los arcos |
+| `empuje` | Gremio de la Forja | Maestro Toro, el Herrero | Fuego · rojo y oro | Empuja los fuelles que encienden las forjas |
+| `traccion` | Gremio de las Velas | Capitana Mar, la Marinera | Agua · azul y plata | Jala las cuerdas para que los barcos zarpen |
+| `core` | Gremio del Escudo | Guardián Roble | Madera · verde oscuro y oro | El centro firme que protege a todos |
+| `movilidad` | Gremio del Viento | Maestra Brisa, la Danzante | Aire · turquesa y blanco | Desata nudos y abre caminos cerrados |
+| `cardio` | Gremio del Corazón | Maestro Lumbre | Luz · morado y ámbar | Marca el ritmo de todo el valle |
 
-## 5. Niveles y rangos
+## 4. Personajes
 
-- **Nivel de carta 1–10** (dificultad, lo define Entrenador). Se ve como «NV n» en la esquina de la carta y en los 10 pips del pie.
-- **Rango (tier) por nivel**, que cambia el color del borde del marco:
+| Personaje | Rol | Dónde aparece |
+|-----------|-----|---------------|
+| **El aprendiz** (tú) | Portador del Mazo. El avatar se elige al crear el perfil: género, apariencia y ropa | Progreso y logros |
+| **Pip**, zorro mensajero de los gremios | Guía y narrador con humor amable | Bienvenida, felicitaciones, recordatorios y burbujas de ayuda |
+| **Los siete maestros** | Cada uno ilustra su familia de cartas y te reconoce cuando subes de rango en su gremio | Marcos de las cartas y pantallas de subir de nivel |
+| **La Quietud** | Antagonista abstracta, una niebla gris que invita a quedarse quieto. Nunca culpa al jugador | Fondo del mapa, que se colorea con tu progreso |
+| **Aldeanos** (niños, adultos y mayores) | Representan a todas las personas; aparecen en los mazos por edad | Arte de mazos especiales |
 
-| Tier | Niveles | Nombre v0 | Borde |
-|------|---------|-----------|-------|
-| 1 | 1–3 | Bronce | cobre |
-| 2 | 4–6 | Plata | plata |
-| 3 | 7–9 | Oro | oro |
-| 4 | 10 | Leyenda | rosa brillante |
+## 5. Rangos dentro de cada gremio
 
-- **Nivel del jugador** por grupo y global: «tu nivel en Piernas: 3». Narrativamente, cada nivel global podría ser una **región** del reino que se descongela (propuesta: 1 Aldea, 2 Molinos, 3 Bosque, 4 Puerto, 5 Montaña, 6 Desierto, 7 Lago, 8 Volcán, 9 Nubes, 10 Castillo).
+La dificultad de cada carta va del nivel 1 al 10 y la define Entrenador. El rango cambia el borde del marco de la carta:
+
+| Rango | Niveles | Borde |
+|-------|---------|-------|
+| Aprendiz | 1–3 | Bronce |
+| Oficial | 4–6 | Plata |
+| Maestro | 7–9 | Oro |
+| Leyenda | 10 | Gema brillante |
 
 ## 6. Cómo se conecta la historia con la mecánica
 
-| Mecánica | Significado en el mundo | Pantalla / archivo |
-|----------|-------------------------|--------------------|
-| **Mazo** | El Mazo del Movimiento; se baraja con lo que tu nivel permite | `src/ui/views/card.js` |
-| **Una carta en pantalla** | El movimiento que el reino necesita ahora | carta frente (`src/ui/card/frame.css`) |
-| **Tocar la carta (volteo 3D)** | Leer el pergamino del movimiento: cómo se hace (video + pasos + cuidados) | reverso (`src/ui/card/back.css`) |
-| **¡Listo!** | Liberas la energía de la carta: una chispa vuelve a Pixelandia | felicitación (`src/ui/views/reward.js`) |
-| **Otro** | La carta vuelve al fondo del mazo; ningún castigo, el reino espera | animación «al fondo» (`src/ui/card/deck.css`) |
-| **Barras de progreso** | Cuánta vida ha vuelto hoy (meta diaria), tu racha de fuego, tu fuerza por familia | secuencia de progreso |
-| **Subir de nivel** | Un guardián de familia te reconoce; tu rango sube | pantalla de logros |
-| **Insignias** | Sellos del reino (nombres en `badges`) | `#/logros` |
-| **Racha** | La llama del farol: se mantiene encendida con al menos una carta al día; el comodín semanal es una «brasa de reserva» | HUD |
-| **Recordatorios** | Bit te avisa que el reino necesita un movimiento | `reminders` |
+| Mecánica | Qué significa en el mundo |
+|----------|---------------------------|
+| **Mazo** | El Mazo de los Gremios. Se baraja según tu perfil y tu nivel |
+| **Carta en pantalla** | El movimiento que el valle necesita ahora |
+| **Tocar la carta** (se voltea) | Leer el pergamino del gremio: video del movimiento, pasos y cuidados |
+| **¡Listo!** | La niebla retrocede, Pip celebra y vuelve un poco de vida al valle |
+| **Otro** | La carta regresa al fondo del mazo. No hay castigo: el valle espera |
+| **Barras de progreso** | Cuánta luz volvió hoy, tu racha de farol encendido y tu fuerza en cada gremio |
+| **Subir de nivel** | El maestro del gremio te reconoce y te da un sello |
+| **Insignias** | Sellos de los gremios, que se pueden compartir |
+| **Racha** | El farol del aprendiz. Una carta al día lo mantiene encendido; la brasa de reserva es el comodín semanal |
+| **Recordatorios** | Pip avisa que un gremio necesita ayuda (por ejemplo, «La forja se enfría, ¿un movimiento?») |
 
-## 7. Bienvenida (v0)
+## 7. Tono
 
-Ver `docs/story/WELCOME-COPY.md`.
+- Optimista, amable y con humor ligero. Celebra los avances pequeños.
+- **Nunca** culpa, castiga ni habla de peso o forma del cuerpo.
+- Español neutro, tuteo y frases cortas.
+- Es inclusivo: hay aprendices de cualquier edad, sexo y condición física.
 
-## 8. Formato de `content/story/<id>.json`
+## 8. Bienvenida (v1)
+
+1. «El valle se quedó quieto. Una niebla gris apagó las forjas y detuvo los molinos.»
+2. «Los siete gremios guardaron sus movimientos en un mazo… y ese mazo te encontró a ti.»
+3. «Cada carta que hagas devuelve un poco de vida al valle.»
+4. «Soy Pip. Te acompaño. ¿Empezamos?»
+
+Botón: **¡Abrir el mazo!**
+
+## 9. Pendientes para storyteller y los modelos
+
+- Elegir el nombre definitivo del reino.
+- Escribir el diálogo de Pip en la bienvenida, las felicitaciones, los recordatorios y al subir de nivel.
+- Dar nombres temáticos a las insignias.
+- Escribir el texto de ambientación de cada carta (una línea).
+- Crear mazos especiales para niños y adultos mayores con su propio arte.
+- Actualizar `content/story/<id>.json` para que la app use esta historia.
+## 10. Formato de `content/story/<id>.json` (la app aún usa `pixelandia.json` hasta migrar)
 
 Una historia = un archivo. La activa se elige en `content/story/active.json`. Para **previsualizar** otra sin cambiar la activa: `https://…/snapfit/?story=<id>` (o en local `http://localhost:5173/snapfit/?story=<id>`).
 
