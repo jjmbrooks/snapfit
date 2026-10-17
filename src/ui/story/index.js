@@ -3,7 +3,9 @@
 // Ver docs/story/STORY-PACKS.md y ADR-011 en docs/02-ARCHITECTURE.md.
 import INDEX from '../../../content/stories/index.json';
 import { BADGE_IDS } from '../../core/index.js';
-import { resolveStory, validatePack, frameFor } from './resolve.js';
+import { resolveStory, validatePack, frameFor, resolveCardArt, resolvePoses } from './resolve.js';
+// Lista de archivos de public/art/** y public/stories/** generada al compilar (plugin en vite.config.js).
+import ART_FILES from 'virtual:snapfit-art-files';
 import { genericStory } from './generic.js';
 
 // Manifiestos: siempre en el bundle (pequeños; sirven para el selector).
@@ -17,6 +19,7 @@ const STORY_LOADERS = Object.fromEntries(
     .map(([p, load]) => [p.split('/').slice(-2)[0], load]),
 );
 
+const FILES = new Set(ART_FILES);
 export const DEFAULT_STORY_ID = INDEX.default;
 export const GENERIC = genericStory(BADGE_IDS);
 
@@ -82,7 +85,7 @@ function applyAssets(r) {
 /** Lista plana de URLs de assets del paquete activo. */
 export function packAssetUrls(assets) {
   const out = [];
-  const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (k === 'tokens' ? null : typeof v === 'string' ? out.push(v) : walk(v)));
+  const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (k === 'tokens' || k === 'artConvention' ? null : typeof v === 'string' ? out.push(v) : walk(v)));
   walk(assets);
   return [...new Set(out)];
 }
@@ -95,12 +98,12 @@ function cacheActivePack(r) {
 }
 
 /** Arte de carta del paquete (o null → animación genérica). */
-export const cardArtUrl = (cardId) => (current.assets.cardArt?.[cardId] ? assetUrl(current.assets.cardArt[cardId]) : null);
+export const cardArtUrl = (cardId) => { const p = resolveCardArt(current.assets, cardId, FILES); return p ? assetUrl(p) : null; };
 export const frameUrl = (family, tier) => { const f = frameFor(current.assets, family, tier); return f ? assetUrl(f) : null; };
 /** Emblema de escuela (imagen del paquete) o null → emblema SVG del código. */
 export const emblemUrl = (family) => (current.assets.emblems?.[family] ? assetUrl(current.assets.emblems[family]) : null);
 /** Poses del paquete para una carta (array de URLs, puede estar vacío). */
-export const packPoseUrls = (cardId) => (current.assets.poses?.[cardId] || []).map(assetUrl);
+export const packPoseUrls = (cardId) => resolvePoses(current.assets, cardId, FILES).map((p) => (p ? assetUrl(p) : null));
 /** URL pública de una ruta de contenido (p. ej. steps[].pose de una carta: «/art/…» o «art/…», relativa a public/). */
 export const publicUrl = (p) => (p ? assetUrl(p.replace(/^\//, '')) : null);
 export const sfxUrl = (name) => (current.assets.audio?.sfx?.[name] ? assetUrl(current.assets.audio.sfx[name]) : null);

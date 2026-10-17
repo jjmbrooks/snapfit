@@ -8,7 +8,7 @@
 .segs { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; }
 .seg { height: 14px; background: var(--surface-2); border-radius: 3px; }
 .seg.on { background: var(--fam, var(--accent)); }
-.lvl-n { font-family: var(--font-pixel); font-size: 10px; text-align: right; }
+.lvl-n { font-family: var(--font-pixel); font-size: 11px; text-align: right; }
 .histo { display: grid; grid-template-columns: repeat(30, 1fr); gap: 2px; align-items: end; height: 72px; border-bottom: 2px solid var(--border); }
 .histo i { display: block; background: var(--primary); min-height: 2px; border-radius: 2px 2px 0 0; }
 .histo i.zero { background: var(--surface-2); }

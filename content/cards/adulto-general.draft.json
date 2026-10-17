@@ -66,7 +66,9 @@
     "reviewedBy": null,
     "reviewedAt": null,
     "license": "CC-BY-4.0",
-    "breath": "Exhala al subir"
+    "breath": "Exhala al subir",
+    "videoUrl": "https://www.youtube.com/watch?v=u6hh6vOgXNI",
+    "videoSource": "FREMAP"
   },
   {
     "id": "flexion-pared-l1",
@@ -136,7 +138,9 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=751E9kAdkwg",
+    "videoSource": "NIA (NIH)"
   },
   {
     "id": "puente-gluteo-l1",
@@ -203,7 +207,9 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=VveNLI1KIcQ",
+    "videoSource": "FREMAP"
   },
   {
     "id": "marcha-sitio-l1",
@@ -270,7 +276,9 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=xom-st-GwW4",
+    "videoSource": "MU Health"
   },
   {
     "id": "talones-l1",
@@ -337,7 +345,9 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=4rgR6KtyHzI",
+    "videoSource": "NHS inform"
   },
   {
     "id": "remo-toalla-iso-l1",
@@ -471,7 +481,9 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=ZdAHe9_HeEw",
+    "videoSource": "NASM"
   },
   {
     "id": "plancha-rodillas-l1",
@@ -538,7 +550,9 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=idNd2kjXotw",
+    "videoSource": "Madrid Deporte"
   },
   {
     "id": "circulos-brazos-l1",
@@ -605,7 +619,9 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=4olV-GiwxQs",
+    "videoSource": "NHS inform"
   },
   {
     "id": "step-jacks-l1",
@@ -741,7 +757,9 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=azx15iak_X0",
+    "videoSource": "PartnerMD"
   },
   {
     "id": "flexion-mesa-l2",
@@ -810,6 +828,8 @@
     "sources": [],
     "reviewedBy": null,
     "reviewedAt": null,
-    "license": "CC-BY-4.0"
+    "license": "CC-BY-4.0",
+    "videoUrl": "https://www.youtube.com/watch?v=yItUwrTTyMA",
+    "videoSource": "Marc McShane, DPT"
   }
 ]

@@ -1,6 +1,7 @@
 # CI de SnapFit.
 # - pull_request a main: tests + validaciones + build + capturas 390×844 (artefacto). NO despliega.
 # - push a main (solo Codelius integra): lo mismo + deploy de dist/ a GitHub Pages (/snapfit/).
+# Acciones en versiones Node 24 (sin avisos de deprecación de Node 20; actualizado 2026-10-03).
 name: CI y deploy
 
 on:
@@ -21,8 +22,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
           cache: npm
@@ -35,14 +36,14 @@ jobs:
         run: npm run check:provenance
       - run: npm run build
       - name: Guardar dist para capturas
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist
           retention-days: 3
       - name: Artefacto de Pages
         if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -51,13 +52,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist
@@ -66,7 +67,7 @@ jobs:
           npx vite preview --port 4173 --strictPort &
           for i in $(seq 1 30); do curl -sf http://localhost:4173/snapfit/ >/dev/null && break; sleep 1; done
           npm run screens -- http://localhost:4173/snapfit/ screens-out
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: capturas-390x844
@@ -86,4 +87,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

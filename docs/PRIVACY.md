@@ -44,6 +44,7 @@ Medidas de minimización:
 - `allow_google_signals: false` y `allow_ad_personalization_signals: false` (sin señales de Google ni anuncios personalizados). No se envían vistas de página automáticas.
 - El SDK de Analytics se carga de forma diferida, solo después del onboarding y con conexión.
 - Google procesa estos datos según sus propios términos: https://policies.google.com/privacy
+- **Videos tutoriales:** el reverso de algunas cartas enlaza a un video público de YouTube («Ver video»). La app **no registra** esos clics (no hay evento para ello) y no incrusta reproductores. Si abres el enlace, sales a YouTube y aplica la política de privacidad de Google/YouTube. Lista y fuentes: docs/training/VIDEOS.md.
 
 ## 4. Recordatorios
 

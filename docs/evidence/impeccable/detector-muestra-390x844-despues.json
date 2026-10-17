@@ -1,0 +1,48 @@
+[
+  {
+    "antipattern": "flat-type-hierarchy",
+    "name": "Flat type hierarchy",
+    "description": "Dominant heading and body roles are separated by less than 1.25× at every step, leaving the size hierarchy flat. Add at least one stronger size step.",
+    "severity": "advisory",
+    "category": "slop",
+    "file": "http://localhost:4173/snapfit/#/muestra/sentadilla-silla-l1/1",
+    "line": 0,
+    "snippet": "Role sizes: body 16px, h2 18.3px, h3 20px (largest adjacent step 1.14:1; target 1.25:1; weight separates headings from body text)",
+    "advisory": true,
+    "selector": "body"
+  },
+  {
+    "antipattern": "cream-palette",
+    "name": "Cream / beige palette",
+    "description": "A warm cream or beige page background has become the default \"tasteful\" AI surface, reached for by reflex. Choose a background that comes from a deliberate palette, not the safe warm off-white.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://localhost:4173/snapfit/#/muestra/sentadilla-silla-l1/1",
+    "line": 0,
+    "snippet": "cream/beige page background rgb(244, 241, 232)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "repeating-stripes-gradient",
+    "name": "Repeating-gradient stripes",
+    "description": "Repeating-gradient stripes used as surface decoration are a recurring generated-UI signature. Reach for a deliberate texture or leave the surface plain.",
+    "severity": "advisory",
+    "category": "slop",
+    "file": "http://localhost:4173/snapfit/#/muestra/sentadilla-silla-l1/1",
+    "line": 0,
+    "snippet": "repeating-gradient decorative stripes",
+    "advisory": true,
+    "selector": "body"
+  },
+  {
+    "antipattern": "nested-cards",
+    "name": "Nested cards",
+    "description": "Cards inside cards create visual noise and excessive depth. Flatten the hierarchy — use spacing, typography, and dividers instead of nesting containers.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://localhost:4173/snapfit/#/muestra/sentadilla-silla-l1/1",
+    "line": 0,
+    "snippet": "Card inside card",
+    "selector": "div.ac-parch"
+  }
+]

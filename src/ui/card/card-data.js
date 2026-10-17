@@ -3,15 +3,24 @@
 //   steps: ["texto", …]  (formato original)  o  [{ text, pose? }, …]  (nuevo; máx. 3)
 //   flavor: "línea de ambientación"  (también se acepta el campo antiguo flavorText)
 //   breath: "indicación de respiración"  (opcional; si falta, la pone el paquete de historia o la interfaz)
+//   videoUrl + videoSource: tutorial público verificado (solo youtube.com / youtu.be) y su fuente; ver docs/training/VIDEOS.md
 export const MAX_STEPS = 3;
 export const MAX_STEP_TEXT = 90;
 export const MAX_FLAVOR = 60;
 export const MAX_BREATH = 32;
+export const MAX_VIDEO_SOURCE = 28;
+export const VIDEO_RE = /^https:\/\/(www\.youtube\.com\/watch\?v=|youtu\.be\/)[A-Za-z0-9_-]{11}$/;
 const POSE_RE = /^(?!.*\.\.)(?!https?:)\/?[A-Za-z0-9_./-]+\.(png|jpg|jpeg|webp|gif|svg)$/;
 
 /** Pasos normalizados: [{ text, pose|null }] (como mucho MAX_STEPS). */
 export function normalizeSteps(c) {
   return (c?.steps || []).slice(0, MAX_STEPS).map((s) => (typeof s === 'string' ? { text: s, pose: null } : { text: s?.text || '', pose: s?.pose || null }));
+}
+/** Enlace a video tutorial ({ url, source }) o null si la carta no tiene uno válido. */
+export function videoOf(c) {
+  if (typeof c?.videoUrl !== 'string' || !VIDEO_RE.test(c.videoUrl)) return null;
+  const source = typeof c.videoSource === 'string' ? c.videoSource.trim() : '';
+  return source ? { url: c.videoUrl, source } : null;
 }
 export const flavorOf = (c) => c?.flavor || c?.flavorText || null;
 
@@ -46,6 +55,11 @@ export function cardExtrasErrors(c) {
     if (c[k] == null) continue;
     if (typeof c[k] !== 'string' || !c[k].trim()) e.push(`${k} debe ser texto`);
     else if (c[k].length > max) e.push(`${k} > ${max} caracteres`);
+  }
+  if (c.videoUrl != null || c.videoSource != null) {
+    if (typeof c.videoUrl !== 'string' || !VIDEO_RE.test(c.videoUrl)) e.push('videoUrl: solo https://www.youtube.com/watch?v=… o https://youtu.be/…');
+    if (typeof c.videoSource !== 'string' || !c.videoSource.trim()) e.push('videoSource requerido junto con videoUrl');
+    else if (c.videoSource.length > MAX_VIDEO_SOURCE) e.push(`videoSource > ${MAX_VIDEO_SOURCE} caracteres`);
   }
   return e;
 }

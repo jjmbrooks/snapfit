@@ -52,6 +52,7 @@ Paquetes instalados hoy:
 | `preview` | no | imagen 16:9 aprox. para el selector |
 | `defaultTheme` | sí | uno de los 6 temas; se aplica al **elegir** el paquete (la persona puede cambiarlo después) |
 | `assets.cardArt.<cardId>` | no | ilustración de esa carta; si falta → animación genérica |
+| `assets.artConvention.cardArt` / `.poses` | no | plantillas `{cardId}` / `{n}` (p. ej. `/art/vitalia/poses/{cardId}-{n}.webp`). Si el archivo existe al compilar, se usa sin editar el manifest y gana a `cardArt`/`poses` explícitos. No se hereda |
 | `assets.frames.default` / `.<grupo>.<1-4\|all>` | no | piel del marco (frente) por familia y tier |
 | `assets.backgrounds.welcome\|play` | no | fondos (`--story-bg-welcome`, `--story-bg-play`) |
 | `assets.guide.sprite` | no | sprite del guía |
@@ -117,5 +118,5 @@ La carta siempre muestra también el **grupo muscular** (texto neutro), para que
 - `story.json → cardFlavor { <cardId>: texto ≤ 60 }`: ambientación por carta. Tiene prioridad sobre `flavor` de la carta.
 - `manifest.assets.poses { <cardId>: [≤ 3 imágenes] }` y `manifest.assets.emblems { <grupo>: imagen }`.
 - **Rutas:** relativas a `public/stories/<id>/` o absolutas `/art/<carpeta>/…` (relativas a `public/`). Las absolutas sirven para arte compartido que se deja en `public/art/` (p. ej. `public/art/vitalia/`).
-- **Campos de identidad que NO se heredan del paquete por defecto:** `cardFlavor`, `cardBack`, `cardArt`, `poses`, `emblems` y `frames`. El paquete activo los define o se usa el respaldo genérico. Así un paquete nunca muestra el arte de otro.
+- **Campos de identidad que NO se heredan del paquete por defecto:** `cardFlavor`, `cardBack`, `cardArt`, `poses`, `emblems`, `frames` y `artConvention`. El paquete activo los define o se usa el respaldo genérico. Así un paquete nunca muestra el arte de otro.
 - Diseño completo de la carta: `docs/ui/CARTA-ARCADE.md`.

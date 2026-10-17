@@ -21,6 +21,10 @@
         "/art/vitalia/poses/sentadilla-silla-l1-2.webp",
         "/art/vitalia/poses/sentadilla-silla-l1-3.webp"
       ]
+    },
+    "artConvention": {
+      "cardArt": "/art/vitalia/cards/{cardId}.webp",
+      "poses": "/art/vitalia/poses/{cardId}-{n}.webp"
     }
   }
 }

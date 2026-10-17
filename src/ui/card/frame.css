@@ -39,7 +39,7 @@
   background: linear-gradient(160deg, var(--tier-light) 0 35%, var(--tier) 36% 64%, var(--tier-dark) 65%); }
 .ac-gem b { font-family: var(--font-title); font-weight: 900; font-size: 7.4cqi; line-height: 1; color: var(--rank-ink); text-shadow: 0 .3cqi 0 rgba(255,255,255,.55); }
 .ac-banner {
-  margin: 0; min-width: 0; padding: 1.4cqi 2.6cqi; border-radius: 1.6cqi; text-align: center;
+  margin: 0; min-width: 0; padding: max(6px, 1.8cqi) 2.6cqi; border-radius: 1.6cqi; text-align: center;
   background: linear-gradient(var(--parch), var(--parch-2)); color: var(--parch-ink);
   border: .6cqi solid var(--trim-dark); box-shadow: inset 0 0 0 .4cqi var(--trim-light), 0 .8cqi 0 rgba(0,0,0,.3);
   font-family: var(--font-title); font-weight: 800; font-variant: small-caps; letter-spacing: .02em;
@@ -61,7 +61,7 @@
 .ac-window {
   position: relative; min-height: 0; border-radius: 3.2cqi; overflow: hidden; display: grid; place-items: center;
   border: .9cqi solid var(--tier);
-  box-shadow: 0 0 0 .6cqi var(--tier-dark), 0 0 3cqi color-mix(in srgb, var(--glow) 35%, transparent);
+  box-shadow: 0 0 0 .6cqi var(--tier-dark), 0 .8cqi 0 rgba(0,0,0,.35);
   background:
     radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--fam) 55%, transparent) 0, transparent 62%),
     linear-gradient(#141a2e 0 70%, #232a44 70%);
@@ -71,8 +71,8 @@
 .ac-window canvas { position: relative; height: 88%; max-width: 88%; aspect-ratio: 1; image-rendering: pixelated; image-rendering: crisp-edges; }
 .ac-window.has-art { background: #0d0b18; }
 .tc-art-img { width: 100%; height: 100%; object-fit: cover; }
-.tc-draft { position: absolute; z-index: 1; top: 2cqi; right: 2cqi; font-family: var(--font-pixel); font-size: 2.1cqi; padding: .9cqi 1.4cqi; background: #0d0b18; color: #ffb347; border-radius: 1cqi; }
-.tc-draft.static { position: static; display: inline-block; justify-self: start; font-size: 8px; padding: 3px 5px; }
+.tc-draft { position: absolute; z-index: 1; top: 2cqi; right: 2cqi; font-family: var(--font-pixel); font-size: max(var(--text-floor), 2.1cqi); padding: max(4px, .9cqi) max(6px, 1.4cqi); background: #0d0b18; color: #ffb347; border-radius: 1cqi; }
+.tc-draft.static { position: static; display: inline-block; justify-self: start; font-size: var(--text-floor); padding: 4px 6px; }
 
 /* --- Pergamino --- */
 .ac-parch {
@@ -91,8 +91,8 @@
 .ac-parch p { margin: 0; }
 .ac-rank { font-family: var(--font-title); font-weight: 800; font-variant: small-caps; font-size: 4.5cqi; line-height: 1.15; }
 .ac-dose { font-family: var(--font-title); font-size: 5cqi; font-weight: 700; }
-.ac-flavor { font-family: var(--font-title); font-style: italic; font-size: 3.5cqi; opacity: .85; }
-.ac-groups { font-size: 2.9cqi; font-weight: 700; opacity: .8; }
+.ac-flavor { font-family: var(--font-title); font-style: italic; font-size: max(var(--text-floor), 3.5cqi); opacity: .85; }
+.ac-groups { font-size: max(var(--text-floor), 2.9cqi); font-weight: 700; opacity: .8; }
 
 /* --- Escudo de XP --- */
 .ac-xp { position: absolute; z-index: 2; left: 1.4cqi; bottom: 1.6cqi; width: 15.5cqi; height: 18.5cqi; background: #120a04;

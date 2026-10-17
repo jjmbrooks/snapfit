@@ -5,5 +5,5 @@
 .badge canvas { width: 64px; height: 64px; image-rendering: pixelated; }
 .badge.locked canvas { filter: grayscale(1) brightness(0.4); }
 .badge.locked .bname { color: var(--text-muted); }
-.bname { font-family: var(--font-pixel); font-size: 9px; line-height: 1.6; }
-.bdesc { font-size: 12px; color: var(--text-muted); }
+.bname { font-family: var(--font-title); font-weight: 800; font-size: 14px; line-height: 1.25; overflow-wrap: anywhere; }
+.bdesc { font-size: 13px; color: var(--text-muted); }

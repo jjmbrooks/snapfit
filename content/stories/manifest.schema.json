@@ -442,6 +442,23 @@
               "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
             }
           }
+        },
+        "artConvention": {
+          "type": "object",
+          "description": "Rutas por convención para arte final: si el archivo existe en public/ al compilar, se usa sin editar el manifiesto y tiene prioridad sobre cardArt/poses explícitos (que quedan como provisionales). {cardId} = id de carta; {n} = paso 1–3.",
+          "additionalProperties": false,
+          "properties": {
+            "cardArt": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./{}-]*\\{cardId\\}[A-Za-z0-9_./{}-]*\\.(png|jpg|jpeg|webp)$",
+              "description": "p. ej. /art/vitalia/cards/{cardId}.webp"
+            },
+            "poses": {
+              "type": "string",
+              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./{}-]*\\{cardId\\}[A-Za-z0-9_./{}-]*\\{n\\}[A-Za-z0-9_./{}-]*\\.(png|jpg|jpeg|webp)$",
+              "description": "p. ej. /art/vitalia/poses/{cardId}-{n}.webp"
+            }
+          }
         }
       }
     }
