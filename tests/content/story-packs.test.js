@@ -3,7 +3,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { BADGE_IDS, MUSCLE_GROUPS, deriveState } from '../../src/core/index.js';
-import { validatePack, resolveStory, deepMerge } from '../../src/ui/story/resolve.js';
+import { validatePack, resolveStory, deepMerge, conventionPaths, resolveCardArt, resolvePoses } from '../../src/ui/story/resolve.js';
 import { genericStory } from '../../src/ui/story/generic.js';
 import leveling from '../../content/leveling.json';
 import { done, rate, NOW, TZ } from '../core/helpers.js';
@@ -52,8 +52,13 @@ describe('paquetes de historia instalados', () => {
       });
       it('cada asset existe (public/stories/<id>/ o public/art/…) y tiene fila de procedencia', () => {
         const files = [];
-        const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (k === 'tokens' ? null : typeof v === 'string' ? files.push(v) : walk(v)));
+        const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (k === 'tokens' || k === 'artConvention' ? null : typeof v === 'string' ? files.push(v) : walk(v)));
         walk(manifest.assets);
+        // Arte por convención: solo se valida lo que ya existe (lo pendiente no se referencia ni da 404).
+        for (const cid of cardIds) {
+          const c = conventionPaths(manifest.assets, cid);
+          for (const p of [c.cardArt, ...c.poses].filter(Boolean)) if (existsSync(new URL(`public/${p.replace(/^\//, '')}`, root))) files.push(p.startsWith('/') ? p : `/${p}`);
+        }
         if (manifest.preview) files.push(manifest.preview);
         for (const f of files) {
           const p = f.startsWith('/') ? `public${f}` : `public/stories/${id}/${f}`;
@@ -151,5 +156,36 @@ describe('independencia historia ↔ mecánica/progreso (ADR-011)', () => {
     const app = readFileSync(new URL('src/ui/app.js', root), 'utf8');
     expect(app).toMatch(/storyId: null/);
     expect(app).not.toMatch(/content\/stor/);
+  });
+});
+
+describe('arte por convención (assets.artConvention)', () => {
+  const assets = {
+    artConvention: { cardArt: 'art/x/cards/{cardId}.webp', poses: 'art/x/poses/{cardId}-{n}.webp' },
+    cardArt: { a: 'art/x/cards/a.jpg' },
+    poses: { a: ['art/x/poses/a-1.png', 'art/x/poses/a-2.png', 'art/x/poses/a-3.png'] },
+  };
+  it('rutas esperadas por carta', () => {
+    expect(conventionPaths(assets, 'b')).toEqual({ cardArt: 'art/x/cards/b.webp', poses: ['art/x/poses/b-1.webp', 'art/x/poses/b-2.webp', 'art/x/poses/b-3.webp'] });
+    expect(conventionPaths({}, 'b')).toEqual({ cardArt: null, poses: [] });
+  });
+  it('sin archivos: explícito (provisional) o null; nunca una ruta inexistente', () => {
+    const none = new Set();
+    expect(resolveCardArt(assets, 'a', none)).toBe('art/x/cards/a.jpg');
+    expect(resolveCardArt(assets, 'b', none)).toBeNull();
+    expect(resolvePoses(assets, 'b', none)).toEqual([]);
+  });
+  it('archivo soltado en su sitio: gana a lo explícito, paso a paso', () => {
+    const files = new Set(['art/x/cards/a.webp', 'art/x/poses/a-2.webp', 'art/x/cards/b.webp', 'art/x/poses/b-1.webp']);
+    expect(resolveCardArt(assets, 'a', files)).toBe('art/x/cards/a.webp');
+    expect(resolvePoses(assets, 'a', files)).toEqual(['art/x/poses/a-1.png', 'art/x/poses/a-2.webp', 'art/x/poses/a-3.png']);
+    expect(resolveCardArt(assets, 'b', files)).toBe('art/x/cards/b.webp');
+    expect(resolvePoses(assets, 'b', files)).toEqual(['art/x/poses/b-1.webp']);
+  });
+  it('no se hereda del paquete por defecto (es identidad del paquete)', () => {
+    const r = resolveStory({ packs, activeId: 'pixelandia', defaultId: DEFAULT, generic: GENERIC, badgeIds: BADGE_IDS });
+    expect(r.assets.artConvention).toBeUndefined();
+    const v = resolveStory({ packs, activeId: 'vitalia', defaultId: DEFAULT, generic: GENERIC, badgeIds: BADGE_IDS });
+    expect(v.assets.artConvention.cardArt).toBe('art/vitalia/cards/{cardId}.webp');
   });
 });

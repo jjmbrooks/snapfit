@@ -69,6 +69,10 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `onboarding.privacyLink` | Aviso de privacidad |
 | `onboarding.popupClosed` | Cerraste la ventana de Google. Inténtalo de nuevo. |
 | `onboarding.signinError` | No se pudo iniciar sesión ({code}). |
+| `onboarding.signinNetwork` | Sin conexión estable con Google. Revisa tu internet e inténtalo de nuevo. |
+| `onboarding.signinBlocked` | Tu navegador bloqueó la ventana de Google. Permite ventanas emergentes para este sitio e inténtalo de nuevo. |
+| `onboarding.stepOf` | Paso {n} de {total} |
+| `onboarding.partOf` | Parte {n} de {total} |
 | `onboarding.aboutTitle` | Sobre ti |
 | `onboarding.ageLabel` | Edad |
 | `onboarding.agePlaceholder` | Ej. 30 |
@@ -141,6 +145,8 @@ Uso en código: `t('clave', { variable })`. Las `{variables}` deben conservarse.
 | `card.stepAria` | Paso {n} |
 | `card.poseAria` | Pose del paso {n} |
 | `card.posePending` | pose pendiente |
+| `card.video` | Ver video · {source} |
+| `card.videoAria` | Ver video tutorial de {name} ({source}); se abre en una pestaña nueva |
 | `card.flipBack` | ↻ volver |
 | `reward.xp` | +{n} XP |
 | `reward.effortAsk` | ¿Cómo te sentiste? (opcional, ayuda a ajustar tu nivel) |
@@ -302,6 +308,9 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `index.html:8` | SnapFit |
 | `index.html:17` | SnapFit |
 | `index.html:20` | Barajando… |
+| `index.html:22` | Carta |
+| `index.html:23` | Progreso |
+| `index.html:24` | Menú |
 | `index.html:27` | SnapFit necesita JavaScript. |
 | `src/main.js:48` | Vuelve a entrar |
 | `src/main.js:48` | Por seguridad, inicia sesión otra vez y repite el borrado. |
@@ -363,7 +372,7 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `src/ui/views/menu.js:143` | Inicio de sesión cancelado. |
 | `src/ui/views/menu.js:166` | Importado |
 | `src/ui/views/menu.js:167` | No se pudo importar |
-| `src/ui/views/onboarding.js:134` | QUICK_TEST.some((q) = |
+| `src/ui/views/onboarding.js:135` | QUICK_TEST.some((q) = |
 | `src/ui/views/privacy.js:3` | Aviso de privacidad |
 | `src/ui/views/privacy.js:5` | Resumen.  SnapFit funciona sin cuenta: tu progreso se guarda en este dispositivo (IndexedDB). No usamos GPS, cámara ni micrófono. |
 | `src/ui/views/privacy.js:6` | Si entras con Google |
@@ -391,5 +400,5 @@ Detección automática (heurística: puede incluir algún falso positivo). Migra
 | `src/ui/components/sprite.js:67` | ANIMS.lunge[1].kR = [11, 28]; |
 | `src/ui/components/sprite.js:68` | ANIMS.lunge[1].fR = [7, 30]; |
 | `src/ui/components/sprite.js:93` | A)) o[k] = lerp(A[k], B[k], e); |
-| `src/ui/components/tcard.js:31` | GROUP_NAMES[g]).join( |
-| `src/ui/components/tcard.js:97` | Enter |
+| `src/ui/components/tcard.js:32` | GROUP_NAMES[g]).join( |
+| `src/ui/components/tcard.js:108` | Enter |

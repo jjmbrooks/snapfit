@@ -33,7 +33,35 @@ export function deepMerge(...layers) {
  */
 /** Claves que no se heredan del paquete por defecto (ver resolveStory). */
 export const PACK_ONLY_STORY = ['cardFlavor', 'cardBack'];
-export const PACK_ONLY_ASSETS = ['cardArt', 'poses', 'emblems', 'frames'];
+export const PACK_ONLY_ASSETS = ['cardArt', 'poses', 'emblems', 'frames', 'artConvention'];
+
+// ---------- Arte por convención (assets.artConvention) ----------
+// Permite soltar el arte final en public/art/<paquete>/… sin tocar código ni manifiesto: si el archivo
+// existe al compilar (lista `files`, rutas relativas a public/), gana; si no, se usa la entrada explícita
+// (provisional) o el respaldo genérico. Así no hay 404 por archivos que aún no existen.
+const fill = (tpl, cardId, n) => tpl.split('{cardId}').join(cardId).split('{n}').join(String(n ?? ''));
+/** Rutas que la convención espera para una carta (para documentar el arte pendiente). */
+export function conventionPaths(assets, cardId, steps = 3) {
+  const c = assets?.artConvention || {};
+  return {
+    cardArt: c.cardArt ? fill(c.cardArt, cardId) : null,
+    poses: c.poses ? Array.from({ length: steps }, (_, i) => fill(c.poses, cardId, i + 1)) : [],
+  };
+}
+/** Ilustración de frente: convención (si existe) → cardArt explícito → null. */
+export function resolveCardArt(assets, cardId, files) {
+  const conv = conventionPaths(assets, cardId).cardArt;
+  if (conv && files?.has(conv)) return conv;
+  return assets?.cardArt?.[cardId] || null;
+}
+/** Poses por paso (índice = paso − 1): convención (si existe) → poses explícitas → null. */
+export function resolvePoses(assets, cardId, files, steps = 3) {
+  const conv = conventionPaths(assets, cardId, steps).poses;
+  const explicit = assets?.poses?.[cardId] || [];
+  const out = Array.from({ length: Math.max(steps, explicit.length) }, (_, i) => (conv[i] && files?.has(conv[i]) ? conv[i] : explicit[i] || null));
+  while (out.length && out[out.length - 1] == null) out.pop();
+  return out;
+}
 
 export function resolveStory({ packs, activeId, defaultId, generic, badgeIds = [] }) {
   const errors = {};

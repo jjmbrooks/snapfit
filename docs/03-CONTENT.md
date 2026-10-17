@@ -111,6 +111,7 @@ El contenido de entrenamiento lo **define Entrenador** (con apoyo de researcher)
 - `breath` (≤ 32): indicación de respiración para la tira inferior del reverso. Es contenido de **Entrenador**. Si falta, se usa la del paquete (`cardBack.breath`) o la de la interfaz («Respira sin aguantar el aire»).
 - Validación: `src/ui/card/card-data.js → cardExtrasErrors` (la usan `npm run check:content` y `tests/ui/card-data.test.js`).
 - **`video` queda en desuso:** Brooks descartó la idea de animación/video en el reverso (2026-10-03). El campo se ignora.
+- `videoUrl` + `videoSource` (opcionales, juntos): enlace a **un** video tutorial público y verificado, de una fuente fiable. Solo se aceptan `https://www.youtube.com/watch?v=<id>` o `https://youtu.be/<id>`. `videoSource` (≤ 28) es el nombre corto del canal que se ve en «Ver video · {fuente}». El reverso lo muestra como enlace (pestaña nueva, sin incrustar, sin autoplay, sin analítica). Si no hay video verificado, el campo se omite y no se muestra nada. Lista, criterios y verificación con oEmbed: `docs/training/VIDEOS.md` (un test exige que cada video aparezca allí).
 
 ### Reglas del schema
 

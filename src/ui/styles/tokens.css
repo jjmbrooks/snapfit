@@ -19,6 +19,9 @@
   --nav-h: 64px;
   --shadow-px: 4px 4px 0 0 var(--border);
   --maxw: 520px;
+  /* Movimiento: salida suave sin rebote (Impeccable: sin bounce/elastic). */
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --text-floor: 11px; /* tamaño mínimo de texto legible (docs/DISENO-IMPECCABLE.md) */
 }
 
 /* ---- 2. Paletas de tema (una regla por tema; docs/01-PRODUCT.md §5) ---- */

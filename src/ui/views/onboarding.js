@@ -8,7 +8,7 @@ import { mountSprite } from '../components/sprite.js';
 const ui = { sub: 'story', draft: { test: {} }, part: 0, busy: false, error: null };
 
 function dots(n, i) {
-  return `<div class="onb-dots" aria-hidden="true">${Array.from({ length: n }, (_, k) => `<i class="${k <= i ? 'on' : ''}"></i>`).join('')}</div>`;
+  return `<div class="onb-dots" role="img" aria-label="${esc(t('onboarding.stepOf', { n: i + 1, total: n }))}">${Array.from({ length: n }, (_, k) => `<i class="${k <= i ? 'on' : ''}"></i>`).join('')}</div>`;
 }
 
 export function renderOnboarding(app, step) {
@@ -46,10 +46,10 @@ function signinHTML(app) {
     <p>${esc(STORY.signin.body)}</p>
     <p class="small muted">${STORY.signin.offline}</p>
     ${ui.error ? `<p class="form-error" role="alert">${esc(ui.error)}</p>` : ''}
-    <button class="btn btn-google btn-xl" data-onb="google" ${online && !ui.busy ? '' : 'disabled'}>
-      <span class="g-logo" aria-hidden="true">G</span> ${ui.busy ? t('onboarding.googleBusy') : t('onboarding.googleButton')}
+    <button class="btn btn-google btn-xl" data-onb="google" ${online && !ui.busy ? '' : 'disabled'}${ui.busy ? ' aria-busy="true"' : ''}>
+      <svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.8 6.1C12.3 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.5 5.8c4.4-4 6.8-10 6.8-17.1z"/><path fill="#FBBC05" d="M10.4 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.9-4.7l-7.8-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.8-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.8-5.8l-7.5-5.8c-2.1 1.4-4.8 2.3-8.3 2.3-6.3 0-11.7-4.1-13.6-9.8l-7.8 6.1C6.6 42.6 14.6 48 24 48z"/></svg> ${ui.busy ? t('onboarding.googleBusy') : t('onboarding.googleButton')}
     </button>
-    ${online ? '' : `<p class="form-error">${t('onboarding.needOnline')}</p>`}
+    ${online ? '' : `<p class="form-error" role="status">${t('onboarding.needOnline')}</p>`}
     <button class="btn btn-ghost" data-onb="back-story">${t('onboarding.back')}</button>
     <p class="small muted center"><a href="#/privacidad">${t('onboarding.privacyLink')}</a></p>
   </section>`;
@@ -87,6 +87,7 @@ function profileHTML(app) {
   return `
   <section class="onb-screen">
     ${dots(4, 2)}
+    <p class="onb-part small muted">${t('onboarding.partOf', { n: ui.part + 1, total: parts.length })}</p>
     <form id="pf" novalidate>
       ${parts[ui.part]()}
       ${ui.error ? `<p class="form-error" role="alert">${esc(ui.error)}</p>` : ''}
@@ -139,6 +140,9 @@ function readPart(form) {
 export function bindOnboarding(root, app, step, deps, rerender) {
   const stops = [];
   root.querySelectorAll('canvas[data-hero]').forEach((c) => stops.push(mountSprite(c, { procedural: c.dataset.hero }, { reducedMotion: app.state.profile.reducedMotion })));
+  // Errores: llevar el foco al mensaje para lectores de pantalla y teclado (harden).
+  const err = root.querySelector('.form-error[role=alert]');
+  if (err) { err.tabIndex = -1; err.focus({ preventScroll: false }); }
   if (step === 'profile' && app.state.profile.player && !ui.draft.age) ui.draft = { ...app.state.profile.player, test: { ...app.state.profile.player.test } };
 
   root.addEventListener('click', async (ev) => {
@@ -154,9 +158,11 @@ export function bindOnboarding(root, app, step, deps, rerender) {
       try {
         await deps.signIn();
       } catch (e) {
-        ui.error = e?.code === 'auth/popup-closed-by-user' || e?.code === 'auth/cancelled-popup-request'
-          ? t('onboarding.popupClosed')
-          : t('onboarding.signinError', { code: e?.code || e?.message || e });
+        const code = e?.code || '';
+        ui.error = code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request' ? t('onboarding.popupClosed')
+          : code === 'auth/network-request-failed' ? t('onboarding.signinNetwork')
+          : code === 'auth/popup-blocked' ? t('onboarding.signinBlocked')
+          : t('onboarding.signinError', { code: code || String(e?.message || e).slice(0, 60) });
       }
       ui.busy = false; rerender();
     }

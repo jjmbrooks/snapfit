@@ -86,6 +86,10 @@
     "privacyLink": "Aviso de privacidad",
     "popupClosed": "Cerraste la ventana de Google. Inténtalo de nuevo.",
     "signinError": "No se pudo iniciar sesión ({code}).",
+    "signinNetwork": "Sin conexión estable con Google. Revisa tu internet e inténtalo de nuevo.",
+    "signinBlocked": "Tu navegador bloqueó la ventana de Google. Permite ventanas emergentes para este sitio e inténtalo de nuevo.",
+    "stepOf": "Paso {n} de {total}",
+    "partOf": "Parte {n} de {total}",
     "aboutTitle": "Sobre ti",
     "ageLabel": "Edad",
     "agePlaceholder": "Ej. 30",
@@ -179,6 +183,8 @@
     "stepAria": "Paso {n}",
     "poseAria": "Pose del paso {n}",
     "posePending": "pose pendiente",
+    "video": "Ver video · {source}",
+    "videoAria": "Ver video tutorial de {name} ({source}); se abre en una pestaña nueva",
     "flipBack": "↻ volver"
   },
   "reward": {

@@ -5,6 +5,26 @@ import { createHash } from 'node:crypto';
 
 const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));
 
+// Módulo virtual con la lista de archivos de public/art/** y public/stories/** (rutas relativas a public/).
+// Permite el arte «por convención» de los paquetes (assets.artConvention): soltar el archivo y recompilar.
+function snapfitArtFiles() {
+  const ID = 'virtual:snapfit-art-files';
+  let root = process.cwd();
+  const list = () => {
+    const out = [];
+    const walk = (d) => { if (!existsSync(d)) return; for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : out.push(relative(join(root, 'public'), p).split('\\').join('/')); } };
+    walk(join(root, 'public/art'));
+    walk(join(root, 'public/stories'));
+    return out.sort();
+  };
+  return {
+    name: 'snapfit-art-files',
+    configResolved(c) { root = c.root; },
+    resolveId(id) { return id === ID ? '\0' + ID : null; },
+    load(id) { return id === '\0' + ID ? `export default ${JSON.stringify(list())};` : null; },
+  };
+}
+
 // Genera dist/sw.js con la lista de precache (todos los archivos del build).
 function snapfitServiceWorker() {
   let outDir;
@@ -70,6 +90,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 800,
     manifest: true,
   },
-  plugins: [snapfitServiceWorker()],
+  plugins: [snapfitArtFiles(), snapfitServiceWorker()],
   test: { include: ['tests/**/*.test.js'], environment: 'node' },
 });

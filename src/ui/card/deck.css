@@ -1,12 +1,12 @@
 /* MAZO: cartas debajo y animaciones de reparto, ¡Listo! (jugada) y Otro (al fondo).
    Workstream: screens (ver docs/PARALLEL-WORK.md). */
 .deck-under { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
-.deck-under i { position: absolute; width: min(96cqw, 96cqh * 5 / 7); aspect-ratio: 5 / 7; border-radius: 16px; background: repeating-linear-gradient(45deg, var(--surface-2) 0 6px, var(--surface) 6px 12px); border: 3px solid var(--border); }
+.deck-under i { position: absolute; width: min(96cqw, 96cqh * 5 / 7); aspect-ratio: 5 / 7; border-radius: 16px; background: radial-gradient(60% 45% at 50% 50%, color-mix(in srgb, var(--trim) 22%, transparent), transparent 70%), linear-gradient(var(--wood-2), var(--wood)); border: 3px solid var(--trim-dark); box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--trim) 55%, transparent); }
 .deck-under i:nth-child(1) { transform: translate(6px, 8px) rotate(2deg); }
 .deck-under i:nth-child(2) { transform: translate(-5px, 5px) rotate(-2deg); }
 
 /* Animaciones del mazo */
-.tcard.deal-in { animation: deal-in 420ms cubic-bezier(.2,1.2,.4,1) both; }
+.tcard.deal-in { animation: deal-in 420ms var(--ease-out) both; }
 .tcard.deal-under { animation: deal-under 380ms ease-out both; }
 .tcard.played { animation: played 380ms ease-in both; }
 .tcard.to-bottom { animation: to-bottom 320ms ease-in both; }

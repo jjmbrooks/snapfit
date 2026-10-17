@@ -1,4 +1,5 @@
-// Capturas móviles 390×844 con Chrome headless (playwright-core). Uso: node scripts/screens.mjs <url> <outDir>
+// Capturas móviles con Chrome headless (playwright-core). Uso: node scripts/screens.mjs <url> <outDir> [ancho×alto]
+// Por defecto 390×844; p. ej. `node scripts/screens.mjs <url> <dir> 360x780` para el ancho mínimo soportado.
 // El login con Google no se puede automatizar: tras capturar la bienvenida, el script siembra en IndexedDB
 // un accountUid ficticio ('fixture-capturas') para simular «ya inició sesión una vez» y continuar el flujo.
 import { chromium } from 'playwright-core';
@@ -6,14 +7,15 @@ import { mkdirSync } from 'node:fs';
 
 const url = process.argv[2] || 'http://localhost:4173/snapfit/';
 const out = process.argv[3] || 'docs/evidence';
+const [VW, VH] = (process.argv[4] || process.env.VIEWPORT || '390x844').split('x').map(Number);
 mkdirSync(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.CHROME || '/usr/bin/google-chrome', args: ['--no-sandbox'] });
-const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, locale: 'es-MX', colorScheme: 'dark' });
+const ctx = await browser.newContext({ viewport: { width: VW, height: VH }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, locale: 'es-MX', colorScheme: 'dark' });
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push(String(e)));
 page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
-const shot = async (name, wait = 500) => { await page.waitForTimeout(wait); await page.screenshot({ path: `${out}/${name}-390x844.png` }); console.log('📸', name); };
+const shot = async (name, wait = 500) => { await page.waitForTimeout(wait); await page.screenshot({ path: `${out}/${name}-${VW}x${VH}.png` }); console.log('📸', name); };
 
 // Comprueba que la barra inferior no tape ningún botón visible del contenido.
 async function checkNav(label) {

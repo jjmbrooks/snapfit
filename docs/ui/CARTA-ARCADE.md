@@ -68,10 +68,21 @@ El arte de un estilo o personaje va en **`public/art/<carpeta>/`** (Vitalia: `pu
 }
 ```
 
-Estructura sugerida: `public/art/vitalia/{cards,poses,icons,character}/`. Para cambiar una imagen basta con dejar el archivo, editar la ruta en `content/stories/vitalia/manifest.json` y añadir la fila de procedencia. No hace falta tocar código. El arte, las poses, los emblemas, los marcos y la ambientación **no se heredan** del paquete por defecto: Pixelandia nunca muestra el arte de Vitalia. Estos assets no van al precache: se cargan cuando se ven y el SW cachea los del paquete activo.
+### Arte por convención (soltar el archivo y listo)
+
+El manifest de Vitalia declara además:
+
+```json
+"artConvention": { "cardArt": "/art/vitalia/cards/{cardId}.webp", "poses": "/art/vitalia/poses/{cardId}-{n}.webp" }
+```
+
+Si al compilar existe el archivo en esa ruta (p. ej. `public/art/vitalia/poses/talones-l1-2.webp`), se usa **sin editar el manifest**. Gana a la entrada explícita (que queda como provisional) y funciona paso a paso. Si el archivo no existe, no se pide (no hay 404) y queda la entrada explícita, la animación genérica o la silueta «pose pendiente». La lista de archivos la genera el plugin `snapfit-art-files` de `vite.config.js` (módulo `virtual:snapfit-art-files`). La resolución está en `src/ui/story/resolve.js` (`resolveCardArt`, `resolvePoses`). Arte pendiente: `/workspace/snapfit-propuestas/vitalia/arte-pendiente.json`.
+
+Estructura sugerida: `public/art/vitalia/{cards,poses,icons,character}/`. Para cambiar una imagen fuera de la convención, deja el archivo, edita la ruta en `content/stories/vitalia/manifest.json` y añade la fila de procedencia. No hace falta tocar código. El arte, las poses, los emblemas, los marcos y la ambientación **no se heredan** del paquete por defecto: Pixelandia nunca muestra el arte de Vitalia. Estos assets no van al precache: se cargan cuando se ven y el SW cachea los del paquete activo.
 
 ## Pendiente
 
-- Las poses de `sentadilla-silla-l1` ya son **finales** (WebP en `public/art/vitalia/poses/`). Faltan la ilustración final y las poses del resto de cartas.
+- Las poses de `sentadilla-silla-l1` ya son **finales** (WebP en `public/art/vitalia/poses/`). Faltan la ilustración final de las 12 cartas y las poses de las otras 11. La lista con rutas está en `arte-pendiente.json` (ver arriba); basta con soltar los archivos con la convención.
+- **Enlace de video** en el reverso («Ver video · fuente», entre la tira y los cuidados): ver `docs/training/VIDEOS.md`.
 - El título de la carta usa `name` («Sentadilla a la silla»). Un nombre temático por historia («Sentadilla de la Raíz») requeriría un campo nuevo en el paquete (`cardTitles`), que todavía no existe.
 - La piel «grimorio» de botones, barras y barra inferior se aplica con cualquier tema. Si se quiere solo con Vitalia, se puede limitar a `[data-story='vitalia']`.

@@ -1,0 +1,28 @@
+
+59 files scanned with regex matching only (.css, .js).
+Rules that need a parsed page (tiny-text, low-contrast and other element rules) did not run on them; findings are an undercount, not a clean bill of health.
+For the full check, scan the running dev server (npx impeccable detect http://localhost:PORT) or a static site's built .html.
+
+src/ui/styles/base.css (imported by index.css)
+  line 108: [side-tab] border-left: 4px solid var(--warning)
+    → Thick colored border on one side of a card — the most recognizable tell of AI-generated UIs. Use a subtler accent or remove it entirely.
+  line 86: [gradient-text] background-clip: text + gradient
+    → Gradient text is decorative rather than meaningful — a common AI tell, especially on headings and metrics. Use solid colors for text.
+
+2 anti-patterns found.
+
+── Advisory (not counted as failures) ──
+
+src/ui/card/deck.css (imported by index.css)
+  line 9: [bounce-easing] cubic-bezier(.2, 1.2, .4, 1)
+    → Bounce and elastic easing feel dated and tacky. Real objects decelerate smoothly — use exponential easing (ease-out-quart/quint/expo) instead.
+
+src/ui/card/flip.css (imported by index.css)
+  line 3: [bounce-easing] cubic-bezier(.3, 1.3, .5, 1)
+    → Bounce and elastic easing feel dated and tacky. Real objects decelerate smoothly — use exponential easing (ease-out-quart/quint/expo) instead.
+
+src/ui/screens/reward.css (imported by index.css)
+  line 8: [bounce-easing] cubic-bezier(.2, 1.4, .4, 1)
+    → Bounce and elastic easing feel dated and tacky. Real objects decelerate smoothly — use exponential easing (ease-out-quart/quint/expo) instead.
+
+3 advisory notes. Suppress with --no-advisory.
