@@ -2,6 +2,8 @@ import { esc } from '../dom.js';
 import { t, ZONE_NAMES } from '../i18n/es.js';
 import { cardHTML, bindCard as bindTCard, doseLabel } from '../components/tcard.js';
 import { runRewardSequence } from './reward.js';
+import { setMusicOverride } from '../audio/engine.js';
+import { celebrates } from '../audio/plan.js';
 import { normalizeSteps } from '../card/card-data.js';
 
 export { doseLabel };
@@ -60,7 +62,11 @@ export function bindCard(root, app, { dealt } = {}) {
       root.querySelectorAll('[data-act]').forEach((b) => (b.disabled = true));
       if (el && !reduced) { el.classList.add('played'); await wait(380); }
       const r = await app.done();
-      if (r) await runRewardSequence(app, r);
+      if (r) {
+        // Música de celebración solo en hitos (nivel, meta del día/racha, insignia); si no, sigue la de sesión.
+        if (celebrates(r.sfx)) setMusicOverride('celebracion');
+        try { await runRewardSequence(app, r); } finally { setMusicOverride(null); }
+      }
       app.lastDeal = 'done';
       app.emit();
     } else if (act === 'skip') {

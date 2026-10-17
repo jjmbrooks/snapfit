@@ -33,7 +33,8 @@ export function deepMerge(...layers) {
  */
 /** Claves que no se heredan del paquete por defecto (ver resolveStory). */
 export const PACK_ONLY_STORY = ['cardFlavor', 'cardBack'];
-export const PACK_ONLY_ASSETS = ['cardArt', 'poses', 'emblems', 'frames', 'artConvention'];
+// 'audio': la música y los efectos son identidad de la historia; otro paquete sin audio usa el chiptune genérico.
+export const PACK_ONLY_ASSETS = ['cardArt', 'poses', 'emblems', 'frames', 'artConvention', 'audio'];
 
 // ---------- Arte por convención (assets.artConvention) ----------
 // Permite soltar el arte final en public/art/<paquete>/… sin tocar código ni manifiesto: si el archivo
@@ -93,6 +94,7 @@ function prefixAssets(a, base) {
   const out = {};
   for (const [k, v] of Object.entries(a)) {
     if (k === 'tokens') out[k] = { ...v };
+    else if (k === 'formats') out[k] = [...v];
     else if (typeof v === 'string') out[k] = assetPath(v, base);
     else if (Array.isArray(v)) out[k] = v.map((x) => assetPath(x, base));
     else if (isObj(v)) out[k] = prefixAssets(v, base);

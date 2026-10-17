@@ -52,8 +52,12 @@ describe('paquetes de historia instalados', () => {
       });
       it('cada asset existe (public/stories/<id>/ o public/art/…) y tiene fila de procedencia', () => {
         const files = [];
-        const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (k === 'tokens' || k === 'artConvention' ? null : typeof v === 'string' ? files.push(v) : walk(v)));
+        const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (['tokens', 'artConvention', 'formats'].includes(k) ? null : typeof v === 'string' ? files.push(v) : walk(v)));
         walk(manifest.assets);
+        // Audio: cada formato declarado (p. ej. .ogg + .mp3 hermano para Safari) debe existir.
+        for (const fmt of manifest.assets?.audio?.formats || []) {
+          walk({ x: JSON.parse(JSON.stringify(manifest.assets.audio, (k, v) => (k === 'formats' ? undefined : typeof v === 'string' ? v.replace(/\.(ogg|mp3)$/, `.${fmt}`) : v))) });
+        }
         // Arte por convención: solo se valida lo que ya existe (lo pendiente no se referencia ni da 404).
         for (const cid of cardIds) {
           const c = conventionPaths(manifest.assets, cid);

@@ -1,0 +1,2 @@
+{"noOgg":false,"beforeTap":[],"reqs":["musica-intro.ogg","sfx-intro.ogg"],"dec":["42.35","3.80"],"starts":2,"errs":[]}
+{"noOgg":true,"beforeTap":[],"reqs":["musica-intro.mp3","sfx-intro.mp3"],"dec":["42.35","3.80"],"starts":2,"errs":[]}

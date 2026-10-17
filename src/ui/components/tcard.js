@@ -10,6 +10,7 @@ import { mountSprite } from './sprite.js';
 import { cardArtUrl, frameUrl, emblemUrl, packPoseUrls, publicUrl, currentStory } from '../story/index.js';
 import { normalizeSteps, flavorOf, setsReps, tierOf, videoOf, RANK_KEYS } from '../card/card-data.js';
 import { emblemSVG } from '../card/emblems.js';
+import { playSfx } from '../audio/engine.js';
 import { xpForCard } from '../../core/xp.js';
 
 export { tierOf };
@@ -96,6 +97,7 @@ export function bindCard(el, c, { reducedMotion } = {}) {
   if (front) stops.push(mountSprite(front, c.sprite, { reducedMotion }));
   const flip = () => {
     const flipped = el.classList.toggle('flipped');
+    playSfx('flip');
     el.setAttribute('aria-pressed', String(flipped));
     el.querySelector('.tc-back').setAttribute('aria-hidden', String(!flipped));
     el.querySelector('.tc-front').setAttribute('aria-hidden', String(flipped));

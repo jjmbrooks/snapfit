@@ -25,6 +25,77 @@
     "artConvention": {
       "cardArt": "/art/vitalia/cards/{cardId}.webp",
       "poses": "/art/vitalia/poses/{cardId}-{n}.webp"
+    },
+    "audio": {
+      "formats": [
+        "ogg",
+        "mp3"
+      ],
+      "music": {
+        "intro": "audio/musica-intro.ogg",
+        "menu": "audio/musica-menu.ogg",
+        "sesion": "audio/musica-sesion.ogg",
+        "celebracion": "audio/musica-celebracion.ogg"
+      },
+      "sfx": {
+        "flip": "audio/sfx-flip.ogg",
+        "listo": "audio/sfx-listo.ogg",
+        "otro": "audio/sfx-otro.ogg",
+        "logro": "audio/sfx-logro.ogg",
+        "nivel": "audio/sfx-nivel.ogg",
+        "meta": "audio/sfx-meta.ogg",
+        "tap": "audio/sfx-tap.ogg",
+        "intro": "audio/sfx-intro.ogg"
+      }
     }
-  }
+  },
+  "credits": [
+    {
+      "what": "Música · intro",
+      "title": "Skye Cuillin",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100346",
+      "changes": "Fragmento de 42 s en bucle, mono, normalizado"
+    },
+    {
+      "what": "Música · menú",
+      "title": "Teller of the Tales",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400020",
+      "changes": "Fragmento de 44 s en bucle, mono, normalizado"
+    },
+    {
+      "what": "Música · sesión",
+      "title": "Village Consort",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1700007",
+      "changes": "Fragmento de 45 s en bucle, mono, normalizado"
+    },
+    {
+      "what": "Música · celebración",
+      "title": "Enchanted Valley",
+      "author": "Kevin MacLeod (incompetech.com)",
+      "license": "CC BY 4.0",
+      "url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1200093",
+      "changes": "Fragmento de 25 s en bucle, mono, normalizado"
+    },
+    {
+      "what": "Efectos",
+      "title": "RPG Audio, Casino Audio, Music Jingles, Interface Sounds",
+      "author": "Kenney (kenney.nl)",
+      "license": "CC0",
+      "url": "https://kenney.nl/assets/rpg-audio",
+      "changes": "Selección, mono, normalizado"
+    },
+    {
+      "what": "Efectos «¡Listo!» e intro",
+      "title": "Hechizo de aliento / Niebla",
+      "author": "Codelius (SnapFit), sintetizado por código",
+      "license": "Código propio (CC BY 4.0)",
+      "url": "https://github.com/jjmbrooks/snapfit/blob/main/docs/AUDIO.md"
+    }
+  ]
 }

@@ -338,40 +338,89 @@
         "audio": {
           "type": "object",
           "additionalProperties": false,
+          "description": "Paquete de audio de la historia (docs/AUDIO.md). Rutas relativas a public/stories/<id>/. Si falta, SFX sintetizados genéricos y sin música. No se hereda del paquete por defecto.",
           "properties": {
+            "formats": {
+              "type": "array",
+              "maxItems": 2,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ogg",
+                  "mp3"
+                ]
+              },
+              "description": "Formatos disponibles con el mismo nombre; el primero es el preferido (p. ej. [\"ogg\",\"mp3\"]: si el navegador no decodifica OGG se usa el .mp3 hermano)."
+            },
             "music": {
-              "type": "string",
-              "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
-              "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "intro": {
+                  "type": "string",
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Bienvenida/historia y onboarding (loop)"
+                },
+                "menu": {
+                  "type": "string",
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Menú, progreso y logros (loop)"
+                },
+                "sesion": {
+                  "type": "string",
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Mazo/sesión de ejercicio (loop, ritmo moderado)"
+                },
+                "celebracion": {
+                  "type": "string",
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Secuencia de recompensa (loop corto)"
+                }
+              }
             },
             "sfx": {
               "type": "object",
               "additionalProperties": false,
               "properties": {
+                "flip": {
+                  "type": "string",
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Voltear carta"
+                },
                 "listo": {
                   "type": "string",
-                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "¡Listo! (carta completada)"
                 },
                 "otro": {
                   "type": "string",
-                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
-                },
-                "flip": {
-                  "type": "string",
-                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Otro (carta al fondo)"
                 },
                 "logro": {
                   "type": "string",
-                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Insignia nueva"
                 },
                 "nivel": {
                   "type": "string",
-                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(png|jpg|jpeg|webp|gif|svg|mp4|webm|ogg|mp3|m4a)$",
-                  "description": "Ruta relativa a public/stories/<id>/, o absoluta /art/<carpeta>/… (relativa a public/)"
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Subida de nivel/rango"
+                },
+                "meta": {
+                  "type": "string",
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Meta del día o racha"
+                },
+                "tap": {
+                  "type": "string",
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Botones y navegación"
+                },
+                "intro": {
+                  "type": "string",
+                  "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./-]+\\.(ogg|mp3|m4a|webm)$",
+                  "description": "Inicio de la historia"
                 }
               }
             }
@@ -458,6 +507,54 @@
               "pattern": "^(?!.*\\.\\.)(?!https?:)(?:/art/|(?!/))[A-Za-z0-9_./{}-]*\\{cardId\\}[A-Za-z0-9_./{}-]*\\{n\\}[A-Za-z0-9_./{}-]*\\.(png|jpg|jpeg|webp)$",
               "description": "p. ej. /art/vitalia/poses/{cardId}-{n}.webp"
             }
+          }
+        }
+      }
+    },
+    "credits": {
+      "type": "array",
+      "maxItems": 40,
+      "description": "Créditos de assets de terceros del paquete (se muestran en Menú → Créditos).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "what",
+          "title",
+          "author",
+          "license",
+          "url"
+        ],
+        "properties": {
+          "what": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "author": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "license": {
+            "type": "string",
+            "enum": [
+              "CC0",
+              "CC BY 4.0",
+              "CC BY 3.0",
+              "Código propio (CC BY 4.0)"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://[^\\s\"<>]+$",
+            "maxLength": 200
+          },
+          "changes": {
+            "type": "string",
+            "maxLength": 140
           }
         }
       }

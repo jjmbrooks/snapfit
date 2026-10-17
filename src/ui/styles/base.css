@@ -112,6 +112,9 @@ select, input[type='time'], input[type='number'] { min-height: var(--tap); font-
 .row { display: flex; gap: var(--s3); align-items: center; flex-wrap: wrap; }
 .switch { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); min-height: var(--tap); }
 .switch input { width: 22px; height: 22px; accent-color: var(--primary); }
+.range { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); min-height: var(--tap); font-size: .9em; }
+.range input { flex: 1; max-width: 60%; accent-color: var(--primary); min-height: var(--tap); }
+.credits ul { padding-left: 1.2em; margin: var(--s2) 0; } .credits li { margin-bottom: 4px; } .credits summary { cursor: pointer; padding: 12px 0; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 2px solid var(--border); background: var(--surface-2); color: var(--text); }
 .panel-card, .card { background: var(--surface); border: 2px solid var(--border); border-radius: 14px; padding: var(--s4); display: grid; gap: var(--s2); }

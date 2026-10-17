@@ -7,7 +7,8 @@ import {
 } from '../core/index.js';
 import { REMINDER_COPY } from './i18n/es.js';
 import { download } from './dom.js';
-import { playSfx } from './components/sfx.js';
+import { playSfx } from './audio/engine.js';
+import { sfxForDone } from './audio/plan.js';
 import { track, initAnalytics, setAnalyticsEnabled } from '../adapters/firebase/analytics.js';
 import { showReminder, registerPeriodicReminder } from '../adapters/notify-local.js';
 
@@ -22,7 +23,7 @@ export function defaultProfile() {
     places: [],
     careZones: [],
     dailyGoal: 3,
-    sound: false,
+    sound: false, // obsoleto: el sonido ahora es preferencia del dispositivo (audio/engine.js, 'snapfit.audio')
     reducedMotion: false,
     analytics: true,
     reminders: { pattern: 'off', customTimes: ['12:00'] },
@@ -215,11 +216,12 @@ export function createApp({ storage, clock, cards, decks, leveling, appVersion }
       refreshDeck();
       track('card_done', { card_level: c.level, muscle_group: c.primaryGroup });
       for (const lc of diff.levelChanges) if (lc.to > lc.from) track('level_up', { muscle_group: lc.group, level: lc.to });
-      if (s.profile.sound) playSfx(diff.levelChanges.length ? 'nivel' : diff.newBadges.length ? 'logro' : 'listo');
+      const sfx = sfxForDone(before, s.derived, diff);
+      playSfx(sfx); // preferencias de sonido: audio/engine.js (Menú)
       s.reminderDue = null;
       app.writeReminderState();
       app.autoSync();
-      return { event: e, card: c, xp: s.derived.xp - before.xp, diff, before, after: s.derived };
+      return { event: e, card: c, xp: s.derived.xp - before.xp, diff, before, after: s.derived, sfx };
     },
 
     async rate(refId, effort) {
@@ -234,7 +236,7 @@ export function createApp({ storage, clock, cards, decks, leveling, appVersion }
       if (c) {
         await addEvent('card_skipped', { cardId: c.id, deckId: deckId(), level: c.level, groups: c.muscleGroups });
         track('card_skip', { card_level: c.level, muscle_group: c.primaryGroup });
-        if (s.profile.sound) playSfx('otra');
+        playSfx('otro');
       }
       recompute();
       s.deck = sendToBottom(s.deck);

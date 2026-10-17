@@ -54,6 +54,10 @@ self.addEventListener('fetch', (event) => {
         fetch(req).then((res) => {
           const scopePath = new URL(self.registration.scope).pathname;
           // Los assets de historia solo se cachean vía CACHE_STORY (paquete activo), no al vuelo.
+          // Excepción: el audio del paquete se pide al sonar por primera vez (formato según navegador); se guarda
+          // en la caché del paquete para que la música y los efectos funcionen sin red.
+          const aud = res.status === 200 && url.pathname.slice(scopePath.length).match(/^stories\/([a-z0-9-]+)\/audio\//);
+          if (aud) { const copy = res.clone(); caches.open(STORY_PREFIX + aud[1]).then((c) => c.put(req, copy)); }
           if (res.ok && url.pathname.startsWith(scopePath) && !url.pathname.startsWith(scopePath + 'stories/') && !url.pathname.startsWith(scopePath + 'art/')) {
             const copy = res.clone();
             caches.open(CACHE).then((c) => c.put(req, copy));

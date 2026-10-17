@@ -72,6 +72,7 @@ El reparto detallado por workstream (historia, tokens, marco de carta, pantallas
 - **Confirmar PRODUCT.md:** los hechos marcados «(inferido)» no pasaron por la entrevista de Impeccable.
 - ~~Arte final de Vitalia~~ → **integrado el 2026-10-17** (12 frentes + 33 poses; ver `docs/ui/CARTA-ARCADE.md` §Pendiente para las notas de calidad: marcha y step-jacks con poses 2 y 3 parecidas, plancha-rodillas en cuatro apoyos y el frente de puente-glúteo arrodillado).
 - **Videos faltantes:** `remo-toalla-iso-l1` y `step-jacks-l1` no tienen un video de fuente institucional o certificada. Se aceptan propuestas.
+- **Audio de Vitalia (2026-10-17):** escuchar Menú → Sonido y vetar lo que no encaje (Codelius no puede escuchar; jingles elegidos por contorno de alturas); decidir si la música va encendida por defecto (hoy 35 %, tras el primer toque), si la celebración suena en cada carta o solo en hitos (hoy hitos) y si Pixelandia/Valle tendrán audio propio. Probar en iPhone (silencio, bucle MP3). Ver docs/AUDIO.md §6.
 
 ## Siguiente trabajo (Codelius / Runica desde el 2026-10-04)
 
