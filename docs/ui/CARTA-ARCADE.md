@@ -82,7 +82,7 @@ Estructura sugerida: `public/art/vitalia/{cards,poses,icons,character}/`. Para c
 
 ## Pendiente
 
-- Las poses de `sentadilla-silla-l1` ya son **finales** (WebP en `public/art/vitalia/poses/`). Faltan la ilustración final de las 12 cartas y las poses de las otras 11. La lista con rutas está en `arte-pendiente.json` (ver arriba); basta con soltar los archivos con la convención.
+- **Arte final integrado (2026-10-17):** las 12 cartas tienen ilustración de frente (`public/art/vitalia/cards/<id>.webp`, 700×622) y 3 poses (`public/art/vitalia/poses/<id>-<n>.webp`, 206×320), conectadas por `assets.artConvention`. El recorte provisional `sentadilla-silla-l1.jpg` sigue en el manifest como respaldo, pero ya no se muestra. Notas de calidad conocidas: en `marcha-sitio` y `step-jacks` las poses 2 y 3 se parecen; `plancha-rodillas` muestra cuatro apoyos en vez de plancha; el frente de `puente-gluteo` muestra al aprendiz arrodillado bajo un arco (el generador bloqueó la postura). Se pueden regenerar más adelante.
 - **Enlace de video** en el reverso («Ver video · fuente», entre la tira y los cuidados): ver `docs/training/VIDEOS.md`.
 - El título de la carta usa `name` («Sentadilla a la silla»). Un nombre temático por historia («Sentadilla de la Raíz») requeriría un campo nuevo en el paquete (`cardTitles`), que todavía no existe.
 - La piel «grimorio» de botones, barras y barra inferior se aplica con cualquier tema. Si se quiere solo con Vitalia, se puede limitar a `[data-story='vitalia']`.

@@ -1,7 +1,7 @@
 # CI de SnapFit.
 # - pull_request a main: tests + validaciones + build + capturas 390×844 (artefacto). NO despliega.
 # - push a main (solo Codelius integra): lo mismo + deploy de dist/ a GitHub Pages (/snapfit/).
-# Acciones en versiones Node 24 (sin avisos de deprecación de Node 20; actualizado 2026-10-03).
+# Acciones en versiones Node 24 (sin avisos de deprecación de Node 20; actualizado 2026-10-17).
 name: CI y deploy
 
 on:

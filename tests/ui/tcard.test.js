@@ -14,7 +14,7 @@ describe('carta arcade', () => {
     const h = cardHTML(squat);
     for (const cls of ['ac-gem', 'ac-banner', 'ac-emblem', 'ac-window', 'ac-parch', 'ac-xp']) expect(h).toContain(cls);
     expect(h).toContain('Aprendiz · Escuela de la Raíz');
-    expect(h).toContain('/art/vitalia/cards/sentadilla-silla-l1.jpg');
+    expect(h).toContain('/art/vitalia/cards/sentadilla-silla-l1.webp'); // convención gana al recorte provisional .jpg
     expect(h).toMatch(/class="ac-xp"[^>]*><b>10<\/b>/);
   });
   it('los 4 rangos comparten marco: solo cambia la clase de rango, el nombre y la XP', () => {
@@ -37,12 +37,20 @@ describe('carta arcade', () => {
     expect(h).not.toContain('<video');
   });
   it('sin assets: animación genérica, emblema SVG y ranura de pose vacía; respiración por defecto del paquete', () => {
-    const h = cardHTML(push);
+    const h = cardHTML({ ...push, id: 'sin-arte-l1' }); // id sin arte en el paquete
     expect(h).toContain('data-sprite="front"');
     expect(h).toContain('em-svg');
     expect(h).toContain('ac-pose empty');
     expect(h).toContain('Respira con el gesto');
-    expect(h).toContain('Tu palma enciende la pared'); // cardFlavor del paquete
+  });
+  it('arte final de Vitalia: las 12 cartas tienen frente y 3 poses (sin «pose pendiente»)', () => {
+    for (const c of cards) {
+      const h = cardHTML(c);
+      expect(h, c.id).toContain(`/art/vitalia/cards/${c.id}.webp`);
+      for (const n of [1, 2, 3]) expect(h, c.id).toContain(`/art/vitalia/poses/${c.id}-${n}.webp`);
+      expect(h, c.id).not.toContain('ac-pose empty');
+    }
+    expect(cardHTML(push)).toContain('Tu palma enciende la pared'); // cardFlavor del paquete
   });
   it('otro paquete: mismo marco, textos neutros del paquete', async () => {
     await initStory('pixelandia');

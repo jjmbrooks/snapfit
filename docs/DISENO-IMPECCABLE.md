@@ -1,6 +1,6 @@
 # Diseño · auditoría y mejoras con Impeccable
 
-**Fecha:** 2026-10-03 · **Rama:** `ui/codelius-impeccable-videos` · **Herramienta:** Impeccable v4.6.0, de Paul Bakaus
+**Fecha:** 2026-10-17 · **Rama:** `ui/codelius-impeccable-videos` · **Herramienta:** Impeccable v4.6.0, de Paul Bakaus
 (Apache-2.0, ver NOTICE.md), clonada en `/workspace/tools/impeccable`.
 
 Encargo de Brooks: auditar y mejorar la interfaz con Impeccable sin perder el estilo de carta «grimorio arcade»

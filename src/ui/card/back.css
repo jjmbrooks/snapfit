@@ -12,8 +12,9 @@
 .ac-num { width: 11cqi; height: 12.5cqi; background: #120a04; clip-path: polygon(0 0, 100% 0, 100% 66%, 50% 100%, 0 66%); padding-bottom: 2cqi; }
 .ac-num::before { content: ''; position: absolute; inset: .8cqi; z-index: -1; clip-path: inherit; background: linear-gradient(var(--fam), var(--fam-dark)); box-shadow: inset 0 0 0 1cqi var(--tier); }
 .ac-num { font-family: var(--font-title); font-weight: 900; font-size: 6.2cqi; color: #fff6df; text-shadow: 0 .4cqi 0 #120a04; }
-.ac-pose { height: 100%; min-height: 0; display: grid; place-items: center; overflow: hidden; border-radius: 1.4cqi; }
-.ac-pose img { max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.ac-pose { position: relative; height: 100%; min-height: 0; display: grid; place-items: center; overflow: hidden; border-radius: 1.4cqi; }
+/* La pose completa (2:3) cabe entera en la ranura: se ajusta al alto de la fila sin recortarse. */
+.ac-pose img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
 .ac-pose.empty { border: .4cqi dashed var(--parch-line); grid-template-rows: minmax(0, 1fr) auto; padding: 1cqi; }
 .ac-pose-ph { height: 100%; min-height: 0; fill: none; stroke: var(--parch-line); stroke-width: 2.2; stroke-linecap: round; }
 .ac-pose-ph circle { fill: var(--parch-line); stroke: none; }
