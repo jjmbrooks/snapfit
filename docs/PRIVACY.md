@@ -48,7 +48,7 @@ Medidas de minimización:
 
 ## 4. Recordatorios
 
-Las preferencias de recordatorio (mañana, tarde, noche o personalizado) se guardan **solo en tu dispositivo**. Las notificaciones son **locales**: no hay servidor de push en esta versión.
+Las preferencias de recordatorio (mañana, tarde, noche o personalizado) se guardan **solo en tu dispositivo**. Lo mismo las de sonido (música, efectos, volúmenes y silencio). La app no usa el micrófono. Las notificaciones son **locales**: no hay servidor de push en esta versión.
 
 ## 5. Tus derechos y controles
 

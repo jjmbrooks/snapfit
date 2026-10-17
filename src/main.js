@@ -15,6 +15,8 @@ import { renderPrivacy } from './ui/views/privacy.js';
 import { renderOnboarding, bindOnboarding, startProfileEdit } from './ui/views/onboarding.js';
 import { toast } from './ui/dom.js';
 import { initStory, listPacks } from './ui/story/index.js';
+import { unlockAudio, setMusic, playSfx } from './ui/audio/engine.js';
+import { musicForRoute } from './ui/audio/plan.js';
 
 const APP_VERSION = __APP_VERSION__;
 const app = createApp({ storage, clock, cards, decks: [deckAdulto], leveling, appVersion: APP_VERSION });
@@ -89,6 +91,7 @@ function render() {
   const step = app.step();
   const onb = step && route.name !== 'privacy' && route.name !== 'sample';
   shell.classList.toggle('onboarding', !!onb || route.name === 'profile');
+  setMusic(musicForRoute(route.name, { onboarding: !!onb })); // suena solo tras la primera interacción
   if (onb || route.name === 'profile') {
     const v = swapView();
     const st = onb ? step : 'profile';
@@ -121,6 +124,14 @@ app.subscribe(() => {
   render();
 });
 window.addEventListener('hashchange', render);
+// Audio: nada suena hasta el primer toque o tecla (autoplay); después, clic suave en navegación y botones.
+// «¡Listo!», «Otro», voltear e intro tienen su propio efecto (app.js, tcard.js, onboarding.js).
+for (const ev of ['pointerdown', 'keydown']) window.addEventListener(ev, unlockAudio, { capture: true, passive: true });
+document.addEventListener('click', (ev) => {
+  const el = ev.target.closest?.('.bottomnav a, button, .btn');
+  if (!el || el.disabled || el.closest('[data-act="done"], [data-act="skip"], [data-onb="to-signin"], .tcard')) return;
+  playSfx('tap');
+}, true);
 window.addEventListener('online', () => { app.state.online = true; app.syncNow(); app.emit(); });
 window.addEventListener('offline', () => { app.state.online = false; app.emit(); toast('Sin conexión', 'Todo sigue funcionando; sincronizamos al volver.'); });
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') app.checkReminder(); });

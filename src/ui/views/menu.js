@@ -2,6 +2,7 @@ import { esc, toast } from '../dom.js';
 import { THEME_NAMES, PLACE_NAMES, ZONE_NAMES, REMINDER_NAMES, t } from '../i18n/es.js';
 import { listPacks, currentStory, storyPickerEnabled, previewStoryId } from '../story/index.js';
 import { THEMES, PLACES, CARE_ZONES, REMINDER_PATTERNS, isHHMM } from '../../core/index.js';
+import { getAudioPrefs, setAudioPrefs, playSfx } from '../audio/engine.js';
 import { notificationSupport, requestPermission, registerPeriodicReminder } from '../../adapters/notify-local.js';
 
 const SWATCH = {
@@ -53,8 +54,9 @@ export function renderMenu(app) {
     </div>
   </fieldset>
 
+  ${soundSection()}
+
   <fieldset><legend>Preferencias</legend>
-    <label class="switch">Sonido chiptune <input type="checkbox" id="sound" ${p.sound ? 'checked' : ''}></label>
     <label class="switch">Reducir animaciones <input type="checkbox" id="rm" ${p.reducedMotion ? 'checked' : ''}></label>
     <label class="switch">Estadísticas anónimas de uso <input type="checkbox" id="an" ${p.analytics ? 'checked' : ''}></label>
     <p class="small muted" style="margin:0">Solo eventos como «carta hecha» o «cambio de tema», sin datos personales. <a href="#/privacidad">Aviso de privacidad</a></p>
@@ -88,9 +90,34 @@ export function renderMenu(app) {
   <fieldset><legend>Acerca de</legend>
     <p class="small" style="margin-top:0">SnapFit v${esc(s.appVersion)} · Código MIT · Contenido y assets CC BY 4.0 · © 2026 jjmbrooks.</p>
     <p class="small">Las cartas actuales son <b>borradores</b> pendientes de validación por Entrenador. SnapFit no sustituye una valoración médica.</p>
-    <p class="small">Fuente de títulos: Press Start 2P (SIL OFL 1.1). Animaciones, insignias y sonidos provisionales generados por código.</p>
+    <p class="small">Fuente de títulos: Press Start 2P (SIL OFL 1.1). Animaciones e insignias generadas por código.</p>
+    ${creditsHTML()}
     <p class="small"><a href="#/privacidad">Aviso de privacidad</a> · <a href="https://github.com/jjmbrooks/snapfit" target="_blank" rel="noopener">Código en GitHub</a></p>
   </fieldset></div>`;
+}
+
+// Sonido: preferencias del dispositivo (no se sincronizan; cada teléfono decide). Ver docs/AUDIO.md.
+function soundSection() {
+  const a = getAudioPrefs();
+  const hasMusic = !!currentStory().assets.audio?.music;
+  const pct = (v) => Math.round(v * 100);
+  return `<fieldset class="sound"><legend>Sonido</legend>
+    <label class="switch">Silenciar todo <input type="checkbox" id="snd-mute" ${a.muted ? 'checked' : ''}></label>
+    <label class="switch">Música${hasMusic ? '' : ' <span class="small muted">(esta historia no tiene)</span>'} <input type="checkbox" id="snd-music" ${a.music ? 'checked' : ''} ${a.muted ? 'disabled' : ''}></label>
+    <label class="range">Volumen de música <input type="range" id="snd-music-vol" min="0" max="100" step="5" value="${pct(a.musicVol)}" ${a.muted || !a.music ? 'disabled' : ''} aria-valuetext="${pct(a.musicVol)} %"></label>
+    <label class="switch">Efectos <input type="checkbox" id="snd-sfx" ${a.sfx ? 'checked' : ''} ${a.muted ? 'disabled' : ''}></label>
+    <label class="range">Volumen de efectos <input type="range" id="snd-sfx-vol" min="0" max="100" step="5" value="${pct(a.sfxVol)}" ${a.muted || !a.sfx ? 'disabled' : ''} aria-valuetext="${pct(a.sfxVol)} %"></label>
+    <p class="small muted" style="margin:0">Se guarda en este dispositivo. Nada suena hasta que tocas la pantalla.</p>
+  </fieldset>`;
+}
+
+/** Créditos de los assets de terceros del paquete activo (manifest.credits). */
+function creditsHTML() {
+  const list = currentStory().manifest.credits || [];
+  if (!list.length) return '';
+  return `<details class="credits"><summary class="small">Créditos de ${esc(currentStory().manifest.name || 'la historia')}</summary><ul class="small">
+    ${list.map((c) => `<li><b>${esc(c.what)}:</b> «${esc(c.title)}», ${esc(c.author)} · ${esc(c.license)} · <a href="${esc(c.url)}" target="_blank" rel="noopener">fuente</a>${c.changes ? ` · ${esc(c.changes)}` : ''}</li>`).join('')}
+  </ul>${list.some((c) => c.license.startsWith('CC BY')) ? '<p class="small muted">CC BY 4.0: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">creativecommons.org/licenses/by/4.0</a>. Detalle en NOTICE.md del repositorio.</p>' : ''}</details>`;
 }
 
 function storySection() {
@@ -144,6 +171,11 @@ export function bindMenu(root, app, deps) {
       app.emit();
     }
   });
+  root.addEventListener('input', (ev) => {
+    const el = ev.target;
+    if (el.id === 'snd-music-vol') setAudioPrefs({ musicVol: Number(el.value) / 100 });
+    if (el.id === 'snd-music-vol' || el.id === 'snd-sfx-vol') el.setAttribute('aria-valuetext', `${el.value} %`);
+  });
   root.addEventListener('change', async (ev) => {
     const el = ev.target;
     const group = el.closest('[data-group]')?.dataset.group;
@@ -157,7 +189,18 @@ export function bindMenu(root, app, deps) {
       const times = [...root.querySelectorAll('[data-ct]')].map((i) => i.value).filter(isHHMM);
       return app.updateProfile({ reminders: { ...p().reminders, customTimes: times } });
     }
-    if (el.id === 'sound') return app.updateProfile({ sound: el.checked });
+    if (el.id?.startsWith('snd-')) {
+      const patch = { 'snd-mute': { muted: el.checked }, 'snd-music': { music: el.checked }, 'snd-sfx': { sfx: el.checked } }[el.id]
+        || { [el.id === 'snd-music-vol' ? 'musicVol' : 'sfxVol']: Number(el.value) / 100 };
+      setAudioPrefs(patch);
+      if (el.id === 'snd-sfx-vol' || el.id === 'snd-sfx') playSfx('tap'); // muestra del volumen
+      const a = getAudioPrefs();
+      root.querySelector('#snd-music').disabled = a.muted;
+      root.querySelector('#snd-sfx').disabled = a.muted;
+      root.querySelector('#snd-music-vol').disabled = a.muted || !a.music;
+      root.querySelector('#snd-sfx-vol').disabled = a.muted || !a.sfx;
+      return;
+    }
     if (el.id === 'rm') return app.updateProfile({ reducedMotion: el.checked });
     if (el.id === 'an') return app.updateProfile({ analytics: el.checked });
     if (el.id === 'import' && el.files?.[0]) {

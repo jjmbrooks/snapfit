@@ -56,7 +56,8 @@ Paquetes instalados hoy:
 | `assets.frames.default` / `.<grupo>.<1-4\|all>` | no | piel del marco (frente) por familia y tier |
 | `assets.backgrounds.welcome\|play` | no | fondos (`--story-bg-welcome`, `--story-bg-play`) |
 | `assets.guide.sprite` | no | sprite del guía |
-| `assets.audio.music`, `assets.audio.sfx.{listo,otro,flip,logro,nivel}` | no | reemplazan a los sonidos genéricos |
+| `assets.audio` | no | **paquete de audio** (docs/AUDIO.md): `formats` (`["ogg","mp3"]`: mismo nombre en ambos formatos), `music.{intro,menu,sesion,celebracion}` (bucles, < 600 KB c/u) y `sfx.{flip,listo,otro,logro,nivel,meta,tap,intro}`. Rutas relativas a `public/stories/<id>/` (convención: `audio/musica-<pantalla>.ogg`, `audio/sfx-<evento>.ogg`). **No se hereda**: sin él suenan los efectos chiptune genéricos y no hay música. Carga diferida; el SW los guarda al sonar |
+| `credits[]` | no | `{what, title, author, license, url, changes?}` de assets de terceros; se muestran en Menú → Acerca de → Créditos. Obligatorio en la práctica si el paquete usa CC BY |
 | `assets.tokens` | no | variables CSS permitidas: `--story-*`, `--primary`, `--on-primary`, `--accent`, `--on-accent` (hex). Si toca colores del tema, el test exige contraste AA sobre `defaultTheme` |
 
 ## 4. `story.json`

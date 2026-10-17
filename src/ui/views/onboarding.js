@@ -3,6 +3,7 @@ import { esc, toast } from '../dom.js';
 import { STORY, FAMILY_NAMES, FAMILY_ICONS, SEX_NAMES, FITNESS_NAMES, QUICK_TEST_COPY, t } from '../i18n/es.js';
 import { QUICK_TEST, SEXES, FITNESS, MUSCLE_GROUPS, validateProfile } from '../../core/index.js';
 import { mountSprite } from '../components/sprite.js';
+import { playSfx } from '../audio/engine.js';
 
 
 const ui = { sub: 'story', draft: { test: {} }, part: 0, busy: false, error: null };
@@ -150,7 +151,7 @@ export function bindOnboarding(root, app, step, deps, rerender) {
     if (!b) return;
     const a = b.dataset.onb;
     ui.error = null;
-    if (a === 'to-signin') { ui.sub = 'signin'; rerender(); }
+    if (a === 'to-signin') { playSfx('intro'); ui.sub = 'signin'; rerender(); }
     else if (a === 'back-story') { ui.sub = 'story'; rerender(); }
     else if (a === 'prev') { ui.part = Math.max(0, ui.part - 1); rerender(); }
     else if (a === 'google') {

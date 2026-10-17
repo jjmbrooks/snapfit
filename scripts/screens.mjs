@@ -103,6 +103,9 @@ for (const [hash, name] of [['#/progreso', '15-progreso-tab'], ['#/logros', '16-
   await shot(name, 800);
   await checkNav(name);
 }
+await page.evaluate(() => document.querySelector('fieldset.sound')?.scrollIntoView({ block: 'center' }));
+await shot('17b-menu-sonido', 400);
+await page.evaluate(() => { const d = document.querySelector('details.credits'); if (d) d.open = true; });
 await page.evaluate(() => document.querySelector('main').scrollTo(0, 1e6));
 await shot('18-menu-final-scroll', 400);
 await checkNav('menu-scroll');

@@ -18,3 +18,17 @@ SnapFit usa o se apoya en el siguiente software y contenido de terceros. Licenci
 - **Firebase JS SDK** (Google), licencia Apache-2.0 (dependencia npm).
 - Los **videos tutoriales** enlazados en las cartas pertenecen a sus canales y se abren en YouTube. SnapFit
   solo los enlaza y no los incrusta ni los redistribuye (docs/training/VIDEOS.md).
+
+## Audio del paquete Vitalia (docs/AUDIO.md)
+
+**Música** de Kevin MacLeod (incompetech.com), licencia Creative Commons: By Attribution 4.0
+(http://creativecommons.org/licenses/by/4.0/). Fragmentos recortados en bucle, en mono y normalizados:
+
+- «Skye Cuillin» Kevin MacLeod (incompetech.com). Licensed under Creative Commons: By Attribution 4.0 License. http://creativecommons.org/licenses/by/4.0/ — `public/stories/vitalia/audio/musica-intro.*`
+- «Teller of the Tales» Kevin MacLeod (incompetech.com). Licensed under Creative Commons: By Attribution 4.0 License. http://creativecommons.org/licenses/by/4.0/ — `musica-menu.*`
+- «Village Consort» Kevin MacLeod (incompetech.com). Licensed under Creative Commons: By Attribution 4.0 License. http://creativecommons.org/licenses/by/4.0/ — `musica-sesion.*`
+- «Enchanted Valley» Kevin MacLeod (incompetech.com). Licensed under Creative Commons: By Attribution 4.0 License. http://creativecommons.org/licenses/by/4.0/ — `musica-celebracion.*`
+
+**Efectos** de Kenney (kenney.nl), dominio público CC0 1.0 (no requiere atribución; se agradece): packs RPG Audio,
+Casino Audio, Music Jingles e Interface Sounds. Los efectos «¡Listo!» e inicio de historia los sintetizó Codelius
+por código (`scripts/audio/synth.py`).

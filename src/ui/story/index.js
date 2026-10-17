@@ -82,10 +82,12 @@ function applyAssets(r) {
   if (bg.play) root.style.setProperty('--story-bg-play', `url("${assetUrl(bg.play)}")`);
 }
 
-/** Lista plana de URLs de assets del paquete activo. */
+/** Lista plana de URLs de assets del paquete activo (para precachear). El audio no entra: se pide al sonar por
+ *  primera vez (formato según navegador) y el SW lo guarda en caché en tiempo de ejecución. */
+const NO_PRECACHE = new Set(['tokens', 'artConvention', 'audio']);
 export function packAssetUrls(assets) {
   const out = [];
-  const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (k === 'tokens' || k === 'artConvention' ? null : typeof v === 'string' ? out.push(v) : walk(v)));
+  const walk = (o) => Object.entries(o || {}).forEach(([k, v]) => (NO_PRECACHE.has(k) ? null : typeof v === 'string' ? out.push(v) : walk(v)));
   walk(assets);
   return [...new Set(out)];
 }
