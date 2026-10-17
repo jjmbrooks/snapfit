@@ -10,7 +10,7 @@ enlace pequeño con icono de reproducción y la etiqueta «Ver video · {fuente}
   certificado (fisioterapeuta, entrenador con certificación acreditada). Se prefiere español a igual calidad.
 - **Verificación:** cada URL se comprobó con el endpoint público oEmbed de YouTube
   (`https://www.youtube.com/oembed?url=<URL>&format=json`); el título y el canal devueltos deben coincidir
-  con el ejercicio de la carta. Fecha de verificación: 2026-10-03.
+  con el ejercicio de la carta. Fecha de verificación: 2026-10-17.
 - **Formato:** solo `https://www.youtube.com/watch?v=<id>` o `https://youtu.be/<id>`; `videoSource` es
   obligatorio cuando hay `videoUrl` (máx. 28 caracteres). Lo valida `npm run check:content`.
 - **Sin incrustar ni autoplay:** es un enlace normal (`target="_blank" rel="noopener noreferrer"`). En
