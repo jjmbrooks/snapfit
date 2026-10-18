@@ -60,7 +60,7 @@ describe('paquetes de historia instalados', () => {
         }
         // Arte por convención: solo se valida lo que ya existe (lo pendiente no se referencia ni da 404).
         for (const cid of cardIds) {
-          const c = conventionPaths(manifest.assets, cid);
+          const c = conventionPaths(manifest.assets, cid, 5);
           for (const p of [c.cardArt, ...c.poses].filter(Boolean)) if (existsSync(new URL(`public/${p.replace(/^\//, '')}`, root))) files.push(p.startsWith('/') ? p : `/${p}`);
         }
         if (manifest.preview) files.push(manifest.preview);

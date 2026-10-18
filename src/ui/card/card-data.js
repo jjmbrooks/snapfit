@@ -1,10 +1,11 @@
 // Campos opcionales de la carta para el estilo C «grimorio arcade» (pura, sin DOM; la usan la UI,
 // scripts/check-content.mjs y los tests). Compatibilidad hacia atrás:
-//   steps: ["texto", …]  (formato original)  o  [{ text, pose? }, …]  (nuevo; máx. 3)
+//   steps: ["texto", …]  (formato original)  o  [{ text, pose? }, …]  (nuevo; 3 a 5 pasos)
 //   flavor: "línea de ambientación"  (también se acepta el campo antiguo flavorText)
 //   breath: "indicación de respiración"  (opcional; si falta, la pone el paquete de historia o la interfaz)
 //   videoUrl + videoSource: tutorial público verificado (solo youtube.com / youtu.be) y su fuente; ver docs/training/VIDEOS.md
-export const MAX_STEPS = 3;
+export const MIN_STEPS = 3;
+export const MAX_STEPS = 5;
 export const MAX_STEP_TEXT = 90;
 export const MAX_FLAVOR = 60;
 export const MAX_BREATH = 32;
@@ -40,7 +41,7 @@ export function cardExtrasErrors(c) {
   const e = [];
   if (!Array.isArray(c.steps) || !c.steps.length) e.push('steps vacío');
   else {
-    if (c.steps.length > MAX_STEPS) e.push(`steps: máximo ${MAX_STEPS} (el reverso muestra 3 filas)`);
+    if (c.steps.length > MAX_STEPS) e.push(`steps: máximo ${MAX_STEPS} (el reverso muestra hasta ${MAX_STEPS} posturas)`);
     c.steps.forEach((s, i) => {
       if (typeof s === 'string') { if (!s.trim()) e.push(`steps[${i}] vacío`); if (s.length > MAX_STEP_TEXT) e.push(`steps[${i}] > ${MAX_STEP_TEXT} caracteres`); return; }
       if (!s || typeof s !== 'object') return e.push(`steps[${i}] debe ser texto u objeto { text, pose? }`);

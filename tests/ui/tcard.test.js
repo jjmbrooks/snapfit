@@ -27,11 +27,12 @@ describe('carta arcade', () => {
       expect(h).toContain(`<b>${lvl}</b>`);
     }
   });
-  it('reverso: título del paquete, 3 pasos con pose del paquete, dosis + respiración, cuidados', () => {
+  it('reverso: título del paquete, 4 pasos (rejilla) con pose del paquete, dosis + respiración, cuidados', () => {
     const h = cardHTML(squat);
     expect(h).toContain('Cómo lanzar el hechizo');
-    expect((h.match(/class="ac-step"/g) || []).length).toBe(3);
-    expect(h).toContain('/art/vitalia/poses/sentadilla-silla-l1-2.webp');
+    expect((h.match(/class="ac-step"/g) || []).length).toBe(4);
+    expect(h).toContain('class="ac-steps" data-n="4"');
+    expect(h).toContain('/art/vitalia/poses/sentadilla-silla-l1-4.webp');
     expect(h).toContain('Exhala al subir');
     expect(h).toContain('ac-care');
     expect(h).not.toContain('<video');
@@ -43,11 +44,12 @@ describe('carta arcade', () => {
     expect(h).toContain('ac-pose empty');
     expect(h).toContain('Respira con el gesto');
   });
-  it('arte final de Vitalia: las 12 cartas tienen frente y 3 poses (sin «pose pendiente»)', () => {
+  it('arte final de Vitalia: las 12 cartas tienen frente y 4 poses, una por paso (sin «pose pendiente»)', () => {
     for (const c of cards) {
       const h = cardHTML(c);
       expect(h, c.id).toContain(`/art/vitalia/cards/${c.id}.webp`);
-      for (const n of [1, 2, 3]) expect(h, c.id).toContain(`/art/vitalia/poses/${c.id}-${n}.webp`);
+      expect(c.steps.length, c.id).toBe(4);
+      for (const n of [1, 2, 3, 4]) expect(h, c.id).toContain(`/art/vitalia/poses/${c.id}-${n}.webp`);
       expect(h, c.id).not.toContain('ac-pose empty');
     }
     expect(cardHTML(push)).toContain('Tu palma enciende la pared'); // cardFlavor del paquete

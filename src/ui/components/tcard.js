@@ -36,7 +36,7 @@ export function cardHTML(c, { playerLevel, level } = {}) {
   const emblem = emblemUrl(fam);
   const flavor = S.cardFlavor?.[c.id] || flavorOf(c);
   const steps = normalizeSteps(c);
-  const packPoses = packPoseUrls(c.id);
+  const packPoses = packPoseUrls(c.id, steps.length);
   const backTitle = S.cardBack?.title || t('card.backTitle');
   const breath = c.breath || S.cardBack?.breath || t('card.breathDefault');
   const xp = xpForCard(lvl);
@@ -73,7 +73,7 @@ export function cardHTML(c, { playerLevel, level } = {}) {
       </section>
       <section class="tc-face tc-back" aria-hidden="true">
         <h3 class="ac-banner ac-banner-back">${esc(backTitle)}</h3>
-        <ol class="ac-steps">${steps.map((s, i) => {
+        <ol class="ac-steps" data-n="${steps.length}">${steps.map((s, i) => {
           const pose = packPoses[i] || publicUrl(s.pose);
           return `<li class="ac-step" aria-label="${esc(t('card.stepAria', { n: i + 1 }))}">
             <span class="ac-num" aria-hidden="true">${i + 1}</span>

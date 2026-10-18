@@ -33,8 +33,9 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "Párate frente a una silla firme, pies al ancho de cadera.",
-      "Lleva la cadera hacia atrás hasta rozar el asiento.",
+      "De pie delante de la silla, pies al ancho de cadera.",
+      "Lleva la cadera atrás y estira los brazos al frente.",
+      "Baja hasta rozar el asiento.",
       "Empuja el piso y vuelve arriba."
     ],
     "cues": [
@@ -105,9 +106,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "Apoya las manos en la pared a la altura del pecho.",
-      "Da un paso atrás con el cuerpo recto.",
-      "Acerca el pecho a la pared y empuja de regreso."
+      "Ponte frente a la pared, a un brazo de distancia.",
+      "Apoya las manos a la altura del pecho, cuerpo recto.",
+      "Acerca el pecho a la pared doblando los codos.",
+      "Empuja y regresa con los brazos estirados."
     ],
     "cues": [
       "Cuerpo como tabla",
@@ -175,8 +177,9 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "Acuéstate boca arriba con rodillas dobladas y pies en el piso.",
-      "Aprieta glúteos y sube la cadera.",
+      "Acuéstate boca arriba, rodillas dobladas y pies en el piso.",
+      "Aprieta glúteos y empieza a subir la cadera.",
+      "Sube la cadera hasta alinear rodilla, cadera y hombro.",
       "Baja despacio."
     ],
     "cues": [
@@ -246,9 +249,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "De pie, marcha en el lugar subiendo rodillas a una altura cómoda.",
-      "Balancea los brazos.",
-      "Respira de forma constante."
+      "De pie, junto a un apoyo si lo necesitas.",
+      "Sube una rodilla hacia el pecho.",
+      "Bájala y sube la otra.",
+      "Sigue alternando con ritmo cómodo y respiración constante."
     ],
     "cues": [
       "Postura alta",
@@ -314,9 +318,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "De pie, puedes apoyarte en una pared o silla.",
-      "Sube sobre la punta de los pies.",
-      "Baja despacio."
+      "De pie, con una mano en una silla o pared.",
+      "Sube los talones despacio.",
+      "Arriba: sobre la punta de los pies, sin despegar los dedos.",
+      "Baja despacio hasta apoyar los talones."
     ],
     "cues": [
       "Sube recto, sin ladear el tobillo"
@@ -382,9 +387,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "Sujeta una toalla con ambas manos frente al pecho.",
-      "Tira hacia afuera y hacia atrás llevando los codos atrás.",
-      "Mantén la tensión juntando escápulas."
+      "De pie, sujeta la toalla al frente con los codos doblados.",
+      "Saca el pecho y lleva los hombros atrás y abajo.",
+      "Codos atrás, pegados al torso; junta las escápulas.",
+      "Mantén la tensión respirando; luego suelta."
     ],
     "cues": [
       "Hombros lejos de las orejas"
@@ -448,9 +454,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "En cuatro puntos, manos bajo hombros y rodillas bajo cadera.",
-      "Estira un brazo y la pierna contraria.",
-      "Regresa y alterna."
+      "En cuatro puntos: manos bajo hombros, rodillas bajo cadera.",
+      "Estira un brazo al frente y la pierna contraria atrás.",
+      "Regresa a cuatro puntos.",
+      "Alterna: el otro brazo y la otra pierna."
     ],
     "cues": [
       "Cadera quieta",
@@ -517,8 +524,9 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
+      "Boca abajo, codos bajo los hombros.",
       "Apoya antebrazos y rodillas en el piso.",
-      "Alinea cabeza, espalda y cadera.",
+      "Despega el tronco: línea recta de cabeza a rodillas.",
       "Mantén respirando."
     ],
     "cues": [
@@ -588,9 +596,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "De pie, brazos extendidos a los lados.",
-      "Haz círculos pequeños que crecen poco a poco.",
-      "A mitad del tiempo cambia de sentido."
+      "De pie, sube los brazos a los lados hasta los hombros.",
+      "Brazos estirados y hombros bajos, sin encogerlos.",
+      "Haz círculos pequeños hacia adelante.",
+      "A mitad del tiempo, cambia de sentido."
     ],
     "cues": [
       "Movimiento suave, sin dolor"
@@ -656,9 +665,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
+      "De pie, pies juntos y brazos abajo.",
       "Da un paso al lado mientras subes los brazos.",
-      "Regresa al centro.",
-      "Alterna lados con ritmo cómodo."
+      "Regresa al centro bajando los brazos.",
+      "Repite hacia el otro lado."
     ],
     "cues": [
       "Aterriza suave",
@@ -724,9 +734,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "Apóyate ligeramente en una silla o pared.",
-      "Da un paso atrás y baja la rodilla trasera con control.",
-      "Regresa y cambia de pierna (6 por lado)."
+      "De pie, de lado a la silla, mano en el respaldo.",
+      "Da un paso largo atrás y baja la rodilla con control.",
+      "Empuja con la pierna de adelante y regresa arriba.",
+      "Cambia de pierna: 6 por lado."
     ],
     "cues": [
       "Rodilla delantera sobre el tobillo",
@@ -795,9 +806,10 @@
     "impact": "bajo",
     "noise": "silencioso",
     "steps": [
-      "Apoya las manos en el borde de una mesa firme o banca.",
-      "Camina hacia atrás con el cuerpo recto.",
-      "Baja el pecho hacia el borde y empuja."
+      "Apoya las manos en el borde de una mesa firme.",
+      "Camina hacia atrás hasta quedar con el cuerpo recto.",
+      "Baja el pecho hacia el borde.",
+      "Empuja y regresa con los brazos estirados."
     ],
     "cues": [
       "Cuerpo recto",

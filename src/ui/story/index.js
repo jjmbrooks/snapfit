@@ -105,7 +105,7 @@ export const frameUrl = (family, tier) => { const f = frameFor(current.assets, f
 /** Emblema de escuela (imagen del paquete) o null → emblema SVG del código. */
 export const emblemUrl = (family) => (current.assets.emblems?.[family] ? assetUrl(current.assets.emblems[family]) : null);
 /** Poses del paquete para una carta (array de URLs, puede estar vacío). */
-export const packPoseUrls = (cardId) => resolvePoses(current.assets, cardId, FILES).map((p) => (p ? assetUrl(p) : null));
+export const packPoseUrls = (cardId, steps = 3) => resolvePoses(current.assets, cardId, FILES, steps).map((p) => (p ? assetUrl(p) : null));
 /** URL pública de una ruta de contenido (p. ej. steps[].pose de una carta: «/art/…» o «art/…», relativa a public/). */
 export const publicUrl = (p) => (p ? assetUrl(p.replace(/^\//, '')) : null);
 export const sfxUrl = (name) => (current.assets.audio?.sfx?.[name] ? assetUrl(current.assets.audio.sfx[name]) : null);
