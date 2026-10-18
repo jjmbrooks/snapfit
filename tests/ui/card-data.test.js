@@ -17,7 +17,8 @@ describe('carta: steps / flavor / breath', () => {
     expect(cardExtrasErrors(c)).toEqual([]);
   });
   it(`máximo ${MAX_STEPS} pasos, rutas de pose seguras y campos conocidos`, () => {
-    expect(cardExtrasErrors({ ...base, steps: ['a', 'b', 'c', 'd'] }).join()).toMatch(/máximo 3/);
+    expect(cardExtrasErrors({ ...base, steps: ['a', 'b', 'c', 'd', 'e', 'f'] }).join()).toMatch(/máximo 5/);
+    expect(cardExtrasErrors({ ...base, steps: ['a', 'b', 'c', 'd'] })).toEqual([]);
     expect(cardExtrasErrors({ ...base, steps: [{ text: 'a', pose: 'https://x.com/a.png' }] }).join()).toMatch(/pose/);
     expect(cardExtrasErrors({ ...base, steps: [{ text: 'a', pose: '../secreto.png' }] }).join()).toMatch(/pose/);
     expect(cardExtrasErrors({ ...base, steps: [{ text: 'a', video: 'x.mp4' }] }).join()).toMatch(/no permitidos/);

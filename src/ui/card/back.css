@@ -1,4 +1,4 @@
-/* REVERSO DE CARTA — «cómo se hace»: 3 pasos con ranura de pose, tira con dosis + respiración, cuidados.
+/* REVERSO DE CARTA — «cómo se hace»: 3 a 5 pasos con ranura de pose (3 = filas; 4–5 = rejilla), tira con dosis + respiración, cuidados.
    Vertical (la referencia vitalia-C-reverso.jpg es horizontal). Workstream: card-frame. */
 .tc-back { transform: rotateY(180deg); grid-template-rows: auto minmax(0, 1fr) auto auto auto auto; gap: 2cqi; color: #fff6df; }
 .ac-banner-back { font-size: 5.6cqi; padding: 1.8cqi 3cqi; margin: 0 2cqi; }
@@ -21,6 +21,25 @@
 .ac-pose small { font-size: max(var(--text-floor), 2.4cqi); line-height: 1.05; text-align: center; color: #6b4a22; }
 .ac-step-text { font-family: var(--font-title); font-weight: 700; font-size: 3.9cqi; line-height: 1.2;
   display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+/* 4–5 pasos: rejilla de fichas (2×2, o 3+2) con la postura grande arriba y el texto debajo; el número va
+   sobre la esquina de la postura. Así cada postura mide ~40 % del ancho de la carta en vez de ~24 %. */
+.ac-steps[data-n='4'], .ac-steps[data-n='5'] { grid-template-rows: repeat(2, minmax(0, 1fr)); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2cqi; }
+/* con rejilla, el estandarte y los huecos del reverso se compactan para dar alto a las posturas */
+.tc-back:has(.ac-steps[data-n='4']), .tc-back:has(.ac-steps[data-n='5']) { gap: 1.4cqi; }
+.tc-back:has(.ac-steps[data-n='4']) .ac-banner-back, .tc-back:has(.ac-steps[data-n='5']) .ac-banner-back { font-size: 5cqi; padding: 1.1cqi 3cqi; }
+.ac-steps[data-n='5'] { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.ac-steps[data-n='5'] .ac-step { grid-column: span 2; }
+.ac-steps[data-n='5'] .ac-step:nth-child(n + 4) { grid-column: span 3; }
+.ac-steps[data-n='4'] .ac-step, .ac-steps[data-n='5'] .ac-step {
+  position: relative; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; align-items: stretch;
+  gap: .4cqi; padding: .8cqi 1.2cqi 1.1cqi;
+}
+.ac-steps[data-n='4'] .ac-num, .ac-steps[data-n='5'] .ac-num {
+  position: absolute; z-index: 1; top: .6cqi; left: .6cqi; width: 8cqi; height: 9cqi; font-size: 4.6cqi; padding-bottom: 1.4cqi;
+}
+.ac-steps[data-n='4'] .ac-step-text, .ac-steps[data-n='5'] .ac-step-text {
+  font-size: max(var(--text-floor), 3.3cqi); line-height: 1.14; text-align: center; -webkit-line-clamp: 4;
+}
 .ac-strip {
   margin: 0 1cqi; padding: 1.8cqi 3cqi; text-align: center; border-radius: 1.6cqi;
   background: linear-gradient(var(--parch), var(--parch-2)); color: var(--parch-ink);
