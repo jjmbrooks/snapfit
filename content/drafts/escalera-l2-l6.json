@@ -1,0 +1,3681 @@
+[
+  {
+    "id": "sentadilla-libre-l2",
+    "version": 1,
+    "name": "Sentadilla libre",
+    "shortName": "Sentadilla",
+    "muscleGroups": [
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "piernas",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 12,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 50
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Pies al ancho de hombros, puntas ligeramente afuera y todo el pie en el piso.",
+      "Lleva la cadera atrás y baja hasta que los muslos queden paralelos al piso, o al rango sin dolor.",
+      "Empuja el piso y sube extendiendo cadera y rodillas a la vez."
+    ],
+    "cues": [
+      "Pies firmes en todo el piso",
+      "Rodillas siguen la punta del pie"
+    ],
+    "easier": "sentadilla-silla-l1",
+    "harder": "sentadilla-split-l3",
+    "careZones": [
+      "rodilla"
+    ],
+    "contraindications": [
+      "Dolor de rodilla al bajar: usar sentadilla-silla-l1 o reducir el rango."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Bajar solo hasta donde se pueda con control; apoyarse si hace falta.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Progresión de 1 a 3 series de 8-15 reps para principiantes."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Escamilla RF. Knee biomechanics of the dynamic squat exercise. Med Sci Sports Exerc. 2001;33(1):127-141.",
+        "doi": "10.1097/00005768-200101000-00020",
+        "url": "https://doi.org/10.1097/00005768-200101000-00020",
+        "note": "Biomecánica de la sentadilla: profundidad y alineación de rodilla."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. ACSM's Guidelines for Exercise Testing and Prescription. 11th ed. Philadelphia: Wolters Kluwer; 2021.",
+        "doi": null,
+        "url": "https://www.acsm.org/education-resources/books/guidelines-exercise-testing-prescription",
+        "note": "Técnica estándar de sentadilla libre."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "sentadilla-split-l3",
+    "version": 1,
+    "name": "Sentadilla split",
+    "shortName": "Split squat",
+    "muscleGroups": [
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "piernas",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 10,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 20,
+      "tempo": "2-0-2",
+      "perSide": true,
+      "estimatedSec": 100
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Da un paso largo y mantén ambos pies mirando al frente.",
+      "Baja verticalmente hasta que ambas rodillas formen unos 90 grados.",
+      "Sube empujando con el talón de la pierna delantera; completa las reps y cambia de lado."
+    ],
+    "cues": [
+      "Torso vertical, cadera al frente",
+      "La mayor parte del peso va en la pierna delantera"
+    ],
+    "easier": "zancada-atras-apoyo-l2",
+    "harder": null,
+    "careZones": [
+      "rodilla",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Dolor de rodilla o equilibrio inestable: usar zancada-apoyo-l2."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada sin apoyo cercano; preferir zancada-apoyo-l2.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Progresión a ejercicios unilaterales cuando la base está consolidada."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Escamilla RF. Knee biomechanics of the dynamic squat exercise. Med Sci Sports Exerc. 2001;33(1):127-141.",
+        "doi": "10.1097/00005768-200101000-00020",
+        "url": "https://doi.org/10.1097/00005768-200101000-00020",
+        "note": "Alineación de rodilla y cadera en la sentadilla dividida."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "zancada-trasera-l3",
+    "version": 1,
+    "name": "Zancada trasera",
+    "shortName": "Zancada trasera",
+    "muscleGroups": [
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "piernas",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 20,
+      "tempo": "2-0-2",
+      "perSide": true,
+      "estimatedSec": 85
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie, da un paso largo hacia atrás.",
+      "Baja la rodilla trasera hasta casi tocar el piso, con el torso alto.",
+      "Vuelve al inicio empujando con la pierna delantera; alterna lados."
+    ],
+    "cues": [
+      "Mirada al frente",
+      "Aterrizar con control"
+    ],
+    "easier": "zancada-atras-apoyo-l2",
+    "harder": "zancada-alterna-l4",
+    "careZones": [
+      "rodilla",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Dolor de rodilla o de cadera: reducir la profundidad del paso o usar la variante con apoyo."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Mano en la pared para el equilibrio.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Trabajo unilateral de fuerza para principiantes intermedios."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Sherrington C, Fairhall NJ, Wallbank GK, Tiedemann A, et al. Exercise for preventing falls in older people living in the community. Cochrane Database Syst Rev. 2019;1(1):CD012424.",
+        "doi": "10.1002/14651858.CD012424.pub2",
+        "url": "https://doi.org/10.1002/14651858.CD012424.pub2",
+        "note": "Ejercicios con base reducida entrenan equilibrio; se recomienda apoyo si hay riesgo de caídas."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "zancada-alterna-l4",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Zancada frontal alterna",
+    "shortName": "Zancada alterna",
+    "muscleGroups": [
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "piernas",
+    "level": 4,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": "2-0-1",
+      "perSide": true,
+      "estimatedSec": 102
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie, pies al ancho de cadera y manos en la cintura.",
+      "Da un paso largo al frente y baja hasta que ambas rodillas formen 90°.",
+      "Empuja con el talón de adelante y vuelve a juntar los pies.",
+      "Repite con la otra pierna, alternando."
+    ],
+    "cues": [
+      "Rodilla de adelante sobre el tobillo",
+      "Tronco erguido"
+    ],
+    "easier": "zancada-trasera-l3",
+    "harder": "sentadilla-bulgara-l5",
+    "careZones": [
+      "rodilla",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Dolor de rodilla al frenar: vuelve a la zancada trasera. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa a la búlgara cuando hagas 2×6 por lado sin perder el equilibrio ni dolor en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Con apoyo de una mano en la pared.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "sentadilla-bulgara-l5",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Sentadilla búlgara",
+    "shortName": "Búlgara",
+    "muscleGroups": [
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "piernas",
+    "level": 5,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": "2-1-1",
+      "perSide": true,
+      "estimatedSec": 102
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula"
+    ],
+    "equipment": [
+      "silla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De espaldas a una silla firme, apoya el empeine de un pie en el asiento.",
+      "Adelanta el otro pie hasta que la rodilla quede sobre el tobillo.",
+      "Baja recto hasta que el muslo de adelante quede casi paralelo al piso.",
+      "Empuja con el talón para subir; termina el lado y cambia."
+    ],
+    "cues": [
+      "Peso en la pierna de adelante",
+      "Cadera cuadrada al frente"
+    ],
+    "easier": "zancada-alterna-l4",
+    "harder": "sentadilla-pistol-silla-l6",
+    "careZones": [
+      "rodilla",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Silla que se mueve: no usar, pon la silla contra la pared. Dolor de rodilla: reduce la profundidad. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa a la pistol a la silla cuando hagas 2×6 por lado con pausa de 1 s abajo, sin dolor, en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "sentadilla-pistol-silla-l6",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Sentadilla a una pierna a la silla",
+    "shortName": "Pistol a silla",
+    "muscleGroups": [
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "piernas",
+    "level": 6,
+    "dose": {
+      "type": "reps",
+      "reps": 5,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "3-0-1",
+      "perSide": true,
+      "estimatedSec": 120
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula"
+    ],
+    "equipment": [
+      "silla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Siéntate al borde de una silla firme con un pie apoyado y el otro estirado al frente.",
+      "Inclina el tronco y levántate solo con la pierna apoyada.",
+      "Baja en 3 s hasta rozar el asiento sin dejarte caer.",
+      "Repite y luego cambia de pierna."
+    ],
+    "cues": [
+      "Rodilla alineada con el segundo dedo",
+      "Brazos al frente para equilibrar"
+    ],
+    "easier": "sentadilla-bulgara-l5",
+    "harder": null,
+    "careZones": [
+      "rodilla",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Si no puedes bajar controlado, ayúdate con una mano en la pared. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Cierra Adepto cuando hagas 2×5 por lado sin manos y sin dejarte caer; siguiente paso (Magister): pistol con asiento más bajo.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada sin supervisión.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "abduccion-cadera-pie-l2",
+    "version": 1,
+    "name": "Abducción de cadera de pie",
+    "shortName": "Abducción de pie",
+    "muscleGroups": [
+      "gluteos"
+    ],
+    "primaryGroup": "gluteos",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 12,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 10,
+      "tempo": "2-0-2",
+      "perSide": true,
+      "estimatedSec": 55
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "pared"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie, con una mano en la pared para equilibrarte.",
+      "Eleva la pierna de afuera hacia el lado manteniendo el torso quieto.",
+      "Baja con control; completa las reps y cambia de lado."
+    ],
+    "cues": [
+      "Torso vertical sin inclinarse",
+      "Movimiento lento, sin impulso"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "cadera",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Dolor de cadera o pérdida de equilibrio: usar la variante acostada."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Mano en la pared todo el tiempo; rango corto.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Ekstrom RA, Donatelli RA, Carp KC. Electromyographic Analysis of Core Trunk, Hip, and Thigh Muscles During 9 Rehabilitation Exercises. J Orthop Sports Phys Ther. 2007;37(12):754-762.",
+        "doi": "10.2519/jospt.2007.2471",
+        "url": "https://doi.org/10.2519/jospt.2007.2471",
+        "note": "Abducción de cadera de pie: glúteo medio con demanda de estabilidad."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Sherrington C, Fairhall NJ, Wallbank GK, Tiedemann A, et al. Exercise for preventing falls in older people living in the community. Cochrane Database Syst Rev. 2019;1(1):CD012424.",
+        "doi": "10.1002/14651858.CD012424.pub2",
+        "url": "https://doi.org/10.1002/14651858.CD012424.pub2",
+        "note": "El apoyo estable reduce el riesgo de caídas en ejercimientos de pie."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "puente-gluteo-l2",
+    "version": 1,
+    "name": "Puente de glúteo con pausa",
+    "shortName": "Puente pausa",
+    "muscleGroups": [
+      "gluteos",
+      "core"
+    ],
+    "primaryGroup": "gluteos",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 15,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "2-2-1",
+      "perSide": false,
+      "estimatedSec": 70
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Posición de puente con pies al ancho de caderas.",
+      "Eleva la cadera y mantén la contracción 2 segundos arriba.",
+      "Baja en 1 segundo y repite sin apoyar del todo entre reps."
+    ],
+    "cues": [
+      "Pausa real de 2 segundos arriba",
+      "Costillas abajo, abdomen activo"
+    ],
+    "easier": "puente-gluteo-l1",
+    "harder": "puente-gluteo-una-pierna-l3",
+    "careZones": [
+      "lumbar"
+    ],
+    "contraindications": [
+      "Dolor lumbar: volver a puente-gluteo-l1 con rango corto."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Mantener la pausa en 1 segundo.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Ekstrom RA, Donatelli RA, Carp KC. Electromyographic Analysis of Core Trunk, Hip, and Thigh Muscles During 9 Rehabilitation Exercises. J Orthop Sports Phys Ther. 2007;37(12):754-762.",
+        "doi": "10.2519/jospt.2007.2471",
+        "url": "https://doi.org/10.2519/jospt.2007.2471",
+        "note": "Activación de glúteo mayor en el puente; la pausa aumenta el tiempo bajo tensión."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Schoenfeld BJ, Ogborn D, Krieger JW. Dose-response relationship between weekly resistance training volume and increases in muscle mass: A systematic review and meta-analysis. J Sports Sci. 2016;35(11):1073-1082.",
+        "doi": "10.1080/02640414.2016.1210197",
+        "url": "https://doi.org/10.1080/02640414.2016.1210197",
+        "note": "El volumen (reps × series) se incrementa de forma gradual entre niveles."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "puente-gluteo-una-pierna-l3",
+    "version": 1,
+    "name": "Puente de glúteo a una pierna",
+    "shortName": "Puente 1 pierna",
+    "muscleGroups": [
+      "gluteos",
+      "core"
+    ],
+    "primaryGroup": "gluteos",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 10,
+      "tempo": "2-1-1",
+      "perSide": true,
+      "estimatedSec": 75
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Posición de puente con una pierna extendida al frente.",
+      "Eleva la cadera con la pierna apoyada sin dejar caer la cadera del lado libre.",
+      "Baja con control; completa las reps y cambia de lado."
+    ],
+    "cues": [
+      "Caderas a la misma altura",
+      "Pausa de 1 segundo arriba"
+    ],
+    "easier": "puente-gluteo-l2",
+    "harder": "puente-hombros-elevados-l4",
+    "careZones": [
+      "lumbar"
+    ],
+    "contraindications": [
+      "Dolor lumbar o desbalance de cadera evidente: volver a puente-gluteo-l2."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Solo si el puente bilateral es cómodo; pierna libre con rodilla doblada.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Ekstrom RA, Donatelli RA, Carp KC. Electromyographic Analysis of Core Trunk, Hip, and Thigh Muscles During 9 Rehabilitation Exercises. J Orthop Sports Phys Ther. 2007;37(12):754-762.",
+        "doi": "10.2519/jospt.2007.2471",
+        "url": "https://doi.org/10.2519/jospt.2007.2471",
+        "note": "Progresión unilateral del puente: mayor demanda de glúteo y control pélvico."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Progresión por palancas y apoyo unilateral cuando la base está consolidada."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "puente-hombros-elevados-l4",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Puente con hombros elevados",
+    "shortName": "Puente elevado",
+    "muscleGroups": [
+      "gluteos",
+      "piernas"
+    ],
+    "primaryGroup": "gluteos",
+    "level": 4,
+    "dose": {
+      "type": "reps",
+      "reps": 12,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": "2-1-1",
+      "perSide": false,
+      "estimatedSec": 102
+    },
+    "locations": [
+      "casa",
+      "parque"
+    ],
+    "equipment": [
+      "banca-parque"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Apoya la parte alta de la espalda en el borde de un sofá o banca firme.",
+      "Pies al ancho de cadera, rodillas dobladas a 90° al subir.",
+      "Empuja con los talones y sube la cadera hasta alinearla con hombros y rodillas.",
+      "Aprieta glúteos 1 s arriba y baja controlado."
+    ],
+    "cues": [
+      "Mentón recogido",
+      "Costillas abajo, sin arquear la lumbar"
+    ],
+    "easier": "puente-gluteo-una-pierna-l3",
+    "harder": "puente-una-pierna-elevado-l5",
+    "careZones": [
+      "lumbar"
+    ],
+    "contraindications": [
+      "Dolor lumbar al subir: reduce la altura y vuelve al puente en el piso. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa a una pierna cuando hagas 2×12 con pausa arriba y sin molestia lumbar en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "puente-una-pierna-elevado-l5",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Puente a una pierna con hombros elevados",
+    "shortName": "Puente 1 pierna",
+    "muscleGroups": [
+      "gluteos",
+      "piernas"
+    ],
+    "primaryGroup": "gluteos",
+    "level": 5,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": "2-1-1",
+      "perSide": true,
+      "estimatedSec": 102
+    },
+    "locations": [
+      "casa",
+      "parque"
+    ],
+    "equipment": [
+      "banca-parque"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Espalda alta en el borde de un sofá o banca firme y pies apoyados.",
+      "Levanta un pie y estira esa pierna o dobla la rodilla al pecho.",
+      "Empuja con el talón apoyado hasta alinear la cadera.",
+      "Pausa 1 s, baja controlado; termina el lado y cambia."
+    ],
+    "cues": [
+      "Cadera nivelada, sin girar",
+      "Empuja con el talón"
+    ],
+    "easier": "puente-hombros-elevados-l4",
+    "harder": "peso-muerto-una-pierna-l6",
+    "careZones": [
+      "lumbar",
+      "cadera"
+    ],
+    "contraindications": [
+      "Si la cadera se tuerce o duele la lumbar: vuelve a la versión con dos pies. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa al peso muerto a una pierna cuando hagas 2×6 por lado con la cadera nivelada en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "peso-muerto-una-pierna-l6",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Peso muerto a una pierna",
+    "shortName": "Peso muerto 1p",
+    "muscleGroups": [
+      "gluteos",
+      "piernas"
+    ],
+    "primaryGroup": "gluteos",
+    "level": 6,
+    "dose": {
+      "type": "reps",
+      "reps": 5,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": "3-0-1",
+      "perSide": true,
+      "estimatedSec": 110
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie sobre una pierna, rodilla levemente flexionada.",
+      "Inclina el tronco al frente mientras la otra pierna sube estirada atrás.",
+      "Baja hasta sentir el estiramiento atrás del muslo, espalda recta.",
+      "Vuelve arriba apretando el glúteo; termina el lado y cambia."
+    ],
+    "cues": [
+      "Cadera y hombros en línea recta",
+      "Pelvis cuadrada al piso"
+    ],
+    "easier": "puente-una-pierna-elevado-l5",
+    "harder": null,
+    "careZones": [
+      "lumbar",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Pérdida de equilibrio: toca la pared con una mano. Dolor lumbar: reduce el rango. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Cierra Adepto con 2×5 por lado sin apoyar el pie; siguiente paso (Magister): con pausa de 2 s abajo.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Con una mano en la pared.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "flexion-rodillas-l2",
+    "version": 1,
+    "name": "Flexión de rodillas",
+    "shortName": "Flexión rodillas",
+    "muscleGroups": [
+      "empuje"
+    ],
+    "primaryGroup": "empuje",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 50
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "toalla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De rodillas sobre una toalla (protege las rodillas), manos al ancho del pecho.",
+      "Baja el pecho hacia el piso con el cuerpo alineado de rodillas a cabeza.",
+      "Empuja hasta extender los brazos."
+    ],
+    "cues": [
+      "Caderas extendidas, no elevadas",
+      "Codos a unos 45 grados del tronco"
+    ],
+    "easier": "flexion-pared-l1",
+    "harder": "flexion-completa-l3",
+    "careZones": [
+      "hombro",
+      "muneca"
+    ],
+    "contraindications": [
+      "Dolor de hombro o muñeca: usar flexion-pared-l1; dolor de rodilla: doblar la toalla como colchón."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Prefiera flexion-pared-l1; si hace esta, rango corto.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Kotarsky CJ, Christensen BK, Miller JS, Hackney JK. Effect of Progressive Calisthenic Push-up Training on Muscle Strength and Thickness. J Strength Cond Res. 2018;32(3):651-659.",
+        "doi": "10.1519/JSC.0000000000002345",
+        "url": "https://doi.org/10.1519/JSC.0000000000002345",
+        "note": "La progresión de flexiones de rodillas a completas mejora la fuerza de empuje."
+      },
+      {
+        "type": "public-domain-technique",
+        "citation": "Royal Canadian Air Force. 5BX Plan for Physical Fitness. Ottawa: RCAF; 1960-1962 (dominio público).",
+        "doi": null,
+        "url": "https://archive.org/details/5bx-plan-1st-ed-revised-1960",
+        "note": "Las flexiones de rodillas son paso documentado de la calistenia clásica hacia la flexión completa."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "flexion-completa-l3",
+    "version": 1,
+    "name": "Flexión completa",
+    "shortName": "Flexión",
+    "muscleGroups": [
+      "empuje"
+    ],
+    "primaryGroup": "empuje",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 95
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Manos al ancho del pecho, cuerpo alineado de cabeza a talones.",
+      "Baja hasta que el pecho quede a unos centímetros del piso.",
+      "Empuja hasta extender los brazos sin dejar caer la cadera."
+    ],
+    "cues": [
+      "Línea recta de cabeza a talones",
+      "No contener la respiración"
+    ],
+    "easier": "flexion-rodillas-l2",
+    "harder": "flexion-diamante-l3",
+    "careZones": [
+      "hombro",
+      "muneca"
+    ],
+    "contraindications": [
+      "Dolor de hombro o muñeca: volver a flexion-inclinada-l2; no forzar el rango."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada como primera opción; usar variantes inclinadas.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Kotarsky CJ, Christensen BK, Miller JS, Hackney JK. Effect of Progressive Calisthenic Push-up Training on Muscle Strength and Thickness. J Strength Cond Res. 2018;32(3):651-659.",
+        "doi": "10.1519/JSC.0000000000002345",
+        "url": "https://doi.org/10.1519/JSC.0000000000002345",
+        "note": "El entrenamiento progresivo de flexiones aumenta fuerza y grosor del tríceps y pecho."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "2 series de 8-12 reps con descanso de 30 s para fuerza en nivel intermedio."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "flexion-diamante-l3",
+    "version": 1,
+    "name": "Flexión diamante",
+    "shortName": "Flexión diamante",
+    "muscleGroups": [
+      "empuje"
+    ],
+    "primaryGroup": "empuje",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 85
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Manos juntas bajo el pecho formando un triángulo con los índices y pulgares.",
+      "Baja el pecho hacia las manos manteniendo los codos cerca del tronco.",
+      "Empuja hasta extender los brazos."
+    ],
+    "cues": [
+      "Codos pegados al tronco",
+      "Muñecas neutras: dolor = parar"
+    ],
+    "easier": "flexion-completa-l3",
+    "harder": null,
+    "careZones": [
+      "hombro",
+      "muneca"
+    ],
+    "contraindications": [
+      "Dolor de muñeca, codo u hombro: volver a flexion-completa-l3; esta variante carga más la articulación."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Kotarsky CJ, Christensen BK, Miller JS, Hackney JK. Effect of Progressive Calisthenic Push-up Training on Muscle Strength and Thickness. J Strength Cond Res. 2018;32(3):651-659.",
+        "doi": "10.1519/JSC.0000000000002345",
+        "url": "https://doi.org/10.1519/JSC.0000000000002345",
+        "note": "Las variantes de flexión con mayor exigencia de tríceps son la progresión natural de la flexión completa."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Dosis moderada (6-12 reps) para variantes más exigentes."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "flexion-pike-l3",
+    "version": 1,
+    "name": "Flexión pica",
+    "shortName": "Flexión pica",
+    "muscleGroups": [
+      "empuje"
+    ],
+    "primaryGroup": "empuje",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 85
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Con las manos y los pies en el piso, eleva la cadera formando una V invertida.",
+      "Baja la coronilla hacia el piso flexionando los codos.",
+      "Empuja hasta extender los brazos."
+    ],
+    "cues": [
+      "Cadera alta todo el tiempo",
+      "Movimiento de hombro, no de espalda"
+    ],
+    "easier": "flexion-completa-l3",
+    "harder": null,
+    "careZones": [
+      "hombro",
+      "cuello"
+    ],
+    "contraindications": [
+      "Dolor de hombro o cuello, o presión arterial elevada (posición cabeza abajo): omitir la carta."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Kotarsky CJ, Christensen BK, Miller JS, Hackney JK. Effect of Progressive Calisthenic Push-up Training on Muscle Strength and Thickness. J Strength Cond Res. 2018;32(3):651-659.",
+        "doi": "10.1519/JSC.0000000000002345",
+        "url": "https://doi.org/10.1519/JSC.0000000000002345",
+        "note": "Progresión calisténica de empuje con mayor carga de hombro."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. ACSM's Guidelines for Exercise Testing and Prescription. 11th ed. Philadelphia: Wolters Kluwer; 2021.",
+        "doi": null,
+        "url": "https://www.acsm.org/education-resources/books/guidelines-exercise-testing-prescription",
+        "note": "Técnica de flexión en pica para trabajo de hombro con peso corporal."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "flexion-tempo-l4",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Flexión completa lenta",
+    "shortName": "Flexión lenta",
+    "muscleGroups": [
+      "empuje",
+      "core"
+    ],
+    "primaryGroup": "empuje",
+    "level": 4,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "3-1-1",
+      "perSide": false,
+      "estimatedSec": 104
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Manos bajo los hombros y cuerpo recto de la cabeza a los talones.",
+      "Baja en 3 s hasta que el pecho quede a un puño del piso.",
+      "Pausa 1 s abajo sin apoyarte.",
+      "Empuja el piso y sube en 1 s."
+    ],
+    "cues": [
+      "Codos a 45° del cuerpo",
+      "Glúteos y abdomen firmes"
+    ],
+    "easier": "flexion-completa-l3",
+    "harder": "flexion-declinada-l5",
+    "careZones": [
+      "hombro",
+      "muneca"
+    ],
+    "contraindications": [
+      "Dolor de muñeca: apoya los puños o usa un borde elevado. Dolor de hombro: vuelve a la flexión de rodillas. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa a la declinada cuando hagas 2×8 lentas con el cuerpo recto en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "flexion-declinada-l5",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Flexión declinada",
+    "shortName": "Flexión declinada",
+    "muscleGroups": [
+      "empuje",
+      "core"
+    ],
+    "primaryGroup": "empuje",
+    "level": 5,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "2-0-1",
+      "perSide": false,
+      "estimatedSec": 88
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula"
+    ],
+    "equipment": [
+      "silla",
+      "escalon"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Pies sobre una silla o escalón firme y manos en el piso bajo los hombros.",
+      "Cuerpo recto de la cabeza a los talones.",
+      "Baja controlado hasta acercar el pecho al piso.",
+      "Empuja y sube sin hundir la cadera."
+    ],
+    "cues": [
+      "Mira un poco adelante de las manos",
+      "No dejes caer la cadera"
+    ],
+    "easier": "flexion-tempo-l4",
+    "harder": "flexion-pike-elevada-l6",
+    "careZones": [
+      "hombro",
+      "muneca",
+      "hipertension"
+    ],
+    "contraindications": [
+      "Hipertensión no controlada: evita la cabeza abajo; usa la flexión lenta. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa a la pica elevada cuando hagas 2×8 con técnica limpia en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "flexion-pike-elevada-l6",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Flexión pica con pies elevados",
+    "shortName": "Pica elevada",
+    "muscleGroups": [
+      "empuje"
+    ],
+    "primaryGroup": "empuje",
+    "level": 6,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "3-0-1",
+      "perSide": false,
+      "estimatedSec": 88
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "aula"
+    ],
+    "equipment": [
+      "silla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Pies sobre una silla firme y manos en el piso, cadera alta en forma de V invertida.",
+      "Dobla los codos y baja la cabeza hacia el piso en 3 s.",
+      "Toca suave con la coronilla o quédate a un puño del piso.",
+      "Empuja hasta estirar los brazos sin bajar la cadera."
+    ],
+    "cues": [
+      "Cadera arriba de los hombros",
+      "Cabeza entre las manos, en triángulo"
+    ],
+    "easier": "flexion-declinada-l5",
+    "harder": null,
+    "careZones": [
+      "hombro",
+      "muneca",
+      "cuello",
+      "hipertension"
+    ],
+    "contraindications": [
+      "Hipertensión, glaucoma o mareo con la cabeza abajo: no hacerla. Dolor de hombro o cuello: vuelve a la pica en el piso. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Cierra Adepto con 2×6 controladas; siguiente paso (Magister): flexión arquero.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "remo-banca-l2",
+    "version": 1,
+    "name": "Remo invertido en banca",
+    "shortName": "Remo banca",
+    "muscleGroups": [
+      "traccion"
+    ],
+    "primaryGroup": "traccion",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 55
+    },
+    "locations": [
+      "parque"
+    ],
+    "equipment": [
+      "banca-parque"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Sujeta el borde de una banca o barra baja del parque con ambas manos.",
+      "Con los pies en el piso y el cuerpo alineado, tira del pecho hacia la barra.",
+      "Baja controlado hasta extender los brazos."
+    ],
+    "cues": [
+      "Glúteos y abdomen activos",
+      "Tirar con los codos hacia atrás"
+    ],
+    "easier": "remo-toalla-iso-l1",
+    "harder": "remo-mesa-alto-l3",
+    "careZones": [
+      "hombro"
+    ],
+    "contraindications": [
+      "Dolor de hombro: reducir el recorrido o volver a remo-toalla-l1."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Asegurar agarre firme y pie estable.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "public-domain-technique",
+        "citation": "Royal Canadian Air Force. 5BX Plan for Physical Fitness. Ottawa: RCAF; 1960-1962 (dominio público).",
+        "doi": null,
+        "url": "https://archive.org/details/5bx-plan-1st-ed-revised-1960",
+        "note": "Remo invertido con apoyo de banca: técnica de tracción con peso corporal."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Dosis de 1 serie de 8-12 reps para tracción en principiantes."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "remo-mesa-l2",
+    "version": 1,
+    "name": "Remo invertido bajo la mesa",
+    "shortName": "Remo mesa",
+    "muscleGroups": [
+      "traccion"
+    ],
+    "primaryGroup": "traccion",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 55
+    },
+    "locations": [
+      "casa"
+    ],
+    "equipment": [
+      "mesa-firme"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Acuéstate bajo una mesa firme y sujeta el borde con ambas manos al ancho del pecho.",
+      "Tira del pecho hacia la mesa manteniendo el cuerpo alineado.",
+      "Baja controlado hasta extender los brazos."
+    ],
+    "cues": [
+      "Cuerpo rígido de cabeza a talones",
+      "Tirar con la espalda, no solo con los brazos"
+    ],
+    "easier": "remo-toalla-iso-l1",
+    "harder": "remo-mesa-alto-l3",
+    "careZones": [
+      "hombro",
+      "lumbar"
+    ],
+    "contraindications": [
+      "Dolor de hombro o lumbar: usar remo-toalla-l1; la mesa debe estar verificada como firme para no volcarse."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Solo con mesa verificada; si no, remo-toalla-l1.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "public-domain-technique",
+        "citation": "Royal Canadian Air Force. 5BX Plan for Physical Fitness. Ottawa: RCAF; 1960-1962 (dominio público).",
+        "doi": null,
+        "url": "https://archive.org/details/5bx-plan-1st-ed-revised-1960",
+        "note": "El remo invertido con apoyo de mueble es técnica de calistenia sin equipo documentada."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Dosis de 1 serie de 8-12 reps para tracción en principiantes."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "dominada-negativa-l3",
+    "version": 1,
+    "name": "Dominada negativa",
+    "shortName": "Dominada negativa",
+    "muscleGroups": [
+      "traccion"
+    ],
+    "primaryGroup": "traccion",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 4,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "4-0-1",
+      "perSide": false,
+      "estimatedSec": 85
+    },
+    "locations": [
+      "parque"
+    ],
+    "equipment": [
+      "banca-parque"
+    ],
+    "impact": "bajo",
+    "noise": "moderado",
+    "steps": [
+      "Desde una banca o estructura baja, lleva el mentón por encima del agarre (salta o empuja con los pies).",
+      "Baja el cuerpo lo más lento posible (4 segundos) hasta estirar los brazos.",
+      "Vuelve a la posición alta con ayuda de los pies y repite."
+    ],
+    "cues": [
+      "Bajar lento es el ejercicio",
+      "Hombros activos, sin colgarse de las articulaciones"
+    ],
+    "easier": "remo-mesa-alto-l3",
+    "harder": null,
+    "careZones": [
+      "hombro"
+    ],
+    "contraindications": [
+      "Dolor de hombro o codo al colgarse: usar remo-mesa-alto-l3; estructura inestable: no usar."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "public-domain-technique",
+        "citation": "Royal Canadian Air Force. 5BX Plan for Physical Fitness. Ottawa: RCAF; 1960-1962 (dominio público).",
+        "doi": null,
+        "url": "https://archive.org/details/5bx-plan-1st-ed-revised-1960",
+        "note": "Las negativas son la técnica clásica de progresión hacia la dominada completa."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Series bajas de repeticiones lentas para fuerza en ejercicios exigentes."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "remo-mesa-alto-l3",
+    "version": 1,
+    "name": "Remo invertido con pies elevados",
+    "shortName": "Remo pies altos",
+    "muscleGroups": [
+      "traccion"
+    ],
+    "primaryGroup": "traccion",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 55
+    },
+    "locations": [
+      "casa",
+      "parque"
+    ],
+    "equipment": [
+      "mesa-firme",
+      "banca-parque"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Sujeta el borde de una mesa o banca firme y eleva los pies sobre un apoyo estable.",
+      "Con el cuerpo alineado, tira del pecho hacia el borde.",
+      "Baja controlado hasta extender los brazos."
+    ],
+    "cues": [
+      "Cuerpo rígido como una tabla",
+      "Pies por encima del nivel del pecho"
+    ],
+    "easier": "remo-mesa-l2",
+    "harder": "dominada-negativa-l3",
+    "careZones": [
+      "hombro",
+      "lumbar"
+    ],
+    "contraindications": [
+      "Dolor de hombro o lumbar: usar remo-mesa-l2 con los pies en el piso."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada; usar remo-toalla-l1 o remo-mesa-l2.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "public-domain-technique",
+        "citation": "Royal Canadian Air Force. 5BX Plan for Physical Fitness. Ottawa: RCAF; 1960-1962 (dominio público).",
+        "doi": null,
+        "url": "https://archive.org/details/5bx-plan-1st-ed-revised-1960",
+        "note": "La elevación de pies es el escalón clásico de progresión del remo invertido."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Progresión por palancas cuando la variante base se domina."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "remo-mesa-pausa-l4",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Remo invertido con pausa",
+    "shortName": "Remo con pausa",
+    "muscleGroups": [
+      "traccion",
+      "core"
+    ],
+    "primaryGroup": "traccion",
+    "level": 4,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": "2-2-1",
+      "perSide": false,
+      "estimatedSec": 88
+    },
+    "locations": [
+      "casa",
+      "oficina"
+    ],
+    "equipment": [
+      "mesa-firme"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Acuéstate bajo una mesa muy firme y toma el borde con las manos al ancho de hombros.",
+      "Cuerpo recto, talones en el piso (o pies elevados si ya puedes).",
+      "Tira del pecho hacia el borde juntando los omóplatos.",
+      "Sostén 2 s arriba y baja controlado."
+    ],
+    "cues": [
+      "Pecho al borde, no el mentón",
+      "Hombros lejos de las orejas"
+    ],
+    "easier": "remo-mesa-alto-l3",
+    "harder": "dominada-isometrica-l5",
+    "careZones": [
+      "hombro",
+      "lumbar"
+    ],
+    "contraindications": [
+      "Mesa que se mueve o cruje: no usar. Dolor de hombro: vuelve al remo con toalla. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa a la isométrica en barra cuando hagas 2×8 con 2 s arriba en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "dominada-isometrica-l5",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Dominada isométrica arriba",
+    "shortName": "Dominada iso",
+    "muscleGroups": [
+      "traccion",
+      "empuje"
+    ],
+    "primaryGroup": "traccion",
+    "level": 5,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 8,
+      "sets": 3,
+      "restSec": 30,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 94
+    },
+    "locations": [
+      "parque"
+    ],
+    "equipment": [
+      "banca-parque"
+    ],
+    "impact": "bajo",
+    "noise": "moderado",
+    "steps": [
+      "Desde una banca o escalón, toma una barra del parque con las palmas al frente.",
+      "Sube con ayuda de los pies hasta que el mentón pase la barra.",
+      "Quita los pies y sostén arriba 8 s con los hombros firmes.",
+      "Baja apoyando los pies; descansa y repite."
+    ],
+    "cues": [
+      "Pecho hacia la barra",
+      "Codos pegados al cuerpo"
+    ],
+    "easier": "remo-mesa-pausa-l4",
+    "harder": "dominada-negativa-lenta-l6",
+    "careZones": [
+      "hombro"
+    ],
+    "contraindications": [
+      "Dolor de hombro o codo al colgar: vuelve al remo invertido. Estructura inestable: no usar. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa a la negativa lenta cuando sostengas 3×8 s sin bajar el mentón en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "dominada-negativa-lenta-l6",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Dominada negativa lenta",
+    "shortName": "Negativa lenta",
+    "muscleGroups": [
+      "traccion",
+      "empuje"
+    ],
+    "primaryGroup": "traccion",
+    "level": 6,
+    "dose": {
+      "type": "reps",
+      "reps": 3,
+      "durationSec": null,
+      "sets": 3,
+      "restSec": 30,
+      "tempo": "6-0-1",
+      "perSide": false,
+      "estimatedSec": 97
+    },
+    "locations": [
+      "parque"
+    ],
+    "equipment": [
+      "banca-parque"
+    ],
+    "impact": "bajo",
+    "noise": "moderado",
+    "steps": [
+      "Desde una banca, sube con los pies hasta tener el mentón sobre la barra.",
+      "Quita los pies y baja en 6 s hasta estirar los brazos.",
+      "Al final, cuelga 1 s con los hombros activos.",
+      "Apoya los pies y vuelve a subir para la siguiente."
+    ],
+    "cues": [
+      "Cuenta 6 s en voz baja",
+      "Sin soltarte de golpe al final"
+    ],
+    "easier": "dominada-isometrica-l5",
+    "harder": null,
+    "careZones": [
+      "hombro"
+    ],
+    "contraindications": [
+      "Dolor de hombro o codo: vuelve a la isométrica. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Cierra Adepto con 3×3 de 6 s; siguiente paso (Magister): primera dominada completa.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "plancha-frontal-l2",
+    "version": 1,
+    "name": "Plancha frontal",
+    "shortName": "Plancha",
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryGroup": "core",
+    "level": 2,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 25,
+      "sets": 2,
+      "restSec": 15,
+      "tempo": "isometrico",
+      "perSide": false,
+      "estimatedSec": 65
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Apoya antebrazos y puntas de los pies, codos bajo los hombros.",
+      "Mantén el cuerpo alineado de cabeza a talones.",
+      "Mantén 25 segundos respirando con normalidad."
+    ],
+    "cues": [
+      "Cadera ni alta ni caída",
+      "Respiración continua"
+    ],
+    "easier": "plancha-rodillas-l1",
+    "harder": "plancha-toque-hombro-l4",
+    "careZones": [
+      "lumbar",
+      "hombro",
+      "hipertension"
+    ],
+    "contraindications": [
+      "Dolor lumbar: volver a plancha-rodillas-l1. Hipertensión: mantener ≤25 s por vez y respirar."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Volver a plancha-rodillas-l1 si aparece temblor o dolor.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "McGill S. Core Training: Evidence Translating to Better Performance and Injury Prevention. Strength Cond J. 2010;32(3):33-46.",
+        "doi": "10.1519/SSC.0b013e3181df4521",
+        "url": "https://doi.org/10.1519/SSC.0b013e3181df4521",
+        "note": "La plancha es el estándar de estabilidad del core con columna neutra."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Carlson DJ, Dieberg G, Hess NC, Millar PJ, Smart NA. Isometric Exercise Training for Blood Pressure Management: A Systematic Review and Meta-analysis. Mayo Clin Proc. 2014;89(3):327-334.",
+        "doi": "10.1016/j.mayocp.2013.10.030",
+        "url": "https://doi.org/10.1016/j.mayocp.2013.10.030",
+        "note": "Duraciones moderadas de isométricos con respiración continua son seguras y efectivas."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "plancha-lateral-rodillas-l2",
+    "version": 1,
+    "name": "Plancha lateral en rodillas",
+    "shortName": "Lateral rodillas",
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryGroup": "core",
+    "level": 2,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 15,
+      "sets": 1,
+      "restSec": 10,
+      "tempo": "isometrico",
+      "perSide": true,
+      "estimatedSec": 40
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Acostado de lado, apoya el antebrazo bajo el hombro y las rodillas dobladas.",
+      "Eleva la cadera formando una línea de rodillas a cabeza.",
+      "Mantén 15 segundos y cambia de lado."
+    ],
+    "cues": [
+      "Cadera elevada, no caída",
+      "Cuello alineado con el tronco"
+    ],
+    "easier": null,
+    "harder": "plancha-lateral-l3",
+    "careZones": [
+      "lumbar",
+      "hombro"
+    ],
+    "contraindications": [
+      "Dolor de hombro o lumbar: reducir el tiempo o apoyar la cadera en el piso."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Variante lateral recomendada; rango corto.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "McGill S. Core Training: Evidence Translating to Better Performance and Injury Prevention. Strength Cond J. 2010;32(3):33-46.",
+        "doi": "10.1519/SSC.0b013e3181df4521",
+        "url": "https://doi.org/10.1519/SSC.0b013e3181df4521",
+        "note": "La estabilización lateral (oblicuos) complementa el trabajo antiextensión del core."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Mantenimientos de 10-30 s en 1-3 series para principiantes."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "elevacion-piernas-l3",
+    "version": 1,
+    "name": "Elevación de piernas acostado",
+    "shortName": "Eleva piernas",
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryGroup": "core",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 50
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Acostado boca arriba, manos a los lados y piernas estiradas.",
+      "Eleva las piernas juntas hasta formar 90 grados con el tronco.",
+      "Baja despacio sin dejar que la zona lumbar se despegue del piso."
+    ],
+    "cues": [
+      "Zona lumbar pegada al piso al bajar",
+      "Bajar en 2 segundos, sin impulso"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "lumbar"
+    ],
+    "contraindications": [
+      "Dolor lumbar al bajar las piernas: reducir el rango o volver a dead-bug-l1."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada; preferir dead-bug-l1.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "McGill S. Core Training: Evidence Translating to Better Performance and Injury Prevention. Strength Cond J. 2010;32(3):33-46.",
+        "doi": "10.1519/SSC.0b013e3181df4521",
+        "url": "https://doi.org/10.1519/SSC.0b013e3181df4521",
+        "note": "Los ejercicios de flexión de cadera con control lumbar trabajan el abdomen sin cargar la espalda."
+      },
+      {
+        "type": "guideline",
+        "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults: Position Stand. Med Sci Sports Exerc. 2009;41(3):687-708.",
+        "doi": "10.1249/MSS.0b013e3181915670",
+        "url": "https://doi.org/10.1249/MSS.0b013e3181915670",
+        "note": "Dosis de 1 serie de 6-12 reps con tempo controlado en nivel avanzado inicial."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "plancha-lateral-l3",
+    "version": 1,
+    "name": "Plancha lateral",
+    "shortName": "Lateral",
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryGroup": "core",
+    "level": 3,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 20,
+      "sets": 1,
+      "restSec": 10,
+      "tempo": "isometrico",
+      "perSide": true,
+      "estimatedSec": 55
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Acostado de lado, apoya el antebrazo bajo el hombro y los pies apilados.",
+      "Eleva la cadera formando una línea de pies a cabeza.",
+      "Mantén 20 segundos y cambia de lado."
+    ],
+    "cues": [
+      "Cuerpo en línea, sin girar la cadera",
+      "Respiración continua"
+    ],
+    "easier": "plancha-lateral-rodillas-l2",
+    "harder": null,
+    "careZones": [
+      "lumbar",
+      "hombro",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Dolor de hombro o lumbar: volver a plancha-lateral-rodillas-l2."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Solo con la variante en rodillas.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "McGill S. Core Training: Evidence Translating to Better Performance and Injury Prevention. Strength Cond J. 2010;32(3):33-46.",
+        "doi": "10.1519/SSC.0b013e3181df4521",
+        "url": "https://doi.org/10.1519/SSC.0b013e3181df4521",
+        "note": "La estabilización lateral con base de pies entrena oblicuos y control pélvico."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Carlson DJ, Dieberg G, Hess NC, Millar PJ, Smart NA. Isometric Exercise Training for Blood Pressure Management: A Systematic Review and Meta-analysis. Mayo Clin Proc. 2014;89(3):327-334.",
+        "doi": "10.1016/j.mayocp.2013.10.030",
+        "url": "https://doi.org/10.1016/j.mayocp.2013.10.030",
+        "note": "Mantenimientos isométricos moderados con respiración continua."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "plancha-toque-hombro-l4",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Plancha con toque de hombro",
+    "shortName": "Toque de hombro",
+    "muscleGroups": [
+      "core",
+      "empuje"
+    ],
+    "primaryGroup": "core",
+    "level": 4,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": "2-0-2",
+      "perSide": true,
+      "estimatedSec": 102
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Plancha alta: manos bajo los hombros y pies separados al ancho de cadera.",
+      "Levanta una mano y toca el hombro contrario.",
+      "Regresa la mano al piso sin que la cadera gire.",
+      "Alterna lados de forma lenta."
+    ],
+    "cues": [
+      "Cadera quieta, como si tuvieras un vaso en la espalda",
+      "Abdomen firme"
+    ],
+    "easier": "plancha-frontal-l2",
+    "harder": "hollow-agrupado-l5",
+    "careZones": [
+      "muneca",
+      "hombro"
+    ],
+    "contraindications": [
+      "Dolor de muñeca: apoya las manos en un borde firme. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa al hollow agrupado cuando hagas 2×6 por lado sin girar la cadera en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "hollow-agrupado-l5",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Hollow agrupado",
+    "shortName": "Hollow agrupado",
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryGroup": "core",
+    "level": 5,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 20,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 70
+    },
+    "locations": [
+      "casa",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Boca arriba, rodillas al pecho y brazos junto al cuerpo.",
+      "Despega cabeza y hombros del piso y pega la lumbar al suelo.",
+      "Lleva las rodillas sobre la cadera, piernas a 90°.",
+      "Sostén 20 s respirando; baja despacio."
+    ],
+    "cues": [
+      "Lumbar pegada al piso todo el tiempo",
+      "Mentón recogido"
+    ],
+    "easier": "plancha-toque-hombro-l4",
+    "harder": "hollow-extendido-l6",
+    "careZones": [
+      "lumbar",
+      "cuello",
+      "embarazo"
+    ],
+    "contraindications": [
+      "Si la lumbar se despega o duele: acerca más las rodillas. Embarazo: no hacerla boca arriba. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa al hollow extendido cuando sostengas 2×20 s con la lumbar pegada en 3 días distintos.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "hollow-extendido-l6",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Hollow extendido",
+    "shortName": "Hollow",
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryGroup": "core",
+    "level": 6,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 25,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 80
+    },
+    "locations": [
+      "casa",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Boca arriba con brazos estirados sobre la cabeza y piernas juntas.",
+      "Despega hombros y piernas del piso a la vez.",
+      "Forma una «banana»: lumbar pegada al suelo y piernas a 30° del piso.",
+      "Sostén 25 s; si la lumbar se despega, sube las piernas."
+    ],
+    "cues": [
+      "Lumbar pegada",
+      "Costillas abajo"
+    ],
+    "easier": "hollow-agrupado-l5",
+    "harder": null,
+    "careZones": [
+      "lumbar",
+      "cuello",
+      "embarazo"
+    ],
+    "contraindications": [
+      "Si la lumbar se arquea: vuelve al hollow agrupado. Embarazo: no hacerla. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Cierra Adepto con 2×25 s sin que se despegue la lumbar; siguiente paso (Magister): hollow con balanceo.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "apertura-hombros-toalla-l2",
+    "version": 1,
+    "name": "Apertura de hombros con toalla",
+    "shortName": "Apertura hombros",
+    "muscleGroups": [
+      "movilidad"
+    ],
+    "primaryGroup": "movilidad",
+    "level": 2,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "2-0-2",
+      "perSide": false,
+      "estimatedSec": 50
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "toalla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Sujeta la toalla con ambas manos, un poco más ancho que los hombros.",
+      "Con los brazos estirados, sube la toalla por encima de la cabeza hasta la espalda, si el rango lo permite.",
+      "Vuelve al frente por el mismo camino."
+    ],
+    "cues": [
+      "Agarre amplio para aligerar",
+      "No forzar el rango al bajar"
+    ],
+    "easier": null,
+    "harder": null,
+    "careZones": [
+      "hombro"
+    ],
+    "contraindications": [
+      "Dolor de hombro al pasar la toalla: ampliar el agarre o reducir el rango; con dolor, omitir."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Agarre muy amplio y rango corto.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Behm DG, Blazevich AJ, Kay AD, McHugh M. Acute effects of muscle stretching on physical performance, range of motion, and injury incidence in healthy active individuals: a systematic review. Appl Physiol Nutr Metab. 2016;41(1):1-11.",
+        "doi": "10.1139/apnm-2015-0235",
+        "url": "https://doi.org/10.1139/apnm-2015-0235",
+        "note": "La movilidad de hombro activa mejora el rango sin efecto negativo si se hace sin dolor."
+      },
+      {
+        "type": "public-domain-technique",
+        "citation": "Royal Canadian Air Force. 5BX Plan for Physical Fitness. Ottawa: RCAF; 1960-1962 (dominio público).",
+        "doi": null,
+        "url": "https://archive.org/details/5bx-plan-1st-ed-revised-1960",
+        "note": "Pasadas de bastón/toalla para movilidad de hombro: técnica clásica documentada."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "estiramiento-flexor-cadera-l2",
+    "version": 1,
+    "name": "Estiramiento de flexores de cadera",
+    "shortName": "Estira cadera",
+    "muscleGroups": [
+      "movilidad"
+    ],
+    "primaryGroup": "movilidad",
+    "level": 2,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 20,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "estatico",
+      "perSide": true,
+      "estimatedSec": 60
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula",
+      "cualquiera"
+    ],
+    "equipment": [
+      "toalla"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "En una rodilla sobre una toalla, con la otra pierna adelante a 90 grados.",
+      "Lleva la cadera suavemente al frente, apretando el glúteo de atrás.",
+      "Mantén 20 segundos y cambia de lado."
+    ],
+    "cues": [
+      "Cadera al frente, abdomen activo",
+      "No arquear la espalda baja"
+    ],
+    "easier": null,
+    "harder": "estiramiento-flexor-cadera-pie-l3",
+    "careZones": [
+      "cadera",
+      "rodilla"
+    ],
+    "contraindications": [
+      "Dolor de rodilla en la apoyada: doblar la toalla o usar la variante de pie."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Mano en la pared para el equilibrio; rango corto.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Behm DG, Blazevich AJ, Kay AD, McHugh M. Acute effects of muscle stretching on physical performance, range of motion, and injury incidence in healthy active individuals: a systematic review. Appl Physiol Nutr Metab. 2016;41(1):1-11.",
+        "doi": "10.1139/apnm-2015-0235",
+        "url": "https://doi.org/10.1139/apnm-2015-0235",
+        "note": "Estiramientos de 15-30 s del flexor de cadera mejoran el rango, útil tras jornadas sentado."
+      },
+      {
+        "type": "guideline",
+        "citation": "Ross R, Chaput JP, Giangregorio LM, Janssen I, et al. Canadian 24-Hour Movement Guidelines for Adults aged 18-64 years and Adults aged 65 years or older. Appl Physiol Nutr Metab. 2020;45(10 Suppl 2):S57-S102.",
+        "doi": "10.1139/apnm-2020-0467",
+        "url": "https://doi.org/10.1139/apnm-2020-0467",
+        "note": "La pauta canadiense integra movilidad y menos tiempo sentado en la jornada."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "estiramiento-flexor-cadera-pie-l3",
+    "version": 1,
+    "name": "Estiramiento de flexores de cadera de pie",
+    "shortName": "Estira cadera de pie",
+    "muscleGroups": [
+      "movilidad"
+    ],
+    "primaryGroup": "movilidad",
+    "level": 3,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 25,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "estatico",
+      "perSide": true,
+      "estimatedSec": 65
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "pared"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie junto a una pared, dobla una rodilla y sujeta el empeine con la mano del mismo lado.",
+      "Lleva la cadera al frente manteniendo las rodillas juntas y el torso erguido.",
+      "Mantén 25 segundos y cambia de lado."
+    ],
+    "cues": [
+      "Rodillas juntas, cadera al frente",
+      "Agarre suave, sin tirar del tobillo"
+    ],
+    "easier": "estiramiento-flexor-cadera-l2",
+    "harder": "sentadilla-profunda-sostenida-l4",
+    "careZones": [
+      "cadera",
+      "rodilla",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Dolor de rodilla o falta de equilibrio: usar estiramiento-flexor-cadera-l2."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada sin apoyo firme de pared.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Behm DG, Blazevich AJ, Kay AD, McHugh M. Acute effects of muscle stretching on physical performance, range of motion, and injury incidence in healthy active individuals: a systematic review. Appl Physiol Nutr Metab. 2016;41(1):1-11.",
+        "doi": "10.1139/apnm-2015-0235",
+        "url": "https://doi.org/10.1139/apnm-2015-0235",
+        "note": "Estiramientos estáticos de 15-30 s mejoran el rango de movimiento."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Sherrington C, Fairhall NJ, Wallbank GK, Tiedemann A, et al. Exercise for preventing falls in older people living in the community. Cochrane Database Syst Rev. 2019;1(1):CD012424.",
+        "doi": "10.1002/14651858.CD012424.pub2",
+        "url": "https://doi.org/10.1002/14651858.CD012424.pub2",
+        "note": "En ejercimientos de una pierna, el apoyo estable reduce el riesgo de caídas."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "sentadilla-profunda-sostenida-l4",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Sentadilla profunda sostenida",
+    "shortName": "Sentadilla honda",
+    "muscleGroups": [
+      "movilidad",
+      "piernas"
+    ],
+    "primaryGroup": "movilidad",
+    "level": 4,
+    "dose": {
+      "type": "hold",
+      "reps": null,
+      "durationSec": 30,
+      "sets": 2,
+      "restSec": 15,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 85
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "De pie, pies algo más abiertos que la cadera y puntas un poco hacia fuera.",
+      "Baja hasta el fondo con los talones apoyados.",
+      "Junta las manos al pecho y empuja las rodillas hacia fuera con los codos.",
+      "Respira lento 30 s y sube despacio."
+    ],
+    "cues": [
+      "Talones abajo (si se levantan, pon un libro debajo)",
+      "Pecho alto"
+    ],
+    "easier": "estiramiento-flexor-cadera-pie-l3",
+    "harder": "estiramiento-mundial-l5",
+    "careZones": [
+      "rodilla",
+      "tobillo"
+    ],
+    "contraindications": [
+      "Dolor de rodilla en el fondo: baja solo hasta donde no duela o sujétate de un marco de puerta. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa al estiramiento mundial cuando sostengas 2×30 s con los talones abajo y sin molestia.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Sujetándose de un marco de puerta.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "estiramiento-mundial-l5",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Estiramiento mundial",
+    "shortName": "Estiramiento mundial",
+    "muscleGroups": [
+      "movilidad",
+      "gluteos"
+    ],
+    "primaryGroup": "movilidad",
+    "level": 5,
+    "dose": {
+      "type": "reps",
+      "reps": 4,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "3-2-1",
+      "perSide": true,
+      "estimatedSec": 42
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Da un paso largo al frente y apoya ambas manos en el piso por dentro del pie.",
+      "Baja el codo de ese lado hacia el tobillo.",
+      "Gira el tronco y estira ese brazo hacia el techo, mirando la mano.",
+      "Vuelve, regresa el pie y repite con el otro lado."
+    ],
+    "cues": [
+      "Pierna de atrás estirada",
+      "Gira desde el pecho, no desde el cuello"
+    ],
+    "easier": "sentadilla-profunda-sostenida-l4",
+    "harder": "sentadilla-cosaca-l6",
+    "careZones": [
+      "rodilla",
+      "cadera",
+      "lumbar"
+    ],
+    "contraindications": [
+      "Dolor de cadera o espalda al girar: reduce el giro y apoya la rodilla de atrás. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa a la cosaca cuando hagas 4 por lado sin perder el equilibrio y con el brazo vertical.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Con la rodilla de atrás apoyada.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "sentadilla-cosaca-l6",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Sentadilla cosaca asistida",
+    "shortName": "Cosaca",
+    "muscleGroups": [
+      "movilidad",
+      "piernas"
+    ],
+    "primaryGroup": "movilidad",
+    "level": 6,
+    "dose": {
+      "type": "reps",
+      "reps": 5,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 15,
+      "tempo": "3-1-1",
+      "perSide": true,
+      "estimatedSec": 105
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "Pies muy separados y puntas un poco hacia fuera; si lo necesitas, manos en una silla.",
+      "Lleva el peso a una pierna y baja doblando esa rodilla.",
+      "La otra pierna queda estirada con la punta hacia arriba.",
+      "Sube al centro y repite hacia el otro lado."
+    ],
+    "cues": [
+      "Talón de la pierna doblada apoyado",
+      "Pecho alto"
+    ],
+    "easier": "estiramiento-mundial-l5",
+    "harder": null,
+    "careZones": [
+      "rodilla",
+      "cadera"
+    ],
+    "contraindications": [
+      "Dolor de rodilla o ingle: reduce la profundidad. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Cierra Adepto con 2×5 por lado sin ayuda de las manos; siguiente paso (Magister): cosaca profunda sin apoyo.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Con la silla de apoyo.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "escalador-lento-l2",
+    "version": 1,
+    "name": "Escalador lento",
+    "shortName": "Escalador",
+    "muscleGroups": [
+      "cardio"
+    ],
+    "primaryGroup": "cardio",
+    "level": 2,
+    "dose": {
+      "type": "time",
+      "reps": null,
+      "durationSec": 30,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "continuo",
+      "perSide": false,
+      "estimatedSec": 35
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "bajo",
+    "noise": "silencioso",
+    "steps": [
+      "En cuadrupedia con las manos bajo los hombros, piernas estiradas.",
+      "Lleva una rodilla al pecho y alterna a ritmo lento y controlado.",
+      "Mantén 30 segundos con la cadera estable."
+    ],
+    "cues": [
+      "Cadera baja y estable",
+      "Respiración continua"
+    ],
+    "easier": "marcha-sitio-l1",
+    "harder": "escalador-l4",
+    "careZones": [
+      "hombro",
+      "muneca",
+      "lumbar"
+    ],
+    "contraindications": [
+      "Dolor de hombro, muñeca o lumbar: usar step-jack-l1."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Alternar con apoyo de manos en la pared (inclinado).",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Islam H, Gibala MJ, Little JP. Exercise Snacks: A Novel Strategy to Improve Cardiometabolic Health. Exerc Sport Sci Rev. 2022;50(1):31-37.",
+        "doi": "10.1249/JES.0000000000000275",
+        "url": "https://doi.org/10.1249/JES.0000000000000275",
+        "note": "Actividad intermitente corta con componente de fuerza: encaja en el patrón exercise snack."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Dunstan DW, Kingwell BA, Larsen R, Healy GN, et al. Breaking Up Prolonged Sitting Reduces Postprandial Glucose and Insulin Responses. Diabetes Care. 2012;35(5):976-983.",
+        "doi": "10.2337/dc11-1931",
+        "url": "https://doi.org/10.2337/dc11-1931",
+        "note": "Interrumpir el sedentarismo con actividad corta mejora la respuesta glucémica."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "salto-tijera-l2",
+    "version": 1,
+    "name": "Salto tijera",
+    "shortName": "Salto tijera",
+    "muscleGroups": [
+      "cardio"
+    ],
+    "primaryGroup": "cardio",
+    "level": 2,
+    "dose": {
+      "type": "time",
+      "reps": null,
+      "durationSec": 30,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "continuo",
+      "perSide": false,
+      "estimatedSec": 35
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "medio",
+    "noise": "moderado",
+    "steps": [
+      "De pie, salta abriendo las piernas y subiendo los brazos al mismo tiempo.",
+      "Salta de nuevo cerrando piernas y brazos.",
+      "Mantén 30 segundos a ritmo constante."
+    ],
+    "cues": [
+      "Aterrizar con las rodillas suaves",
+      "Ritmo constante más que velocidad"
+    ],
+    "easier": "step-jacks-l1",
+    "harder": "sentadilla-salto-l3",
+    "careZones": [
+      "tobillo",
+      "rodilla",
+      "equilibrio",
+      "embarazo"
+    ],
+    "contraindications": [
+      "Dolor de rodilla o tobillo, embarazo o riesgo de caídas: usar step-jack-l1 (sin impacto)."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Solo si no hay dolor ni riesgo de caídas; preferir step-jack-l1.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Stamatakis E, Ahmadi MN, Gill JMR, Thøgersen-Ntoumani C, et al. Association of wearable device-measured vigorous intermittent lifestyle physical activity with mortality. Nat Med. 2022;28(12):2521-2529.",
+        "doi": "10.1038/s41591-022-02100-x",
+        "url": "https://doi.org/10.1038/s41591-022-02100-x",
+        "note": "Los episodios cortos de actividad vigorosa se asocian con beneficios relevantes de mortalidad."
+      },
+      {
+        "type": "peer-reviewed",
+        "citation": "Islam H, Gibala MJ, Little JP. Exercise Snacks: A Novel Strategy to Improve Cardiometabolic Health. Exerc Sport Sci Rev. 2022;50(1):31-37.",
+        "doi": "10.1249/JES.0000000000000275",
+        "url": "https://doi.org/10.1249/JES.0000000000000275",
+        "note": "Las ráfagas vigorosas breves son la variante intensa del patrón exercise snack."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "subida-escalon-l2",
+    "version": 1,
+    "name": "Subida de escalón",
+    "shortName": "Sube escalón",
+    "muscleGroups": [
+      "cardio"
+    ],
+    "primaryGroup": "cardio",
+    "level": 2,
+    "dose": {
+      "type": "time",
+      "reps": null,
+      "durationSec": 45,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "continuo",
+      "perSide": false,
+      "estimatedSec": 50
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "escalon"
+    ],
+    "impact": "bajo",
+    "noise": "moderado",
+    "steps": [
+      "Frente a un escalón o primer escalón de escalera, sube con un pie y sigue con el otro.",
+      "Baja en el mismo orden y cambia el pie que inicia cada vez.",
+      "Mantén 45 segundos a ritmo cómodo."
+    ],
+    "cues": [
+      "Pie completo sobre el escalón",
+      "Bajar con control, sin caer"
+    ],
+    "easier": "marcha-sitio-l1",
+    "harder": "sentadilla-salto-l3",
+    "careZones": [
+      "rodilla",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Dolor de rodilla o de tobillo: usar step-jack-l1; riesgo de caídas: apoyarse en la barandal."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Escalón bajo y con apoyo de barandal.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Islam H, Gibala MJ, Little JP. Exercise Snacks: A Novel Strategy to Improve Cardiometabolic Health. Exerc Sport Sci Rev. 2022;50(1):31-37.",
+        "doi": "10.1249/JES.0000000000000275",
+        "url": "https://doi.org/10.1249/JES.0000000000000275",
+        "note": "Subir escalones es una forma práctica de actividad intermitente en la jornada."
+      },
+      {
+        "type": "guideline",
+        "citation": "Bull FC, Al-Ansari SS, Biddle S, Borodulin K, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. Br J Sports Med. 2020;54(24):1451-1462.",
+        "doi": "10.1136/bjsports-2020-102955",
+        "url": "https://doi.org/10.1136/bjsports-2020-102955",
+        "note": "La actividad aeróbica acumulada en la jornada satisface la recomendación semanal."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "sentadilla-salto-l3",
+    "version": 1,
+    "name": "Sentadilla con salto",
+    "shortName": "Sentadilla salto",
+    "muscleGroups": [
+      "cardio",
+      "piernas"
+    ],
+    "primaryGroup": "cardio",
+    "level": 3,
+    "dose": {
+      "type": "reps",
+      "reps": 8,
+      "durationSec": null,
+      "sets": 1,
+      "restSec": 0,
+      "tempo": "1-0-1",
+      "perSide": false,
+      "estimatedSec": 40
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "cualquiera"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "alto",
+    "noise": "moderado",
+    "steps": [
+      "Desde la posición de sentadilla, sube empujando el piso y eleva el salto.",
+      "Aterriza con las rodillas suaves y baja directo a la siguiente repetición.",
+      "Completa 8 repeticiones con control."
+    ],
+    "cues": [
+      "Aterrizar suave, con las rodillas alineadas",
+      "Rango de sentadilla cómodo"
+    ],
+    "easier": "sentadilla-libre-l2",
+    "harder": null,
+    "careZones": [
+      "rodilla",
+      "tobillo",
+      "embarazo",
+      "hipertension"
+    ],
+    "contraindications": [
+      "Dolor de rodilla o tobillo: usar sentadilla-libre-l2. Embarazo o hipertensión: evitar saltos; preferir variantes sin impacto."
+    ],
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada; usar sentadilla-libre-l2.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [
+      {
+        "type": "peer-reviewed",
+        "citation": "Stamatakis E, Ahmadi MN, Gill JMR, Thøgersen-Ntoumani C, et al. Association of wearable device-measured vigorous intermittent lifestyle physical activity with mortality. Nat Med. 2022;28(12):2521-2529.",
+        "doi": "10.1038/s41591-022-02100-x",
+        "url": "https://doi.org/10.1038/s41591-022-02100-x",
+        "note": "La actividad vigorosa intermitente (incluidas ráfagas potentes) aporta beneficio cardiometabólico."
+      },
+      {
+        "type": "guideline",
+        "citation": "Garber CE, Blissmer B, Deschenes MR, Franklin BA, et al. Quantity and Quality of Exercise for Developing and Maintaining Cardiorespiratory, Musculoskeletal, and Neuromotor Fitness in Apparently Healthy Adults (ACSM Position Stand). Med Sci Sports Exerc. 2011;43(7):1334-1359.",
+        "doi": "10.1249/MSS.0b013e318213fefb",
+        "url": "https://doi.org/10.1249/MSS.0b013e318213fefb",
+        "note": "El entrenamiento de potencia con saltos progresa desde bases de fuerza sólidas."
+      }
+    ],
+    "reviewedBy": "entrenador",
+    "reviewedAt": "2026-10-03",
+    "license": "CC-BY-4.0",
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "entrenador-entrega-1-2026-10-03",
+    "draftNote": "Validada por Entrenador el 2026-10-03 (t_78a921ff) pero nunca integrada. Falta: confirmar nivel/dosis tras el cambio a escalera 1–10, 3–4 pasos para posturas y video público.",
+    "progression": "Sube cuando el grupo cumpla content/leveling.json (N cartas en D días, ≥70 % fácil/bien, sin «duro» reciente) y la dosis salga con técnica limpia y sin dolor.",
+    "tier": "Aprendiz"
+  },
+  {
+    "id": "escalador-l4",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Escalador",
+    "shortName": "Escalador",
+    "muscleGroups": [
+      "cardio",
+      "core"
+    ],
+    "primaryGroup": "cardio",
+    "level": 4,
+    "dose": {
+      "type": "time",
+      "reps": null,
+      "durationSec": 20,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 70
+    },
+    "locations": [
+      "casa",
+      "oficina",
+      "parque",
+      "aula"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "medio",
+    "noise": "moderado",
+    "steps": [
+      "Plancha alta con manos bajo los hombros.",
+      "Lleva una rodilla al pecho y regrésala.",
+      "Alterna piernas a ritmo constante, como si corrieras.",
+      "Mantén la cadera baja durante los 20 s."
+    ],
+    "cues": [
+      "Hombros sobre las manos",
+      "Respira, no aguantes el aire"
+    ],
+    "easier": "escalador-lento-l2",
+    "harder": "patinador-l5",
+    "careZones": [
+      "muneca",
+      "hombro",
+      "hipertension"
+    ],
+    "contraindications": [
+      "Hipertensión no controlada: usa el escalador lento. Dolor de muñeca: manos en un borde firme. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa al patinador cuando completes 2×20 s a ritmo constante y puedas hablar en frases cortas al terminar.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": null,
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "patinador-l5",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Patinador",
+    "shortName": "Patinador",
+    "muscleGroups": [
+      "cardio",
+      "piernas",
+      "gluteos"
+    ],
+    "primaryGroup": "cardio",
+    "level": 5,
+    "dose": {
+      "type": "time",
+      "reps": null,
+      "durationSec": 20,
+      "sets": 2,
+      "restSec": 20,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 70
+    },
+    "locations": [
+      "casa",
+      "parque"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "alto",
+    "noise": "moderado",
+    "steps": [
+      "De pie, rodillas suaves.",
+      "Salta de lado hacia la derecha y aterriza en un pie.",
+      "Cruza el otro pie por detrás sin apoyarlo y balancea los brazos.",
+      "Salta hacia la izquierda y sigue alternando 20 s."
+    ],
+    "cues": [
+      "Aterriza suave, rodilla sobre el pie",
+      "Sin ruido: si suena, salta menos"
+    ],
+    "easier": "escalador-l4",
+    "harder": "burpee-l6",
+    "careZones": [
+      "rodilla",
+      "tobillo",
+      "equilibrio"
+    ],
+    "contraindications": [
+      "Dolor de rodilla o tobillo, o vecinos abajo: paso lateral sin salto. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Pasa al burpee cuando completes 2×20 s con aterrizajes silenciosos y sin dolor.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "Paso lateral sin salto.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  },
+  {
+    "id": "burpee-l6",
+    "version": 1,
+    "draft": true,
+    "published": false,
+    "status": "draft",
+    "origin": "codelius-propuesta-2026-10-17",
+    "draftNote": "Propuesta de Codelius sin validar: Entrenador debe confirmar nivel, dosis, pasos, contraindicaciones y aportar fuente + video.",
+    "name": "Burpee",
+    "shortName": "Burpee",
+    "muscleGroups": [
+      "cardio",
+      "empuje",
+      "piernas"
+    ],
+    "primaryGroup": "cardio",
+    "level": 6,
+    "dose": {
+      "type": "reps",
+      "reps": 6,
+      "durationSec": null,
+      "sets": 2,
+      "restSec": 30,
+      "tempo": null,
+      "perSide": false,
+      "estimatedSec": 76
+    },
+    "locations": [
+      "casa",
+      "parque"
+    ],
+    "equipment": [
+      "ninguno"
+    ],
+    "impact": "alto",
+    "noise": "ruidoso",
+    "steps": [
+      "De pie, baja en cuclillas y apoya las manos en el piso.",
+      "Lleva los pies atrás a plancha alta (salto o paso a paso).",
+      "Regresa los pies junto a las manos.",
+      "Ponte de pie con un pequeño salto y brazos arriba."
+    ],
+    "cues": [
+      "Plancha recta, sin hundir la cadera",
+      "Aterriza suave"
+    ],
+    "easier": "patinador-l5",
+    "harder": null,
+    "careZones": [
+      "rodilla",
+      "muneca",
+      "lumbar",
+      "hipertension"
+    ],
+    "contraindications": [
+      "Hipertensión no controlada o dolor lumbar: burpee sin salto y paso a paso. Detente si hay dolor agudo, mareo o falta de aire anormal."
+    ],
+    "progression": "Cierra Adepto con 2×6 continuos; siguiente paso (Magister): burpee con flexión.",
+    "decks": [
+      "adulto-general"
+    ],
+    "demographicNotes": {
+      "mayores": "No recomendada; usar sentadilla a la silla + marcha.",
+      "ninos": null
+    },
+    "sprite": null,
+    "sfx": null,
+    "flavorText": null,
+    "sources": [],
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "license": "CC-BY-4.0",
+    "tier": "Adepto"
+  }
+]
