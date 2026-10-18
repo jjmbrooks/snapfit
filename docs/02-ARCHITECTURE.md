@@ -170,6 +170,7 @@ Heurística inicial, sujeta a validación de Entrenador:
 - **Nivel global**: función del promedio de los niveles por grupo y de la constancia.
 - La app **propone** el cambio y el usuario confirma o fija el nivel a mano (`levelOverrides`).
 - La progresión semanal tiene un tope que define Entrenador, para evitar sobrecarga.
+- **Límite temporal (2026-10-17):** el nivel de un grupo no pasa de *carta publicada más alta del grupo + 1* (`levelCaps`). Aplica también al nivel inicial y a `levelOverrides`. Se retira solo cuando la escalera 1–10 esté completa; ver `docs/ESCALERA.md`.
 
 ## 6. Motor de mazo (core `deck-engine.js`)
 

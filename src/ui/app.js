@@ -3,7 +3,7 @@ import {
   deriveState, diffState, makeEvent, buildExport, eventsToCsv, importExport,
   slotsFor, dueReminder, THEMES, MUSCLE_GROUPS,
   syncDeck, topCard, sendToBottom, discardTop,
-  validateProfile, recommendDeck, initialLevels,
+  validateProfile, recommendDeck, initialLevels, levelCaps,
 } from '../core/index.js';
 import { REMINDER_COPY } from './i18n/es.js';
 import { download } from './dom.js';
@@ -63,8 +63,10 @@ export function createApp({ storage, clock, cards, decks, leveling, appVersion }
   const deckId = () => s.profile.player?.deckId || 'adulto-general';
   const deckCards = () => {
     const id = deckId();
-    const list = cards.filter((c) => (c.decks || []).includes(id));
-    return list.length ? list : cards;
+    // Solo cartas publicadas: los borradores (published: false) no entran al mazo hasta que Entrenador los valide.
+    const pub = cards.filter((c) => c.published !== false);
+    const list = pub.filter((c) => (c.decks || []).includes(id));
+    return list.length ? list : pub;
   };
 
   function recompute() {
@@ -75,6 +77,7 @@ export function createApp({ storage, clock, cards, decks, leveling, appVersion }
       leveling,
       levelOverrides: s.profile.levelOverrides,
       baseLevels: s.profile.player?.baseLevels,
+      levelCaps: levelCaps(deckCards()), // límite temporal: carta publicada más alta del grupo + 1
     });
   }
 
