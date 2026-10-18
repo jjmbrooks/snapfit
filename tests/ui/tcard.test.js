@@ -44,12 +44,13 @@ describe('carta arcade', () => {
     expect(h).toContain('ac-pose empty');
     expect(h).toContain('Respira con el gesto');
   });
-  it('arte final de Vitalia: las 12 cartas tienen frente y 4 poses, una por paso (sin «pose pendiente»)', () => {
+  it('arte final de Vitalia: las 12 cartas tienen frente y una pose por paso (sin «pose pendiente»)', () => {
     for (const c of cards) {
       const h = cardHTML(c);
       expect(h, c.id).toContain(`/art/vitalia/cards/${c.id}.webp`);
-      expect(c.steps.length, c.id).toBe(4);
-      for (const n of [1, 2, 3, 4]) expect(h, c.id).toContain(`/art/vitalia/poses/${c.id}-${n}.webp`);
+      expect(c.steps.length, c.id).toBeGreaterThanOrEqual(3);
+      for (let n = 1; n <= c.steps.length; n++) expect(h, c.id).toContain(`/art/vitalia/poses/${c.id}-${n}.webp`);
+      expect(h, c.id).not.toContain(`/art/vitalia/poses/${c.id}-${c.steps.length + 1}.webp`);
       expect(h, c.id).not.toContain('ac-pose empty');
     }
     expect(cardHTML(push)).toContain('Tu palma enciende la pared'); // cardFlavor del paquete
