@@ -50,7 +50,7 @@ export async function runRewardSequence(app, r) {
   const groupBars = card.muscleGroups.map((g) => {
     const p = d.levels.progress[g];
     const lvl = d.levels.byGroup[g];
-    return bar(esc(t('reward.groupBar', { icon: FAMILY_ICONS[g] || '', group: FAMILY_NAMES[g], n: lvl })), p.ratio, lvl >= 10 ? t('reward.max') : t('reward.nextLevel', { n: lvl + 1 }), `fam-${g}`);
+    return bar(esc(t('reward.groupBar', { icon: FAMILY_ICONS[g] || '', group: FAMILY_NAMES[g], n: lvl })), p.ratio, lvl >= 10 ? t('reward.max') : t(p.capped ? 'reward.capped' : 'reward.nextLevel', { n: lvl + 1 }), `fam-${g}`);
   }).join('');
   const o2 = screen(`
     <h2 class="seq-title">${t('reward.progressTitle')}</h2>

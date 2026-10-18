@@ -197,6 +197,7 @@
     "day": "{n} día",
     "days": "{n} días",
     "max": "MAX",
+    "capped": "Nv {n} pronto",
     "nextLevel": "→ Nv {n}",
     "groupBar": "{icon} {group} · Nv {n}",
     "globalLevel": "Nivel global",

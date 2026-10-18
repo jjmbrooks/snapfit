@@ -15,9 +15,10 @@ import { xpForCard } from './xp.js';
  * @param {object} [opts.leveling]
  * @param {Record<string,number>} [opts.levelOverrides]
  * @param {Record<string,number>} [opts.baseLevels] niveles iniciales del perfil
+ * @param {Record<string,number>} [opts.levelCaps] tope por grupo (levelCaps del mazo publicado)
  */
 export function deriveState(events, opts) {
-  const { now, tzOffsetMin = 0, dailyGoal = 3, leveling, levelOverrides, baseLevels } = opts;
+  const { now, tzOffsetMin = 0, dailyGoal = 3, leveling, levelOverrides, baseLevels, levelCaps } = opts;
   const efforts = new Map();
   for (const e of events) if (e.type === 'effort_rated') efforts.set(e.refId, e.effort);
 
@@ -43,7 +44,7 @@ export function deriveState(events, opts) {
     .sort((a, b) => a.ts - b.ts);
 
   const skips = events.filter((e) => e.type === 'card_skipped').length;
-  const levels = computeLevels(dones, leveling, levelOverrides, baseLevels);
+  const levels = computeLevels(dones, leveling, levelOverrides, baseLevels, levelCaps);
   const today = dayKey(now, tzOffsetMin);
   const dayCounts = {};
   for (const d of dones) dayCounts[d.day] = (dayCounts[d.day] || 0) + 1;
